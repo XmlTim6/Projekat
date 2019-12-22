@@ -175,7 +175,7 @@ public class DocumentRepositoryImpl implements DocumentRepository {
         }else if(document.getClass() == CoverLetter.class){
             context = JAXBContext.newInstance("team6.xml_project.models.xml.cover_letter");
         }else if(document.getClass() == ReviewForm.class){
-            context = JAXBContext.newInstance("team6.xml_project.models.xml.review_form;");
+            context = JAXBContext.newInstance("team6.xml_project.models.xml.review_form");
         }
         return context;
     }
