@@ -7,9 +7,9 @@ public interface DocumentRepository {
 
     void save(Document document, String collectionId, String documentId) throws Exception;
 
-    Document getDocumentByID(Document document, String collectionId, String documentId) throws Exception;
+    Document getDocumentById(Document document, String collectionId, String documentId) throws Exception;
 
-    void deleteDocumentByID(String collectionId, String documentId) throws Exception;
+    void deleteDocumentById(String collectionId, String documentId) throws Exception;
 
     ResourceSet executeXPathQuery(String collectionId, String xPathExp) throws Exception;
 

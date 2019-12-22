@@ -180,7 +180,7 @@ public class DocumentRepositoryImpl implements DocumentRepository {
         return context;
     }
 
-    public Document getDocumentByID(Document document, String collectionId, String documentId) throws Exception{
+    public Document getDocumentById(Document document, String collectionId, String documentId) throws Exception{
         initDb();
 
         Collection col = null;
@@ -227,7 +227,7 @@ public class DocumentRepositoryImpl implements DocumentRepository {
         }
         return document;
     }
-    public void deleteDocumentByID(String collectionID, String documentID) throws Exception{
+    public void deleteDocumentById(String collectionID, String documentID) throws Exception{
         initDb();
         Collection col = null;
         XMLResource res = null;
