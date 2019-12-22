@@ -1,6 +1,8 @@
 
 package team6.xmlproject.models.xml.review_form;
 
+import team6.xmlproject.models.xml.Document;
+
 import java.util.ArrayList;
 import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -64,7 +66,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlRootElement(name = "review_form")
 @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-public class ReviewForm {
+public class ReviewForm extends Document {
 
     @XmlElement(required = true)
     @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
@@ -213,7 +215,7 @@ public class ReviewForm {
 
         @XmlElements({
             @XmlElement(name = "paragraph", type = Paragraph.class),
-            @XmlElement(name = "list", type = tim6.models.review_form.List.class)
+            @XmlElement(name = "list", type = team6.xmlproject.models.xml.review_form.List.class)
         })
         @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected java.util.List<Object> paragraphOrList;
@@ -281,7 +283,7 @@ public class ReviewForm {
 
         @XmlElements({
             @XmlElement(name = "paragraph", type = Paragraph.class),
-            @XmlElement(name = "list", type = tim6.models.review_form.List.class)
+            @XmlElement(name = "list", type = team6.xmlproject.models.xml.review_form.List.class)
         })
         @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected java.util.List<Object> paragraphOrList;

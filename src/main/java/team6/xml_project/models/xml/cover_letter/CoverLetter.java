@@ -1,5 +1,7 @@
 
-package tim6.models.cover_letter;
+package team6.xmlproject.models.xml.cover_letter;
+
+import team6.xmlproject.models.xml.Document;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -133,7 +135,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 @XmlRootElement(name = "cover_letter")
 @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-public class CoverLetter {
+public class CoverLetter extends Document {
 
     @XmlElement(required = true)
     @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")

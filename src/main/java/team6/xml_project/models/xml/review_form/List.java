@@ -1,5 +1,5 @@
 
-package tim6.models.review_form;
+package team6.xmlproject.models.xml.review_form;
 
 import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
