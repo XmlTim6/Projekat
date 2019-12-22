@@ -1,7 +1,7 @@
 
-package team6.xmlproject.models.xml.paper;
+package team6.xml_project.models.xml.paper;
 
-import team6.xmlproject.models.xml.Document;
+import team6.xml_project.models.xml.Document;
 
 import java.util.ArrayList;
 import java.util.List;

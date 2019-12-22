@@ -1,5 +1,5 @@
 
-package team6.xmlproject.models.xml.cover_letter;
+package team6.xml_project.models.xml.cover_letter;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;

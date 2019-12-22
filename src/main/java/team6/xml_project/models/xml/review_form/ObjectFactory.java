@@ -1,4 +1,4 @@
-package team6.xmlproject.models.xml.review_form;
+package team6.xml_project.models.xml.review_form;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -69,7 +69,7 @@ public class ObjectFactory {
      * Create an instance of {@link List }
      * 
      */
-    public team6.xmlproject.models.xml.review_form.List createList() {
+    public team6.xml_project.models.xml.review_form.List createList() {
         return new List();
     }
 

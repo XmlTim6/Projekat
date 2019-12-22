@@ -1,5 +1,5 @@
 
-package team6.xmlproject.models.xml.paper;
+package team6.xml_project.models.xml.paper;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -246,9 +246,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "XML_tim6", name = "italic", scope = team6.xmlproject.models.xml.paper.Paragraph.class)
+    @XmlElementDecl(namespace = "XML_tim6", name = "italic", scope = team6.xml_project.models.xml.paper.Paragraph.class)
     public JAXBElement<String> createParagraphItalic(String value) {
-        return new JAXBElement<String>(_ParagraphItalic_QNAME, String.class, team6.xmlproject.models.xml.paper.Paragraph.class, value);
+        return new JAXBElement<String>(_ParagraphItalic_QNAME, String.class, team6.xml_project.models.xml.paper.Paragraph.class, value);
     }
 
     /**

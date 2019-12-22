@@ -1,5 +1,5 @@
 
-package team6.xmlproject.models.xml.review_form;
+package team6.xml_project.models.xml.review_form;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 
-package team6.xmlproject.models.xml.cover_letter;
+package team6.xml_project.models.xml.cover_letter;
 
-import team6.xmlproject.models.xml.Document;
+import team6.xml_project.models.xml.Document;
 
 import java.io.Serializable;
 import java.util.ArrayList;

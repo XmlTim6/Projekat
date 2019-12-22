@@ -1,5 +1,5 @@
 
-package team6.xmlproject.models.xml.paper;
+package team6.xml_project.models.xml.paper;
 
 
 import java.io.Serializable;

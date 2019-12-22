@@ -1,4 +1,4 @@
-package team6.xmlproject;
+package team6.xml_project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

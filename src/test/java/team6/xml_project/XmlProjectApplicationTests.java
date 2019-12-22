@@ -1,4 +1,4 @@
-package team6.xmlproject;
+package team6.xml_project;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
