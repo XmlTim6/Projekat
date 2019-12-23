@@ -1,0 +1,167 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6">
+    <ns0:title xmlns:ns0="http://www.w3.org/ns/rdfa#" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Paper 2</ns0:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6">
+    <ns1:received xmlns:ns1="http://www.w3.org/ns/rdfa#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-04-20Z</ns1:received>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6">
+    <ns2:revised xmlns:ns2="http://www.w3.org/ns/rdfa#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-04-15</ns2:revised>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6">
+    <ns3:accepted xmlns:ns3="http://www.w3.org/ns/rdfa#" rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2020-04-14Z</ns3:accepted>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/author/dc61e2c5-ab28-4ff2-9cb1-669e10307e1d">
+    <pred:wrote xmlns:pred="http://www.tim6.rs/predicate/" rdf:resource="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/author/dc61e2c5-ab28-4ff2-9cb1-669e10307e1d">
+    <pred:firstName xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">John</pred:firstName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/author/dc61e2c5-ab28-4ff2-9cb1-669e10307e1d">
+    <pred:middleName xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S</pred:middleName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/author/dc61e2c5-ab28-4ff2-9cb1-669e10307e1d">
+    <pred:lastName xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Smith</pred:lastName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/institution/044f4935-3f52-467c-bdcb-b23a3b126a7d">
+    <pred:employs xmlns:pred="http://www.tim6.rs/predicate/" rdf:resource="http://www.tim6.rs/rdf/author/dc61e2c5-ab28-4ff2-9cb1-669e10307e1d"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/institution/044f4935-3f52-467c-bdcb-b23a3b126a7d">
+    <pred:name xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Institution Name 1</pred:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/institution/044f4935-3f52-467c-bdcb-b23a3b126a7d">
+    <pred:city xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">City 1</pred:city>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/institution/044f4935-3f52-467c-bdcb-b23a3b126a7d">
+    <pred:country xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Country 1</pred:country>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/author/bd2f9872-25d6-4341-8db9-7a0ebbb568fa">
+    <pred:wrote xmlns:pred="http://www.tim6.rs/predicate/" rdf:resource="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/author/bd2f9872-25d6-4341-8db9-7a0ebbb568fa">
+    <pred:firstName xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Adam</pred:firstName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/author/bd2f9872-25d6-4341-8db9-7a0ebbb568fa">
+    <pred:middleName xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T</pred:middleName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/author/bd2f9872-25d6-4341-8db9-7a0ebbb568fa">
+    <pred:lastName xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sparrow</pred:lastName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/institution/4e17cad1-9278-4805-832f-1380e0f02f89">
+    <pred:employs xmlns:pred="http://www.tim6.rs/predicate/" rdf:resource="http://www.tim6.rs/rdf/author/17cd07bd-afc4-420c-af00-a088573c3e61"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/institution/4e17cad1-9278-4805-832f-1380e0f02f89">
+    <pred:name xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Collegia Titanica</pred:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/institution/4e17cad1-9278-4805-832f-1380e0f02f89">
+    <pred:city xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rome</pred:city>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/institution/4e17cad1-9278-4805-832f-1380e0f02f89">
+    <pred:country xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Italy</pred:country>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6">
+    <pred:keyword xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">alpha </pred:keyword>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6">
+    <pred:keyword xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">beta</pred:keyword>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/0714a878-d126-4f85-bd59-e6e74f42461b">
+    <pred:referenceOf xmlns:pred="http://www.tim6.rs/predicate/" rdf:resource="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/0714a878-d126-4f85-bd59-e6e74f42461b">
+    <pred:author xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">B. Grant</pred:author>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/0714a878-d126-4f85-bd59-e6e74f42461b">
+    <pred:author xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">L. Howard</pred:author>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/0714a878-d126-4f85-bd59-e6e74f42461b">
+    <pred:year xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1790</pred:year>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/0714a878-d126-4f85-bd59-e6e74f42461b">
+    <pred:title xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reference 1</pred:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/0714a878-d126-4f85-bd59-e6e74f42461b">
+    <pred:edition xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2</pred:edition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/0714a878-d126-4f85-bd59-e6e74f42461b">
+    <pred:city xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">New Amsterdam</pred:city>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/0714a878-d126-4f85-bd59-e6e74f42461b">
+    <pred:publisher xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Green</pred:publisher>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/0714a878-d126-4f85-bd59-e6e74f42461b">
+    <pred:numbers xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11</pred:numbers>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/9c210607-5dbf-4470-a0ec-6cb84a6eaaa8">
+    <pred:referenceOf xmlns:pred="http://www.tim6.rs/predicate/" rdf:resource="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/9c210607-5dbf-4470-a0ec-6cb84a6eaaa8">
+    <pred:author xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">D. Gray</pred:author>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/9c210607-5dbf-4470-a0ec-6cb84a6eaaa8">
+    <pred:year xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1998</pred:year>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/9c210607-5dbf-4470-a0ec-6cb84a6eaaa8">
+    <pred:title xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reference 2</pred:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/9c210607-5dbf-4470-a0ec-6cb84a6eaaa8">
+    <pred:edition xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</pred:edition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/9c210607-5dbf-4470-a0ec-6cb84a6eaaa8">
+    <pred:city xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">London</pred:city>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/9c210607-5dbf-4470-a0ec-6cb84a6eaaa8">
+    <pred:publisher xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tee Inc.</pred:publisher>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/reference/9c210607-5dbf-4470-a0ec-6cb84a6eaaa8">
+    <pred:numbers xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5</pred:numbers>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/857b3a34-a8b9-4c60-a168-a2a49b94ea32">
+    <pred:citedIn xmlns:pred="http://www.tim6.rs/predicate/" rdf:resource="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/857b3a34-a8b9-4c60-a168-a2a49b94ea32">
+    <pred:author xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">A. Reis</pred:author>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/857b3a34-a8b9-4c60-a168-a2a49b94ea32">
+    <pred:year xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1920</pred:year>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/857b3a34-a8b9-4c60-a168-a2a49b94ea32">
+    <pred:title xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Citation 2</pred:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/857b3a34-a8b9-4c60-a168-a2a49b94ea32">
+    <pred:edition xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</pred:edition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/857b3a34-a8b9-4c60-a168-a2a49b94ea32">
+    <pred:city xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Geneva</pred:city>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/857b3a34-a8b9-4c60-a168-a2a49b94ea32">
+    <pred:publisher xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Well Publishing</pred:publisher>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/857b3a34-a8b9-4c60-a168-a2a49b94ea32">
+    <pred:numbers xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</pred:numbers>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/91f74d50-a4aa-4dee-bc29-060d5dc586ff">
+    <pred:citedIn xmlns:pred="http://www.tim6.rs/predicate/" rdf:resource="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/91f74d50-a4aa-4dee-bc29-060d5dc586ff">
+    <pred:author xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">P. Johnson</pred:author>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/91f74d50-a4aa-4dee-bc29-060d5dc586ff">
+    <pred:year xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2001</pred:year>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/91f74d50-a4aa-4dee-bc29-060d5dc586ff">
+    <pred:title xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Citation 2</pred:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/91f74d50-a4aa-4dee-bc29-060d5dc586ff">
+    <pred:edition xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3</pred:edition>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/91f74d50-a4aa-4dee-bc29-060d5dc586ff">
+    <pred:city xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paris</pred:city>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/91f74d50-a4aa-4dee-bc29-060d5dc586ff">
+    <pred:publisher xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tim Books</pred:publisher>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.tim6.rs/rdf/citation/91f74d50-a4aa-4dee-bc29-060d5dc586ff">
+    <pred:numbers xmlns:pred="http://www.tim6.rs/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6</pred:numbers>
+  </rdf:Description>
+</rdf:RDF>
