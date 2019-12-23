@@ -18,6 +18,7 @@ import team6.xml_project.util.SparqlUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 @Repository
@@ -28,10 +29,10 @@ public class PaperRDFRepositoryImpl implements PaperRDFRepository {
     private static final String SPARQL_NAMED_GRAPH_URI = "/papers/metadata";
 
     @Override
-    public void addPaper(String rdfFilePath) {
+    public void addPaper(InputStream rdf) {
         // Creates a default model
         Model model = ModelFactory.createDefaultModel();
-        model.read(rdfFilePath);
+        model.read(rdf, null);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 

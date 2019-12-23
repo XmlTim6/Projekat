@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../xsl/grddl.xsl"?>
 
-<paper xmlns="http://www.w3.org/ns/rdfa#"
-       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
-       xmlns:tim6="http://www.w3.org/2001/XMLSchema-instance" tim6:schemaLocation="XML_tim6 file:/../schema/paper.xsd"
+<paper xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+       xmlns:t6="http://www.w3.org/2001/XMLSchema-instance" t6:schemaLocation="XML_tim6 file:/../schema/paper.xsd"
        xmlns:pred="http://www.tim6.rs/predicate/"
        title="Paper 1"
-       received="2020-01-20Z" revised="2020-02-15" accepted="2020-03-14Z"
 
        vocab="http://www.tim6.rs/predicate/"
        about="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4"
        typeof="pred:Paper"
-       property="title" content="Paper 1">
-    <received property="received" datatype="xs:date">2020-01-20Z</received>
-    <revised property="revised" datatype="xs:date">2020-02-15</revised>
-    <accepted property="accepted" datatype="xs:date">2020-03-14Z</accepted>
+       property="pred:title" content="Paper 1">
+    <received property="pred:received" datatype="xs:date">2020-01-20Z</received>
+    <revised property="pred:revised" datatype="xs:date">2020-02-15</revised>
+    <accepted property="pred:accepted" datatype="xs:date">2020-03-14Z</accepted>
     <authors>
         <author vocab="http://www.tim6.rs/predicate/"
                 about="http://www.tim6.rs/rdf/author/dc61e2c5-ab28-4ff2-9cb1-669e10307e1d" typeof="pred:Author"

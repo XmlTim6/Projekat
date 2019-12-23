@@ -2,7 +2,7 @@ package team6.xml_project.util;
 
 public class RDFEndpoints {
 
-    private static final String endpoint = "http://localhost:8080/fuseki";
+    private static final String endpoint = "http://localhost:8081/fuseki";
 
     private static final String dataset = "FTNProject";
 

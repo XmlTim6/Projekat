@@ -5,10 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import team6.xml_project.models.xml.paper.Paper;
 import team6.xml_project.service.PaperService;
 
-import javax.xml.transform.TransformerException;
 import java.io.*;
 
 @RestController
@@ -19,22 +17,13 @@ public class PaperController {
     PaperService paperService;
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<Boolean> createPaper(@RequestBody Paper paper){
+    public ResponseEntity<Boolean> createPaper(@RequestBody String paper){
         try{
             paperService.save(paper);
         }catch (Exception ignored){
-
+            return new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.CREATED);
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Object> addPaperMetadata() throws FileNotFoundException, TransformerException {
-        paperService.extractRDFMetadata(
-                new FileInputStream(new File("data/paper/instance2.xml")),
-                new FileOutputStream(new File("data/gen/instance2.rdf")));
-        paperService.addPaper("data/gen/instance2.rdf");
-        return null;
     }
 
     @RequestMapping(value="/{id}/metadata", method = RequestMethod.GET)

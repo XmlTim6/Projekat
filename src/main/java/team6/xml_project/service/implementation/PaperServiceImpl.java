@@ -1,5 +1,6 @@
 package team6.xml_project.service.implementation;
 
+import org.apache.commons.io.input.ReaderInputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import team6.xml_project.helpers.RDFMetadataExtractor;
@@ -8,11 +9,12 @@ import team6.xml_project.repository.DocumentRepository;
 import team6.xml_project.repository.PaperRDFRepository;
 import team6.xml_project.service.PaperService;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.TransformerException;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 @Service
 public class PaperServiceImpl implements PaperService {
@@ -23,13 +25,12 @@ public class PaperServiceImpl implements PaperService {
     @Autowired
     PaperRDFRepository paperRDFRepository;
 
-    public void save(Paper paper) throws Exception {
-        documentRepository.save(paper, "/db/apps/papers/userId/revision1", "paper1.xml");
-    }
+    public void save(String paperXML) throws Exception {
+        Paper paper = createPaperFromXML(paperXML);
+        InputStream rdfInputStream = createPaperRDFStreamFromXML(paperXML);
 
-    @Override
-    public void addPaper(String rdfFilePath) {
-        paperRDFRepository.addPaper(rdfFilePath);
+        documentRepository.save(paper, "/db/apps/papers/userId/revision1", "paper1.xml");
+        paperRDFRepository.addPaper(rdfInputStream);
     }
 
     @Override
@@ -51,5 +52,23 @@ public class PaperServiceImpl implements PaperService {
     @Override
     public String findPaperMetadataById(String id) throws IOException {
         return paperRDFRepository.findPaperMetadataById(id);
+    }
+
+    private Paper createPaperFromXML(String paperXML) throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Paper.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+
+        StringReader reader = new StringReader(paperXML);
+        return (Paper) unmarshaller.unmarshal(reader);
+    }
+
+    private InputStream createPaperRDFStreamFromXML(String paperXML) throws FileNotFoundException, TransformerException {
+        StringReader reader = new StringReader(paperXML);
+
+        InputStream paperInputStream = new ReaderInputStream(reader, StandardCharsets.UTF_8);
+        ByteArrayOutputStream rdfOut = new ByteArrayOutputStream();
+        extractRDFMetadata(paperInputStream, rdfOut);
+
+        return new ByteArrayInputStream(rdfOut.toByteArray());
     }
 }
