@@ -1,0 +1,8 @@
+SELECT DISTINCT ?paper ?title ?received ?revised ?accepted FROM <%s>
+WHERE {
+  	?paper <http://www.w3.org/ns/rdfa#title> ?title .
+  	?paper <http://www.w3.org/ns/rdfa#received> ?received .
+  	?paper <http://www.w3.org/ns/rdfa#revised> ?revised .
+    ?paper <http://www.w3.org/ns/rdfa#accepted> ?accepted .
+  FILTER(regex(str(?title), "%s"))
+}

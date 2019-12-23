@@ -1,0 +1,12 @@
+SELECT DISTINCT ?paper ?title ?received ?revised ?accepted FROM <%s>
+WHERE {
+  	?author <http://www.tim6.rs/predicate/firstName> ?firstName .
+    ?author <http://www.tim6.rs/predicate/middleName> ?middleName .
+    ?author <http://www.tim6.rs/predicate/lastName> ?lastName .
+	?author <http://www.tim6.rs/predicate/wrote> ?paper .
+  	?paper <http://www.w3.org/ns/rdfa#title> ?title .
+  	?paper <http://www.w3.org/ns/rdfa#received> ?received .
+  	?paper <http://www.w3.org/ns/rdfa#revised> ?revised .
+    ?paper <http://www.w3.org/ns/rdfa#accepted> ?accepted .
+  FILTER(CONTAINS(UCASE(CONCAT(?firstName, ?middleName, ?lastName)), UCASE("%s")))
+}

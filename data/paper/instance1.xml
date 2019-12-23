@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/grddl.xsl"?>
+
+<paper xmlns="http://www.w3.org/ns/rdfa#"
+       xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+       xmlns:tim6="http://www.w3.org/2001/XMLSchema-instance" tim6:schemaLocation="XML_tim6 file:/../schema/paper.xsd"
+       xmlns:pred="http://www.tim6.rs/predicate/"
+       title="Paper 1"
+       received="2020-01-20Z" revised="2020-02-15" accepted="2020-03-14Z"
+
+       vocab="http://www.tim6.rs/predicate/"
+       about="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4"
+       typeof="pred:Paper"
+       property="title" content="Paper 1">
+    <received property="received" datatype="xs:date">2020-01-20Z</received>
+    <revised property="revised" datatype="xs:date">2020-02-15</revised>
+    <accepted property="accepted" datatype="xs:date">2020-03-14Z</accepted>
+    <authors>
+        <author vocab="http://www.tim6.rs/predicate/"
+                about="http://www.tim6.rs/rdf/author/dc61e2c5-ab28-4ff2-9cb1-669e10307e1d" typeof="pred:Author"
+
+                rel="pred:wrote" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4"
+                email="email1@email.com">
+            <personal>
+                <first_name property="pred:firstName" datatype="xs:string">John</first_name>
+                <middle_name property="pred:middleName" datatype="xs:string">S</middle_name>
+                <last_name property="pred:lastName" datatype="xs:string">Smith</last_name>
+            </personal>
+            <institution
+                    vocab="http://www.tim6.rs/predicate/"
+                    about="http://www.tim6.rs/rdf/institution/044f4935-3f52-467c-bdcb-b23a3b126a7d" typeof="pred:Institution"
+                    rel="pred:employs" href="http://www.tim6.rs/rdf/author/dc61e2c5-ab28-4ff2-9cb1-669e10307e1d">
+                <name property="pred:name" datatype="xs:string">Institution Name 1</name>
+                <city property="pred:city" datatype="xs:string">City 1</city>
+                <country property="pred:country" datatype="xs:string">Country 1</country>
+            </institution>
+        </author>
+        <author
+                vocab="http://www.tim6.rs/predicate/"
+                about="http://www.tim6.rs/rdf/author/17cd07bd-afc4-420c-af00-a088573c3e61" typeof="pred:Author"
+
+                rel="pred:wrote" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4"
+                email="email2@email.com">
+            <personal>
+                <first_name property="pred:firstName" datatype="xs:string">Jane</first_name>
+                <middle_name property="pred:middleName" datatype="xs:string">S</middle_name>
+                <last_name property="pred:lastName" datatype="xs:string">Smith</last_name>
+            </personal>
+            <institution
+                    vocab="http://www.tim6.rs/predicate/"
+                    about="http://www.tim6.rs/rdf/institution/044f4935-3f52-467c-bdcb-b23a3b126a7d" typeof="pred:Institution"
+                    rel="pred:employs" href="http://www.tim6.rs/rdf/author/17cd07bd-afc4-420c-af00-a088573c3e61">
+                <name property="pred:name" datatype="xs:string">Institution Name 1</name>
+                <city property="pred:city" datatype="xs:string">City 1</city>
+                <country property="pred:country" datatype="xs:string">Country 1</country>
+            </institution>
+        </author>
+    </authors>
+    <abstract paper_type="conceptual">
+        <purpose>Proin varius mi in elementum pharetra. Aliquam vitae turpis urna. Sed sit amet facilisis nibh. Phasellus consectetur diam eget varius malesuada. Morbi sed pharetra diam. Aliquam fermentum leo vitae fringilla ullamcorper. Etiam volutpat interdum mattis. Ut posuere auctor risus id molestie. Maecenas molestie quam quis malesuada vestibulum. Vestibulum id ante enim.</purpose>
+        <methodology>Mauris ullamcorper quam nec augue luctus aliquet. Integer et auctor mi. Curabitur pulvinar sit amet arcu et ultrices. Donec vehicula augue non posuere pretium. Vivamus mattis interdum magna, eu finibus nisl luctus vitae. Vestibulum vitae bibendum nunc. Vestibulum magna ligula, pharetra ut aliquam et, venenatis a sem. Maecenas placerat egestas ex non porta. In volutpat erat in velit pharetra, in sodales tortor pretium.</methodology>
+        <findings>Nulla imperdiet erat enim, vel dictum sapien tincidunt sed. Ut pharetra, metus ac lobortis fermentum, sem dolor euismod dui, eget fermentum erat risus quis mi. Pellentesque sit amet maximus nulla. Nulla ac ligula malesuada, sodales tellus elementum, ultrices augue. Vestibulum fringilla iaculis dui at venenatis. Mauris vehicula odio in cursus semper. Aenean volutpat odio eros, at venenatis nibh porttitor at. Etiam sagittis purus in fermentum imperdiet.</findings>
+        <research_implications>Pellentesque vitae lacus a ex rutrum molestie ac ac diam. Aliquam rhoncus vehicula congue. Integer ultricies est quis purus tempor aliquam. Vestibulum aliquam, nulla in sagittis sodales, nisi urna semper elit, sit amet maximus nisi nunc nec mi. Suspendisse augue diam, pharetra vel odio sed, elementum fermentum lectus. Curabitur eget dignissim nisi, quis hendrerit ligula. Duis at tristique nisl. Aenean non vehicula turpis, non mollis magna. Vivamus et mollis tortor. Curabitur rhoncus aliquet tortor ut ullamcorper. Integer rutrum rutrum blandit.</research_implications>
+        <practical_implcations>Fusce bibendum imperdiet efficitur. Etiam convallis dui velit, sed pulvinar ante varius vitae. Donec et nisl a nisi sollicitudin rhoncus. Nullam quis vulputate arcu. Vivamus a dolor magna. Nam nec nunc eu risus venenatis tincidunt et vel nisl. Nullam eu orci ex. Duis nec porttitor nulla. Fusce pharetra tempus dui ac condimentum.</practical_implcations>
+        <orginality>Cras euismod dui id bibendum efficitur. In condimentum magna eu dui blandit rutrum. Ut a pulvinar risus. Nulla ex felis, interdum vel suscipit id, mattis nec diam. Vivamus tincidunt luctus arcu, sit amet hendrerit nisl auctor gravida. Nulla semper arcu ipsum, in rutrum tortor vestibulum id. Praesent eros urna, finibus sed posuere et, accumsan sed nunc. Donec ex velit, laoreet quis volutpat tristique, luctus eu nibh. Vivamus eu libero nulla. Suspendisse potenti. Maecenas vitae maximus mi, id accumsan lectus. Nullam sed volutpat ex. Quisque varius lacus luctus dapibus rhoncus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</orginality>
+        <keywords>
+            <keyword property="pred:keyword" datatype="xs:string">keyword1</keyword>
+            <keyword property="pred:keyword" datatype="xs:string">keyword2</keyword>
+        </keywords>
+    </abstract>
+    <content>
+        <quote id="ID001" attributed_to="Anonymous" source="Quote source 1" reference_to="ID009">Sed fringilla ligula at elementum viverra. Phasellus congue iaculis nibh, ac varius ipsum tempor at. Class aptent taciti sociosqu ad.</quote>
+        <quote id="ID003" attributed_to="Author" source="Quote source 2" reference_to="ID011">Donec nulla purus, egestas a malesuada in, congue id nibh. Donec dapibus ligula turpis, sed fringilla nisl auctor ac. Aenean.</quote>
+    </content>
+    <references>
+        <mention id="ID005"
+                 vocab="http://www.tim6.rs/predicate/"
+                 about="http://www.tim6.rs/rdf/reference/ac5492a4-ef3d-4295-a1e7-b8b6b889fcb0" typeof="pred:Reference"
+
+                 rel="pred:referenceOf" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4">
+            <authors>
+                <author property="pred:author" content="B. Morales">
+                    <last_name>Morales</last_name>
+                    <initial>B.</initial>
+                </author>
+                <author property="pred:author" content="R. Lee">
+                    <last_name>Lee</last_name>
+                    <initial>R.</initial>
+                </author>
+            </authors>
+            <work>
+                <year_published property="pred:year" datatype="xs:gYear">2001</year_published>
+                <title property="pred:title" datatype="xs:string">Reference 1</title>
+                <edition property="pred:edition" datatype="xs:string">2</edition>
+                <city property="pred:city" datatype="xs:string">New York</city>
+                <publisher property="pred:publisher" datatype="xs:string">Green</publisher>
+                <numbers property="pred:numbers" datatype="xs:string">23</numbers>
+            </work>
+        </mention>
+        <mention id="ID007"
+                 vocab="http://www.tim6.rs/predicate/"
+                 about="http://www.tim6.rs/rdf/reference/13617f5a-65ea-4b06-8643-6dad4cc1625a" typeof="pred:Reference"
+
+                 rel="pred:referenceOf" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4">
+            <authors>
+                <author property="pred:author" content="D. Emmet">
+                    <last_name>Emmet</last_name>
+                    <initial>D.</initial>
+                </author>
+            </authors>
+            <work>
+                <year_published property="pred:year" datatype="xs:gYear">1998</year_published>
+                <title property="pred:title" datatype="xs:string">Reference 2</title>
+                <edition property="pred:edition" datatype="xs:string">3</edition>
+                <city property="pred:city" datatype="xs:string">London</city>
+                <publisher property="pred:publisher" datatype="xs:string">Tee Inc.</publisher>
+                <numbers property="pred:numbers" datatype="xs:string">2</numbers>
+            </work>
+        </mention>
+    </references>
+    <citations>
+        <mention id="ID009"
+                 vocab="http://www.tim6.rs/predicate/"
+                 about="http://www.tim6.rs/rdf/citation/056e2507-8fbe-4641-9e71-3f27c91c51f2" typeof="pred:Citation"
+
+                 rel="pred:citedIn" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4">
+            <authors>
+                <author property="pred:author" content="H. Rich">
+                    <last_name>Rich</last_name>
+                    <initial>H.</initial>
+                </author>
+            </authors>
+            <work>
+                <year_published property="pred:year" datatype="xs:gYear">1994</year_published>
+                <title property="pred:title" datatype="xs:string">Citation 1</title>
+                <edition property="pred:edition" datatype="xs:string">6</edition>
+                <city property="pred:city" datatype="xs:string">Stockholm</city>
+                <publisher property="pred:publisher" datatype="xs:string">Burg Publishing</publisher>
+                <numbers property="pred:numbers" datatype="xs:string">2</numbers>
+            </work>
+        </mention>
+        <mention id="ID011"
+                 vocab="http://www.tim6.rs/predicate/"
+                 about="http://www.tim6.rs/rdf/citation/5b47fa91-b80b-4b23-9f70-e64da2604bd7" typeof="pred:Citation"
+
+                 rel="pred:citedIn" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4">
+            <authors>
+                <author property="pred:author" content="P. Johnson">
+                    <last_name>Johnson</last_name>
+                    <initial>P.</initial>
+                </author>
+            </authors>
+            <work>
+                <year_published property="pred:year" datatype="xs:gYear">2001</year_published>
+                <title property="pred:title" datatype="xs:string">Citation 2</title>
+                <edition property="pred:edition" datatype="xs:string">3</edition>
+                <city property="pred:city" datatype="xs:string">Washington</city>
+                <publisher property="pred:publisher" datatype="xs:string">Tim Books</publisher>
+                <numbers property="pred:numbers" datatype="xs:string">6</numbers>
+            </work>
+        </mention>
+    </citations>
+    <notes>
+        <note ref_id="ID007">Convallis posuere morbi leo urna molestie at elementum eu facilisis. Faucibus a pellentesque sit amet porttitor eget dolor morbi non. Dictum varius duis at consectetur lorem. Vitae ultricies leo integer malesuada nunc vel risus. Sed odio morbi quis commodo odio aenean. Vitae tortor condimentum lacinia quis vel eros donec. Facilisis mauris sit amet massa vitae tortor condimentum lacinia. Congue quisque egestas diam in arcu cursus euismod. At lectus urna duis convallis.</note>
+        <note ref_id="ID003">Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit. Vestibulum lectus mauris ultrices eros in cursus turpis massa tincidunt. Quisque egestas diam in arcu cursus euismod quis viverra nibh. Mauris sit amet massa vitae. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit. Velit dignissim sodales ut eu sem integer vitae justo eget. Amet venenatis urna cursus eget nunc scelerisque viverra. Fames ac turpis egestas maecenas pharetra convallis posuere. Eleifend donec pretium vulputate sapien nec sagittis. Non curabitur gravida arcu ac tortor dignissim. Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare. Massa placerat duis ultricies lacus sed turpis tincidunt. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh sit. Mattis nunc sed blandit libero volutpat sed.</note>
+    </notes>
+</paper>
