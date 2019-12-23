@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:t6="XML_tim6"
+    targetNamespace="XML_tim6" elementFormDefault="qualified">
+    <xs:element name="review_form">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="overview" type="xs:string"/>
+                <xs:element name="positive_side" type="xs:string"/>
+                <xs:element name="major_remarks">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element ref="t6:paragraph"/>
+                            <xs:element ref="t6:list"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="minor_remarks">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element ref="t6:paragraph"/>
+                            <xs:element ref="t6:list"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="paragraph">
+        <xs:complexType mixed="true">
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element name="bold" type="xs:string"/>
+                <xs:element name="italic" type="xs:string"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="list_item" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="type" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="ordered"/>
+                        <xs:enumeration value="unordered"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
