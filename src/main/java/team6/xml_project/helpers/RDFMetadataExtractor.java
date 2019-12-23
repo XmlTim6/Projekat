@@ -1,4 +1,4 @@
-package team6.xmlproject.helpers;
+package team6.xml_project.helpers;
 
 
 import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;

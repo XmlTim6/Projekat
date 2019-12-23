@@ -1,4 +1,4 @@
-package team6.xmlproject.repository.RDF;
+package team6.xml_project.repository.implementation;
 
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
@@ -11,21 +11,23 @@ import org.apache.jena.update.UpdateFactory;
 import org.apache.jena.update.UpdateProcessor;
 import org.apache.jena.update.UpdateRequest;
 import org.springframework.stereotype.Repository;
-import team6.xmlproject.util.FileUtil;
-import team6.xmlproject.util.RDFEndpoints;
-import team6.xmlproject.util.SparqlUtil;
+import team6.xml_project.repository.PaperRDFRepository;
+import team6.xml_project.util.FileUtil;
+import team6.xml_project.util.RDFEndpoints;
+import team6.xml_project.util.SparqlUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 @Repository
-public class PaperRDFRepository {
+public class PaperRDFRepositoryImpl implements PaperRDFRepository {
 
     private final String PAPERS_NAMED_GRAPH_URI = "/papers/metadata";
 
     private static final String SPARQL_NAMED_GRAPH_URI = "/papers/metadata";
 
+    @Override
     public void addPaper(String rdfFilePath) {
         // Creates a default model
         Model model = ModelFactory.createDefaultModel();
@@ -49,8 +51,8 @@ public class PaperRDFRepository {
         processor.execute();
     }
 
+    @Override
     public String findPapersMetadataByAuthorName(String name) throws IOException {
-
         // SPARQL file which is to be queried
         String sparqlFilePath = "data/sparql/papersByAuthorName.rq";
 
@@ -71,8 +73,8 @@ public class PaperRDFRepository {
         return json;
     }
 
+    @Override
     public String findPapersMetadataByTitle(String title) throws IOException {
-
         // SPARQL file which is to be queried
         String sparqlFilePath = "data/sparql/papersByTitle.rq";
 
@@ -93,6 +95,7 @@ public class PaperRDFRepository {
         return json;
     }
 
+    @Override
     public String findPaperMetadataById(String id) throws IOException {
         // SPARQL file which is to be queried
         String sparqlFilePath = "data/sparql/paperById.rq";

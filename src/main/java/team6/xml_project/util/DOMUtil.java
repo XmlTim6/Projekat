@@ -1,4 +1,4 @@
-package team6.xmlproject.util;
+package team6.xml_project.util;
 
 import org.w3c.dom.Node;
 

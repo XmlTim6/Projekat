@@ -68,6 +68,7 @@
 			<groupId>org.exist-db</groupId>
 			<artifactId>exist-core</artifactId>
 			<version>5.1.0</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.jena/jena-core -->
 		<dependency>
 			<groupId>org.apache.jena</groupId>
