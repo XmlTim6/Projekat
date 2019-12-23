@@ -19,7 +19,7 @@ public class PaperController {
     PaperService paperService;
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<Boolean> createCoverLetter(@RequestBody Paper paper){
+    public ResponseEntity<Boolean> createPaper(@RequestBody Paper paper){
         try{
             paperService.save(paper);
         }catch (Exception ignored){

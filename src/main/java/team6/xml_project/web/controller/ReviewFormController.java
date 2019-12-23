@@ -19,7 +19,7 @@ public class ReviewFormController {
     ReviewFormService reviewFormService;
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<Boolean> createCoverLetter(@RequestBody ReviewForm reviewForm){
+    public ResponseEntity<Boolean> createReviewForm(@RequestBody ReviewForm reviewForm){
         try{
             reviewFormService.save(reviewForm);
         }catch (Exception ignored){
