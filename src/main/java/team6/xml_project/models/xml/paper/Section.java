@@ -102,33 +102,33 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "paragraphOrImageOrList"
 })
 @XmlRootElement(name = "section")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
 public class Section {
 
     @XmlElements({
         @XmlElement(name = "paragraph", type = Paragraph.class),
         @XmlElement(name = "image", type = Image.class),
-        @XmlElement(name = "list", type = List.class),
+        @XmlElement(name = "list", type = Section.List.class),
         @XmlElement(name = "quote", type = Quote.class),
         @XmlElement(name = "section", type = Section.class),
         @XmlElement(name = "code", type = Code.class),
         @XmlElement(name = "formula", type = Formula.class),
-        @XmlElement(name = "table", type = Table.class)
+        @XmlElement(name = "table", type = Section.Table.class)
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected java.util.List<Object> paragraphOrImageOrList;
     @XmlAttribute(name = "id", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String id;
     @XmlAttribute(name = "title", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String title;
     @XmlAttribute(name = "level", required = true)
     @XmlSchemaType(name = "unsignedInt")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected long level;
 
     /**
@@ -151,16 +151,16 @@ public class Section {
      * Objects of the following type(s) are allowed in the list
      * {@link Paragraph }
      * {@link Image }
-     * {@link List }
+     * {@link Section.List }
      * {@link Quote }
      * {@link Section }
      * {@link Code }
      * {@link Formula }
-     * {@link Table }
+     * {@link Section.Table }
      * 
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public java.util.List<Object> getParagraphOrImageOrList() {
         if (paragraphOrImageOrList == null) {
             paragraphOrImageOrList = new ArrayList<Object>();
@@ -176,7 +176,7 @@ public class Section {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getId() {
         return id;
     }
@@ -189,7 +189,7 @@ public class Section {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setId(String value) {
         this.id = value;
     }
@@ -202,7 +202,7 @@ public class Section {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getTitle() {
         return title;
     }
@@ -215,7 +215,7 @@ public class Section {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setTitle(String value) {
         this.title = value;
     }
@@ -224,7 +224,7 @@ public class Section {
      * Gets the value of the level property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public long getLevel() {
         return level;
     }
@@ -233,7 +233,7 @@ public class Section {
      * Sets the value of the level property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setLevel(long value) {
         this.level = value;
     }
@@ -271,20 +271,20 @@ public class Section {
     @XmlType(name = "", propOrder = {
         "listItem"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class List {
 
         @XmlElement(name = "list_item", required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String listItem;
         @XmlAttribute(name = "id", required = true)
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         @XmlID
         @XmlSchemaType(name = "ID")
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String id;
         @XmlAttribute(name = "type", required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String type;
 
         /**
@@ -295,7 +295,7 @@ public class Section {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getListItem() {
             return listItem;
         }
@@ -308,7 +308,7 @@ public class Section {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setListItem(String value) {
             this.listItem = value;
         }
@@ -321,7 +321,7 @@ public class Section {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getId() {
             return id;
         }
@@ -334,7 +334,7 @@ public class Section {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setId(String value) {
             this.id = value;
         }
@@ -347,7 +347,7 @@ public class Section {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getType() {
             return type;
         }
@@ -360,7 +360,7 @@ public class Section {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setType(String value) {
             this.type = value;
         }
@@ -414,17 +414,17 @@ public class Section {
     @XmlType(name = "", propOrder = {
         "row"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Table {
 
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        protected java.util.List<Row> row;
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        protected java.util.List<Section.Table.Row> row;
         @XmlAttribute(name = "id", required = true)
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         @XmlID
         @XmlSchemaType(name = "ID")
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String id;
 
         /**
@@ -445,14 +445,14 @@ public class Section {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link Row }
+         * {@link Section.Table.Row }
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public java.util.List<Row> getRow() {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public java.util.List<Section.Table.Row> getRow() {
             if (row == null) {
-                row = new ArrayList<Row>();
+                row = new ArrayList<Section.Table.Row>();
             }
             return this.row;
         }
@@ -465,7 +465,7 @@ public class Section {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getId() {
             return id;
         }
@@ -478,7 +478,7 @@ public class Section {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setId(String value) {
             this.id = value;
         }
@@ -519,12 +519,12 @@ public class Section {
         @XmlType(name = "", propOrder = {
             "cell"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Row {
 
             @XmlElement(required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            protected java.util.List<Cell> cell;
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            protected java.util.List<Section.Table.Row.Cell> cell;
 
             /**
              * Gets the value of the cell property.
@@ -544,14 +544,14 @@ public class Section {
              * 
              * <p>
              * Objects of the following type(s) are allowed in the list
-             * {@link Cell }
+             * {@link Section.Table.Row.Cell }
              * 
              * 
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            public java.util.List<Cell> getCell() {
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public java.util.List<Section.Table.Row.Cell> getCell() {
                 if (cell == null) {
-                    cell = new ArrayList<Cell>();
+                    cell = new ArrayList<Section.Table.Row.Cell>();
                 }
                 return this.cell;
             }
@@ -582,18 +582,18 @@ public class Section {
             @XmlType(name = "", propOrder = {
                 "paragraph"
             })
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public static class Cell {
 
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 protected Paragraph paragraph;
                 @XmlAttribute(name = "colspan")
                 @XmlSchemaType(name = "unsignedInt")
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 protected Long colspan;
                 @XmlAttribute(name = "rowspan")
                 @XmlSchemaType(name = "unsignedInt")
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 protected Long rowspan;
 
                 /**
@@ -604,7 +604,7 @@ public class Section {
                  *     {@link Paragraph }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public Paragraph getParagraph() {
                     return paragraph;
                 }
@@ -617,7 +617,7 @@ public class Section {
                  *     {@link Paragraph }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public void setParagraph(Paragraph value) {
                     this.paragraph = value;
                 }
@@ -630,7 +630,7 @@ public class Section {
                  *     {@link Long }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public long getColspan() {
                     if (colspan == null) {
                         return  1L;
@@ -647,7 +647,7 @@ public class Section {
                  *     {@link Long }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public void setColspan(Long value) {
                     this.colspan = value;
                 }
@@ -660,7 +660,7 @@ public class Section {
                  *     {@link Long }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public long getRowspan() {
                     if (rowspan == null) {
                         return  1L;
@@ -677,7 +677,7 @@ public class Section {
                  *     {@link Long }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public void setRowspan(Long value) {
                     this.rowspan = value;
                 }

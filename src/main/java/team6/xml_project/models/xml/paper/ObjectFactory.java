@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the tim6.models.paper package. 
+ * generated in the team6.xml_project.models.xml.paper package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -28,7 +28,7 @@ public class ObjectFactory {
     private final static QName _ParagraphBold_QNAME = new QName("XML_tim6", "bold");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: tim6.models.paper
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: team6.xml_project.models.xml.paper
      * 
      */
     public ObjectFactory() {
@@ -246,9 +246,9 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "XML_tim6", name = "italic", scope = team6.xml_project.models.xml.paper.Paragraph.class)
+    @XmlElementDecl(namespace = "XML_tim6", name = "italic", scope = Paragraph.class)
     public JAXBElement<String> createParagraphItalic(String value) {
-        return new JAXBElement<String>(_ParagraphItalic_QNAME, String.class, team6.xml_project.models.xml.paper.Paragraph.class, value);
+        return new JAXBElement<String>(_ParagraphItalic_QNAME, String.class, Paragraph.class, value);
     }
 
     /**

@@ -78,20 +78,20 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "work"
 })
 @XmlRootElement(name = "mention")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
 public class Mention {
 
     @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected Mention.Authors authors;
     @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected Mention.Work work;
     @XmlAttribute(name = "id", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String id;
 
     /**
@@ -99,11 +99,11 @@ public class Mention {
      * 
      * @return
      *     possible object is
-     *     {@link Authors }
+     *     {@link Mention.Authors }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public Authors getAuthors() {
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public Mention.Authors getAuthors() {
         return authors;
     }
 
@@ -112,11 +112,11 @@ public class Mention {
      * 
      * @param value
      *     allowed object is
-     *     {@link Authors }
+     *     {@link Mention.Authors }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public void setAuthors(Authors value) {
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public void setAuthors(Mention.Authors value) {
         this.authors = value;
     }
 
@@ -125,11 +125,11 @@ public class Mention {
      * 
      * @return
      *     possible object is
-     *     {@link Work }
+     *     {@link Mention.Work }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public Work getWork() {
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public Mention.Work getWork() {
         return work;
     }
 
@@ -138,11 +138,11 @@ public class Mention {
      * 
      * @param value
      *     allowed object is
-     *     {@link Work }
+     *     {@link Mention.Work }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public void setWork(Work value) {
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public void setWork(Mention.Work value) {
         this.work = value;
     }
 
@@ -154,7 +154,7 @@ public class Mention {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getId() {
         return id;
     }
@@ -167,7 +167,7 @@ public class Mention {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setId(String value) {
         this.id = value;
     }
@@ -207,11 +207,11 @@ public class Mention {
     @XmlType(name = "", propOrder = {
         "author"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Authors {
 
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected Mention.Authors.Author author;
 
         /**
@@ -219,11 +219,11 @@ public class Mention {
          * 
          * @return
          *     possible object is
-         *     {@link Author }
+         *     {@link Mention.Authors.Author }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public Author getAuthor() {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Mention.Authors.Author getAuthor() {
             return author;
         }
 
@@ -232,11 +232,11 @@ public class Mention {
          * 
          * @param value
          *     allowed object is
-         *     {@link Author }
+         *     {@link Mention.Authors.Author }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public void setAuthor(Author value) {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public void setAuthor(Mention.Authors.Author value) {
             this.author = value;
         }
 
@@ -266,14 +266,14 @@ public class Mention {
             "lastName",
             "initial"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Author {
 
             @XmlElement(name = "last_name", required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String lastName;
             @XmlElement(required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String initial;
 
             /**
@@ -284,7 +284,7 @@ public class Mention {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getLastName() {
                 return lastName;
             }
@@ -297,7 +297,7 @@ public class Mention {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setLastName(String value) {
                 this.lastName = value;
             }
@@ -310,7 +310,7 @@ public class Mention {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getInitial() {
                 return initial;
             }
@@ -323,7 +323,7 @@ public class Mention {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setInitial(String value) {
                 this.initial = value;
             }
@@ -366,26 +366,26 @@ public class Mention {
         "publisher",
         "numbers"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Work {
 
         @XmlElement(name = "year_published")
         @XmlSchemaType(name = "gYear")
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected XMLGregorianCalendar yearPublished;
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String title;
         @XmlSchemaType(name = "unsignedInt")
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected Long edition;
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String city;
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String publisher;
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String numbers;
 
         /**
@@ -396,7 +396,7 @@ public class Mention {
          *     {@link XMLGregorianCalendar }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public XMLGregorianCalendar getYearPublished() {
             return yearPublished;
         }
@@ -409,7 +409,7 @@ public class Mention {
          *     {@link XMLGregorianCalendar }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setYearPublished(XMLGregorianCalendar value) {
             this.yearPublished = value;
         }
@@ -422,7 +422,7 @@ public class Mention {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getTitle() {
             return title;
         }
@@ -435,7 +435,7 @@ public class Mention {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setTitle(String value) {
             this.title = value;
         }
@@ -448,7 +448,7 @@ public class Mention {
          *     {@link Long }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Long getEdition() {
             return edition;
         }
@@ -461,7 +461,7 @@ public class Mention {
          *     {@link Long }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setEdition(Long value) {
             this.edition = value;
         }
@@ -474,7 +474,7 @@ public class Mention {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getCity() {
             return city;
         }
@@ -487,7 +487,7 @@ public class Mention {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setCity(String value) {
             this.city = value;
         }
@@ -500,7 +500,7 @@ public class Mention {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getPublisher() {
             return publisher;
         }
@@ -513,7 +513,7 @@ public class Mention {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setPublisher(String value) {
             this.publisher = value;
         }
@@ -526,7 +526,7 @@ public class Mention {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getNumbers() {
             return numbers;
         }
@@ -539,7 +539,7 @@ public class Mention {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:10:17+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setNumbers(String value) {
             this.numbers = value;
         }

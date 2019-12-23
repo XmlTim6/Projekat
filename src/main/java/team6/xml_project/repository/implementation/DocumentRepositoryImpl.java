@@ -170,7 +170,7 @@ public class DocumentRepositoryImpl implements DocumentRepository {
 
     private JAXBContext getContextDependingOnClass(Document document) throws JAXBException {
         JAXBContext context = null;
-        if(document.getClass() == Paper.class){
+        if(document.getClass().equals(Paper.class)){
             context = JAXBContext.newInstance("team6.xml_project.models.xml.paper");
         }else if(document.getClass() == CoverLetter.class){
             context = JAXBContext.newInstance("team6.xml_project.models.xml.cover_letter");
