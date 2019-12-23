@@ -6,15 +6,14 @@
        xmlns:tim6="http://www.w3.org/2001/XMLSchema-instance" tim6:schemaLocation="XML_tim6 file:/../schema/paper.xsd"
        xmlns:pred="http://www.tim6.rs/predicate/"
        title="Paper 2"
-       received="2020-04-20Z" revised="2020-04-15" accepted="2020-04-14Z"
 
        vocab="http://www.tim6.rs/predicate/"
        about="http://www.tim6.rs/rdf/paper/5f17c8ab-6266-4219-b735-d45e775644b6"
        typeof="pred:Paper"
-       property="title" content="Paper 2">
-    <received property="received" datatype="xs:date">2020-04-20Z</received>
-    <revised property="revised" datatype="xs:date">2020-04-15</revised>
-    <accepted property="accepted" datatype="xs:date">2020-04-14Z</accepted>
+       property="pred:title" content="Paper 2">
+    <received property="pred:received" datatype="xs:date">2020-04-20Z</received>
+    <revised property="pred:revised" datatype="xs:date">2020-04-15</revised>
+    <accepted property="pred:accepted" datatype="xs:date">2020-04-14Z</accepted>
     <authors>
         <author vocab="http://www.tim6.rs/predicate/"
                 about="http://www.tim6.rs/rdf/author/dc61e2c5-ab28-4ff2-9cb1-669e10307e1d" typeof="pred:Author"
