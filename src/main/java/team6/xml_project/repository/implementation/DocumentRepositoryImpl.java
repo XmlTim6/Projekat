@@ -52,7 +52,7 @@ public class DocumentRepositoryImpl implements DocumentRepository {
         return String.format(this.uri, this.host, this.port);
     }
 
-    private void initDb() throws Exception{
+    private void initDb() throws Exception {
         // initialize database driver
         System.out.println("[INFO] Loading driver class: " + this.driver);
         Class<?> cl = Class.forName(this.driver);
@@ -309,6 +309,82 @@ public class DocumentRepositoryImpl implements DocumentRepository {
             xqueryService.setNamespace("b", "XML_tim6");
 
             String xQueryExpression = readFile(xQueryFilePath, StandardCharsets.UTF_8);
+
+            // compile and execute the expression
+            CompiledExpression compiledXQuery = xqueryService.compile(xQueryExpression);
+            return xqueryService.execute(compiledXQuery);
+
+        }   finally {
+
+            // don't forget to cleanup
+            if(col != null) {
+                try {
+                    col.close();
+                } catch (XMLDBException xe) {
+                    xe.printStackTrace();
+                }
+            }
+        }
+    }
+
+    @Override
+    public ResourceSet checkIfDocumentExist(String collectionId, String documentName) throws Exception {
+        initDb();
+        Collection col = null;
+
+        try {
+
+            // get the collection
+            System.out.println("[INFO] Retrieving the collection: " + collectionId);
+            col = DatabaseManager.getCollection(this.getUri() + collectionId);
+
+            // get an instance of xquery service
+            XQueryService xqueryService = (XQueryService) col.getService("XQueryService", "1.0");
+            xqueryService.setProperty("indent", "yes");
+
+            // make the service aware of namespaces
+            xqueryService.setNamespace("b", "XML_tim6");
+
+            String xQueryExpression = "xquery version \"3.1\";\n" +
+                    "doc-available('" + collectionId + documentName + ".xml')";
+
+            // compile and execute the expression
+            CompiledExpression compiledXQuery = xqueryService.compile(xQueryExpression);
+            return xqueryService.execute(compiledXQuery);
+
+        }   finally {
+
+            // don't forget to cleanup
+            if(col != null) {
+                try {
+                    col.close();
+                } catch (XMLDBException xe) {
+                    xe.printStackTrace();
+                }
+            }
+        }
+    }
+
+    @Override
+    public ResourceSet countDocumentsInCollection(String collectionId) throws Exception {
+        initDb();
+        Collection col = null;
+
+        try {
+
+            // get the collection
+            System.out.println("[INFO] Retrieving the collection: " + collectionId);
+            col = DatabaseManager.getCollection(this.getUri() + collectionId);
+
+            // get an instance of xquery service
+            XQueryService xqueryService = (XQueryService) col.getService("XQueryService", "1.0");
+            xqueryService.setProperty("indent", "yes");
+
+            // make the service aware of namespaces
+            xqueryService.setNamespace("b", "XML_tim6");
+
+            String xQueryExpression = "xquery version \"3.1\";\n" +
+                    "count(collection('" + collectionId + "'))";
 
             // compile and execute the expression
             CompiledExpression compiledXQuery = xqueryService.compile(xQueryExpression);
