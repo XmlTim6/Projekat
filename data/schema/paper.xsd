@@ -1,13 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    elementFormDefault="qualified"
     targetNamespace="XML_tim6" xmlns:t6="XML_tim6">
-
     <xs:element name="paper">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="received" type="xs:date"/>
-                <xs:element name="revised" type="xs:date"/>
-                <xs:element name="accepted" type="xs:date"/>
+                <xs:element name="received">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute fixed="received" name="property"
+                                    type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="revised">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute fixed="revised" name="property"
+                                    type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="accepted">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute fixed="accepted" name="property"
+                                    type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="authors">
                     <xs:complexType>
                         <xs:sequence maxOccurs="unbounded">
@@ -17,19 +45,72 @@
                                         <xs:element name="personal">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="first_name" type="xs:string"/>
-                                                  <xs:element minOccurs="0" name="middle_name"
-                                                  type="xs:string"/>
-                                                  <xs:element name="last_name" type="xs:string"/>
+                                                    <xs:element name="first_name">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute fixed="first_name" name="property"
+                                                                        type="xs:string"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element minOccurs="0" name="middle_name">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute fixed="middle_name" name="property"
+                                                                        type="xs:string"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="last_name">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute fixed="last_name" name="property"
+                                                                        type="xs:string"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
                                         <xs:element minOccurs="0" name="institution">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="name" type="xs:string"/>
-                                                  <xs:element name="city" type="xs:string"/>
-                                                  <xs:element name="country" type="xs:string"/>
+                                                    <xs:element name="name">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute fixed="name" name="property"
+                                                                        type="xs:string"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="city">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute fixed="city" name="property"
+                                                                        type="xs:string"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="country">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute fixed="country" name="property"
+                                                                        type="xs:string"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
@@ -60,7 +141,16 @@
                             <xs:element name="keywords">
                                 <xs:complexType>
                                     <xs:sequence maxOccurs="unbounded" minOccurs="1">
-                                        <xs:element name="keyword" type="xs:string"/>
+                                        <xs:element name="keyword">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute fixed="keyword" name="property"
+                                                            type="xs:string"/>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
@@ -225,8 +315,26 @@
                             <xs:element name="author">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="last_name" type="xs:string"/>
-                                        <xs:element name="initial" type="xs:string"/>
+                                        <xs:element name="last_name">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute fixed="last_name" name="property"
+                                                            type="xs:string"/>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="initial">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:string">
+                                                        <xs:attribute fixed="initial" name="property"
+                                                            type="xs:string"/>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
@@ -236,12 +344,66 @@
                 <xs:element name="work">
                     <xs:complexType>
                         <xs:sequence minOccurs="1">
-                            <xs:element minOccurs="0" name="year_published" type="xs:gYear"/>
-                            <xs:element name="title" type="xs:string"/>
-                            <xs:element minOccurs="0" name="edition" type="xs:unsignedInt"/>
-                            <xs:element name="city" type="xs:string"/>
-                            <xs:element name="publisher" type="xs:string"/>
-                            <xs:element minOccurs="0" name="numbers" type="xs:string"/>
+                            <xs:element minOccurs="0" name="year_published">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:gYear">
+                                            <xs:attribute fixed="year_published" name="property"
+                                                type="xs:string"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="title">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute fixed="title" name="property"
+                                                type="xs:string"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="edition">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:unsignedInt">
+                                            <xs:attribute fixed="edition" name="property"
+                                                type="xs:string"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="city">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute fixed="city" name="property"
+                                                type="xs:string"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="publisher">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute fixed="publisher" name="property"
+                                                type="xs:string"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="numbers">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute fixed="numbers" name="property"
+                                                type="xs:string"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

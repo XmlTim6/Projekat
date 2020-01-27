@@ -4,6 +4,7 @@ import org.apache.commons.io.input.ReaderInputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import team6.xml_project.helpers.RDFMetadataExtractor;
+import team6.xml_project.helpers.XMLUnmarshaller;
 import team6.xml_project.models.xml.paper.Paper;
 import team6.xml_project.repository.DocumentRepository;
 import team6.xml_project.repository.PaperRDFRepository;
@@ -26,7 +27,7 @@ public class PaperServiceImpl implements PaperService {
     PaperRDFRepository paperRDFRepository;
 
     public void save(String paperXML) throws Exception {
-        Paper paper = createPaperFromXML(paperXML);
+        Paper paper = XMLUnmarshaller.createPaperFromXML(paperXML);
         InputStream rdfInputStream = createPaperRDFStreamFromXML(paperXML);
 
         documentRepository.save(paper, "/db/apps/papers/userId/revision1", "paper1.xml");
@@ -52,14 +53,6 @@ public class PaperServiceImpl implements PaperService {
     @Override
     public String findPaperMetadataById(String id) throws IOException {
         return paperRDFRepository.findPaperMetadataById(id);
-    }
-
-    private Paper createPaperFromXML(String paperXML) throws JAXBException {
-        JAXBContext jaxbContext = JAXBContext.newInstance(Paper.class);
-        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-
-        StringReader reader = new StringReader(paperXML);
-        return (Paper) unmarshaller.unmarshal(reader);
     }
 
     private InputStream createPaperRDFStreamFromXML(String paperXML) throws FileNotFoundException, TransformerException {

@@ -1,7 +1,10 @@
 package team6.xml_project.repository;
 
 import org.xmldb.api.base.ResourceSet;
+import org.xmldb.api.base.XMLDBException;
 import team6.xml_project.models.xml.Document;
+
+import javax.xml.bind.JAXBException;
 
 public interface DocumentRepository {
 
@@ -14,4 +17,8 @@ public interface DocumentRepository {
     ResourceSet executeXPathQuery(String collectionId, String xPathExp) throws Exception;
 
     ResourceSet executeXQuery(String collectionId, String xQueryFilePath) throws Exception;
+
+    ResourceSet checkIfDocumentExist(String collectionId, String documentName) throws Exception;
+
+    ResourceSet countDocumentsInCollection(String collectionId) throws Exception;
 }
