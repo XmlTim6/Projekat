@@ -1,56 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="../xsl/grddl.xsl"?>
+<paper xmlns="XML_tim6"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="XML_tim6 file:/D:/Development/FTN/SEM7/XML/Projekat/backend/data/schema/paper.xsd" title="Paper 1"
 
-<paper xmlns:xs="http://www.w3.org/2001/XMLSchema#"
-       xmlns:t6="http://www.w3.org/2001/XMLSchema-instance" t6:schemaLocation="XML_tim6 file:/../schema/paper.xsd"
-       xmlns:pred="http://www.tim6.rs/predicate/"
-       title="Paper 1"
-
-       vocab="http://www.tim6.rs/predicate/"
-       about="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4"
-       typeof="pred:Paper"
-       property="pred:title" content="Paper 1">
+vocab="http://www.tim6.rs/predicate/"
+about="http://www.tim6.rs/rdf/paper/1"
+typeof="pred:Paper"
+property="pred:title" content="Paper 1">
     <received property="pred:received" datatype="xs:date">2020-01-20Z</received>
     <revised property="pred:revised" datatype="xs:date">2020-02-15</revised>
     <accepted property="pred:accepted" datatype="xs:date">2020-03-14Z</accepted>
     <authors>
-        <author vocab="http://www.tim6.rs/predicate/"
-                about="http://www.tim6.rs/rdf/author/dc61e2c5-ab28-4ff2-9cb1-669e10307e1d" typeof="pred:Author"
-
-                rel="pred:wrote" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4"
-                email="email1@email.com">
+        <author 
+            property="pred:author"
+            content="John S Smith"
+            email="email1@email.com">
             <personal>
-                <first_name property="pred:firstName" datatype="xs:string">John</first_name>
-                <middle_name property="pred:middleName" datatype="xs:string">S</middle_name>
-                <last_name property="pred:lastName" datatype="xs:string">Smith</last_name>
+                <first_name>John</first_name>
+                <middle_name>S</middle_name>
+                <last_name>Smith</last_name>
             </personal>
             <institution
-                    vocab="http://www.tim6.rs/predicate/"
-                    about="http://www.tim6.rs/rdf/institution/044f4935-3f52-467c-bdcb-b23a3b126a7d" typeof="pred:Institution"
-                    rel="pred:employs" href="http://www.tim6.rs/rdf/author/dc61e2c5-ab28-4ff2-9cb1-669e10307e1d">
-                <name property="pred:name" datatype="xs:string">Institution Name 1</name>
-                <city property="pred:city" datatype="xs:string">City 1</city>
-                <country property="pred:country" datatype="xs:string">Country 1</country>
+                property="pred:institution">
+                <name>Institution Name 1</name>
+                <city>City 1</city>
+                <country>Country 1</country>
             </institution>
         </author>
         <author
-                vocab="http://www.tim6.rs/predicate/"
-                about="http://www.tim6.rs/rdf/author/17cd07bd-afc4-420c-af00-a088573c3e61" typeof="pred:Author"
-
-                rel="pred:wrote" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4"
-                email="email2@email.com">
+            property="pred:author"
+            content="Jane S Smith"
+            email="email2@email.com">
             <personal>
-                <first_name property="pred:firstName" datatype="xs:string">Jane</first_name>
-                <middle_name property="pred:middleName" datatype="xs:string">S</middle_name>
-                <last_name property="pred:lastName" datatype="xs:string">Smith</last_name>
+                <first_name>Jane</first_name>
+                <middle_name>S</middle_name>
+                <last_name>Smith</last_name>
             </personal>
             <institution
-                    vocab="http://www.tim6.rs/predicate/"
-                    about="http://www.tim6.rs/rdf/institution/044f4935-3f52-467c-bdcb-b23a3b126a7d" typeof="pred:Institution"
-                    rel="pred:employs" href="http://www.tim6.rs/rdf/author/17cd07bd-afc4-420c-af00-a088573c3e61">
-                <name property="pred:name" datatype="xs:string">Institution Name 1</name>
-                <city property="pred:city" datatype="xs:string">City 1</city>
-                <country property="pred:country" datatype="xs:string">Country 1</country>
+                property="pred:institution">
+                <name>Institution Name 1</name>
+                <city>City 1</city>
+                <country>Country 1</country>
             </institution>
         </author>
     </authors>
@@ -71,90 +61,74 @@
         <quote id="ID003" attributed_to="Author" source="Quote source 2" reference_to="ID011">Donec nulla purus, egestas a malesuada in, congue id nibh. Donec dapibus ligula turpis, sed fringilla nisl auctor ac. Aenean.</quote>
     </content>
     <references>
-        <mention id="ID005"
-                 vocab="http://www.tim6.rs/predicate/"
-                 about="http://www.tim6.rs/rdf/reference/ac5492a4-ef3d-4295-a1e7-b8b6b889fcb0" typeof="pred:Reference"
-
-                 rel="pred:referenceOf" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4">
+        <mention id="ID005">
             <authors>
-                <author property="pred:author" content="B. Morales">
+                <author>
                     <last_name>Morales</last_name>
                     <initial>B.</initial>
                 </author>
-                <author property="pred:author" content="R. Lee">
+                <author>
                     <last_name>Lee</last_name>
                     <initial>R.</initial>
                 </author>
             </authors>
             <work>
-                <year_published property="pred:year" datatype="xs:gYear">2001</year_published>
-                <title property="pred:title" datatype="xs:string">Reference 1</title>
-                <edition property="pred:edition" datatype="xs:string">2</edition>
-                <city property="pred:city" datatype="xs:string">New York</city>
-                <publisher property="pred:publisher" datatype="xs:string">Green</publisher>
-                <numbers property="pred:numbers" datatype="xs:string">23</numbers>
+                <year_published>2001</year_published>
+                <title>Reference 1</title>
+                <edition>2</edition>
+                <city>New York</city>
+                <publisher>Green</publisher>
+                <numbers>23</numbers>
             </work>
         </mention>
-        <mention id="ID007"
-                 vocab="http://www.tim6.rs/predicate/"
-                 about="http://www.tim6.rs/rdf/reference/13617f5a-65ea-4b06-8643-6dad4cc1625a" typeof="pred:Reference"
-
-                 rel="pred:referenceOf" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4">
+        <mention id="ID007">
             <authors>
-                <author property="pred:author" content="D. Emmet">
+                <author>
                     <last_name>Emmet</last_name>
                     <initial>D.</initial>
                 </author>
             </authors>
             <work>
-                <year_published property="pred:year" datatype="xs:gYear">1998</year_published>
-                <title property="pred:title" datatype="xs:string">Reference 2</title>
-                <edition property="pred:edition" datatype="xs:string">3</edition>
-                <city property="pred:city" datatype="xs:string">London</city>
-                <publisher property="pred:publisher" datatype="xs:string">Tee Inc.</publisher>
-                <numbers property="pred:numbers" datatype="xs:string">2</numbers>
+                <year_published>1998</year_published>
+                <title>Reference 2</title>
+                <edition>3</edition>
+                <city>London</city>
+                <publisher>Tee Inc.</publisher>
+                <numbers>2</numbers>
             </work>
         </mention>
     </references>
     <citations>
-        <mention id="ID009"
-                 vocab="http://www.tim6.rs/predicate/"
-                 about="http://www.tim6.rs/rdf/citation/056e2507-8fbe-4641-9e71-3f27c91c51f2" typeof="pred:Citation"
-
-                 rel="pred:citedIn" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4">
+        <mention id="ID009">
             <authors>
-                <author property="pred:author" content="H. Rich">
+                <author>
                     <last_name>Rich</last_name>
                     <initial>H.</initial>
                 </author>
             </authors>
             <work>
-                <year_published property="pred:year" datatype="xs:gYear">1994</year_published>
-                <title property="pred:title" datatype="xs:string">Citation 1</title>
-                <edition property="pred:edition" datatype="xs:string">6</edition>
-                <city property="pred:city" datatype="xs:string">Stockholm</city>
-                <publisher property="pred:publisher" datatype="xs:string">Burg Publishing</publisher>
-                <numbers property="pred:numbers" datatype="xs:string">2</numbers>
+                <year_published>1994</year_published>
+                <title>Citation 1</title>
+                <edition>6</edition>
+                <city>Stockholm</city>
+                <publisher>Burg Publishing</publisher>
+                <numbers>2</numbers>
             </work>
         </mention>
-        <mention id="ID011"
-                 vocab="http://www.tim6.rs/predicate/"
-                 about="http://www.tim6.rs/rdf/citation/5b47fa91-b80b-4b23-9f70-e64da2604bd7" typeof="pred:Citation"
-
-                 rel="pred:citedIn" href="http://www.tim6.rs/rdf/paper/f3db9af3-dda8-436c-aff9-8ff1012793d4">
+        <mention id="ID011">
             <authors>
-                <author property="pred:author" content="P. Johnson">
+                <author>
                     <last_name>Johnson</last_name>
                     <initial>P.</initial>
                 </author>
             </authors>
             <work>
-                <year_published property="pred:year" datatype="xs:gYear">2001</year_published>
-                <title property="pred:title" datatype="xs:string">Citation 2</title>
-                <edition property="pred:edition" datatype="xs:string">3</edition>
-                <city property="pred:city" datatype="xs:string">Washington</city>
-                <publisher property="pred:publisher" datatype="xs:string">Tim Books</publisher>
-                <numbers property="pred:numbers" datatype="xs:string">6</numbers>
+                <year_published>2001</year_published>
+                <title>Citation 2</title>
+                <edition>3</edition>
+                <city>Washington</city>
+                <publisher>Tim Books</publisher>
+                <numbers>6</numbers>
             </work>
         </mention>
     </citations>

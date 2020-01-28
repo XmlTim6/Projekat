@@ -13,6 +13,7 @@ import team6.xml_project.models.xml.Document;
 import team6.xml_project.models.xml.cover_letter.CoverLetter;
 import team6.xml_project.models.xml.paper.Paper;
 import team6.xml_project.models.xml.review_form.ReviewForm;
+import team6.xml_project.models.xml.submission.Submission;
 import team6.xml_project.repository.DocumentRepository;
 
 import javax.xml.bind.JAXBContext;
@@ -176,6 +177,8 @@ public class DocumentRepositoryImpl implements DocumentRepository {
             context = JAXBContext.newInstance("team6.xml_project.models.xml.cover_letter");
         }else if(document.getClass() == ReviewForm.class){
             context = JAXBContext.newInstance("team6.xml_project.models.xml.review_form");
+        }else if(document.getClass() == Submission.class){
+            context = JAXBContext.newInstance("team6.xml_project.models.xml.submission");
         }
         return context;
     }
@@ -291,7 +294,7 @@ public class DocumentRepositoryImpl implements DocumentRepository {
         }
     }
 
-    public ResourceSet executeXQuery(String collectionId, String xQueryFilePath) throws Exception{
+    public ResourceSet executeXQuery(String collectionId, String xQuery) throws Exception{
         initDb();
         Collection col = null;
 
@@ -302,16 +305,14 @@ public class DocumentRepositoryImpl implements DocumentRepository {
             col = DatabaseManager.getCollection(this.getUri() + collectionId);
 
             // get an instance of xquery service
-            XQueryService xqueryService = (XQueryService) col.getService("XQueryService", "1.0");
+            XQueryService xqueryService = (XQueryService) col.getService("XQueryService", "3.1");
             xqueryService.setProperty("indent", "yes");
 
             // make the service aware of namespaces
             xqueryService.setNamespace("b", "XML_tim6");
 
-            String xQueryExpression = readFile(xQueryFilePath, StandardCharsets.UTF_8);
-
             // compile and execute the expression
-            CompiledExpression compiledXQuery = xqueryService.compile(xQueryExpression);
+            CompiledExpression compiledXQuery = xqueryService.compile(xQuery);
             return xqueryService.execute(compiledXQuery);
 
         }   finally {

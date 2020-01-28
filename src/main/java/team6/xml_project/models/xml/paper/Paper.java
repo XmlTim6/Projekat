@@ -4,10 +4,13 @@ package team6.xml_project.models.xml.paper;
 import team6.xml_project.models.xml.Document;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElements;
@@ -17,6 +20,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -29,9 +33,33 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="received" type="{http://www.w3.org/2001/XMLSchema}date"/>
- *         &lt;element name="revised" type="{http://www.w3.org/2001/XMLSchema}date"/>
- *         &lt;element name="accepted" type="{http://www.w3.org/2001/XMLSchema}date"/>
+ *         &lt;element name="received">
+ *           &lt;complexType>
+ *             &lt;simpleContent>
+ *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>date">
+ *                 &lt;anyAttribute processContents='lax'/>
+ *               &lt;/extension>
+ *             &lt;/simpleContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="revised">
+ *           &lt;complexType>
+ *             &lt;simpleContent>
+ *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>date">
+ *                 &lt;anyAttribute processContents='lax'/>
+ *               &lt;/extension>
+ *             &lt;/simpleContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="accepted">
+ *           &lt;complexType>
+ *             &lt;simpleContent>
+ *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>date">
+ *                 &lt;anyAttribute processContents='lax'/>
+ *               &lt;/extension>
+ *             &lt;/simpleContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *         &lt;element name="authors">
  *           &lt;complexType>
  *             &lt;complexContent>
@@ -47,9 +75,33 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                 &lt;complexContent>
  *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                                     &lt;sequence>
- *                                       &lt;element name="first_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                                       &lt;element name="middle_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *                                       &lt;element name="last_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                                       &lt;element name="first_name">
+ *                                         &lt;complexType>
+ *                                           &lt;simpleContent>
+ *                                             &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                                               &lt;anyAttribute processContents='lax'/>
+ *                                             &lt;/extension>
+ *                                           &lt;/simpleContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="middle_name" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;simpleContent>
+ *                                             &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                                               &lt;anyAttribute processContents='lax'/>
+ *                                             &lt;/extension>
+ *                                           &lt;/simpleContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="last_name">
+ *                                         &lt;complexType>
+ *                                           &lt;simpleContent>
+ *                                             &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                                               &lt;anyAttribute processContents='lax'/>
+ *                                             &lt;/extension>
+ *                                           &lt;/simpleContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
  *                                     &lt;/sequence>
  *                                   &lt;/restriction>
  *                                 &lt;/complexContent>
@@ -60,10 +112,35 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                                 &lt;complexContent>
  *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                                     &lt;sequence>
- *                                       &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                                       &lt;element name="city" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                                       &lt;element name="country" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                                       &lt;element name="name">
+ *                                         &lt;complexType>
+ *                                           &lt;simpleContent>
+ *                                             &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                                               &lt;anyAttribute processContents='lax'/>
+ *                                             &lt;/extension>
+ *                                           &lt;/simpleContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="city">
+ *                                         &lt;complexType>
+ *                                           &lt;simpleContent>
+ *                                             &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                                               &lt;anyAttribute processContents='lax'/>
+ *                                             &lt;/extension>
+ *                                           &lt;/simpleContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="country">
+ *                                         &lt;complexType>
+ *                                           &lt;simpleContent>
+ *                                             &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                                               &lt;anyAttribute processContents='lax'/>
+ *                                             &lt;/extension>
+ *                                           &lt;/simpleContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
  *                                     &lt;/sequence>
+ *                                     &lt;anyAttribute processContents='lax'/>
  *                                   &lt;/restriction>
  *                                 &lt;/complexContent>
  *                               &lt;/complexType>
@@ -72,10 +149,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                           &lt;attribute name="email">
  *                             &lt;simpleType>
  *                               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *                                 &lt;pattern value="[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"/>
+ *                                 &lt;pattern value="[_\-a-zA-Z0-9\.\+]+@[a-zA-Z0-9](\.?[\-a-zA-Z0-9]*[a-zA-Z0-9])*"/>
  *                               &lt;/restriction>
  *                             &lt;/simpleType>
  *                           &lt;/attribute>
+ *                           &lt;anyAttribute processContents='lax'/>
  *                         &lt;/restriction>
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
@@ -90,19 +168,76 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="purpose" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="methodology" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="findings" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="research_implications" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="practical_implcations" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="orginality" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="purpose">
+ *                     &lt;complexType>
+ *                       &lt;simpleContent>
+ *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                           &lt;anyAttribute processContents='lax'/>
+ *                         &lt;/extension>
+ *                       &lt;/simpleContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                   &lt;element name="methodology">
+ *                     &lt;complexType>
+ *                       &lt;simpleContent>
+ *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                           &lt;anyAttribute processContents='lax'/>
+ *                         &lt;/extension>
+ *                       &lt;/simpleContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                   &lt;element name="findings">
+ *                     &lt;complexType>
+ *                       &lt;simpleContent>
+ *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                           &lt;anyAttribute processContents='lax'/>
+ *                         &lt;/extension>
+ *                       &lt;/simpleContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                   &lt;element name="research_implications">
+ *                     &lt;complexType>
+ *                       &lt;simpleContent>
+ *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                           &lt;anyAttribute processContents='lax'/>
+ *                         &lt;/extension>
+ *                       &lt;/simpleContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                   &lt;element name="practical_implcations">
+ *                     &lt;complexType>
+ *                       &lt;simpleContent>
+ *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                           &lt;anyAttribute processContents='lax'/>
+ *                         &lt;/extension>
+ *                       &lt;/simpleContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                   &lt;element name="orginality">
+ *                     &lt;complexType>
+ *                       &lt;simpleContent>
+ *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                           &lt;anyAttribute processContents='lax'/>
+ *                         &lt;/extension>
+ *                       &lt;/simpleContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
  *                   &lt;element name="keywords">
  *                     &lt;complexType>
  *                       &lt;complexContent>
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                           &lt;sequence maxOccurs="unbounded">
- *                             &lt;element name="keyword" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                             &lt;element name="keyword">
+ *                               &lt;complexType>
+ *                                 &lt;simpleContent>
+ *                                   &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                                     &lt;anyAttribute processContents='lax'/>
+ *                                   &lt;/extension>
+ *                                 &lt;/simpleContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
  *                           &lt;/sequence>
+ *                           &lt;anyAttribute processContents='lax'/>
  *                         &lt;/restriction>
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
@@ -116,6 +251,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                     &lt;/restriction>
  *                   &lt;/simpleType>
  *                 &lt;/attribute>
+ *                 &lt;anyAttribute processContents='lax'/>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -128,6 +264,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                   &lt;element ref="{XML_tim6}section"/>
  *                   &lt;element ref="{XML_tim6}quote"/>
  *                 &lt;/choice>
+ *                 &lt;anyAttribute processContents='lax'/>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -139,6 +276,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                 &lt;sequence maxOccurs="unbounded" minOccurs="0">
  *                   &lt;element ref="{XML_tim6}mention"/>
  *                 &lt;/sequence>
+ *                 &lt;anyAttribute processContents='lax'/>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -150,6 +288,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                 &lt;sequence maxOccurs="unbounded" minOccurs="0">
  *                   &lt;element ref="{XML_tim6}mention"/>
  *                 &lt;/sequence>
+ *                 &lt;anyAttribute processContents='lax'/>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
@@ -164,17 +303,20 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                       &lt;simpleContent>
  *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
  *                           &lt;attribute name="ref_id" type="{http://www.w3.org/2001/XMLSchema}IDREF" />
+ *                           &lt;anyAttribute processContents='lax'/>
  *                         &lt;/extension>
  *                       &lt;/simpleContent>
  *                     &lt;/complexType>
  *                   &lt;/element>
  *                 &lt;/sequence>
+ *                 &lt;anyAttribute processContents='lax'/>
  *               &lt;/restriction>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
  *       &lt;attribute name="title" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;anyAttribute processContents='lax'/>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -195,52 +337,52 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "notes"
 })
 @XmlRootElement(name = "paper")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
 public class Paper extends Document {
 
     @XmlElement(required = true)
-    @XmlSchemaType(name = "date")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    protected XMLGregorianCalendar received;
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    protected Paper.Received received;
     @XmlElement(required = true)
-    @XmlSchemaType(name = "date")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    protected XMLGregorianCalendar revised;
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    protected Paper.Revised revised;
     @XmlElement(required = true)
-    @XmlSchemaType(name = "date")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    protected XMLGregorianCalendar accepted;
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    protected Paper.Accepted accepted;
     @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected Paper.Authors authors;
     @XmlElement(name = "abstract", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected Paper.Abstract _abstract;
     @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected Paper.Content content;
     @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected Paper.References references;
     @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected Paper.Citations citations;
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected Paper.Notes notes;
     @XmlAttribute(name = "title", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String title;
+    @XmlAnyAttribute
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
      * Gets the value of the received property.
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Paper.Received }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public XMLGregorianCalendar getReceived() {
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public Paper.Received getReceived() {
         return received;
     }
 
@@ -249,11 +391,11 @@ public class Paper extends Document {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Paper.Received }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public void setReceived(XMLGregorianCalendar value) {
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public void setReceived(Paper.Received value) {
         this.received = value;
     }
 
@@ -262,11 +404,11 @@ public class Paper extends Document {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Paper.Revised }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public XMLGregorianCalendar getRevised() {
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public Paper.Revised getRevised() {
         return revised;
     }
 
@@ -275,11 +417,11 @@ public class Paper extends Document {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Paper.Revised }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public void setRevised(XMLGregorianCalendar value) {
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public void setRevised(Paper.Revised value) {
         this.revised = value;
     }
 
@@ -288,11 +430,11 @@ public class Paper extends Document {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Paper.Accepted }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public XMLGregorianCalendar getAccepted() {
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public Paper.Accepted getAccepted() {
         return accepted;
     }
 
@@ -301,11 +443,11 @@ public class Paper extends Document {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link Paper.Accepted }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public void setAccepted(XMLGregorianCalendar value) {
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public void setAccepted(Paper.Accepted value) {
         this.accepted = value;
     }
 
@@ -317,7 +459,7 @@ public class Paper extends Document {
      *     {@link Paper.Authors }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Authors getAuthors() {
         return authors;
     }
@@ -330,7 +472,7 @@ public class Paper extends Document {
      *     {@link Paper.Authors }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setAuthors(Paper.Authors value) {
         this.authors = value;
     }
@@ -343,7 +485,7 @@ public class Paper extends Document {
      *     {@link Paper.Abstract }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Abstract getAbstract() {
         return _abstract;
     }
@@ -356,7 +498,7 @@ public class Paper extends Document {
      *     {@link Paper.Abstract }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setAbstract(Paper.Abstract value) {
         this._abstract = value;
     }
@@ -369,7 +511,7 @@ public class Paper extends Document {
      *     {@link Paper.Content }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Content getContent() {
         return content;
     }
@@ -382,7 +524,7 @@ public class Paper extends Document {
      *     {@link Paper.Content }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setContent(Paper.Content value) {
         this.content = value;
     }
@@ -395,7 +537,7 @@ public class Paper extends Document {
      *     {@link Paper.References }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.References getReferences() {
         return references;
     }
@@ -408,7 +550,7 @@ public class Paper extends Document {
      *     {@link Paper.References }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setReferences(Paper.References value) {
         this.references = value;
     }
@@ -421,7 +563,7 @@ public class Paper extends Document {
      *     {@link Paper.Citations }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Citations getCitations() {
         return citations;
     }
@@ -434,7 +576,7 @@ public class Paper extends Document {
      *     {@link Paper.Citations }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setCitations(Paper.Citations value) {
         this.citations = value;
     }
@@ -447,7 +589,7 @@ public class Paper extends Document {
      *     {@link Paper.Notes }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Notes getNotes() {
         return notes;
     }
@@ -460,7 +602,7 @@ public class Paper extends Document {
      *     {@link Paper.Notes }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setNotes(Paper.Notes value) {
         this.notes = value;
     }
@@ -473,7 +615,7 @@ public class Paper extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getTitle() {
         return title;
     }
@@ -486,9 +628,28 @@ public class Paper extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setTitle(String value) {
         this.title = value;
+    }
+
+    /**
+     * Gets a map that contains attributes that aren't bound to any typed property on this class.
+     * 
+     * <p>
+     * the map is keyed by the name of the attribute and 
+     * the value is the string value of the attribute.
+     * 
+     * the map returned by this method is live, and you can add new attribute
+     * by updating the map directly. Because of this design, there's no setter.
+     * 
+     * 
+     * @return
+     *     always non-null
+     */
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public Map<QName, String> getOtherAttributes() {
+        return otherAttributes;
     }
 
 
@@ -502,19 +663,76 @@ public class Paper extends Document {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="purpose" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="methodology" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="findings" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="research_implications" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="practical_implcations" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="orginality" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="purpose">
+     *           &lt;complexType>
+     *             &lt;simpleContent>
+     *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                 &lt;anyAttribute processContents='lax'/>
+     *               &lt;/extension>
+     *             &lt;/simpleContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="methodology">
+     *           &lt;complexType>
+     *             &lt;simpleContent>
+     *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                 &lt;anyAttribute processContents='lax'/>
+     *               &lt;/extension>
+     *             &lt;/simpleContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="findings">
+     *           &lt;complexType>
+     *             &lt;simpleContent>
+     *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                 &lt;anyAttribute processContents='lax'/>
+     *               &lt;/extension>
+     *             &lt;/simpleContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="research_implications">
+     *           &lt;complexType>
+     *             &lt;simpleContent>
+     *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                 &lt;anyAttribute processContents='lax'/>
+     *               &lt;/extension>
+     *             &lt;/simpleContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="practical_implcations">
+     *           &lt;complexType>
+     *             &lt;simpleContent>
+     *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                 &lt;anyAttribute processContents='lax'/>
+     *               &lt;/extension>
+     *             &lt;/simpleContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="orginality">
+     *           &lt;complexType>
+     *             &lt;simpleContent>
+     *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                 &lt;anyAttribute processContents='lax'/>
+     *               &lt;/extension>
+     *             &lt;/simpleContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
      *         &lt;element name="keywords">
      *           &lt;complexType>
      *             &lt;complexContent>
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                 &lt;sequence maxOccurs="unbounded">
-     *                   &lt;element name="keyword" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *                   &lt;element name="keyword">
+     *                     &lt;complexType>
+     *                       &lt;simpleContent>
+     *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                           &lt;anyAttribute processContents='lax'/>
+     *                         &lt;/extension>
+     *                       &lt;/simpleContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
      *                 &lt;/sequence>
+     *                 &lt;anyAttribute processContents='lax'/>
      *               &lt;/restriction>
      *             &lt;/complexContent>
      *           &lt;/complexType>
@@ -528,6 +746,7 @@ public class Paper extends Document {
      *           &lt;/restriction>
      *         &lt;/simpleType>
      *       &lt;/attribute>
+     *       &lt;anyAttribute processContents='lax'/>
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -545,44 +764,47 @@ public class Paper extends Document {
         "orginality",
         "keywords"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Abstract {
 
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        protected String purpose;
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        protected Paper.Abstract.Purpose purpose;
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        protected String methodology;
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        protected Paper.Abstract.Methodology methodology;
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        protected String findings;
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        protected Paper.Abstract.Findings findings;
         @XmlElement(name = "research_implications", required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        protected String researchImplications;
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        protected Paper.Abstract.ResearchImplications researchImplications;
         @XmlElement(name = "practical_implcations", required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        protected String practicalImplcations;
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        protected Paper.Abstract.PracticalImplcations practicalImplcations;
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        protected String orginality;
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        protected Paper.Abstract.Orginality orginality;
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected Paper.Abstract.Keywords keywords;
         @XmlAttribute(name = "paper_type", required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String paperType;
+        @XmlAnyAttribute
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
          * Gets the value of the purpose property.
          * 
          * @return
          *     possible object is
-         *     {@link String }
+         *     {@link Paper.Abstract.Purpose }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public String getPurpose() {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Paper.Abstract.Purpose getPurpose() {
             return purpose;
         }
 
@@ -591,11 +813,11 @@ public class Paper extends Document {
          * 
          * @param value
          *     allowed object is
-         *     {@link String }
+         *     {@link Paper.Abstract.Purpose }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public void setPurpose(String value) {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public void setPurpose(Paper.Abstract.Purpose value) {
             this.purpose = value;
         }
 
@@ -604,11 +826,11 @@ public class Paper extends Document {
          * 
          * @return
          *     possible object is
-         *     {@link String }
+         *     {@link Paper.Abstract.Methodology }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public String getMethodology() {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Paper.Abstract.Methodology getMethodology() {
             return methodology;
         }
 
@@ -617,11 +839,11 @@ public class Paper extends Document {
          * 
          * @param value
          *     allowed object is
-         *     {@link String }
+         *     {@link Paper.Abstract.Methodology }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public void setMethodology(String value) {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public void setMethodology(Paper.Abstract.Methodology value) {
             this.methodology = value;
         }
 
@@ -630,11 +852,11 @@ public class Paper extends Document {
          * 
          * @return
          *     possible object is
-         *     {@link String }
+         *     {@link Paper.Abstract.Findings }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public String getFindings() {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Paper.Abstract.Findings getFindings() {
             return findings;
         }
 
@@ -643,11 +865,11 @@ public class Paper extends Document {
          * 
          * @param value
          *     allowed object is
-         *     {@link String }
+         *     {@link Paper.Abstract.Findings }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public void setFindings(String value) {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public void setFindings(Paper.Abstract.Findings value) {
             this.findings = value;
         }
 
@@ -656,11 +878,11 @@ public class Paper extends Document {
          * 
          * @return
          *     possible object is
-         *     {@link String }
+         *     {@link Paper.Abstract.ResearchImplications }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public String getResearchImplications() {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Paper.Abstract.ResearchImplications getResearchImplications() {
             return researchImplications;
         }
 
@@ -669,11 +891,11 @@ public class Paper extends Document {
          * 
          * @param value
          *     allowed object is
-         *     {@link String }
+         *     {@link Paper.Abstract.ResearchImplications }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public void setResearchImplications(String value) {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public void setResearchImplications(Paper.Abstract.ResearchImplications value) {
             this.researchImplications = value;
         }
 
@@ -682,11 +904,11 @@ public class Paper extends Document {
          * 
          * @return
          *     possible object is
-         *     {@link String }
+         *     {@link Paper.Abstract.PracticalImplcations }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public String getPracticalImplcations() {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Paper.Abstract.PracticalImplcations getPracticalImplcations() {
             return practicalImplcations;
         }
 
@@ -695,11 +917,11 @@ public class Paper extends Document {
          * 
          * @param value
          *     allowed object is
-         *     {@link String }
+         *     {@link Paper.Abstract.PracticalImplcations }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public void setPracticalImplcations(String value) {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public void setPracticalImplcations(Paper.Abstract.PracticalImplcations value) {
             this.practicalImplcations = value;
         }
 
@@ -708,11 +930,11 @@ public class Paper extends Document {
          * 
          * @return
          *     possible object is
-         *     {@link String }
+         *     {@link Paper.Abstract.Orginality }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public String getOrginality() {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Paper.Abstract.Orginality getOrginality() {
             return orginality;
         }
 
@@ -721,11 +943,11 @@ public class Paper extends Document {
          * 
          * @param value
          *     allowed object is
-         *     {@link String }
+         *     {@link Paper.Abstract.Orginality }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public void setOrginality(String value) {
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public void setOrginality(Paper.Abstract.Orginality value) {
             this.orginality = value;
         }
 
@@ -737,7 +959,7 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Keywords }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Paper.Abstract.Keywords getKeywords() {
             return keywords;
         }
@@ -750,7 +972,7 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Keywords }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setKeywords(Paper.Abstract.Keywords value) {
             this.keywords = value;
         }
@@ -763,7 +985,7 @@ public class Paper extends Document {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getPaperType() {
             return paperType;
         }
@@ -776,9 +998,107 @@ public class Paper extends Document {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setPaperType(String value) {
             this.paperType = value;
+        }
+
+        /**
+         * Gets a map that contains attributes that aren't bound to any typed property on this class.
+         * 
+         * <p>
+         * the map is keyed by the name of the attribute and 
+         * the value is the string value of the attribute.
+         * 
+         * the map returned by this method is live, and you can add new attribute
+         * by updating the map directly. Because of this design, there's no setter.
+         * 
+         * 
+         * @return
+         *     always non-null
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Map<QName, String> getOtherAttributes() {
+            return otherAttributes;
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;simpleContent>
+         *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *       &lt;anyAttribute processContents='lax'/>
+         *     &lt;/extension>
+         *   &lt;/simpleContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "value"
+        })
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public static class Findings {
+
+            @XmlValue
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            protected String value;
+            @XmlAnyAttribute
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+            /**
+             * Gets the value of the value property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public String getValue() {
+                return value;
+            }
+
+            /**
+             * Sets the value of the value property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public void setValue(String value) {
+                this.value = value;
+            }
+
+            /**
+             * Gets a map that contains attributes that aren't bound to any typed property on this class.
+             * 
+             * <p>
+             * the map is keyed by the name of the attribute and 
+             * the value is the string value of the attribute.
+             * 
+             * the map returned by this method is live, and you can add new attribute
+             * by updating the map directly. Because of this design, there's no setter.
+             * 
+             * 
+             * @return
+             *     always non-null
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public Map<QName, String> getOtherAttributes() {
+                return otherAttributes;
+            }
+
         }
 
 
@@ -792,8 +1112,17 @@ public class Paper extends Document {
          *   &lt;complexContent>
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *       &lt;sequence maxOccurs="unbounded">
-         *         &lt;element name="keyword" type="{http://www.w3.org/2001/XMLSchema}string"/>
+         *         &lt;element name="keyword">
+         *           &lt;complexType>
+         *             &lt;simpleContent>
+         *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *                 &lt;anyAttribute processContents='lax'/>
+         *               &lt;/extension>
+         *             &lt;/simpleContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
          *       &lt;/sequence>
+         *       &lt;anyAttribute processContents='lax'/>
          *     &lt;/restriction>
          *   &lt;/complexContent>
          * &lt;/complexType>
@@ -805,12 +1134,15 @@ public class Paper extends Document {
         @XmlType(name = "", propOrder = {
             "keyword"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Keywords {
 
             @XmlElement(required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            protected List<String> keyword;
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            protected List<Paper.Abstract.Keywords.Keyword> keyword;
+            @XmlAnyAttribute
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
              * Gets the value of the keyword property.
@@ -830,18 +1162,591 @@ public class Paper extends Document {
              * 
              * <p>
              * Objects of the following type(s) are allowed in the list
-             * {@link String }
+             * {@link Paper.Abstract.Keywords.Keyword }
              * 
              * 
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            public List<String> getKeyword() {
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public List<Paper.Abstract.Keywords.Keyword> getKeyword() {
                 if (keyword == null) {
-                    keyword = new ArrayList<String>();
+                    keyword = new ArrayList<Paper.Abstract.Keywords.Keyword>();
                 }
                 return this.keyword;
             }
 
+            /**
+             * Gets a map that contains attributes that aren't bound to any typed property on this class.
+             * 
+             * <p>
+             * the map is keyed by the name of the attribute and 
+             * the value is the string value of the attribute.
+             * 
+             * the map returned by this method is live, and you can add new attribute
+             * by updating the map directly. Because of this design, there's no setter.
+             * 
+             * 
+             * @return
+             *     always non-null
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public Map<QName, String> getOtherAttributes() {
+                return otherAttributes;
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;simpleContent>
+             *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+             *       &lt;anyAttribute processContents='lax'/>
+             *     &lt;/extension>
+             *   &lt;/simpleContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "value"
+            })
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public static class Keyword {
+
+                @XmlValue
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                protected String value;
+                @XmlAnyAttribute
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+                /**
+                 * Gets the value of the value property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public String getValue() {
+                    return value;
+                }
+
+                /**
+                 * Sets the value of the value property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public void setValue(String value) {
+                    this.value = value;
+                }
+
+                /**
+                 * Gets a map that contains attributes that aren't bound to any typed property on this class.
+                 * 
+                 * <p>
+                 * the map is keyed by the name of the attribute and 
+                 * the value is the string value of the attribute.
+                 * 
+                 * the map returned by this method is live, and you can add new attribute
+                 * by updating the map directly. Because of this design, there's no setter.
+                 * 
+                 * 
+                 * @return
+                 *     always non-null
+                 */
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public Map<QName, String> getOtherAttributes() {
+                    return otherAttributes;
+                }
+
+            }
+
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;simpleContent>
+         *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *       &lt;anyAttribute processContents='lax'/>
+         *     &lt;/extension>
+         *   &lt;/simpleContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "value"
+        })
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public static class Methodology {
+
+            @XmlValue
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            protected String value;
+            @XmlAnyAttribute
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+            /**
+             * Gets the value of the value property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public String getValue() {
+                return value;
+            }
+
+            /**
+             * Sets the value of the value property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public void setValue(String value) {
+                this.value = value;
+            }
+
+            /**
+             * Gets a map that contains attributes that aren't bound to any typed property on this class.
+             * 
+             * <p>
+             * the map is keyed by the name of the attribute and 
+             * the value is the string value of the attribute.
+             * 
+             * the map returned by this method is live, and you can add new attribute
+             * by updating the map directly. Because of this design, there's no setter.
+             * 
+             * 
+             * @return
+             *     always non-null
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public Map<QName, String> getOtherAttributes() {
+                return otherAttributes;
+            }
+
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;simpleContent>
+         *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *       &lt;anyAttribute processContents='lax'/>
+         *     &lt;/extension>
+         *   &lt;/simpleContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "value"
+        })
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public static class Orginality {
+
+            @XmlValue
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            protected String value;
+            @XmlAnyAttribute
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+            /**
+             * Gets the value of the value property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public String getValue() {
+                return value;
+            }
+
+            /**
+             * Sets the value of the value property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public void setValue(String value) {
+                this.value = value;
+            }
+
+            /**
+             * Gets a map that contains attributes that aren't bound to any typed property on this class.
+             * 
+             * <p>
+             * the map is keyed by the name of the attribute and 
+             * the value is the string value of the attribute.
+             * 
+             * the map returned by this method is live, and you can add new attribute
+             * by updating the map directly. Because of this design, there's no setter.
+             * 
+             * 
+             * @return
+             *     always non-null
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public Map<QName, String> getOtherAttributes() {
+                return otherAttributes;
+            }
+
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;simpleContent>
+         *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *       &lt;anyAttribute processContents='lax'/>
+         *     &lt;/extension>
+         *   &lt;/simpleContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "value"
+        })
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public static class PracticalImplcations {
+
+            @XmlValue
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            protected String value;
+            @XmlAnyAttribute
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+            /**
+             * Gets the value of the value property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public String getValue() {
+                return value;
+            }
+
+            /**
+             * Sets the value of the value property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public void setValue(String value) {
+                this.value = value;
+            }
+
+            /**
+             * Gets a map that contains attributes that aren't bound to any typed property on this class.
+             * 
+             * <p>
+             * the map is keyed by the name of the attribute and 
+             * the value is the string value of the attribute.
+             * 
+             * the map returned by this method is live, and you can add new attribute
+             * by updating the map directly. Because of this design, there's no setter.
+             * 
+             * 
+             * @return
+             *     always non-null
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public Map<QName, String> getOtherAttributes() {
+                return otherAttributes;
+            }
+
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;simpleContent>
+         *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *       &lt;anyAttribute processContents='lax'/>
+         *     &lt;/extension>
+         *   &lt;/simpleContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "value"
+        })
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public static class Purpose {
+
+            @XmlValue
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            protected String value;
+            @XmlAnyAttribute
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+            /**
+             * Gets the value of the value property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public String getValue() {
+                return value;
+            }
+
+            /**
+             * Sets the value of the value property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public void setValue(String value) {
+                this.value = value;
+            }
+
+            /**
+             * Gets a map that contains attributes that aren't bound to any typed property on this class.
+             * 
+             * <p>
+             * the map is keyed by the name of the attribute and 
+             * the value is the string value of the attribute.
+             * 
+             * the map returned by this method is live, and you can add new attribute
+             * by updating the map directly. Because of this design, there's no setter.
+             * 
+             * 
+             * @return
+             *     always non-null
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public Map<QName, String> getOtherAttributes() {
+                return otherAttributes;
+            }
+
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;simpleContent>
+         *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *       &lt;anyAttribute processContents='lax'/>
+         *     &lt;/extension>
+         *   &lt;/simpleContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "value"
+        })
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public static class ResearchImplications {
+
+            @XmlValue
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            protected String value;
+            @XmlAnyAttribute
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+            /**
+             * Gets the value of the value property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public String getValue() {
+                return value;
+            }
+
+            /**
+             * Sets the value of the value property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public void setValue(String value) {
+                this.value = value;
+            }
+
+            /**
+             * Gets a map that contains attributes that aren't bound to any typed property on this class.
+             * 
+             * <p>
+             * the map is keyed by the name of the attribute and 
+             * the value is the string value of the attribute.
+             * 
+             * the map returned by this method is live, and you can add new attribute
+             * by updating the map directly. Because of this design, there's no setter.
+             * 
+             * 
+             * @return
+             *     always non-null
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public Map<QName, String> getOtherAttributes() {
+                return otherAttributes;
+            }
+
+        }
+
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;simpleContent>
+     *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>date">
+     *       &lt;anyAttribute processContents='lax'/>
+     *     &lt;/extension>
+     *   &lt;/simpleContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "value"
+    })
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public static class Accepted {
+
+        @XmlValue
+        @XmlSchemaType(name = "date")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        protected XMLGregorianCalendar value;
+        @XmlAnyAttribute
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+        /**
+         * Gets the value of the value property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public XMLGregorianCalendar getValue() {
+            return value;
+        }
+
+        /**
+         * Sets the value of the value property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public void setValue(XMLGregorianCalendar value) {
+            this.value = value;
+        }
+
+        /**
+         * Gets a map that contains attributes that aren't bound to any typed property on this class.
+         * 
+         * <p>
+         * the map is keyed by the name of the attribute and 
+         * the value is the string value of the attribute.
+         * 
+         * the map returned by this method is live, and you can add new attribute
+         * by updating the map directly. Because of this design, there's no setter.
+         * 
+         * 
+         * @return
+         *     always non-null
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Map<QName, String> getOtherAttributes() {
+            return otherAttributes;
         }
 
     }
@@ -867,9 +1772,33 @@ public class Paper extends Document {
      *                       &lt;complexContent>
      *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                           &lt;sequence>
-     *                             &lt;element name="first_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *                             &lt;element name="middle_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
-     *                             &lt;element name="last_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *                             &lt;element name="first_name">
+     *                               &lt;complexType>
+     *                                 &lt;simpleContent>
+     *                                   &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                                     &lt;anyAttribute processContents='lax'/>
+     *                                   &lt;/extension>
+     *                                 &lt;/simpleContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="middle_name" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;simpleContent>
+     *                                   &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                                     &lt;anyAttribute processContents='lax'/>
+     *                                   &lt;/extension>
+     *                                 &lt;/simpleContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="last_name">
+     *                               &lt;complexType>
+     *                                 &lt;simpleContent>
+     *                                   &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                                     &lt;anyAttribute processContents='lax'/>
+     *                                   &lt;/extension>
+     *                                 &lt;/simpleContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
      *                           &lt;/sequence>
      *                         &lt;/restriction>
      *                       &lt;/complexContent>
@@ -880,10 +1809,35 @@ public class Paper extends Document {
      *                       &lt;complexContent>
      *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                           &lt;sequence>
-     *                             &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *                             &lt;element name="city" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *                             &lt;element name="country" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *                             &lt;element name="name">
+     *                               &lt;complexType>
+     *                                 &lt;simpleContent>
+     *                                   &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                                     &lt;anyAttribute processContents='lax'/>
+     *                                   &lt;/extension>
+     *                                 &lt;/simpleContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="city">
+     *                               &lt;complexType>
+     *                                 &lt;simpleContent>
+     *                                   &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                                     &lt;anyAttribute processContents='lax'/>
+     *                                   &lt;/extension>
+     *                                 &lt;/simpleContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="country">
+     *                               &lt;complexType>
+     *                                 &lt;simpleContent>
+     *                                   &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *                                     &lt;anyAttribute processContents='lax'/>
+     *                                   &lt;/extension>
+     *                                 &lt;/simpleContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
      *                           &lt;/sequence>
+     *                           &lt;anyAttribute processContents='lax'/>
      *                         &lt;/restriction>
      *                       &lt;/complexContent>
      *                     &lt;/complexType>
@@ -892,10 +1846,11 @@ public class Paper extends Document {
      *                 &lt;attribute name="email">
      *                   &lt;simpleType>
      *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
-     *                       &lt;pattern value="[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"/>
+     *                       &lt;pattern value="[_\-a-zA-Z0-9\.\+]+@[a-zA-Z0-9](\.?[\-a-zA-Z0-9]*[a-zA-Z0-9])*"/>
      *                     &lt;/restriction>
      *                   &lt;/simpleType>
      *                 &lt;/attribute>
+     *                 &lt;anyAttribute processContents='lax'/>
      *               &lt;/restriction>
      *             &lt;/complexContent>
      *           &lt;/complexType>
@@ -912,11 +1867,11 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "author"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Authors {
 
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected List<Paper.Authors.Author> author;
 
         /**
@@ -941,7 +1896,7 @@ public class Paper extends Document {
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public List<Paper.Authors.Author> getAuthor() {
             if (author == null) {
                 author = new ArrayList<Paper.Authors.Author>();
@@ -965,9 +1920,33 @@ public class Paper extends Document {
          *             &lt;complexContent>
          *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *                 &lt;sequence>
-         *                   &lt;element name="first_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
-         *                   &lt;element name="middle_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
-         *                   &lt;element name="last_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+         *                   &lt;element name="first_name">
+         *                     &lt;complexType>
+         *                       &lt;simpleContent>
+         *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *                           &lt;anyAttribute processContents='lax'/>
+         *                         &lt;/extension>
+         *                       &lt;/simpleContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="middle_name" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;simpleContent>
+         *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *                           &lt;anyAttribute processContents='lax'/>
+         *                         &lt;/extension>
+         *                       &lt;/simpleContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="last_name">
+         *                     &lt;complexType>
+         *                       &lt;simpleContent>
+         *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *                           &lt;anyAttribute processContents='lax'/>
+         *                         &lt;/extension>
+         *                       &lt;/simpleContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
          *                 &lt;/sequence>
          *               &lt;/restriction>
          *             &lt;/complexContent>
@@ -978,10 +1957,35 @@ public class Paper extends Document {
          *             &lt;complexContent>
          *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *                 &lt;sequence>
-         *                   &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
-         *                   &lt;element name="city" type="{http://www.w3.org/2001/XMLSchema}string"/>
-         *                   &lt;element name="country" type="{http://www.w3.org/2001/XMLSchema}string"/>
+         *                   &lt;element name="name">
+         *                     &lt;complexType>
+         *                       &lt;simpleContent>
+         *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *                           &lt;anyAttribute processContents='lax'/>
+         *                         &lt;/extension>
+         *                       &lt;/simpleContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="city">
+         *                     &lt;complexType>
+         *                       &lt;simpleContent>
+         *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *                           &lt;anyAttribute processContents='lax'/>
+         *                         &lt;/extension>
+         *                       &lt;/simpleContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="country">
+         *                     &lt;complexType>
+         *                       &lt;simpleContent>
+         *                         &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+         *                           &lt;anyAttribute processContents='lax'/>
+         *                         &lt;/extension>
+         *                       &lt;/simpleContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
          *                 &lt;/sequence>
+         *                 &lt;anyAttribute processContents='lax'/>
          *               &lt;/restriction>
          *             &lt;/complexContent>
          *           &lt;/complexType>
@@ -990,10 +1994,11 @@ public class Paper extends Document {
          *       &lt;attribute name="email">
          *         &lt;simpleType>
          *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
-         *             &lt;pattern value="[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"/>
+         *             &lt;pattern value="[_\-a-zA-Z0-9\.\+]+@[a-zA-Z0-9](\.?[\-a-zA-Z0-9]*[a-zA-Z0-9])*"/>
          *           &lt;/restriction>
          *         &lt;/simpleType>
          *       &lt;/attribute>
+         *       &lt;anyAttribute processContents='lax'/>
          *     &lt;/restriction>
          *   &lt;/complexContent>
          * &lt;/complexType>
@@ -1006,17 +2011,20 @@ public class Paper extends Document {
             "personal",
             "institution"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Author {
 
             @XmlElement(required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected Paper.Authors.Author.Personal personal;
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected Paper.Authors.Author.Institution institution;
             @XmlAttribute(name = "email")
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String email;
+            @XmlAnyAttribute
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
              * Gets the value of the personal property.
@@ -1026,7 +2034,7 @@ public class Paper extends Document {
              *     {@link Paper.Authors.Author.Personal }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Paper.Authors.Author.Personal getPersonal() {
                 return personal;
             }
@@ -1039,7 +2047,7 @@ public class Paper extends Document {
              *     {@link Paper.Authors.Author.Personal }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setPersonal(Paper.Authors.Author.Personal value) {
                 this.personal = value;
             }
@@ -1052,7 +2060,7 @@ public class Paper extends Document {
              *     {@link Paper.Authors.Author.Institution }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Paper.Authors.Author.Institution getInstitution() {
                 return institution;
             }
@@ -1065,7 +2073,7 @@ public class Paper extends Document {
              *     {@link Paper.Authors.Author.Institution }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setInstitution(Paper.Authors.Author.Institution value) {
                 this.institution = value;
             }
@@ -1078,7 +2086,7 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getEmail() {
                 return email;
             }
@@ -1091,9 +2099,28 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setEmail(String value) {
                 this.email = value;
+            }
+
+            /**
+             * Gets a map that contains attributes that aren't bound to any typed property on this class.
+             * 
+             * <p>
+             * the map is keyed by the name of the attribute and 
+             * the value is the string value of the attribute.
+             * 
+             * the map returned by this method is live, and you can add new attribute
+             * by updating the map directly. Because of this design, there's no setter.
+             * 
+             * 
+             * @return
+             *     always non-null
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public Map<QName, String> getOtherAttributes() {
+                return otherAttributes;
             }
 
 
@@ -1107,10 +2134,35 @@ public class Paper extends Document {
              *   &lt;complexContent>
              *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
              *       &lt;sequence>
-             *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
-             *         &lt;element name="city" type="{http://www.w3.org/2001/XMLSchema}string"/>
-             *         &lt;element name="country" type="{http://www.w3.org/2001/XMLSchema}string"/>
+             *         &lt;element name="name">
+             *           &lt;complexType>
+             *             &lt;simpleContent>
+             *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+             *                 &lt;anyAttribute processContents='lax'/>
+             *               &lt;/extension>
+             *             &lt;/simpleContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="city">
+             *           &lt;complexType>
+             *             &lt;simpleContent>
+             *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+             *                 &lt;anyAttribute processContents='lax'/>
+             *               &lt;/extension>
+             *             &lt;/simpleContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="country">
+             *           &lt;complexType>
+             *             &lt;simpleContent>
+             *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+             *                 &lt;anyAttribute processContents='lax'/>
+             *               &lt;/extension>
+             *             &lt;/simpleContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
              *       &lt;/sequence>
+             *       &lt;anyAttribute processContents='lax'/>
              *     &lt;/restriction>
              *   &lt;/complexContent>
              * &lt;/complexType>
@@ -1124,29 +2176,32 @@ public class Paper extends Document {
                 "city",
                 "country"
             })
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public static class Institution {
 
                 @XmlElement(required = true)
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                protected String name;
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                protected Paper.Authors.Author.Institution.Name name;
                 @XmlElement(required = true)
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                protected String city;
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                protected Paper.Authors.Author.Institution.City city;
                 @XmlElement(required = true)
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                protected String country;
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                protected Paper.Authors.Author.Institution.Country country;
+                @XmlAnyAttribute
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
                 /**
                  * Gets the value of the name property.
                  * 
                  * @return
                  *     possible object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Institution.Name }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public String getName() {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public Paper.Authors.Author.Institution.Name getName() {
                     return name;
                 }
 
@@ -1155,11 +2210,11 @@ public class Paper extends Document {
                  * 
                  * @param value
                  *     allowed object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Institution.Name }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public void setName(String value) {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public void setName(Paper.Authors.Author.Institution.Name value) {
                     this.name = value;
                 }
 
@@ -1168,11 +2223,11 @@ public class Paper extends Document {
                  * 
                  * @return
                  *     possible object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Institution.City }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public String getCity() {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public Paper.Authors.Author.Institution.City getCity() {
                     return city;
                 }
 
@@ -1181,11 +2236,11 @@ public class Paper extends Document {
                  * 
                  * @param value
                  *     allowed object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Institution.City }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public void setCity(String value) {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public void setCity(Paper.Authors.Author.Institution.City value) {
                     this.city = value;
                 }
 
@@ -1194,11 +2249,11 @@ public class Paper extends Document {
                  * 
                  * @return
                  *     possible object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Institution.Country }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public String getCountry() {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public Paper.Authors.Author.Institution.Country getCountry() {
                     return country;
                 }
 
@@ -1207,12 +2262,268 @@ public class Paper extends Document {
                  * 
                  * @param value
                  *     allowed object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Institution.Country }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public void setCountry(String value) {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public void setCountry(Paper.Authors.Author.Institution.Country value) {
                     this.country = value;
+                }
+
+                /**
+                 * Gets a map that contains attributes that aren't bound to any typed property on this class.
+                 * 
+                 * <p>
+                 * the map is keyed by the name of the attribute and 
+                 * the value is the string value of the attribute.
+                 * 
+                 * the map returned by this method is live, and you can add new attribute
+                 * by updating the map directly. Because of this design, there's no setter.
+                 * 
+                 * 
+                 * @return
+                 *     always non-null
+                 */
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public Map<QName, String> getOtherAttributes() {
+                    return otherAttributes;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;simpleContent>
+                 *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+                 *       &lt;anyAttribute processContents='lax'/>
+                 *     &lt;/extension>
+                 *   &lt;/simpleContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value"
+                })
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public static class City {
+
+                    @XmlValue
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    protected String value;
+                    @XmlAnyAttribute
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets a map that contains attributes that aren't bound to any typed property on this class.
+                     * 
+                     * <p>
+                     * the map is keyed by the name of the attribute and 
+                     * the value is the string value of the attribute.
+                     * 
+                     * the map returned by this method is live, and you can add new attribute
+                     * by updating the map directly. Because of this design, there's no setter.
+                     * 
+                     * 
+                     * @return
+                     *     always non-null
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public Map<QName, String> getOtherAttributes() {
+                        return otherAttributes;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;simpleContent>
+                 *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+                 *       &lt;anyAttribute processContents='lax'/>
+                 *     &lt;/extension>
+                 *   &lt;/simpleContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value"
+                })
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public static class Country {
+
+                    @XmlValue
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    protected String value;
+                    @XmlAnyAttribute
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets a map that contains attributes that aren't bound to any typed property on this class.
+                     * 
+                     * <p>
+                     * the map is keyed by the name of the attribute and 
+                     * the value is the string value of the attribute.
+                     * 
+                     * the map returned by this method is live, and you can add new attribute
+                     * by updating the map directly. Because of this design, there's no setter.
+                     * 
+                     * 
+                     * @return
+                     *     always non-null
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public Map<QName, String> getOtherAttributes() {
+                        return otherAttributes;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;simpleContent>
+                 *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+                 *       &lt;anyAttribute processContents='lax'/>
+                 *     &lt;/extension>
+                 *   &lt;/simpleContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value"
+                })
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public static class Name {
+
+                    @XmlValue
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    protected String value;
+                    @XmlAnyAttribute
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets a map that contains attributes that aren't bound to any typed property on this class.
+                     * 
+                     * <p>
+                     * the map is keyed by the name of the attribute and 
+                     * the value is the string value of the attribute.
+                     * 
+                     * the map returned by this method is live, and you can add new attribute
+                     * by updating the map directly. Because of this design, there's no setter.
+                     * 
+                     * 
+                     * @return
+                     *     always non-null
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public Map<QName, String> getOtherAttributes() {
+                        return otherAttributes;
+                    }
+
                 }
 
             }
@@ -1228,9 +2539,33 @@ public class Paper extends Document {
              *   &lt;complexContent>
              *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
              *       &lt;sequence>
-             *         &lt;element name="first_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
-             *         &lt;element name="middle_name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
-             *         &lt;element name="last_name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+             *         &lt;element name="first_name">
+             *           &lt;complexType>
+             *             &lt;simpleContent>
+             *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+             *                 &lt;anyAttribute processContents='lax'/>
+             *               &lt;/extension>
+             *             &lt;/simpleContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="middle_name" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;simpleContent>
+             *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+             *                 &lt;anyAttribute processContents='lax'/>
+             *               &lt;/extension>
+             *             &lt;/simpleContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="last_name">
+             *           &lt;complexType>
+             *             &lt;simpleContent>
+             *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+             *                 &lt;anyAttribute processContents='lax'/>
+             *               &lt;/extension>
+             *             &lt;/simpleContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
              *       &lt;/sequence>
              *     &lt;/restriction>
              *   &lt;/complexContent>
@@ -1245,29 +2580,29 @@ public class Paper extends Document {
                 "middleName",
                 "lastName"
             })
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public static class Personal {
 
                 @XmlElement(name = "first_name", required = true)
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                protected String firstName;
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                protected Paper.Authors.Author.Personal.FirstName firstName;
                 @XmlElement(name = "middle_name")
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                protected String middleName;
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                protected Paper.Authors.Author.Personal.MiddleName middleName;
                 @XmlElement(name = "last_name", required = true)
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                protected String lastName;
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                protected Paper.Authors.Author.Personal.LastName lastName;
 
                 /**
                  * Gets the value of the firstName property.
                  * 
                  * @return
                  *     possible object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Personal.FirstName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public String getFirstName() {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public Paper.Authors.Author.Personal.FirstName getFirstName() {
                     return firstName;
                 }
 
@@ -1276,11 +2611,11 @@ public class Paper extends Document {
                  * 
                  * @param value
                  *     allowed object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Personal.FirstName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public void setFirstName(String value) {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public void setFirstName(Paper.Authors.Author.Personal.FirstName value) {
                     this.firstName = value;
                 }
 
@@ -1289,11 +2624,11 @@ public class Paper extends Document {
                  * 
                  * @return
                  *     possible object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Personal.MiddleName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public String getMiddleName() {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public Paper.Authors.Author.Personal.MiddleName getMiddleName() {
                     return middleName;
                 }
 
@@ -1302,11 +2637,11 @@ public class Paper extends Document {
                  * 
                  * @param value
                  *     allowed object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Personal.MiddleName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public void setMiddleName(String value) {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public void setMiddleName(Paper.Authors.Author.Personal.MiddleName value) {
                     this.middleName = value;
                 }
 
@@ -1315,11 +2650,11 @@ public class Paper extends Document {
                  * 
                  * @return
                  *     possible object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Personal.LastName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public String getLastName() {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public Paper.Authors.Author.Personal.LastName getLastName() {
                     return lastName;
                 }
 
@@ -1328,12 +2663,249 @@ public class Paper extends Document {
                  * 
                  * @param value
                  *     allowed object is
-                 *     {@link String }
+                 *     {@link Paper.Authors.Author.Personal.LastName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-                public void setLastName(String value) {
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public void setLastName(Paper.Authors.Author.Personal.LastName value) {
                     this.lastName = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;simpleContent>
+                 *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+                 *       &lt;anyAttribute processContents='lax'/>
+                 *     &lt;/extension>
+                 *   &lt;/simpleContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value"
+                })
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public static class FirstName {
+
+                    @XmlValue
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    protected String value;
+                    @XmlAnyAttribute
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets a map that contains attributes that aren't bound to any typed property on this class.
+                     * 
+                     * <p>
+                     * the map is keyed by the name of the attribute and 
+                     * the value is the string value of the attribute.
+                     * 
+                     * the map returned by this method is live, and you can add new attribute
+                     * by updating the map directly. Because of this design, there's no setter.
+                     * 
+                     * 
+                     * @return
+                     *     always non-null
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public Map<QName, String> getOtherAttributes() {
+                        return otherAttributes;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;simpleContent>
+                 *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+                 *       &lt;anyAttribute processContents='lax'/>
+                 *     &lt;/extension>
+                 *   &lt;/simpleContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value"
+                })
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public static class LastName {
+
+                    @XmlValue
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    protected String value;
+                    @XmlAnyAttribute
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets a map that contains attributes that aren't bound to any typed property on this class.
+                     * 
+                     * <p>
+                     * the map is keyed by the name of the attribute and 
+                     * the value is the string value of the attribute.
+                     * 
+                     * the map returned by this method is live, and you can add new attribute
+                     * by updating the map directly. Because of this design, there's no setter.
+                     * 
+                     * 
+                     * @return
+                     *     always non-null
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public Map<QName, String> getOtherAttributes() {
+                        return otherAttributes;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;simpleContent>
+                 *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+                 *       &lt;anyAttribute processContents='lax'/>
+                 *     &lt;/extension>
+                 *   &lt;/simpleContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value"
+                })
+                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                public static class MiddleName {
+
+                    @XmlValue
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    protected String value;
+                    @XmlAnyAttribute
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets a map that contains attributes that aren't bound to any typed property on this class.
+                     * 
+                     * <p>
+                     * the map is keyed by the name of the attribute and 
+                     * the value is the string value of the attribute.
+                     * 
+                     * the map returned by this method is live, and you can add new attribute
+                     * by updating the map directly. Because of this design, there's no setter.
+                     * 
+                     * 
+                     * @return
+                     *     always non-null
+                     */
+                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                    public Map<QName, String> getOtherAttributes() {
+                        return otherAttributes;
+                    }
+
                 }
 
             }
@@ -1355,6 +2927,7 @@ public class Paper extends Document {
      *       &lt;sequence maxOccurs="unbounded" minOccurs="0">
      *         &lt;element ref="{XML_tim6}mention"/>
      *       &lt;/sequence>
+     *       &lt;anyAttribute processContents='lax'/>
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -1366,11 +2939,14 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "mention"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Citations {
 
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected List<Mention> mention;
+        @XmlAnyAttribute
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
          * Gets the value of the mention property.
@@ -1394,12 +2970,31 @@ public class Paper extends Document {
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public List<Mention> getMention() {
             if (mention == null) {
                 mention = new ArrayList<Mention>();
             }
             return this.mention;
+        }
+
+        /**
+         * Gets a map that contains attributes that aren't bound to any typed property on this class.
+         * 
+         * <p>
+         * the map is keyed by the name of the attribute and 
+         * the value is the string value of the attribute.
+         * 
+         * the map returned by this method is live, and you can add new attribute
+         * by updating the map directly. Because of this design, there's no setter.
+         * 
+         * 
+         * @return
+         *     always non-null
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Map<QName, String> getOtherAttributes() {
+            return otherAttributes;
         }
 
     }
@@ -1418,6 +3013,7 @@ public class Paper extends Document {
      *         &lt;element ref="{XML_tim6}section"/>
      *         &lt;element ref="{XML_tim6}quote"/>
      *       &lt;/choice>
+     *       &lt;anyAttribute processContents='lax'/>
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -1429,15 +3025,18 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "sectionOrQuote"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Content {
 
         @XmlElements({
             @XmlElement(name = "section", type = Section.class),
             @XmlElement(name = "quote", type = Quote.class)
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected List<Object> sectionOrQuote;
+        @XmlAnyAttribute
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
          * Gets the value of the sectionOrQuote property.
@@ -1462,12 +3061,31 @@ public class Paper extends Document {
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public List<Object> getSectionOrQuote() {
             if (sectionOrQuote == null) {
                 sectionOrQuote = new ArrayList<Object>();
             }
             return this.sectionOrQuote;
+        }
+
+        /**
+         * Gets a map that contains attributes that aren't bound to any typed property on this class.
+         * 
+         * <p>
+         * the map is keyed by the name of the attribute and 
+         * the value is the string value of the attribute.
+         * 
+         * the map returned by this method is live, and you can add new attribute
+         * by updating the map directly. Because of this design, there's no setter.
+         * 
+         * 
+         * @return
+         *     always non-null
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Map<QName, String> getOtherAttributes() {
+            return otherAttributes;
         }
 
     }
@@ -1488,11 +3106,13 @@ public class Paper extends Document {
      *             &lt;simpleContent>
      *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
      *                 &lt;attribute name="ref_id" type="{http://www.w3.org/2001/XMLSchema}IDREF" />
+     *                 &lt;anyAttribute processContents='lax'/>
      *               &lt;/extension>
      *             &lt;/simpleContent>
      *           &lt;/complexType>
      *         &lt;/element>
      *       &lt;/sequence>
+     *       &lt;anyAttribute processContents='lax'/>
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -1504,12 +3124,15 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "note"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Notes {
 
         @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected List<Paper.Notes.Note> note;
+        @XmlAnyAttribute
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
          * Gets the value of the note property.
@@ -1533,12 +3156,31 @@ public class Paper extends Document {
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public List<Paper.Notes.Note> getNote() {
             if (note == null) {
                 note = new ArrayList<Paper.Notes.Note>();
             }
             return this.note;
+        }
+
+        /**
+         * Gets a map that contains attributes that aren't bound to any typed property on this class.
+         * 
+         * <p>
+         * the map is keyed by the name of the attribute and 
+         * the value is the string value of the attribute.
+         * 
+         * the map returned by this method is live, and you can add new attribute
+         * by updating the map directly. Because of this design, there's no setter.
+         * 
+         * 
+         * @return
+         *     always non-null
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Map<QName, String> getOtherAttributes() {
+            return otherAttributes;
         }
 
 
@@ -1552,6 +3194,7 @@ public class Paper extends Document {
          *   &lt;simpleContent>
          *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
          *       &lt;attribute name="ref_id" type="{http://www.w3.org/2001/XMLSchema}IDREF" />
+         *       &lt;anyAttribute processContents='lax'/>
          *     &lt;/extension>
          *   &lt;/simpleContent>
          * &lt;/complexType>
@@ -1563,17 +3206,20 @@ public class Paper extends Document {
         @XmlType(name = "", propOrder = {
             "value"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Note {
 
             @XmlValue
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String value;
             @XmlAttribute(name = "ref_id")
             @XmlIDREF
             @XmlSchemaType(name = "IDREF")
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected Object refId;
+            @XmlAnyAttribute
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
              * Gets the value of the value property.
@@ -1583,7 +3229,7 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getValue() {
                 return value;
             }
@@ -1596,7 +3242,7 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setValue(String value) {
                 this.value = value;
             }
@@ -1609,7 +3255,7 @@ public class Paper extends Document {
              *     {@link Object }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Object getRefId() {
                 return refId;
             }
@@ -1622,11 +3268,110 @@ public class Paper extends Document {
              *     {@link Object }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setRefId(Object value) {
                 this.refId = value;
             }
 
+            /**
+             * Gets a map that contains attributes that aren't bound to any typed property on this class.
+             * 
+             * <p>
+             * the map is keyed by the name of the attribute and 
+             * the value is the string value of the attribute.
+             * 
+             * the map returned by this method is live, and you can add new attribute
+             * by updating the map directly. Because of this design, there's no setter.
+             * 
+             * 
+             * @return
+             *     always non-null
+             */
+            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            public Map<QName, String> getOtherAttributes() {
+                return otherAttributes;
+            }
+
+        }
+
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;simpleContent>
+     *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>date">
+     *       &lt;anyAttribute processContents='lax'/>
+     *     &lt;/extension>
+     *   &lt;/simpleContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "value"
+    })
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public static class Received {
+
+        @XmlValue
+        @XmlSchemaType(name = "date")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        protected XMLGregorianCalendar value;
+        @XmlAnyAttribute
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+        /**
+         * Gets the value of the value property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public XMLGregorianCalendar getValue() {
+            return value;
+        }
+
+        /**
+         * Sets the value of the value property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public void setValue(XMLGregorianCalendar value) {
+            this.value = value;
+        }
+
+        /**
+         * Gets a map that contains attributes that aren't bound to any typed property on this class.
+         * 
+         * <p>
+         * the map is keyed by the name of the attribute and 
+         * the value is the string value of the attribute.
+         * 
+         * the map returned by this method is live, and you can add new attribute
+         * by updating the map directly. Because of this design, there's no setter.
+         * 
+         * 
+         * @return
+         *     always non-null
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Map<QName, String> getOtherAttributes() {
+            return otherAttributes;
         }
 
     }
@@ -1644,6 +3389,7 @@ public class Paper extends Document {
      *       &lt;sequence maxOccurs="unbounded" minOccurs="0">
      *         &lt;element ref="{XML_tim6}mention"/>
      *       &lt;/sequence>
+     *       &lt;anyAttribute processContents='lax'/>
      *     &lt;/restriction>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -1655,11 +3401,14 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "mention"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class References {
 
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected List<Mention> mention;
+        @XmlAnyAttribute
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
          * Gets the value of the mention property.
@@ -1683,12 +3432,111 @@ public class Paper extends Document {
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-23T01:12:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public List<Mention> getMention() {
             if (mention == null) {
                 mention = new ArrayList<Mention>();
             }
             return this.mention;
+        }
+
+        /**
+         * Gets a map that contains attributes that aren't bound to any typed property on this class.
+         * 
+         * <p>
+         * the map is keyed by the name of the attribute and 
+         * the value is the string value of the attribute.
+         * 
+         * the map returned by this method is live, and you can add new attribute
+         * by updating the map directly. Because of this design, there's no setter.
+         * 
+         * 
+         * @return
+         *     always non-null
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Map<QName, String> getOtherAttributes() {
+            return otherAttributes;
+        }
+
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;simpleContent>
+     *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>date">
+     *       &lt;anyAttribute processContents='lax'/>
+     *     &lt;/extension>
+     *   &lt;/simpleContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "value"
+    })
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public static class Revised {
+
+        @XmlValue
+        @XmlSchemaType(name = "date")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        protected XMLGregorianCalendar value;
+        @XmlAnyAttribute
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        private Map<QName, String> otherAttributes = new HashMap<QName, String>();
+
+        /**
+         * Gets the value of the value property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public XMLGregorianCalendar getValue() {
+            return value;
+        }
+
+        /**
+         * Sets the value of the value property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *     
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public void setValue(XMLGregorianCalendar value) {
+            this.value = value;
+        }
+
+        /**
+         * Gets a map that contains attributes that aren't bound to any typed property on this class.
+         * 
+         * <p>
+         * the map is keyed by the name of the attribute and 
+         * the value is the string value of the attribute.
+         * 
+         * the map returned by this method is live, and you can add new attribute
+         * by updating the map directly. Because of this design, there's no setter.
+         * 
+         * 
+         * @return
+         *     always non-null
+         */
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        public Map<QName, String> getOtherAttributes() {
+            return otherAttributes;
         }
 
     }

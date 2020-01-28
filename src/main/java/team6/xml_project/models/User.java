@@ -41,9 +41,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToMany(mappedBy = "reviewers", fetch = FetchType.EAGER)
-    private List<Submission> reviewedSubmissions;
-
     public User() {
         super();
     }
