@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="XML_tim6" xmlns:t6="XML_tim6">
+    <xs:element name="submission">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:ID"/>
+                <xs:element name="authorId" default="0" type="xs:long"/>
+                <xs:element name="editorId" default="0" type="xs:long"/>
+                <xs:element name="reviewerIds" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="reviewerId" default="0" type="xs:long"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="t6:submissionStatus"/>
+                <xs:element name="currentRevision" default="1" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="submissionStatus" default="SUBMITTED_FOR_REVIEW">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="SUBMITTED_FOR_REVIEW"/>
+                <xs:enumeration value="IN_REVIEW"/>
+                <xs:enumeration value="REVIEWS_DONE"/>
+                <xs:enumeration value="NEEDS_REWORK"/>
+                <xs:enumeration value="REJECTED"/>
+                <xs:enumeration value="ACCEPTED"/>
+                <xs:enumeration value="AUTHOR_TAKEDOWN"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+</xs:schema>

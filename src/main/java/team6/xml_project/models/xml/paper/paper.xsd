@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="XML_tim6" xmlns:t6="XML_tim6">
-
     <xs:element name="paper">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="received" type="xs:date"/>
-                <xs:element name="revised" type="xs:date"/>
-                <xs:element name="accepted" type="xs:date"/>
+                <xs:element name="received">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:anyAttribute processContents="lax"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="revised">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:anyAttribute processContents="lax"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="accepted">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:anyAttribute processContents="lax"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="authors">
                     <xs:complexType>
                         <xs:sequence maxOccurs="unbounded">
@@ -17,20 +40,68 @@
                                         <xs:element name="personal">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="first_name" type="xs:string"/>
-                                                  <xs:element minOccurs="0" name="middle_name"
-                                                  type="xs:string"/>
-                                                  <xs:element name="last_name" type="xs:string"/>
+                                                  <xs:element name="first_name">
+                                                  <xs:complexType>
+                                                  <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                  <xs:anyAttribute processContents="lax"/>
+                                                  </xs:extension>
+                                                  </xs:simpleContent>
+                                                  </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element minOccurs="0" name="middle_name">
+                                                  <xs:complexType>
+                                                  <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                  <xs:anyAttribute processContents="lax"/>
+                                                  </xs:extension>
+                                                  </xs:simpleContent>
+                                                  </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="last_name">
+                                                  <xs:complexType>
+                                                  <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                  <xs:anyAttribute processContents="lax"/>
+                                                  </xs:extension>
+                                                  </xs:simpleContent>
+                                                  </xs:complexType>
+                                                  </xs:element>
                                                 </xs:sequence>
                                             </xs:complexType>
                                         </xs:element>
                                         <xs:element minOccurs="0" name="institution">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                  <xs:element name="name" type="xs:string"/>
-                                                  <xs:element name="city" type="xs:string"/>
-                                                  <xs:element name="country" type="xs:string"/>
+                                                  <xs:element name="name">
+                                                  <xs:complexType>
+                                                  <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                  <xs:anyAttribute processContents="lax"/>
+                                                  </xs:extension>
+                                                  </xs:simpleContent>
+                                                  </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="city">
+                                                  <xs:complexType>
+                                                  <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                  <xs:anyAttribute processContents="lax"/>
+                                                  </xs:extension>
+                                                  </xs:simpleContent>
+                                                  </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="country">
+                                                  <xs:complexType>
+                                                  <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                  <xs:anyAttribute processContents="lax"/>
+                                                  </xs:extension>
+                                                  </xs:simpleContent>
+                                                  </xs:complexType>
+                                                  </xs:element>
                                                 </xs:sequence>
+                                                <xs:anyAttribute processContents="lax"/>
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
@@ -38,11 +109,12 @@
                                         <xs:simpleType>
                                             <xs:restriction base="xs:string">
                                                 <xs:pattern
-                                                  value="[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+                                                  value="[_\-a-zA-Z0-9\.\+]+@[a-zA-Z0-9](\.?[\-a-zA-Z0-9]*[a-zA-Z0-9])*"
                                                 />
                                             </xs:restriction>
                                         </xs:simpleType>
                                     </xs:attribute>
+                                    <xs:anyAttribute processContents="lax"/>
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
@@ -51,17 +123,74 @@
                 <xs:element name="abstract">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="purpose" type="xs:string"/>
-                            <xs:element name="methodology" type="xs:string"/>
-                            <xs:element name="findings" type="xs:string"/>
-                            <xs:element name="research_implications" type="xs:string"/>
-                            <xs:element name="practical_implcations" type="xs:string"/>
-                            <xs:element name="orginality" type="xs:string"/>
+                            <xs:element name="purpose">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="methodology">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="findings">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="research_implications">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="practical_implcations">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="orginality">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
                             <xs:element name="keywords">
                                 <xs:complexType>
                                     <xs:sequence maxOccurs="unbounded" minOccurs="1">
-                                        <xs:element name="keyword" type="xs:string"/>
+                                        <xs:element name="keyword">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                  <xs:anyAttribute processContents="lax"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
                                     </xs:sequence>
+                                    <xs:anyAttribute processContents="lax"/>
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
@@ -73,6 +202,7 @@
                                 </xs:restriction>
                             </xs:simpleType>
                         </xs:attribute>
+                        <xs:anyAttribute processContents="lax"/>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="content">
@@ -81,6 +211,7 @@
                             <xs:element maxOccurs="1" ref="t6:section"> </xs:element>
                             <xs:element ref="t6:quote"/>
                         </xs:choice>
+                        <xs:anyAttribute processContents="lax"/>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="references">
@@ -88,6 +219,7 @@
                         <xs:sequence maxOccurs="unbounded" minOccurs="0">
                             <xs:element ref="t6:mention"/>
                         </xs:sequence>
+                        <xs:anyAttribute processContents="lax"/>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="citations">
@@ -95,6 +227,7 @@
                         <xs:sequence maxOccurs="unbounded" minOccurs="0">
                             <xs:element ref="t6:mention"/>
                         </xs:sequence>
+                        <xs:anyAttribute processContents="lax"/>
                     </xs:complexType>
                 </xs:element>
                 <xs:element minOccurs="0" name="notes">
@@ -105,15 +238,18 @@
                                     <xs:simpleContent>
                                         <xs:extension base="xs:string">
                                             <xs:attribute name="ref_id" type="xs:IDREF"/>
+                                            <xs:anyAttribute processContents="lax"/>
                                         </xs:extension>
                                     </xs:simpleContent>
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
+                        <xs:anyAttribute processContents="lax"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
             <xs:attribute name="title" type="xs:string" use="required"/>
+            <xs:anyAttribute processContents="lax"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="quote">
@@ -136,7 +272,15 @@
                 <xs:element name="list">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="list_item" type="xs:string"/>
+                            <xs:element name="list_item">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
                         </xs:sequence>
                         <xs:attribute name="id" type="xs:ID" use="required"/>
                         <xs:attribute name="type" use="required">
@@ -147,6 +291,7 @@
                                 </xs:restriction>
                             </xs:simpleType>
                         </xs:attribute>
+                        <xs:anyAttribute processContents="lax"/>
                     </xs:complexType>
                 </xs:element>
                 <xs:element ref="t6:quote"/>
@@ -168,27 +313,48 @@
                                                   type="xs:unsignedInt"/>
                                                 <xs:attribute default="1" name="rowspan"
                                                   type="xs:unsignedInt"/>
+                                                <xs:anyAttribute processContents="lax"/>
                                             </xs:complexType>
                                         </xs:element>
                                     </xs:sequence>
+                                    <xs:anyAttribute processContents="lax"/>
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
                         <xs:attribute name="id" type="xs:ID" use="required"/>
+                        <xs:anyAttribute processContents="lax"/>
                     </xs:complexType>
                 </xs:element>
             </xs:choice>
             <xs:attribute name="id" type="xs:ID" use="required"/>
             <xs:attribute name="title" type="xs:string" use="required"/>
             <xs:attribute name="level" type="xs:unsignedInt" use="required"/>
+            <xs:anyAttribute processContents="lax"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="paragraph">
         <xs:complexType mixed="true">
             <xs:choice maxOccurs="unbounded" minOccurs="0">
-                <xs:element name="bold" type="xs:string"/>
-                <xs:element name="italic" type="xs:string"/>
+                <xs:element name="bold">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:anyAttribute processContents="lax"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="italic">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:anyAttribute processContents="lax"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
             </xs:choice>
+            <xs:anyAttribute processContents="lax"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="image">
@@ -196,6 +362,7 @@
             <xs:attribute name="id" type="xs:ID" use="required"/>
             <xs:attribute name="src" type="xs:anyURI" use="required"/>
             <xs:attribute name="title" type="xs:string"/>
+            <xs:anyAttribute processContents="lax"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="code">
@@ -203,6 +370,7 @@
             <xs:simpleContent>
                 <xs:extension base="xs:string">
                     <xs:attribute name="id" type="xs:ID" use="required"/>
+                    <xs:anyAttribute processContents="lax"/>
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>
@@ -212,6 +380,7 @@
             <xs:simpleContent>
                 <xs:extension base="xs:string">
                     <xs:attribute name="id" type="xs:ID" use="required"/>
+                    <xs:anyAttribute processContents="lax"/>
                 </xs:extension>
             </xs:simpleContent>
         </xs:complexType>
@@ -221,32 +390,100 @@
             <xs:sequence minOccurs="1">
                 <xs:element name="authors">
                     <xs:complexType>
-                        <xs:sequence minOccurs="1">
+                        <xs:sequence minOccurs="1" maxOccurs="unbounded">
                             <xs:element name="author">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="last_name" type="xs:string"/>
-                                        <xs:element name="initial" type="xs:string"/>
+                                        <xs:element name="last_name">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                  <xs:anyAttribute processContents="lax"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="initial">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                  <xs:anyAttribute processContents="lax"/>
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
                                     </xs:sequence>
+                                    <xs:anyAttribute processContents="lax"/>
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
+                        <xs:anyAttribute processContents="lax"/>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="work">
                     <xs:complexType>
                         <xs:sequence minOccurs="1">
-                            <xs:element minOccurs="0" name="year_published" type="xs:gYear"/>
-                            <xs:element name="title" type="xs:string"/>
-                            <xs:element minOccurs="0" name="edition" type="xs:unsignedInt"/>
-                            <xs:element name="city" type="xs:string"/>
-                            <xs:element name="publisher" type="xs:string"/>
-                            <xs:element minOccurs="0" name="numbers" type="xs:string"/>
+                            <xs:element minOccurs="0" name="year_published">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:gYear">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="title">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="edition">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:unsignedInt">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="city">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="publisher">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element minOccurs="0" name="numbers">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:anyAttribute processContents="lax"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
                         </xs:sequence>
+                        <xs:anyAttribute processContents="lax"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
             <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:anyAttribute processContents="lax"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>

@@ -2,9 +2,9 @@ package team6.xml_project.web.dto.submission;
 
 import lombok.Getter;
 import lombok.Setter;
-import team6.xml_project.models.Submission;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.User;
+import team6.xml_project.models.xml.submission.Submission;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Setter
 public class SubmissionGetDTO {
 
-    private Long id;
+    private String id;
     private Long userId;
     private Long editorId;
     private List<Long> reviewerIds;
@@ -22,14 +22,14 @@ public class SubmissionGetDTO {
 
     public SubmissionGetDTO(Submission submission) {
         this.id = submission.getId();
-        this.userId = submission.getAuthor().getId();
-        this.editorId = submission.getEditor() == null ? -1 : submission.getEditor().getId();
-        this.reviewerIds = submission.getReviewers().stream().map(User::getId).collect(Collectors.toList());
-        this.status = submission.getStatus();
+        this.userId = submission.getAuthorId();
+        this.editorId = submission.getEditorId();
+        this.reviewerIds = submission.getReviewerIds().stream().map(Submission.ReviewerIds::getReviewerId).collect(Collectors.toList());
+        this.status = SubmissionStatus.valueOf(submission.getSubmissionStatus());
         this.currentRevision = submission.getCurrentRevision();
     }
 
-    public SubmissionGetDTO(Long id, Long userId, Long editorId, List<Long> reviewerIds, SubmissionStatus status, Long currentRevision) {
+    public SubmissionGetDTO(String id, Long userId, Long editorId, List<Long> reviewerIds, SubmissionStatus status, Long currentRevision) {
         this.id = id;
         this.userId = userId;
         this.editorId = editorId;

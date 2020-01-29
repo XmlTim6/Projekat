@@ -1,20 +1,13 @@
 package team6.xml_project.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.xmldb.api.base.ResourceIterator;
-import org.xmldb.api.base.ResourceSet;
 import team6.xml_project.exception.*;
-import team6.xml_project.helpers.XMLUnmarshaller;
 import team6.xml_project.models.Role;
-import team6.xml_project.models.Submission;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.User;
-import team6.xml_project.models.xml.paper.Paper;
-import team6.xml_project.repository.DocumentRepository;
+import team6.xml_project.models.xml.submission.Submission;
+import team6.xml_project.repository.PaperRepository;
 import team6.xml_project.repository.SubmissionRepository;
 import team6.xml_project.service.EmailService;
 import team6.xml_project.service.SubmissionService;
@@ -31,7 +24,7 @@ public class SubmissionServiceImpl implements SubmissionService {
     private SubmissionRepository submissionRepository;
 
     @Autowired
-    private DocumentRepository documentRepository;
+    private PaperRepository paperRepository;
 
     @Autowired
     private UserService userService;
@@ -42,30 +35,33 @@ public class SubmissionServiceImpl implements SubmissionService {
     @Override
     public void create(String paper, Long userId) {
         User author = userService.findById(userId);
-        Submission submission = new Submission(author);
-        submission = submissionRepository.save(submission);
 
-        this.saveDocument(paper, submission, "paper.xml");
+        Submission submission = new Submission();
+        submission.setAuthorId(author.getId());
+
+        submissionRepository.save(submission);
+        paperRepository.save(paper, submission, "paper.xml");
     }
 
     @Override
-    public void addReview(Long submissionId, String review, Long userId) throws Exception {
+    public void addReview(String submissionId, String review, Long userId) throws Exception {
         Submission submission = this.findById(submissionId);
         User reviewer = userService.findById(userId);
 
         if (checkIfSubmissionClosed(submission))
             throw new SubmissionClosedException();
 
-        if (!submission.getReviewers().contains(reviewer))
+        if (submission.getReviewerIds().stream().noneMatch(r -> r.getReviewerId() == reviewer.getId()))
             throw new NotSubmissionReviewerException();
 
-        saveDocument(review, submission, String.format("review_%s.xml", reviewer.getId()));
+        paperRepository.save(review, submission, String.format("review_%s.xml", reviewer.getId()));
 
         if (checkIfAllReviewsAdded(submission)) {
-            submission.setStatus(SubmissionStatus.REVIEWS_DONE);
+            submission.setSubmissionStatus(SubmissionStatus.REVIEWS_DONE.toString());
             submissionRepository.save(submission);
             try {
-                emailService.sendChangeStatusNotification(submission.getEditor().getEmail(), submission);
+                User editor = userService.findById(submission.getEditorId());
+                emailService.sendChangeStatusNotification(editor.getEmail(), submission);
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
@@ -73,117 +69,123 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     @Override
-    public void addRevision(Long submissionId, String paper, Long userId) {
+    public void addRevision(String submissionId, String paper, Long userId) {
         User author = userService.findById(userId);
         Submission submission = this.findById(submissionId);
 
         if (checkIfSubmissionClosed(submission))
             throw new SubmissionClosedException();
 
-        if (submission.getStatus() != SubmissionStatus.NEEDS_REWORK)
+        if (!submission.getSubmissionStatus().equals(SubmissionStatus.NEEDS_REWORK.toString()))
             throw new SubmissionClosedForRevisions();
 
-        if (submission.getAuthor() != author)
+        if (submission.getAuthorId() != author.getId())
             throw new NotSubmissionAuthorException();
 
         submission.setCurrentRevision(submission.getCurrentRevision() + 1);
-        submission.setStatus(SubmissionStatus.SUBMITTED_FOR_REVIEW);
+        submission.setSubmissionStatus(SubmissionStatus.SUBMITTED_FOR_REVIEW.toString());
         submissionRepository.save(submission);
 
-        saveDocument(paper, submission, "paper.xml");
+        paperRepository.save(paper, submission, "paper.xml");
         try {
-            emailService.sendChangeStatusNotification(submission.getEditor().getEmail(), submission);
+            User editor = userService.findById(submission.getEditorId());
+            emailService.sendChangeStatusNotification(editor.getEmail(), submission);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public Submission findById(Long submissionId) {
-        return submissionRepository.findById(submissionId).orElseThrow(SubmissionNotFoundException::new);
+    public Submission findById(String submissionId) {
+        try {
+            return submissionRepository.getById(submissionId);
+        } catch (Exception e) {
+            throw new SubmissionNotFoundException();
+        }
     }
 
     @Override
-    public Page<Submission> findAll(Specification<Submission> specification, Pageable page) {
-        return submissionRepository.findAll(specification, page);
+    public List<Submission> findAll() throws Exception {
+        return submissionRepository.getAll();
     }
 
     @Override
-    public List<Submission> findAllByAuthorId(Long authorId) {
+    public List<Submission> findAllByAuthorId(Long authorId) throws Exception {
         return submissionRepository.findDistinctSubmissionsByAuthor_Id(authorId);
     }
 
     @Override
-    public List<Submission> findAllNeedingReviewByReviewerId(Long reviewerId) {
+    public List<Submission> findAllNeedingReviewByReviewerId(Long reviewerId) throws Exception {
         return submissionRepository.findDistinctSubmissionsByReviewersContaining(reviewerId);
     }
 
     @Override
-    public List<Submission> findAllByStatus(SubmissionStatus status) {
+    public List<Submission> findAllByStatus(SubmissionStatus status) throws Exception {
         return submissionRepository.findDistinctSubmissionsByStatus(status);
     }
 
     @Override
-    public void setSubmissionStatus(Long submissionId, Long userId, SubmissionStatus status) {
+    public void setSubmissionStatus(String submissionId, Long userId, SubmissionStatus status) {
         User user = userService.findById(userId);
         Submission submission = findById(submissionId);
 
         if (checkIfSubmissionClosed(submission))
             throw new SubmissionClosedException();
 
-        if (status == SubmissionStatus.AUTHOR_TAKEDOWN && submission.getAuthor() != user) {
+        if (status == SubmissionStatus.AUTHOR_TAKEDOWN && submission.getAuthorId() != user.getId()) {
             throw new NotSubmissionAuthorException();
-        } else if (user.getRole() == Role.ROLE_EDITOR && submission.getEditor() != user ){
+        } else if (user.getRole() == Role.ROLE_EDITOR && submission.getEditorId() != user.getId()){
             throw new NotSubmissionEditorException();
         }
 
-        submission.setStatus(status);
+        submission.setSubmissionStatus(status.toString());
         submissionRepository.save(submission);
 
         try {
-            if (status == SubmissionStatus.AUTHOR_TAKEDOWN)
-                emailService.sendChangeStatusNotification(submission.getEditor().getEmail(), submission);
-            emailService.sendChangeStatusNotification(submission.getAuthor().getEmail(), submission);
+            if (status == SubmissionStatus.AUTHOR_TAKEDOWN) {
+                User editor = userService.findById(submission.getEditorId());
+                emailService.sendChangeStatusNotification(editor.getEmail(), submission);
+            } else {
+                User author = userService.findById(submission.getAuthorId());
+                emailService.sendChangeStatusNotification(author.getEmail(), submission);
+            }
         } catch (MessagingException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public void setSubmissionReviewers(Long submissionId, Long editorId, List<Long> reviewerIds) {
-        User editor = userService.findById(editorId);
+    public void setSubmissionReviewers(String submissionId, Long editorId, List<Long> reviewerIds) {
         Submission submission = findById(submissionId);
+        User editor = userService.findById(editorId);
 
         if (checkIfSubmissionClosed(submission))
             throw new SubmissionClosedException();
 
-        if (submission.getEditor() != editor)
+        if (submission.getEditorId() != editor.getId())
             throw new NotSubmissionEditorException();
 
         List<User> reviewers = userService.findByIds(reviewerIds);
         if (reviewers.isEmpty())
             throw new UserNotFoundException();
 
-        List<User> previousReviewers = submission.getReviewers();
-        submission.setReviewers(reviewers);
-        submissionRepository.save(submission);
+        List<Submission.ReviewerIds> previousReviewers = submission.getReviewerIds();
+        for (Long reviewerId : reviewerIds) {
+            Submission.ReviewerIds reviewer = new Submission.ReviewerIds();
+            reviewer.setReviewerId(reviewerId);
 
-        for (User currentReviewer : submission.getReviewers()) {
-            if (!previousReviewers.isEmpty() && !previousReviewers.contains(currentReviewer)) {
-                try {
-                    emailService.sendReviewerChosenNotification(currentReviewer.getEmail(), submission);
-                } catch (MessagingException e) {
-                    e.printStackTrace();
-                }
-            }
+            submission.getReviewerIds().add(reviewer);
         }
 
+        submissionRepository.save(submission);
+        sendEmailsToNewlyAddedReviewers(submission, editor, previousReviewers);
     }
 
     @Override
-    public void setSubmissionEditor(Long submissionId, Long editorId){
-        User editor = userService.findById(editorId);
+    public void setSubmissionEditor(String submissionId, Long editorId){
         Submission submission = findById(submissionId);
+        User editor = userService.findById(editorId);
+        User author = userService.findById(submission.getAuthorId());
 
         if (checkIfSubmissionClosed(submission))
             throw new SubmissionClosedException();
@@ -191,43 +193,47 @@ public class SubmissionServiceImpl implements SubmissionService {
         if (editor.getRole() != Role.ROLE_EDITOR)
             throw new UserNotEditorException();
 
-        submission.setEditor(editor);
-        submission.setStatus(SubmissionStatus.IN_REVIEW);
+        submission.setEditorId(editorId);
+        submission.setSubmissionStatus(SubmissionStatus.IN_REVIEW.toString());
         submissionRepository.save(submission);
 
         try {
-            emailService.sendChangeStatusNotification(submission.getAuthor().getEmail(), submission);
+            emailService.sendChangeStatusNotification(author.getEmail(), submission);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
     }
 
-    private void saveDocument(String document, Submission submission, String documentName) {
-        try {
-        Paper paperObject = XMLUnmarshaller.createPaperFromXML(document);
-        documentRepository.save(paperObject, String.format("/db/xml_project_tim6/submissions/%s/revision_%s/",
-                submission.getId(), submission.getCurrentRevision()), documentName);
-        } catch (Exception e) {
-            throw new DocumentNotSavedException();
-        }
-    }
-
     private boolean checkIfSubmissionClosed(Submission submission) {
-        return submission.getStatus() == SubmissionStatus.REJECTED ||
-               submission.getStatus() == SubmissionStatus.AUTHOR_TAKEDOWN ||
-               submission.getStatus() == SubmissionStatus.ACCEPTED;
+        return submission.getSubmissionStatus().equals(SubmissionStatus.REJECTED.toString()) ||
+               submission.getSubmissionStatus().equals(SubmissionStatus.AUTHOR_TAKEDOWN.toString())  ||
+               submission.getSubmissionStatus().equals(SubmissionStatus.ACCEPTED.toString()) ;
     }
 
     private boolean checkIfAllReviewsAdded(Submission submission) throws Exception {
-        List<Long> userIds = submission.getReviewers().stream().map(User::getId).collect(Collectors.toList());
+        List<Long> userIds = submission.getReviewerIds().stream().map(Submission.ReviewerIds::getReviewerId).
+                collect(Collectors.toList());
+
         for (Long id : userIds) {
-            ResourceSet resourceSet = documentRepository.checkIfDocumentExist(String.format("/db/xml_project_tim6/submissions/%s/revision_%s/",
-                    submission.getId(), submission.getCurrentRevision()), String.format("review_%s", id));
-            boolean value = Boolean.parseBoolean(String.valueOf(resourceSet.getResource(0L).getContent()));
-            if (!value)
+            boolean exists = paperRepository.checkIfPaperExists(submission, String.format("review_%s", id));
+            if (!exists)
                 return false;
         }
         return true;
     }
+
+    private void sendEmailsToNewlyAddedReviewers(Submission submission, User editor, List<Submission.ReviewerIds> previousReviewers) {
+        for (Submission.ReviewerIds currentReviewer : submission.getReviewerIds()) {
+            if (!previousReviewers.isEmpty() && !previousReviewers.contains(currentReviewer)) {
+                try {
+                    User notPreviouslyAddedReviewer = userService.findById(currentReviewer.getReviewerId());
+                    emailService.sendReviewerChosenNotification(notPreviouslyAddedReviewer.getEmail(), submission, editor.getEmail());
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 
 }

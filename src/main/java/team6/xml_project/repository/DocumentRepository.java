@@ -16,7 +16,7 @@ public interface DocumentRepository {
 
     ResourceSet executeXPathQuery(String collectionId, String xPathExp) throws Exception;
 
-    ResourceSet executeXQuery(String collectionId, String xQueryFilePath) throws Exception;
+    ResourceSet executeXQuery(String collectionId, String xQuery) throws Exception;
 
     ResourceSet checkIfDocumentExist(String collectionId, String documentName) throws Exception;
 

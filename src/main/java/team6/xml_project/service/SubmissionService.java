@@ -1,10 +1,7 @@
 package team6.xml_project.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
-import team6.xml_project.models.Submission;
 import team6.xml_project.models.SubmissionStatus;
+import team6.xml_project.models.xml.submission.Submission;
 
 import java.util.List;
 
@@ -12,23 +9,23 @@ public interface SubmissionService {
 
     void create(String paper, Long userId) throws Exception;
 
-    void addReview(Long submissionId, String review, Long userId) throws Exception;
+    void addReview(String submissionId, String review, Long userId) throws Exception;
 
-    void addRevision(Long submissionId, String paper, Long userId) throws Exception;
+    void addRevision(String submissionId, String paper, Long userId) throws Exception;
 
-    Submission findById(Long submissionId);
+    Submission findById(String submissionId);
 
-    Page<Submission> findAll(Specification<Submission> specification, Pageable page);
+    List<Submission> findAll() throws Exception;
 
-    List<Submission> findAllByAuthorId(Long authorId);
+    List<Submission> findAllByAuthorId(Long authorId) throws Exception;
 
-    List<Submission> findAllNeedingReviewByReviewerId(Long reviewerId);
+    List<Submission> findAllNeedingReviewByReviewerId(Long reviewerId) throws Exception;
 
-    List<Submission> findAllByStatus(SubmissionStatus status);
+    List<Submission> findAllByStatus(SubmissionStatus status) throws Exception;
 
-    void setSubmissionStatus(Long submissionId, Long userId, SubmissionStatus status);
+    void setSubmissionStatus(String submissionId, Long userId, SubmissionStatus status);
 
-    void setSubmissionReviewers(Long submissionId, Long editorId, List<Long> reviewerIds);
+    void setSubmissionReviewers(String submissionId, Long editorId, List<Long> reviewerIds);
 
-    void setSubmissionEditor(Long submissionId, Long editorId);
+    void setSubmissionEditor(String submissionId, Long editorId);
 }
