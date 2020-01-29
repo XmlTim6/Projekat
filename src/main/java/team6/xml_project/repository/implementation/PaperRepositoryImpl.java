@@ -17,7 +17,7 @@ public class PaperRepositoryImpl implements PaperRepository {
     private DocumentRepository documentRepository;
 
     @Override
-    public Paper getById(String collectionId, String documentId) throws Exception {
+    public Paper get(String collectionId, String documentId) throws Exception {
         Paper paper = new Paper();
         paper = (Paper) documentRepository.getDocumentById(paper, collectionId, documentId);
         return paper;

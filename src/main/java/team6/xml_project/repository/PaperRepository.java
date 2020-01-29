@@ -6,7 +6,7 @@ import team6.xml_project.models.xml.submission.Submission;
 
 public interface PaperRepository {
 
-    Paper getById(String collectionId, String documentId) throws Exception;
+    Paper get(String collectionId, String documentId) throws Exception;
 
     void save(String paper, Submission submission, String documentName);
 

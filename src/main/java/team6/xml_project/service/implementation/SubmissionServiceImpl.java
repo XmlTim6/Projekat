@@ -6,14 +6,22 @@ import team6.xml_project.exception.*;
 import team6.xml_project.models.Role;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.User;
+import team6.xml_project.models.xml.paper.Paper;
 import team6.xml_project.models.xml.submission.Submission;
+import team6.xml_project.repository.PaperRDFRepository;
 import team6.xml_project.repository.PaperRepository;
 import team6.xml_project.repository.SubmissionRepository;
-import team6.xml_project.service.EmailService;
-import team6.xml_project.service.SubmissionService;
-import team6.xml_project.service.UserService;
+import team6.xml_project.service.*;
 
 import javax.mail.MessagingException;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.transform.TransformerException;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,13 +32,19 @@ public class SubmissionServiceImpl implements SubmissionService {
     private SubmissionRepository submissionRepository;
 
     @Autowired
-    private PaperRepository paperRepository;
+    private PaperService paperService;
 
     @Autowired
     private UserService userService;
 
     @Autowired
     private EmailService emailService;
+
+    @Autowired
+    private XSLTransformationService xslTransformationService;
+
+    @Autowired
+    private PaperRDFService paperRDFService;
 
     @Override
     public void create(String paper, Long userId) {
@@ -40,7 +54,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         submission.setAuthorId(author.getId());
 
         submissionRepository.save(submission);
-        paperRepository.save(paper, submission, "paper.xml");
+        paperService.save(paper, submission, "paper.xml");
     }
 
     @Override
@@ -54,7 +68,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         if (submission.getReviewerIds().stream().noneMatch(r -> r.getReviewerId() == reviewer.getId()))
             throw new NotSubmissionReviewerException();
 
-        paperRepository.save(review, submission, String.format("review_%s.xml", reviewer.getId()));
+        paperService.save(review, submission, String.format("review_%s.xml", reviewer.getId()));
 
         if (checkIfAllReviewsAdded(submission)) {
             submission.setSubmissionStatus(SubmissionStatus.REVIEWS_DONE.toString());
@@ -86,7 +100,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         submission.setSubmissionStatus(SubmissionStatus.SUBMITTED_FOR_REVIEW.toString());
         submissionRepository.save(submission);
 
-        paperRepository.save(paper, submission, "paper.xml");
+        paperService.save(paper, submission, "paper.xml");
         try {
             User editor = userService.findById(submission.getEditorId());
             emailService.sendChangeStatusNotification(editor.getEmail(), submission);
@@ -125,12 +139,12 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     @Override
-    public void setSubmissionStatus(String submissionId, Long userId, SubmissionStatus status) {
+    public void setSubmissionStatus(String submissionId, Long userId, SubmissionStatus status) throws FileNotFoundException, TransformerException, JAXBException {
         User user = userService.findById(userId);
         Submission submission = findById(submissionId);
 
-        if (checkIfSubmissionClosed(submission))
-            throw new SubmissionClosedException();
+//        if (checkIfSubmissionClosed(submission))
+//            throw new SubmissionClosedException();
 
         if (status == SubmissionStatus.AUTHOR_TAKEDOWN && submission.getAuthorId() != user.getId()) {
             throw new NotSubmissionAuthorException();
@@ -140,6 +154,10 @@ public class SubmissionServiceImpl implements SubmissionService {
 
         submission.setSubmissionStatus(status.toString());
         submissionRepository.save(submission);
+
+        if (status == SubmissionStatus.ACCEPTED) {
+            handlePaperAcceptance(submission);
+        }
 
         try {
             if (status == SubmissionStatus.AUTHOR_TAKEDOWN) {
@@ -152,6 +170,26 @@ public class SubmissionServiceImpl implements SubmissionService {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
+    }
+
+    private void handlePaperAcceptance(Submission submission) throws FileNotFoundException, TransformerException, JAXBException {
+        Paper paper = paperService.findPaper(
+                String.format("/db/xml_project_tim6/papers/%s/revision_%s", submission.getId(), submission.getCurrentRevision()),
+                "paper.xml");
+
+        JAXBContext context = JAXBContext.newInstance("team6.xml_project.models.xml.paper");
+        Marshaller marshaller = context.createMarshaller();
+        OutputStream paperXML = new ByteArrayOutputStream();
+        marshaller.marshal(paper, paperXML);
+
+        OutputStream outputStream = xslTransformationService.addMetadataToPaper(paperXML.toString(),
+                String.format("http://www.tim6.rs/papers/%s/revision_%s/paper.xml",
+                        submission.getId(), submission.getCurrentRevision()));
+
+        InputStream rdfInputStream = paperService.createPaperRDFStreamFromXML(outputStream.toString());
+        paperRDFService.addPaperMetadata(rdfInputStream);
+
+        paperService.save(outputStream.toString(), submission, "paper.xml");
     }
 
     @Override
@@ -215,7 +253,7 @@ public class SubmissionServiceImpl implements SubmissionService {
                 collect(Collectors.toList());
 
         for (Long id : userIds) {
-            boolean exists = paperRepository.checkIfPaperExists(submission, String.format("review_%s", id));
+            boolean exists = paperService.checkIfPaperExists(submission, String.format("review_%s", id));
             if (!exists)
                 return false;
         }

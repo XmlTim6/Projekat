@@ -15,6 +15,9 @@ import team6.xml_project.web.dto.ReviewerListDTO;
 import team6.xml_project.web.dto.submission.SubmissionGetDTO;
 
 import javax.validation.Valid;
+import javax.xml.bind.JAXBException;
+import javax.xml.transform.TransformerException;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -120,7 +123,7 @@ public class SubmissionController {
     @RequestMapping(value="/{submission_id}/set_status", method = RequestMethod.PUT)
     @PreAuthorize("hasRole('EDITOR')")
     public ResponseEntity setStatus(@PathVariable String submission_id,
-                                       @Valid @RequestBody SubmissionStatus status) {
+                                       @Valid @RequestBody SubmissionStatus status) throws FileNotFoundException, TransformerException, JAXBException {
         Long userId = this.getCurrentUserId();
         submissionService.setSubmissionStatus(submission_id, userId, status);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -128,7 +131,7 @@ public class SubmissionController {
 
     @RequestMapping(value="/{submission_id}/takedown", method = RequestMethod.PUT)
     @PreAuthorize("hasRole('AUTHOR')")
-    public ResponseEntity setStatus(@PathVariable String submission_id) {
+    public ResponseEntity setStatus(@PathVariable String submission_id) throws FileNotFoundException, TransformerException, JAXBException {
         Long userId = this.getCurrentUserId();
         submissionService.setSubmissionStatus(submission_id, userId, SubmissionStatus.AUTHOR_TAKEDOWN);
         return new ResponseEntity<>(HttpStatus.OK);
