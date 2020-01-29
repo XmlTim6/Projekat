@@ -12,6 +12,7 @@ import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.xml.submission.Submission;
 import team6.xml_project.service.SubmissionService;
 import team6.xml_project.web.dto.ReviewerListDTO;
+import team6.xml_project.web.dto.submission.SetEditorDTO;
 import team6.xml_project.web.dto.submission.SubmissionGetDTO;
 
 import javax.validation.Valid;
@@ -101,10 +102,10 @@ public class SubmissionController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
-    @RequestMapping(value="/{submission_id}/set_editor", method = RequestMethod.PUT)
+    @RequestMapping(value="/{submission_id}/set_editor", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasRole('EDITOR')")
-    public ResponseEntity setEditor(@PathVariable String submission_id, @RequestBody Long editorId) {
-        submissionService.setSubmissionEditor(submission_id, editorId);
+    public ResponseEntity setEditor(@PathVariable String submission_id, @RequestBody SetEditorDTO setEditorDTO) {
+        submissionService.setSubmissionEditor(submission_id, setEditorDTO.getEditorId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import team6.xml_project.exception.EmailAlreadyExistsException;
+import team6.xml_project.exception.UserNotFoundException;
 import team6.xml_project.models.Role;
 import team6.xml_project.models.User;
 import team6.xml_project.service.UserService;
@@ -76,15 +77,20 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    private void isDuplicateEmail(@RequestBody @Valid RegisterUserDTO newUser) {
+    private void isDuplicateEmail(RegisterUserDTO newUser) {
         if (emailAlreadyExists(newUser.getEmail())){
             throw new EmailAlreadyExistsException();
         }
     }
 
     private Boolean emailAlreadyExists(String email){
-        User userWithSameEmail = userService.findByEmail(email);
-        return userWithSameEmail != null;
+        try {
+            userService.findByEmail(email);
+        } catch (UserNotFoundException e) {
+            return false;
+        }
+        return true;
+
     }
 
 }
