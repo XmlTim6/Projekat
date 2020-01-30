@@ -57,6 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll().
                 antMatchers("/api/auth").permitAll().
                 antMatchers(HttpMethod.POST, "/api/users").permitAll().
+                antMatchers(HttpMethod.POST, "/api/users/author").permitAll().
                 antMatchers(HttpMethod.GET, "/api/paper").permitAll().
                 antMatchers(HttpMethod.GET, "/api/paper/*").permitAll().
                 antMatchers(HttpMethod.GET, "/api/paper/**").permitAll().
