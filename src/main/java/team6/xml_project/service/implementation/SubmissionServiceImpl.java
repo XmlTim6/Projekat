@@ -22,6 +22,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.transform.TransformerException;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -171,9 +172,12 @@ public class SubmissionServiceImpl implements SubmissionService {
                 User author = userService.findById(submission.getAuthorId());
                 emailService.sendChangeStatusNotification(author.getEmail(), submission);
             }
-        } catch (MessagingException e) {
+            // moze da se desi da submission nema setovanog editora pa pukne prilikom takedown-a
+            // zato hvatam UserNotFoundException
+        } catch (MessagingException | UserNotFoundException e) {
             e.printStackTrace();
         }
+
     }
 
     private void handlePaperAcceptance(Submission submission) throws IOException, TransformerException, JAXBException, SAXException {
@@ -208,7 +212,14 @@ public class SubmissionServiceImpl implements SubmissionService {
             throw new UserNotFoundException();
 
         List<Submission.ReviewerIds> previousReviewers = submission.getReviewerIds();
+
+        submission.getReviewerIds().removeAll(submission.getReviewerIds());
+
         for (Long reviewerId : reviewerIds) {
+            if(submission.getAuthorId() == reviewerId){
+                continue;
+            }
+
             Submission.ReviewerIds reviewer = new Submission.ReviewerIds();
             reviewer.setReviewerId(reviewerId);
 

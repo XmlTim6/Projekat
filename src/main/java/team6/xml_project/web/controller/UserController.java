@@ -17,6 +17,9 @@ import team6.xml_project.web.dto.user.UpdateUserDTO;
 import team6.xml_project.web.dto.user.UserProfileDTO;
 
 import javax.validation.Valid;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "api/users")
@@ -34,6 +37,17 @@ public class UserController {
         User currentUser = userService.findById(id);
         UserProfileDTO currentUserProfile = new UserProfileDTO(currentUser);
         return new ResponseEntity<>(currentUserProfile, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @PreAuthorize("hasAnyRole('EDITOR')")
+    public ResponseEntity<List<UserProfileDTO>> getAll(){
+        List<User> users = userService.findAll();
+        List<UserProfileDTO> usersToReturn = users.stream()
+                .sorted(Comparator.comparing(User::getRole))
+                .map(UserProfileDTO::new)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(usersToReturn, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.PUT)

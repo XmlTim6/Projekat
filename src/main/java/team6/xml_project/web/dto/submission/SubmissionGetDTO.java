@@ -19,6 +19,7 @@ public class SubmissionGetDTO {
     private List<Long> reviewerIds;
     private SubmissionStatus status;
     private Long currentRevision;
+    private String title;
 
     public SubmissionGetDTO(Submission submission) {
         this.id = submission.getId();
@@ -27,14 +28,16 @@ public class SubmissionGetDTO {
         this.reviewerIds = submission.getReviewerIds().stream().map(Submission.ReviewerIds::getReviewerId).collect(Collectors.toList());
         this.status = SubmissionStatus.valueOf(submission.getSubmissionStatus());
         this.currentRevision = submission.getCurrentRevision();
+        this.title = submission.getTitle();
     }
 
-    public SubmissionGetDTO(String id, Long userId, Long editorId, List<Long> reviewerIds, SubmissionStatus status, Long currentRevision) {
+    public SubmissionGetDTO(String id, Long userId, Long editorId, List<Long> reviewerIds, SubmissionStatus status, Long currentRevision, String title) {
         this.id = id;
         this.userId = userId;
         this.editorId = editorId;
         this.reviewerIds = reviewerIds;
         this.status = status;
         this.currentRevision = currentRevision;
+        this.title = title;
     }
 }
