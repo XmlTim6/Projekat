@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}ID"/>
+ *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="authorId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="editorId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="reviewerIds" maxOccurs="unbounded" minOccurs="0">
@@ -56,6 +57,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "id",
+    "title",
     "authorId",
     "editorId",
     "reviewerIds",
@@ -63,28 +65,31 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "currentRevision"
 })
 @XmlRootElement(name = "submission")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
 public class Submission extends Document {
 
     @XmlElement(required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    protected String id = UUID.randomUUID().toString();
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    protected String id = UUID.randomUUID().toString();;
+    @XmlElement(required = true, defaultValue = "")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    protected String title = "";
     @XmlElement(defaultValue = "0")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    protected long authorId;
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    protected long authorId = 0;
     @XmlElement(defaultValue = "0")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    protected long editorId;
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    protected List<Submission.ReviewerIds> reviewerIds = new ArrayList<>();
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    protected long editorId = 0;
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    protected List<Submission.ReviewerIds> reviewerIds =  new ArrayList<>();;
     @XmlElement(required = true, defaultValue = "SUBMITTED_FOR_REVIEW")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String submissionStatus = SubmissionStatus.SUBMITTED_FOR_REVIEW.toString();
     @XmlElement(defaultValue = "1")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected long currentRevision = 1;
 
     /**
@@ -95,7 +100,7 @@ public class Submission extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getId() {
         return id;
     }
@@ -108,16 +113,42 @@ public class Submission extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setId(String value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the title property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Sets the value of the title property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    public void setTitle(String value) {
+        this.title = value;
     }
 
     /**
      * Gets the value of the authorId property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public long getAuthorId() {
         return authorId;
     }
@@ -126,7 +157,7 @@ public class Submission extends Document {
      * Sets the value of the authorId property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setAuthorId(long value) {
         this.authorId = value;
     }
@@ -135,7 +166,7 @@ public class Submission extends Document {
      * Gets the value of the editorId property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public long getEditorId() {
         return editorId;
     }
@@ -144,7 +175,7 @@ public class Submission extends Document {
      * Sets the value of the editorId property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setEditorId(long value) {
         this.editorId = value;
     }
@@ -171,7 +202,7 @@ public class Submission extends Document {
      * 
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public List<Submission.ReviewerIds> getReviewerIds() {
         if (reviewerIds == null) {
             reviewerIds = new ArrayList<Submission.ReviewerIds>();
@@ -187,7 +218,7 @@ public class Submission extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getSubmissionStatus() {
         return submissionStatus;
     }
@@ -200,7 +231,7 @@ public class Submission extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setSubmissionStatus(String value) {
         this.submissionStatus = value;
     }
@@ -209,7 +240,7 @@ public class Submission extends Document {
      * Gets the value of the currentRevision property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public long getCurrentRevision() {
         return currentRevision;
     }
@@ -218,7 +249,7 @@ public class Submission extends Document {
      * Sets the value of the currentRevision property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setCurrentRevision(long value) {
         this.currentRevision = value;
     }
@@ -247,18 +278,18 @@ public class Submission extends Document {
     @XmlType(name = "", propOrder = {
         "reviewerId"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class ReviewerIds {
 
         @XmlElement(defaultValue = "0")
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected long reviewerId;
 
         /**
          * Gets the value of the reviewerId property.
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public long getReviewerId() {
             return reviewerId;
         }
@@ -267,7 +298,7 @@ public class Submission extends Document {
          * Sets the value of the reviewerId property.
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T06:34:58+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-30T03:56:57+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setReviewerId(long value) {
             this.reviewerId = value;
         }

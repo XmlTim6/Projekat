@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<paper xmlns="XML_tim6"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="XML_tim6 file:/D:/Development/FTN/SEM7/XML/Projekat/backend/data/schema/paper.xsd" title="Paper 1">
+    <received>2020-01-20Z</received>
+    <revised>2020-02-15</revised>
+    <accepted>2020-03-14Z</accepted>
+    <authors>
+        <author
+            email="email1@email.com">
+            <personal>
+                <first_name>John</first_name>
+                <middle_name>S</middle_name>
+                <last_name>Smith</last_name>
+            </personal>
+            <institution>
+                <name>Institution Name 1</name>
+                <city>City 1</city>
+                <country>Country 1</country>
+            </institution>
+        </author>
+        <author
+            email="email2@email.com">
+            <personal>
+                <first_name>Jane</first_name>
+                <middle_name>S</middle_name>
+                <last_name>Smith</last_name>
+            </personal>
+            <institution>
+                <name>Institution Name 1</name>
+                <city>City 1</city>
+                <country>Country 1</country>
+            </institution>
+        </author>
+    </authors>
+    <abstract paper_type="conceptual">
+        <purpose>Proin varius mi in elementum pharetra. Aliquam vitae turpis urna. Sed sit amet facilisis nibh. Phasellus consectetur diam eget varius malesuada. Morbi sed pharetra diam. Aliquam fermentum leo vitae fringilla ullamcorper. Etiam volutpat interdum mattis. Ut posuere auctor risus id molestie. Maecenas molestie quam quis malesuada vestibulum. Vestibulum id ante enim.</purpose>
+        <methodology>Mauris ullamcorper quam nec augue luctus aliquet. Integer et auctor mi. Curabitur pulvinar sit amet arcu et ultrices. Donec vehicula augue non posuere pretium. Vivamus mattis interdum magna, eu finibus nisl luctus vitae. Vestibulum vitae bibendum nunc. Vestibulum magna ligula, pharetra ut aliquam et, venenatis a sem. Maecenas placerat egestas ex non porta. In volutpat erat in velit pharetra, in sodales tortor pretium.</methodology>
+        <findings>Nulla imperdiet erat enim, vel dictum sapien tincidunt sed. Ut pharetra, metus ac lobortis fermentum, sem dolor euismod dui, eget fermentum erat risus quis mi. Pellentesque sit amet maximus nulla. Nulla ac ligula malesuada, sodales tellus elementum, ultrices augue. Vestibulum fringilla iaculis dui at venenatis. Mauris vehicula odio in cursus semper. Aenean volutpat odio eros, at venenatis nibh porttitor at. Etiam sagittis purus in fermentum imperdiet.</findings>
+        <research_implications>Pellentesque vitae lacus a ex rutrum molestie ac ac diam. Aliquam rhoncus vehicula congue. Integer ultricies est quis purus tempor aliquam. Vestibulum aliquam, nulla in sagittis sodales, nisi urna semper elit, sit amet maximus nisi nunc nec mi. Suspendisse augue diam, pharetra vel odio sed, elementum fermentum lectus. Curabitur eget dignissim nisi, quis hendrerit ligula. Duis at tristique nisl. Aenean non vehicula turpis, non mollis magna. Vivamus et mollis tortor. Curabitur rhoncus aliquet tortor ut ullamcorper. Integer rutrum rutrum blandit.</research_implications>
+        <practical_implcations>Fusce bibendum imperdiet efficitur. Etiam convallis dui velit, sed pulvinar ante varius vitae. Donec et nisl a nisi sollicitudin rhoncus. Nullam quis vulputate arcu. Vivamus a dolor magna. Nam nec nunc eu risus venenatis tincidunt et vel nisl. Nullam eu orci ex. Duis nec porttitor nulla. Fusce pharetra tempus dui ac condimentum.</practical_implcations>
+        <orginality>Cras euismod dui id bibendum efficitur. In condimentum magna eu dui blandit rutrum. Ut a pulvinar risus. Nulla ex felis, interdum vel suscipit id, mattis nec diam. Vivamus tincidunt luctus arcu, sit amet hendrerit nisl auctor gravida. Nulla semper arcu ipsum, in rutrum tortor vestibulum id. Praesent eros urna, finibus sed posuere et, accumsan sed nunc. Donec ex velit, laoreet quis volutpat tristique, luctus eu nibh. Vivamus eu libero nulla. Suspendisse potenti. Maecenas vitae maximus mi, id accumsan lectus. Nullam sed volutpat ex. Quisque varius lacus luctus dapibus rhoncus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</orginality>
+        <keywords>
+            <keyword>keyword1</keyword>
+            <keyword>keyword2</keyword>
+        </keywords>
+    </abstract>
+    <content>
+        <quote id="ID001" attributed_to="Anonymous" source="Quote source 1" reference_to="ID009">Sed fringilla ligula at elementum viverra. Phasellus congue iaculis nibh, ac varius ipsum tempor at. Class aptent taciti sociosqu ad.</quote>
+        <quote id="ID003" attributed_to="Author" source="Quote source 2" reference_to="ID011">Donec nulla purus, egestas a malesuada in, congue id nibh. Donec dapibus ligula turpis, sed fringilla nisl auctor ac. Aenean.</quote>
+    </content>
+    <references>
+        <mention id="ID005">
+            <authors>
+                <author>
+                    <last_name>Morales</last_name>
+                    <initial>B.</initial>
+                </author>
+                <author>
+                    <last_name>Lee</last_name>
+                    <initial>R.</initial>
+                </author>
+            </authors>
+            <work>
+                <year_published>2001</year_published>
+                <title>Reference 1</title>
+                <edition>2</edition>
+                <city>New York</city>
+                <publisher>Green</publisher>
+                <numbers>23</numbers>
+            </work>
+        </mention>
+        <mention id="ID007">
+            <authors>
+                <author>
+                    <last_name>Emmet</last_name>
+                    <initial>D.</initial>
+                </author>
+            </authors>
+            <work>
+                <year_published>1998</year_published>
+                <title>Reference 2</title>
+                <edition>3</edition>
+                <city>London</city>
+                <publisher>Tee Inc.</publisher>
+                <numbers>2</numbers>
+            </work>
+        </mention>
+    </references>
+    <citations>
+        <mention id="ID009">
+            <authors>
+                <author>
+                    <last_name>Rich</last_name>
+                    <initial>H.</initial>
+                </author>
+            </authors>
+            <work>
+                <year_published>1994</year_published>
+                <title>Citation 1</title>
+                <edition>6</edition>
+                <city>Stockholm</city>
+                <publisher>Burg Publishing</publisher>
+                <numbers>2</numbers>
+            </work>
+        </mention>
+        <mention id="ID011">
+            <authors>
+                <author>
+                    <last_name>Johnson</last_name>
+                    <initial>P.</initial>
+                </author>
+            </authors>
+            <work>
+                <year_published>2001</year_published>
+                <title>Citation 2</title>
+                <edition>3</edition>
+                <city>Washington</city>
+                <publisher>Tim Books</publisher>
+                <numbers>6</numbers>
+            </work>
+        </mention>
+    </citations>
+    <notes>
+        <note ref_id="ID007">Convallis posuere morbi leo urna molestie at elementum eu facilisis. Faucibus a pellentesque sit amet porttitor eget dolor morbi non. Dictum varius duis at consectetur lorem. Vitae ultricies leo integer malesuada nunc vel risus. Sed odio morbi quis commodo odio aenean. Vitae tortor condimentum lacinia quis vel eros donec. Facilisis mauris sit amet massa vitae tortor condimentum lacinia. Congue quisque egestas diam in arcu cursus euismod. At lectus urna duis convallis.</note>
+        <note ref_id="ID003">Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit. Vestibulum lectus mauris ultrices eros in cursus turpis massa tincidunt. Quisque egestas diam in arcu cursus euismod quis viverra nibh. Mauris sit amet massa vitae. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit. Velit dignissim sodales ut eu sem integer vitae justo eget. Amet venenatis urna cursus eget nunc scelerisque viverra. Fames ac turpis egestas maecenas pharetra convallis posuere. Eleifend donec pretium vulputate sapien nec sagittis. Non curabitur gravida arcu ac tortor dignissim. Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare. Massa placerat duis ultricies lacus sed turpis tincidunt. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh sit. Mattis nunc sed blandit libero volutpat sed.</note>
+    </notes>
+</paper>
