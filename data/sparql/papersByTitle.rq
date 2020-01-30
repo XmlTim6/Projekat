@@ -1,8 +1,10 @@
-SELECT DISTINCT ?paper ?title ?received ?revised ?accepted FROM <%s>
+SELECT DISTINCT ?paper ?title ?received ?revised ?accepted ?accepted ?author FROM <%s>
 WHERE {
   	?paper <http://www.tim6.rs/predicate/title> ?title .
   	?paper <http://www.tim6.rs/predicate/received> ?received .
   	?paper <http://www.tim6.rs/predicate/revised> ?revised .
     ?paper <http://www.tim6.rs/predicate/accepted> ?accepted .
-  FILTER(regex(str(?title), "%s"))
+    ?paper <http://www.tim6.rs/predicate/author> ?author .
+    ?paper <http://www.tim6.rs/predicate/institution> ?institution .
+    FILTER(regex(str(?title), "%s", "i"))
 }

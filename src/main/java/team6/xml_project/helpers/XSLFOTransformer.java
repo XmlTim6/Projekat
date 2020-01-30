@@ -26,7 +26,7 @@ public class XSLFOTransformer {
         transformerFactory = new TransformerFactoryImpl();
     }
 
-    public static OutputStream generateXml(String xmlInput, String xslPath, Map<String, Object> xslParameters) {
+    public OutputStream generateXml(String xmlInput, String xslPath, Map<String, Object> xslParameters) {
         try {
             TransformerFactory factory = TransformerFactory.newInstance();
             StreamSource xslt = new StreamSource(new File(xslPath));

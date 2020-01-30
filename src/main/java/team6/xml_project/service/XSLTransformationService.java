@@ -1,8 +1,10 @@
 package team6.xml_project.service;
 
-import java.io.OutputStream;
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
 
 public interface XSLTransformationService {
 
-    OutputStream addMetadataToPaper(String paper, String paperLocation);
+    String addMetadataToPaper(String paper, String paperLocation) throws IOException, SAXException;
 }

@@ -2,7 +2,10 @@ package team6.xml_project.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.xml.sax.SAXException;
 import team6.xml_project.exception.*;
+import team6.xml_project.helpers.XMLMarshaller;
+import team6.xml_project.helpers.XMLUnmarshaller;
 import team6.xml_project.models.Role;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.User;
@@ -18,10 +21,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.transform.TransformerException;
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,10 +47,12 @@ public class SubmissionServiceImpl implements SubmissionService {
     private PaperRDFService paperRDFService;
 
     @Override
-    public void create(String paper, Long userId) {
+    public void create(String paper, Long userId) throws JAXBException {
         User author = userService.findById(userId);
+        Paper paperObject = XMLUnmarshaller.createPaperFromXML(paper);
 
         Submission submission = new Submission();
+        submission.setTitle(paperObject.getTitle());
         submission.setAuthorId(author.getId());
 
         submissionRepository.save(submission);
@@ -83,9 +85,10 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     @Override
-    public void addRevision(String submissionId, String paper, Long userId) {
+    public void addRevision(String submissionId, String paper, Long userId) throws JAXBException {
         User author = userService.findById(userId);
         Submission submission = this.findById(submissionId);
+        Paper paperObject = XMLUnmarshaller.createPaperFromXML(paper);
 
         if (checkIfSubmissionClosed(submission))
             throw new SubmissionClosedException();
@@ -96,6 +99,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         if (submission.getAuthorId() != author.getId())
             throw new NotSubmissionAuthorException();
 
+        submission.setTitle(paperObject.getTitle());
         submission.setCurrentRevision(submission.getCurrentRevision() + 1);
         submission.setSubmissionStatus(SubmissionStatus.SUBMITTED_FOR_REVIEW.toString());
         submissionRepository.save(submission);
@@ -139,12 +143,12 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     @Override
-    public void setSubmissionStatus(String submissionId, Long userId, SubmissionStatus status) throws FileNotFoundException, TransformerException, JAXBException {
+    public void setSubmissionStatus(String submissionId, Long userId, SubmissionStatus status) throws IOException, TransformerException, JAXBException, SAXException {
         User user = userService.findById(userId);
         Submission submission = findById(submissionId);
 
-//        if (checkIfSubmissionClosed(submission))
-//            throw new SubmissionClosedException();
+        if (checkIfSubmissionClosed(submission))
+            throw new SubmissionClosedException();
 
         if (status == SubmissionStatus.AUTHOR_TAKEDOWN && submission.getAuthorId() != user.getId()) {
             throw new NotSubmissionAuthorException();
@@ -172,24 +176,20 @@ public class SubmissionServiceImpl implements SubmissionService {
         }
     }
 
-    private void handlePaperAcceptance(Submission submission) throws FileNotFoundException, TransformerException, JAXBException {
+    private void handlePaperAcceptance(Submission submission) throws IOException, TransformerException, JAXBException, SAXException {
         Paper paper = paperService.findPaper(
                 String.format("/db/xml_project_tim6/papers/%s/revision_%s", submission.getId(), submission.getCurrentRevision()),
                 "paper.xml");
+        String paperXML = XMLMarshaller.createStringFromPaper(paper);
 
-        JAXBContext context = JAXBContext.newInstance("team6.xml_project.models.xml.paper");
-        Marshaller marshaller = context.createMarshaller();
-        OutputStream paperXML = new ByteArrayOutputStream();
-        marshaller.marshal(paper, paperXML);
-
-        OutputStream outputStream = xslTransformationService.addMetadataToPaper(paperXML.toString(),
-                String.format("http://www.tim6.rs/papers/%s/revision_%s/paper.xml",
+        String annotatedPaper = xslTransformationService.addMetadataToPaper(paperXML,
+                String.format("http://www.tim6.rs/db/xml_project_tim6/papers/%s/revision_%s/paper.xml",
                         submission.getId(), submission.getCurrentRevision()));
 
-        InputStream rdfInputStream = paperService.createPaperRDFStreamFromXML(outputStream.toString());
+        InputStream rdfInputStream = paperService.createPaperRDFStreamFromXML(annotatedPaper);
         paperRDFService.addPaperMetadata(rdfInputStream);
 
-        paperService.save(outputStream.toString(), submission, "paper.xml");
+        paperService.save(annotatedPaper, submission, "paper.xml");
     }
 
     @Override

@@ -7,11 +7,9 @@ import javax.xml.transform.TransformerException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
+import java.util.List;
 
 public interface PaperService {
-
-    void save(String paperXML) throws Exception;
 
     void save(String paper, Submission submission, String documentName);
 
@@ -20,6 +18,8 @@ public interface PaperService {
     Paper findPaper(String collectionName, String documentName);
 
     InputStream createPaperRDFStreamFromXML(String paperXML) throws FileNotFoundException, TransformerException;
+
+    List<String> findPaperURIsOfSubmission(String submissionId, Long userId) throws Exception;
 
     String findPapersMetadataByAuthorName(String name) throws IOException;
 

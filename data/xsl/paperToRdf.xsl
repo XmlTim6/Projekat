@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:rdf="http://www.w3.org/ns/rdfa#"
+                xmlns:pred="http://www.tim6.rs/predicate/"
                 xmlns:t6="XML_tim6"
-                exclude-result-prefixes="t6"
+                exclude-result-prefixes="xs"
                 version="2.0">
 
     <xsl:output indent="yes" method="xml"/>
@@ -17,14 +19,17 @@
     </xsl:template>
 
     <xsl:template match="t6:paper">
-        <t6:paper xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xs="http://www.w3.org/2001/XMLSchema#">
+        <xsl:copy>
+            <xsl:namespace name="rdf" select="'http://www.w3.org/ns/rdfa#'"/>
+            <xsl:namespace name="pred" select="'http://www.tim6.rs/predicate/'"/>
+            <xsl:namespace name="xs" select="'http://www.w3.org/2001/XMLSchema#'"/>
             <xsl:attribute name="vocab">http://www.tim6.rs/predicate/</xsl:attribute>
             <xsl:attribute name="about"><xsl:value-of select = "$paperLocation" /></xsl:attribute>
             <xsl:attribute name="typeof">pred:Paper</xsl:attribute>
             <xsl:attribute name="property">pred:title</xsl:attribute>
             <xsl:attribute name="content"><xsl:value-of select="@title"/></xsl:attribute>
             <xsl:apply-templates select="node() | @*"/>
-        </t6:paper>
+        </xsl:copy>
     </xsl:template>
 
     <xsl:template match="t6:received">
@@ -51,23 +56,26 @@
         </xsl:copy>
     </xsl:template>
 
-    <xsl:template  match="/t6:paper/t6:authors">
-        <xsl:for-each select="t6:author">
-            <xsl:copy>
-                <xsl:attribute name="property">pred:author</xsl:attribute>
-                <xsl:attribute name="content">
-                    <xsl:value-of select="t6:personal/t6:first_name"/> <xsl:text> </xsl:text>
-                    <xsl:value-of select="t6:personal/t6:middle_name"/> <xsl:text> </xsl:text>
-                    <xsl:value-of select="t6:personal/t6:last_name"/>
-                </xsl:attribute>
-                <xsl:apply-templates select="node() | @*"/>
-            </xsl:copy>
-        </xsl:for-each>
+    <xsl:template  match="/t6:paper/t6:authors//t6:author">
+        <xsl:copy>
+            <xsl:attribute name="property">pred:author</xsl:attribute>
+            <xsl:attribute name="content">
+                <xsl:value-of select="t6:personal/t6:first_name"/> <xsl:text> </xsl:text>
+                <xsl:value-of select="t6:personal/t6:middle_name"/> <xsl:text> </xsl:text>
+                <xsl:value-of select="t6:personal/t6:last_name"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="node() | @*"/>
+        </xsl:copy>
     </xsl:template>
 
     <xsl:template match="/t6:paper/t6:authors/t6:author/t6:institution">
         <xsl:copy>
             <xsl:attribute name="property">pred:institution</xsl:attribute>
+            <xsl:attribute name="content">
+                <xsl:value-of select="t6:name"/> <xsl:text>, </xsl:text>
+                <xsl:value-of select="t6:city"/> <xsl:text>, </xsl:text>
+                <xsl:value-of select="t6:country"/>
+            </xsl:attribute>
             <xsl:apply-templates select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
