@@ -1,8 +1,13 @@
 package team6.xml_project.service;
 
+import org.xml.sax.SAXException;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.xml.submission.Submission;
 
+import javax.xml.bind.JAXBException;
+import javax.xml.transform.TransformerException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 public interface SubmissionService {
@@ -23,7 +28,7 @@ public interface SubmissionService {
 
     List<Submission> findAllByStatus(SubmissionStatus status) throws Exception;
 
-    void setSubmissionStatus(String submissionId, Long userId, SubmissionStatus status);
+    void setSubmissionStatus(String submissionId, Long userId, SubmissionStatus status) throws IOException, TransformerException, JAXBException, SAXException;
 
     void setSubmissionReviewers(String submissionId, Long editorId, List<Long> reviewerIds);
 

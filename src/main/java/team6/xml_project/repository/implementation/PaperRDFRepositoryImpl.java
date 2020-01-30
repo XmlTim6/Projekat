@@ -88,7 +88,7 @@ public class PaperRDFRepositoryImpl implements PaperRDFRepository {
         ResultSet results = query.execSelect();
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ResultSetFormatter.outputAsJSON(out, results);
+        ResultSetFormatter.outputAsXML(out, results);
 
         String json = new String(out.toByteArray());
         query.close();

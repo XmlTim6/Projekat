@@ -34,7 +34,7 @@ public class SubmissionRepositoryImpl implements SubmissionRepository {
     @Override
     public void save(Submission submission) {
         try {
-            documentRepository.save(submission, submissionCollections, submission.getId() + ".xml");
+            documentRepository.save(submission, submissionCollections, submission.getId());
         } catch (Exception e) {
             throw new DocumentNotSavedException();
         }

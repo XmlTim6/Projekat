@@ -8,6 +8,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.xml.sax.SAXException;
+import team6.xml_project.helpers.AuthHelper;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.xml.submission.Submission;
 import team6.xml_project.service.SubmissionService;
@@ -16,6 +18,10 @@ import team6.xml_project.web.dto.submission.SetEditorDTO;
 import team6.xml_project.web.dto.submission.SubmissionGetDTO;
 
 import javax.validation.Valid;
+import javax.xml.bind.JAXBException;
+import javax.xml.transform.TransformerException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,7 +53,7 @@ public class SubmissionController {
     @RequestMapping(value = "/authored", method = RequestMethod.GET)
     @PreAuthorize("hasRole('AUTHOR')")
     public ResponseEntity<List<SubmissionGetDTO>> getSubmissionsOfAuthor() throws Exception {
-        Long userId = this.getCurrentUserId();
+        Long userId = AuthHelper.getCurrentUserId();
         List<Submission> submissions = submissionService.findAllByAuthorId(userId);
 
         List<SubmissionGetDTO> submissionDTOs = submissions.stream().
@@ -58,7 +64,7 @@ public class SubmissionController {
     @RequestMapping(value = "/reviewable", method = RequestMethod.GET)
     @PreAuthorize("hasRole('AUTHOR')")
     public ResponseEntity<List<SubmissionGetDTO>> getReviewableSubmissionsForReviewer() throws Exception {
-        Long userId = this.getCurrentUserId();
+        Long userId = AuthHelper.getCurrentUserId();
         List<Submission> submissions = submissionService.findAllNeedingReviewByReviewerId(userId);
 
         List<SubmissionGetDTO> submissionDTOs = submissions.stream().
@@ -70,7 +76,7 @@ public class SubmissionController {
     @PreAuthorize("hasRole('AUTHOR')")
     public ResponseEntity addSubmission(@RequestBody String paper) {
         try {
-            Long userId = this.getCurrentUserId();
+            Long userId = AuthHelper.getCurrentUserId();
             submissionService.create(paper, userId);
         } catch (Exception ex) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
@@ -82,7 +88,7 @@ public class SubmissionController {
     @PreAuthorize("hasRole('AUTHOR')")
     public ResponseEntity addRevision(@PathVariable String submission_id, @RequestBody String revision) {
         try {
-            Long userId = this.getCurrentUserId();
+            Long userId = AuthHelper.getCurrentUserId();
             submissionService.addRevision(submission_id, revision, userId);
         } catch (Exception ex) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
@@ -94,7 +100,7 @@ public class SubmissionController {
     @PreAuthorize("hasRole('AUTHOR')")
     public ResponseEntity addReview(@PathVariable String submission_id, @RequestBody String review) {
         try {
-            Long userId = this.getCurrentUserId();
+            Long userId = AuthHelper.getCurrentUserId();
             submissionService.addReview(submission_id, review, userId);
         } catch (Exception ex){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
@@ -113,7 +119,7 @@ public class SubmissionController {
     @PreAuthorize("hasRole('EDITOR')")
     public ResponseEntity setReviewers(@PathVariable String submission_id,
                                        @Valid @RequestBody ReviewerListDTO reviewers) {
-        Long userId = this.getCurrentUserId();
+        Long userId = AuthHelper.getCurrentUserId();
         submissionService.setSubmissionReviewers(submission_id, userId, reviewers.getReviewerIds());
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -121,23 +127,18 @@ public class SubmissionController {
     @RequestMapping(value="/{submission_id}/set_status", method = RequestMethod.PUT)
     @PreAuthorize("hasRole('EDITOR')")
     public ResponseEntity setStatus(@PathVariable String submission_id,
-                                       @Valid @RequestBody SubmissionStatus status) {
-        Long userId = this.getCurrentUserId();
+                                       @Valid @RequestBody SubmissionStatus status) throws IOException, TransformerException, JAXBException, SAXException {
+        Long userId = AuthHelper.getCurrentUserId();
         submissionService.setSubmissionStatus(submission_id, userId, status);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value="/{submission_id}/takedown", method = RequestMethod.PUT)
     @PreAuthorize("hasRole('AUTHOR')")
-    public ResponseEntity setStatus(@PathVariable String submission_id) {
-        Long userId = this.getCurrentUserId();
+    public ResponseEntity setStatus(@PathVariable String submission_id) throws IOException, TransformerException, JAXBException, SAXException {
+        Long userId = AuthHelper.getCurrentUserId();
         submissionService.setSubmissionStatus(submission_id, userId, SubmissionStatus.AUTHOR_TAKEDOWN);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    private Long getCurrentUserId() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return Long.parseLong(authentication.getName());
     }
 
 }
