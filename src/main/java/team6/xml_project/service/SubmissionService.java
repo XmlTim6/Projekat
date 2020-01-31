@@ -4,6 +4,7 @@ import org.xml.sax.SAXException;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.xml.submission.Submission;
 
+import javax.mail.MessagingException;
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.TransformerException;
 import java.io.FileNotFoundException;
@@ -27,6 +28,8 @@ public interface SubmissionService {
     List<Submission> findAllNeedingReviewByReviewerId(Long reviewerId) throws Exception;
 
     List<Submission> findAllByStatus(SubmissionStatus status) throws Exception;
+
+    void declineReviewing(String submissionId, Long userId) throws MessagingException;
 
     void setSubmissionStatus(String submissionId, Long userId, SubmissionStatus status) throws IOException, TransformerException, JAXBException, SAXException;
 

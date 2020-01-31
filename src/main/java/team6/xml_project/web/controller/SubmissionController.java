@@ -17,6 +17,7 @@ import team6.xml_project.web.dto.ReviewerListDTO;
 import team6.xml_project.web.dto.submission.SetEditorDTO;
 import team6.xml_project.web.dto.submission.SubmissionGetDTO;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.TransformerException;
@@ -121,6 +122,14 @@ public class SubmissionController {
                                        @Valid @RequestBody ReviewerListDTO reviewers) {
         Long userId = AuthHelper.getCurrentUserId();
         submissionService.setSubmissionReviewers(submission_id, userId, reviewers.getReviewerIds());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/{submission_id}/decline_reviewing", method = RequestMethod.DELETE)
+    @PreAuthorize("hasRole('AUTHOR')")
+    public ResponseEntity declineReviewing(@PathVariable String submission_id) throws MessagingException {
+        Long userId = AuthHelper.getCurrentUserId();
+        submissionService.declineReviewing(submission_id, userId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

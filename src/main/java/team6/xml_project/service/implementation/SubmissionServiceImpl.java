@@ -144,6 +144,21 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     @Override
+    public void declineReviewing(String submissionId, Long userId) throws MessagingException {
+        Submission submission = this.findById(submissionId);
+        User reviewer = userService.findById(userId);
+        User editor = userService.findById(submission.getEditorId());
+
+        if (submission.getReviewerIds().stream().noneMatch(r -> r.getReviewerId() == reviewer.getId()))
+            throw new NotSubmissionReviewerException();
+
+        submission.getReviewerIds().removeIf(r -> r.getReviewerId() == reviewer.getId());
+        submissionRepository.save(submission);
+
+        emailService.sendReviewerDeclinedReviewing(editor.getEmail(), reviewer, submission);
+    }
+
+    @Override
     public void setSubmissionStatus(String submissionId, Long userId, SubmissionStatus status) throws IOException, TransformerException, JAXBException, SAXException {
         User user = userService.findById(userId);
         Submission submission = findById(submissionId);
@@ -164,6 +179,10 @@ public class SubmissionServiceImpl implements SubmissionService {
             handlePaperAcceptance(submission);
         }
 
+        if (status == SubmissionStatus.IN_REVIEW) {
+            handlePaperAnonymizing();
+        }
+
         try {
             if (status == SubmissionStatus.AUTHOR_TAKEDOWN) {
                 User editor = userService.findById(submission.getEditorId());
@@ -178,6 +197,10 @@ public class SubmissionServiceImpl implements SubmissionService {
             e.printStackTrace();
         }
 
+    }
+
+    private void handlePaperAnonymizing() {
+        //TODO
     }
 
     private void handlePaperAcceptance(Submission submission) throws IOException, TransformerException, JAXBException, SAXException {
