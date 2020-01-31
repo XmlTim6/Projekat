@@ -125,17 +125,26 @@ public class SubmissionServiceImpl implements SubmissionService {
 
     @Override
     public List<Submission> findAll() throws Exception {
-        return submissionRepository.getAll();
+        return submissionRepository.getAll()
+                .stream()
+                .filter(s -> !s.getSubmissionStatus().equals(SubmissionStatus.AUTHOR_TAKEDOWN.toString()))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Submission> findAllByAuthorId(Long authorId) throws Exception {
-        return submissionRepository.findDistinctSubmissionsByAuthor_Id(authorId);
+        return submissionRepository.findDistinctSubmissionsByAuthor_Id(authorId)
+                .stream()
+                .filter(s -> !s.getSubmissionStatus().equals(SubmissionStatus.AUTHOR_TAKEDOWN.toString()))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Submission> findAllNeedingReviewByReviewerId(Long reviewerId) throws Exception {
-        return submissionRepository.findDistinctSubmissionsByReviewersContaining(reviewerId);
+        return submissionRepository.findDistinctSubmissionsByReviewersContaining(reviewerId)
+                .stream()
+                .filter(s -> !checkIfSubmissionClosed(s))
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -16,6 +16,7 @@ import team6.xml_project.service.SubmissionService;
 import team6.xml_project.web.dto.ReviewerListDTO;
 import team6.xml_project.web.dto.submission.SetEditorDTO;
 import team6.xml_project.web.dto.submission.SubmissionGetDTO;
+import team6.xml_project.web.dto.submission.SubmissionStatusDTO;
 
 import javax.validation.Valid;
 import javax.xml.bind.JAXBException;
@@ -127,9 +128,9 @@ public class SubmissionController {
     @RequestMapping(value="/{submission_id}/set_status", method = RequestMethod.PUT)
     @PreAuthorize("hasRole('EDITOR')")
     public ResponseEntity setStatus(@PathVariable String submission_id,
-                                       @Valid @RequestBody SubmissionStatus status) throws IOException, TransformerException, JAXBException, SAXException {
+                                       @Valid @RequestBody SubmissionStatusDTO status) throws IOException, TransformerException, JAXBException, SAXException {
         Long userId = AuthHelper.getCurrentUserId();
-        submissionService.setSubmissionStatus(submission_id, userId, status);
+        submissionService.setSubmissionStatus(submission_id, userId, status.getStatus());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
