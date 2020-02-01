@@ -28,6 +28,8 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class DocumentRepositoryImpl implements DocumentRepository {
@@ -347,7 +349,7 @@ public class DocumentRepositoryImpl implements DocumentRepository {
             xqueryService.setNamespace("b", "XML_tim6");
 
             String xQueryExpression = "xquery version \"3.1\";\n" +
-                    "doc-available('" + collectionId + documentName + ".xml')";
+                    "doc-available('" + collectionId + documentName + "')";
 
             // compile and execute the expression
             CompiledExpression compiledXQuery = xqueryService.compile(xQueryExpression);
@@ -412,18 +414,16 @@ public class DocumentRepositoryImpl implements DocumentRepository {
         return new String(encoded, encoding);
     }
 
-/*    public static void main(String[] args) throws Exception {
-        String xmlPath = "D:\\Fakultet\\Primer1.xml";
-        File file = new File(xmlPath);
-
-        JAXBContext context = JAXBContext.newInstance("team6.xml_project.models.xml.cover_letter");
-
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        CoverLetter document = (CoverLetter) unmarshaller.unmarshal(file);
-        DocumentRepositoryImpl a = new DocumentRepositoryImpl();
-        //a.save(document, "/db/radovi/231/revizija1", "recenzija2");
-        //a.deleteDocumentByID("/db/radovi/231/revizija1", "recenzija1");
-        //ResourceSet ac = a.executeXPathQuery("/db/radovi/231/revizija1", "doc(\"recenzija1.xml\")//list_item");
-    }*/
+    static List<String> getURIs(String xquery, DocumentRepository documentRepository, String collection) throws Exception {
+        List<String> coverLetterURIs = new ArrayList<>();
+        ResourceSet results = documentRepository.executeXQuery(collection, xquery);
+        final ResourceIterator iter = results.getIterator();
+        while (iter.hasMoreResources()) {
+            Resource resource = iter.nextResource();
+            String res = (String) resource.getContent();
+            coverLetterURIs.add(res);
+        }
+        return coverLetterURIs;
+    }
 
 }

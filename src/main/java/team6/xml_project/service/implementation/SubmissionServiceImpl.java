@@ -47,6 +47,9 @@ public class SubmissionServiceImpl implements SubmissionService {
     @Autowired
     private PaperRDFService paperRDFService;
 
+    @Autowired
+    private ReviewFormService reviewFormService;
+
     @Override
     public void create(String paper, Long userId) throws JAXBException {
         User author = userService.findById(userId);
@@ -74,14 +77,18 @@ public class SubmissionServiceImpl implements SubmissionService {
         paperService.save(review, submission, String.format("review_%s.xml", reviewer.getId()));
 
         if (checkIfAllReviewsAdded(submission)) {
-            submission.setSubmissionStatus(SubmissionStatus.REVIEWS_DONE.toString());
-            submissionRepository.save(submission);
-            try {
-                User editor = userService.findById(submission.getEditorId());
-                emailService.sendChangeStatusNotification(editor.getEmail(), submission);
-            } catch (MessagingException e) {
-                e.printStackTrace();
-            }
+            handleAllReviewsAdded(submission);
+        }
+    }
+
+    public void handleAllReviewsAdded(Submission submission) {
+        submission.setSubmissionStatus(SubmissionStatus.REVIEWS_DONE.toString());
+        submissionRepository.save(submission);
+        try {
+            User editor = userService.findById(submission.getEditorId());
+            emailService.sendChangeStatusNotification(editor.getEmail(), submission);
+        } catch (MessagingException e) {
+            e.printStackTrace();
         }
     }
 
@@ -125,26 +132,17 @@ public class SubmissionServiceImpl implements SubmissionService {
 
     @Override
     public List<Submission> findAll() throws Exception {
-        return submissionRepository.getAll()
-                .stream()
-                .filter(s -> !s.getSubmissionStatus().equals(SubmissionStatus.AUTHOR_TAKEDOWN.toString()))
-                .collect(Collectors.toList());
+        return submissionRepository.getAll();
     }
 
     @Override
     public List<Submission> findAllByAuthorId(Long authorId) throws Exception {
-        return submissionRepository.findDistinctSubmissionsByAuthor_Id(authorId)
-                .stream()
-                .filter(s -> !s.getSubmissionStatus().equals(SubmissionStatus.AUTHOR_TAKEDOWN.toString()))
-                .collect(Collectors.toList());
+        return submissionRepository.findDistinctSubmissionsByAuthor_Id(authorId);
     }
 
     @Override
     public List<Submission> findAllNeedingReviewByReviewerId(Long reviewerId) throws Exception {
-        return submissionRepository.findDistinctSubmissionsByReviewersContaining(reviewerId)
-                .stream()
-                .filter(s -> !checkIfSubmissionClosed(s))
-                .collect(Collectors.toList());
+        return submissionRepository.findDistinctSubmissionsByReviewersContaining(reviewerId);
     }
 
     @Override
@@ -296,7 +294,10 @@ public class SubmissionServiceImpl implements SubmissionService {
                 collect(Collectors.toList());
 
         for (Long id : userIds) {
-            boolean exists = paperService.checkIfPaperExists(submission, String.format("review_%s", id));
+            boolean exists = paperService.checkIfPaperExists(submission, String.format("review_%s.xml", id));
+            if (!exists)
+                return false;
+            exists = reviewFormService.checkIfReviewFormExists(submission, String.format("review_form_%s.xml", id));
             if (!exists)
                 return false;
         }

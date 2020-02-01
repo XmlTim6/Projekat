@@ -36,4 +36,6 @@ public interface SubmissionService {
     void setSubmissionReviewers(String submissionId, Long editorId, List<Long> reviewerIds);
 
     void setSubmissionEditor(String submissionId, Long editorId);
+
+    void handleAllReviewsAdded(Submission submission);
 }

@@ -49,7 +49,8 @@ public class SubmissionRepositoryImpl implements SubmissionRepository {
                 "declare default element namespace \"XML_tim6\";\n" +
                 "\n" +
                 "for $submission in collection(\"%s\")//submission\n" +
-                "return $submission", submissionCollections);
+                "where $submission/submissionStatus = \"%s\"\n" +
+                "return $submission", submissionCollections, SubmissionStatus.AUTHOR_TAKEDOWN.toString());
         return getSubmissionsFromQuery(xquery);
     }
 
@@ -60,8 +61,8 @@ public class SubmissionRepositoryImpl implements SubmissionRepository {
                 "declare default element namespace \"XML_tim6\";\n" +
                 "\n" +
                 "for $submission in collection(\"%s\")//submission\n" +
-                "where $submission/authorId = %d\n" +
-                "return $submission", submissionCollections, authorId);
+                "where $submission/authorId = %d and $submission/submissionStatus = \"%s\"\n" +
+                "return $submission", submissionCollections, authorId, SubmissionStatus.AUTHOR_TAKEDOWN.toString());
         return getSubmissionsFromQuery(xquery);
     }
 
