@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cover_letter xmlns="XML_tim6"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="XML_tim6 file:/D:/Development/FTN/SEM7/XML/Projekat/backend/data/schema/cover_letter.xsd">
+    <title>title0</title>
+    <submission_date>2006-05-04</submission_date>
+    <content>
+        <list type="ordered">
+            <list_item>list_item0</list_item>
+        </list>
+        <paragraph/>
+    </content>
+    <author>
+        <personal>
+            <first_name>first_name0</first_name>
+            <last_name>last_name0</last_name>
+        </personal>
+    </author>
+</cover_letter>

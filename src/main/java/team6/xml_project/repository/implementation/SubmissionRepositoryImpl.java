@@ -1,12 +1,10 @@
 package team6.xml_project.repository.implementation;
 
-import org.apache.jena.query.ResultSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.xmldb.api.base.Resource;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
-import org.xmldb.api.modules.XMLResource;
 import team6.xml_project.exception.DocumentNotSavedException;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.xml.submission.Submission;
@@ -14,12 +12,9 @@ import team6.xml_project.repository.DocumentRepository;
 import team6.xml_project.repository.SubmissionRepository;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +49,8 @@ public class SubmissionRepositoryImpl implements SubmissionRepository {
                 "declare default element namespace \"XML_tim6\";\n" +
                 "\n" +
                 "for $submission in collection(\"%s\")//submission\n" +
-                "return $submission", submissionCollections);
+                "where $submission/submissionStatus = \"%s\"\n" +
+                "return $submission", submissionCollections, SubmissionStatus.AUTHOR_TAKEDOWN.toString());
         return getSubmissionsFromQuery(xquery);
     }
 
@@ -65,8 +61,8 @@ public class SubmissionRepositoryImpl implements SubmissionRepository {
                 "declare default element namespace \"XML_tim6\";\n" +
                 "\n" +
                 "for $submission in collection(\"%s\")//submission\n" +
-                "where $submission/authorId = %d\n" +
-                "return $submission", submissionCollections, authorId);
+                "where $submission/authorId = %d and $submission/submissionStatus = \"%s\"\n" +
+                "return $submission", submissionCollections, authorId, SubmissionStatus.AUTHOR_TAKEDOWN.toString());
         return getSubmissionsFromQuery(xquery);
     }
 
@@ -77,8 +73,8 @@ public class SubmissionRepositoryImpl implements SubmissionRepository {
                 "declare default element namespace \"XML_tim6\";\n" +
                 "\n" +
                 "for $submission in collection(\"%s\")//submission\n" +
-                "where $submission/reviewerIds/reviewerId = %d\n" +
-                "return $submission", submissionCollections, reviewerId);
+                "where $submission/reviewerIds/reviewerId = %d and $submission/submissionStatus = \"%s\"\n" +
+                "return $submission", submissionCollections, reviewerId, SubmissionStatus.IN_REVIEW.toString());
         return getSubmissionsFromQuery(xquery);
     }
 
