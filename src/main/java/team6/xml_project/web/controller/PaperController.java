@@ -16,6 +16,7 @@ import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.XSLTransformationService;
 
 import javax.xml.bind.JAXBException;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
@@ -52,7 +53,7 @@ public class PaperController {
             String paperStr = XMLMarshaller.createStringFromPaper(paper);
             if(format.equals("pdf")){
                 OutputStream output = xslTransformationService.createPdf(paperStr, "data/xsl/xsl-fo/paper_pdf.xsl");
-                byte[] contents = output.toString().getBytes();
+                byte[] contents = ((ByteArrayOutputStream) output).toByteArray();
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_PDF);
                 String filename = "paper.pdf";
