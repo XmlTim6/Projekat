@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/coverLetter")
+@CrossOrigin
 public class CoverLetterController {
 
     @Autowired

@@ -20,6 +20,7 @@ import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.UserService;
 
 import javax.mail.MessagingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -90,15 +91,24 @@ public class ReviewFormServiceImpl implements ReviewFormService {
                 && !(submission.getEditorId() == userId))
             throw new PermissionDeniedException();
 
+        List<String> reviewFormURIsOld;
+        List<String> reviewFormURIs = new ArrayList<>();
+
         try {
-            List<String> reviewFormURIs = reviewFormRepository.getAllReviewFormURIsOfSubmission(submissionId);
-            if (user.getRole().equals(Role.ROLE_AUTHOR))
-                return reviewFormURIs.stream().filter(rf -> rf.endsWith(String.format("review_form_%s.xml", userId)))
-                        .collect(Collectors.toList());
-            return reviewFormURIs;
+            reviewFormURIsOld = reviewFormRepository.getAllReviewFormURIsOfSubmission(submissionId);
+            for (String uri: reviewFormURIsOld) {
+                reviewFormURIs.add("http://localhost:3000/details/" + submissionId +
+                        "/" + submission.getCurrentRevision() +
+                        "/" + uri.substring(uri.lastIndexOf('/') + 1));
+            }
         } catch (Exception e) {
             throw new SubmissionNotFoundException();
         }
+
+        if (user.getRole().equals(Role.ROLE_AUTHOR))
+            return reviewFormURIs.stream().filter(rf -> rf.endsWith(String.format("review_form_%s.xml", userId)))
+                    .collect(Collectors.toList());
+        return reviewFormURIs;
     }
 
     private boolean checkIfAllReviewsAdded(Submission submission) throws Exception {

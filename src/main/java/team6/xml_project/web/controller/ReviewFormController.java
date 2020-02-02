@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/reviewForm")
+@CrossOrigin
 public class ReviewFormController {
 
     @Autowired
@@ -26,7 +27,7 @@ public class ReviewFormController {
 
     @RequestMapping(value = "/{submission_id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     @PreAuthorize("hasRole('AUTHOR')")
-    public ResponseEntity createCoverLetter(@PathVariable String submission_id, @RequestBody String reviewForm){
+    public ResponseEntity createReviewForm(@PathVariable String submission_id, @RequestBody String reviewForm){
         try {
             Long userId = AuthHelper.getCurrentUserId();
             reviewFormService.save(reviewForm, submission_id, userId);

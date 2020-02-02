@@ -16,6 +16,7 @@ import team6.xml_project.service.CoverLetterService;
 import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -64,10 +65,21 @@ public class CoverLetterServiceImpl implements CoverLetterService {
         if (!(submission.getAuthorId() == userId) && !(submission.getEditorId() == userId))
             throw new PermissionDeniedException();
 
+        List<String> urisOld;
+        List<String> uris = new ArrayList<>();
+
         try {
-            return coverLetterRepository.getAllCoverLetterURIsOfSubmission(submissionId);
+            urisOld =  coverLetterRepository.getAllCoverLetterURIsOfSubmission(submissionId);
         } catch (Exception e) {
             throw new SubmissionNotFoundException();
         }
+
+        for (String uri: urisOld) {
+            uris.add("http://localhost:3000/details/" + submissionId +
+                    "/" + submission.getCurrentRevision() +
+                    "/" + uri.substring(uri.lastIndexOf('/') + 1));
+        }
+
+        return uris;
     }
 }
