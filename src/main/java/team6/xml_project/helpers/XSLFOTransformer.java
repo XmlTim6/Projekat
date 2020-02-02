@@ -66,9 +66,9 @@ public class XSLFOTransformer {
 
             InputStream inputStream = new ByteArrayInputStream(xmlInput.getBytes());
             StreamSource text = new StreamSource(inputStream);
-            StreamResult result = new StreamResult();
-            transformer.transform(text, result);
-            return result.getOutputStream();
+            OutputStream outputStream = new ByteArrayOutputStream();
+            transformer.transform(text, new StreamResult(outputStream));
+            return outputStream;
         }catch(Exception e){
             e.printStackTrace();
         }

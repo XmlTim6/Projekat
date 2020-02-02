@@ -65,7 +65,7 @@ public class PaperController {
                 return new ResponseEntity<>(contents, headers, HttpStatus.OK);
             }else if(format.equals("html")){
                 OutputStream output = xslTransformationService.createHtml(paperStr, "data/xsl/xslt/paper_Html.xsl");
-                return new ResponseEntity<>(paperStr, HttpStatus.OK);
+                return new ResponseEntity<>(output, HttpStatus.OK);
             }
             byte[] contents = paperStr.getBytes();
             HttpHeaders headers = new HttpHeaders();
