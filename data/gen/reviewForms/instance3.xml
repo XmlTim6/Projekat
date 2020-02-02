@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<review_form xmlns="XML_tim6"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="XML_tim6 file:/D:/Development/FTN/SEM7/XML/Projekat/backend/data/schema/review_form.xsd">
+    <overview>overview0</overview>
+    <positive_side>positive_side0</positive_side>
+    <major_remarks>
+        <paragraph/>
+        <list type="ordered">
+            <list_item>list_item0</list_item>
+        </list>
+    </major_remarks>
+    <minor_remarks>
+        <paragraph/>
+        <paragraph/>
+    </minor_remarks>
+</review_form>

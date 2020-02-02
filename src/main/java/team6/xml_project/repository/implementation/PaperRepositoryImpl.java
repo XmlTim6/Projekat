@@ -18,6 +18,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static team6.xml_project.repository.implementation.DocumentRepositoryImpl.getURIs;
+
 @Repository
 public class PaperRepositoryImpl implements PaperRepository {
 
@@ -42,15 +44,7 @@ public class PaperRepositoryImpl implements PaperRepository {
                 "for $paper in collection(\"/db/xml_project_tim6/papers/%s\")\n" +
                 "return base-uri($paper)", submissionId);
 
-        List<String> paperURIs = new ArrayList<>();
-        ResourceSet results = documentRepository.executeXQuery(paperCollections, xquery);
-        final ResourceIterator iter = results.getIterator();
-        while (iter.hasMoreResources()) {
-            Resource resource = iter.nextResource();
-            String res = (String) resource.getContent();
-            paperURIs.add(res);
-        }
-        return paperURIs;
+        return getURIs(xquery, documentRepository, paperCollections);
     }
 
     @Override

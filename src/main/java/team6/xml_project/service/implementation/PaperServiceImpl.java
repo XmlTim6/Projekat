@@ -138,12 +138,20 @@ public class PaperServiceImpl implements PaperService {
     @Override
     public List<String> findPaperURIsOfSubmission(String submissionId, Long userId) throws Exception {
         if (userId == -1) {
-            throw new PermissionDeniedException("Cannot access this resource");
+            throw new PermissionDeniedException();
         }
         User user = userService.findById(userId);
         Submission submission = submissionService.findById(submissionId);
 
-        List<String> uris = paperRepository.getAllPaperURIsOfSubmission(submissionId);
+        List<String> urisOld = paperRepository.getAllPaperURIsOfSubmission(submissionId);
+
+        List<String> uris = new ArrayList<>();
+
+        for (String uri: urisOld) {
+            uris.add("http://localhost:3000/details/" + submissionId +
+                    "/" + submission.getCurrentRevision() +
+                    "/" + uri.substring(uri.lastIndexOf('/') + 1));
+        }
 
         if (submission.getAuthorId() == userId) {
             return uris.stream().filter(s -> s.contains("paper.xml") || s.contains("review_anon.xml")).
