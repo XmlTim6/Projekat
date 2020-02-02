@@ -15,7 +15,7 @@ public interface PaperService {
 
     boolean checkIfPaperExists(Submission submission, String documentName) throws Exception;
 
-    Paper findPaper(String collectionName, String documentName, long userId);
+    Paper findPaper(String collectionName, String documentName, long userId, String submissionId);
 
     InputStream createPaperRDFStreamFromXML(String paperXML) throws FileNotFoundException, TransformerException;
 

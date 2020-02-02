@@ -59,11 +59,11 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public Paper findPaper(String collectionName, String documentName, long userId) {
+    public Paper findPaper(String collectionName, String documentName, long userId, String submissionId) {
         try {
             User user = userService.findById(userId);
             Paper paper =  paperRepository.get(collectionName, documentName);
-            Submission submission = submissionService.findById(collectionName);
+            Submission submission = submissionService.findById(submissionId);
 
             if(getPermittedStatus(user, submission).contains(submission.getSubmissionStatus())){
                 return paper;

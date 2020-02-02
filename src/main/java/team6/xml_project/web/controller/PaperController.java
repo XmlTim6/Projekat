@@ -1,10 +1,8 @@
 package team6.xml_project.web.controller;
 
+import jdk.nashorn.internal.parser.Token;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
 import team6.xml_project.exception.FailedToGenerateDocumentException;
@@ -12,6 +10,7 @@ import team6.xml_project.exception.SubmissionNotFoundException;
 import team6.xml_project.helpers.AuthHelper;
 import team6.xml_project.helpers.XMLMarshaller;
 import team6.xml_project.models.xml.paper.Paper;
+import team6.xml_project.security.TokenUtils;
 import team6.xml_project.service.PaperService;
 import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.XSLTransformationService;
@@ -35,16 +34,20 @@ public class PaperController {
     @Autowired
     XSLTransformationService xslTransformationService;
 
+    @Autowired
+    TokenUtils tokenUtils;
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<Object> getPaper(
             @RequestParam(value = "collection") String collection,
             @RequestParam(value = "revision") Long revision,
             @RequestParam(value = "document") String document,
-            @RequestParam(value = "format") String format) throws JAXBException {
+            @RequestParam(value = "format") String format,
+            @RequestParam(value = "token") String token) throws JAXBException {
         try {
-            long userId = AuthHelper.getCurrentUserId();
+            long userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
             Paper paper = paperService.findPaper(String.format("/db/xml_project_tim6/papers/%s/revision_%s",
-                    collection, revision), document, userId);
+                    collection, revision), document, userId, collection);
 
             String paperStr = XMLMarshaller.createStringFromPaper(paper);
             if(format.equals("pdf")){
@@ -53,19 +56,26 @@ public class PaperController {
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_PDF);
                 String filename = "paper.pdf";
-                headers.setContentDispositionFormData(filename, filename);
+                ContentDisposition contentDisposition = ContentDisposition
+                        .builder("inline")
+                        .filename(filename)
+                        .build();
+                headers.setContentDisposition(contentDisposition);
                 headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
                 return new ResponseEntity<>(contents, headers, HttpStatus.OK);
             }else if(format.equals("html")){
                 OutputStream output = xslTransformationService.createHtml(paperStr, "data/xsl/xslt/paper_Html.xsl");
                 return new ResponseEntity<>(paperStr, HttpStatus.OK);
             }
-
             byte[] contents = paperStr.getBytes();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_XML);
             String filename = "paper.xml";
-            headers.setContentDispositionFormData(filename, filename);
+            ContentDisposition contentDisposition = ContentDisposition
+                    .builder("inline")
+                    .filename(filename)
+                    .build();
+            headers.setContentDisposition(contentDisposition);
             headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
             return new ResponseEntity<>(contents, headers, HttpStatus.OK);
 
