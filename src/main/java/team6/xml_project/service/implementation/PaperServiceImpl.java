@@ -7,6 +7,8 @@ import team6.xml_project.exception.PermissionDeniedException;
 import team6.xml_project.exception.SubmissionNotFoundException;
 import team6.xml_project.helpers.RDFMetadataExtractor;
 import team6.xml_project.helpers.XMLUnmarshaller;
+import team6.xml_project.models.Role;
+import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.User;
 import team6.xml_project.models.xml.paper.Paper;
 import team6.xml_project.models.xml.submission.Submission;
@@ -24,6 +26,8 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,12 +59,49 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public Paper findPaper(String collectionName, String documentName) {
+    public Paper findPaper(String collectionName, String documentName, long userId) {
         try {
-            return paperRepository.get(collectionName, documentName);
+            User user = userService.findById(userId);
+            Paper paper =  paperRepository.get(collectionName, documentName);
+            Submission submission = submissionService.findById(collectionName);
+
+            if(getPermittedStatus(user, submission).contains(submission.getSubmissionStatus())){
+                return paper;
+            }else{
+                throw new PermissionDeniedException("Cannot access this resource");
+            }
+
         } catch (Exception e) {
             throw new SubmissionNotFoundException();
         }
+    }
+
+    private List<String> getPermittedStatus(User user, Submission submission){
+        ArrayList<String> status = new ArrayList<>();
+        status.add(SubmissionStatus.ACCEPTED.toString());
+        if(user.getRole() == Role.ROLE_EDITOR){
+            status.addAll(Arrays.asList( SubmissionStatus.SUBMITTED_FOR_REVIEW.toString(),
+                                         SubmissionStatus.REVIEWS_DONE.toString(),
+                                         SubmissionStatus.NEEDS_REWORK.toString(),
+                                         SubmissionStatus.REJECTED.toString(),
+                                         SubmissionStatus.IN_REVIEW.toString()));
+        }
+        if(user.getRole() == Role.ROLE_AUTHOR){
+            List<Long> listOfReviewers = submission.getReviewerIds().stream().map(Submission.ReviewerIds::getReviewerId)
+                    .collect(Collectors.toList());
+            if(submission.getAuthorId() == user.getId()){
+                status.addAll(Arrays.asList( SubmissionStatus.SUBMITTED_FOR_REVIEW.toString(),
+                                             SubmissionStatus.REVIEWS_DONE.toString(),
+                                             SubmissionStatus.NEEDS_REWORK.toString(),
+                                             SubmissionStatus.REJECTED.toString(),
+                                             SubmissionStatus.IN_REVIEW.toString(),
+                                             SubmissionStatus.AUTHOR_TAKEDOWN.toString()));
+
+            }else if(listOfReviewers.contains(user.getId())){
+                status.add(SubmissionStatus.IN_REVIEW.toString());
+            }
+        }
+        return status;
     }
 
     private void extractRDFMetadata(InputStream in, OutputStream out) throws FileNotFoundException, TransformerException {

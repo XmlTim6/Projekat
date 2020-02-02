@@ -21,4 +21,14 @@ public class XSLTransformationServiceImpl implements XSLTransformationService {
         OutputStream annotatedPaper = new XSLFOTransformer().generateXml(paper, "data/xsl/paperToRdf.xsl", xslParameters);
         return annotatedPaper.toString().replaceFirst("<paper", "<paper xmlns:pred=\"http://www.tim6.rs/predicate/\"");
     }
+
+    @Override
+    public OutputStream createPdf(String document, String transformation) throws IOException, SAXException {
+        return new XSLFOTransformer().generatePdf(document, transformation);
+    }
+
+    @Override
+    public OutputStream createHtml(String document, String transformation) throws  IOException, SAXException {
+        return new XSLFOTransformer().generateHtml(document, transformation);
+    }
 }

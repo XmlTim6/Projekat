@@ -1,21 +1,24 @@
 package team6.xml_project.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.xml.sax.SAXException;
+import team6.xml_project.exception.FailedToGenerateDocumentException;
 import team6.xml_project.exception.SubmissionNotFoundException;
 import team6.xml_project.helpers.AuthHelper;
 import team6.xml_project.helpers.XMLMarshaller;
 import team6.xml_project.models.xml.paper.Paper;
 import team6.xml_project.service.PaperService;
 import team6.xml_project.service.SubmissionService;
+import team6.xml_project.service.XSLTransformationService;
 
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 @RestController
@@ -29,14 +32,46 @@ public class PaperController {
     @Autowired
     SubmissionService submissionService;
 
-    @RequestMapping(produces = MediaType.APPLICATION_XML_VALUE, method = RequestMethod.GET)
-    public ResponseEntity<String> getPaper(
+    @Autowired
+    XSLTransformationService xslTransformationService;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<Object> getPaper(
             @RequestParam(value = "collection") String collection,
             @RequestParam(value = "revision") Long revision,
-            @RequestParam(value = "document") String document) throws JAXBException {
-        Paper paper = paperService.findPaper(String.format("/db/xml_project_tim6/papers/%s/revision_%s",
-                collection, revision), document);
-        return new ResponseEntity<>(XMLMarshaller.createStringFromPaper(paper), HttpStatus.OK);
+            @RequestParam(value = "document") String document,
+            @RequestParam(value = "format") String format) throws JAXBException {
+        try {
+            long userId = AuthHelper.getCurrentUserId();
+            Paper paper = paperService.findPaper(String.format("/db/xml_project_tim6/papers/%s/revision_%s",
+                    collection, revision), document, userId);
+
+            String paperStr = XMLMarshaller.createStringFromPaper(paper);
+            if(format.equals("pdf")){
+                OutputStream output = xslTransformationService.createPdf(paperStr, "data/xsl/xsl-fo/paper_pdf.xsl");
+                byte[] contents = output.toString().getBytes();
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_PDF);
+                String filename = "paper.pdf";
+                headers.setContentDispositionFormData(filename, filename);
+                headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+                return new ResponseEntity<>(contents, headers, HttpStatus.OK);
+            }else if(format.equals("html")){
+                OutputStream output = xslTransformationService.createHtml(paperStr, "data/xsl/xslt/paper_Html.xsl");
+                return new ResponseEntity<>(paperStr, HttpStatus.OK);
+            }
+
+            byte[] contents = paperStr.getBytes();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_XML);
+            String filename = "paper.xml";
+            headers.setContentDispositionFormData(filename, filename);
+            headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+            return new ResponseEntity<>(contents, headers, HttpStatus.OK);
+
+        } catch (Exception e) {
+            throw new FailedToGenerateDocumentException();
+        }
     }
 
     @RequestMapping(value = "/papersOfSubmission", method = RequestMethod.GET)
