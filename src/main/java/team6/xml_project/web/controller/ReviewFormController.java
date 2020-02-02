@@ -38,7 +38,6 @@ public class ReviewFormController {
     }
 
     @RequestMapping(produces = MediaType.APPLICATION_XML_VALUE, method = RequestMethod.GET)
-    @PreAuthorize("hasRole('AUTHOR') or hasRole('EDITOR')")
     public ResponseEntity<String> getReviewForm(
             @RequestParam(value = "submissionId") String submissionId,
             @RequestParam(value = "revision") Long revision,

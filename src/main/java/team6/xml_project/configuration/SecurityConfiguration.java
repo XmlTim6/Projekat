@@ -64,6 +64,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 antMatchers(HttpMethod.GET, "/api/paper").permitAll().
                 antMatchers(HttpMethod.GET, "/api/paper/*").permitAll().
                 antMatchers(HttpMethod.GET, "/api/paper/**").permitAll().
+                antMatchers(HttpMethod.GET, "/api/coverLetter").permitAll().
+                antMatchers(HttpMethod.GET, "/api/reviewForm").permitAll().
                 anyRequest().authenticated()
                 .and().cors();
         http.addFilterBefore(jwtAuthenticationFilterBean(), UsernamePasswordAuthenticationFilter.class);
