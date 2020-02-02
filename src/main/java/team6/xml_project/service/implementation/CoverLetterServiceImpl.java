@@ -75,9 +75,10 @@ public class CoverLetterServiceImpl implements CoverLetterService {
         }
 
         for (String uri: urisOld) {
+            int index = uri.indexOf("revision_") + "revision_".length();
             uris.add("http://localhost:3000/details/" + submissionId +
-                    "/" + submission.getCurrentRevision() +
-                    "/" + uri.substring(uri.lastIndexOf('/') + 1));
+                    "/" + uri.substring(index, index + 1) +
+                    "/" + uri.substring(index + 2));
         }
 
         return uris;
