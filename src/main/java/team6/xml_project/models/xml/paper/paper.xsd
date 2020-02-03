@@ -483,6 +483,7 @@
                 </xs:element>
             </xs:sequence>
             <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="location" type="xs:anyURI"/>
             <xs:anyAttribute processContents="lax"/>
         </xs:complexType>
     </xs:element>
