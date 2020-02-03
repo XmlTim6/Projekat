@@ -31,4 +31,10 @@ public class XSLTransformationServiceImpl implements XSLTransformationService {
     public OutputStream createHtml(String document, String transformation) throws  IOException, SAXException {
         return new XSLFOTransformer().generateHtml(document, transformation);
     }
+
+    @Override
+    public OutputStream createXml(String document, String transformation) throws IOException, SAXException {
+        Map<String, Object> xslParameters = new HashMap<>();
+        return new XSLFOTransformer().generateXml(document, transformation, xslParameters);
+    }
 }

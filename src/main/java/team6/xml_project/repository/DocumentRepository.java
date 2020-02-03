@@ -10,6 +10,8 @@ public interface DocumentRepository {
 
     void save(Document document, String collectionId, String documentId) throws Exception;
 
+    void save(String document, String collectionId, String documentId) throws Exception;
+
     Document getDocumentById(Document document, String collectionId, String documentId) throws Exception;
 
     void deleteDocumentById(String collectionId, String documentId) throws Exception;
