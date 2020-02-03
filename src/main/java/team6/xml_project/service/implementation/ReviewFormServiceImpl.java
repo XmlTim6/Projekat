@@ -97,9 +97,10 @@ public class ReviewFormServiceImpl implements ReviewFormService {
         try {
             reviewFormURIsOld = reviewFormRepository.getAllReviewFormURIsOfSubmission(submissionId);
             for (String uri: reviewFormURIsOld) {
+                int index = uri.indexOf("revision_") + "revision_".length();
                 reviewFormURIs.add("http://localhost:3000/details/" + submissionId +
-                        "/" + submission.getCurrentRevision() +
-                        "/" + uri.substring(uri.lastIndexOf('/') + 1));
+                        "/" + uri.substring(index, index + 1) +
+                        "/" + uri.substring(index + 2));
             }
         } catch (Exception e) {
             throw new SubmissionNotFoundException();

@@ -183,7 +183,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         submissionRepository.save(submission);
 
         if (status == SubmissionStatus.ACCEPTED) {
-            handlePaperAcceptance(submission);
+            handlePaperAcceptance(submission, user);
         }
 
         if (status == SubmissionStatus.IN_REVIEW) {
@@ -210,10 +210,10 @@ public class SubmissionServiceImpl implements SubmissionService {
         //TODO
     }
 
-    private void handlePaperAcceptance(Submission submission) throws IOException, TransformerException, JAXBException, SAXException {
+    private void handlePaperAcceptance(Submission submission, User user) throws IOException, TransformerException, JAXBException, SAXException {
         Paper paper = paperService.findPaper(
                 String.format("/db/xml_project_tim6/papers/%s/revision_%s", submission.getId(), submission.getCurrentRevision()),
-                "paper.xml");
+                "paper.xml", user.getId(), submission.getId());
         String paperXML = XMLMarshaller.createStringFromPaper(paper);
 
         String annotatedPaper = xslTransformationService.addMetadataToPaper(paperXML,

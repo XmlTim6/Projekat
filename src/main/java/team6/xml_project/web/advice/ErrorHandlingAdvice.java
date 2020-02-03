@@ -109,4 +109,14 @@ public class ErrorHandlingAdvice {
 		return error;
 	}
 
+
+	@ExceptionHandler(FailedToGenerateDocumentException.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody
+	ValidationErrorResponse onFailedToGenerateDocumentException(FailedToGenerateDocumentException e){
+		ValidationErrorResponse error = new ValidationErrorResponse();
+		error.getViolations().add(new Violation("document", e.getMessage()));
+		return error;
+	}
+
 }
