@@ -41,20 +41,20 @@ import javax.xml.namespace.QName;
     "value"
 })
 @XmlRootElement(name = "formula")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
 public class Formula {
 
     @XmlValue
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String value;
     @XmlAttribute(name = "id", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String id;
     @XmlAnyAttribute
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
@@ -65,7 +65,7 @@ public class Formula {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getValue() {
         return value;
     }
@@ -78,7 +78,7 @@ public class Formula {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setValue(String value) {
         this.value = value;
     }
@@ -91,7 +91,7 @@ public class Formula {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getId() {
         return id;
     }
@@ -104,7 +104,7 @@ public class Formula {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setId(String value) {
         this.id = value;
     }
@@ -123,7 +123,7 @@ public class Formula {
      * @return
      *     always non-null
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-01-28T05:39:49+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Map<QName, String> getOtherAttributes() {
         return otherAttributes;
     }

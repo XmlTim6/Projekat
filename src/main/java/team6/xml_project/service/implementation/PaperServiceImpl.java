@@ -110,21 +110,6 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public String findPapersMetadataByAuthorName(String name) throws IOException {
-        return paperRDFService.findPapersMetadataByAuthorName(name);
-    }
-
-    @Override
-    public String findPapersMetadataByTitle(String title) throws IOException {
-        return paperRDFService.findPapersMetadataByTitle(title);
-    }
-
-    @Override
-    public String findPaperMetadataById(String id) throws IOException {
-        return paperRDFService.findPaperMetadataById(id);
-    }
-
-    @Override
     public InputStream createPaperRDFStreamFromXML(String paperXML) throws FileNotFoundException, TransformerException {
         StringReader reader = new StringReader(paperXML);
 
@@ -165,5 +150,20 @@ public class PaperServiceImpl implements PaperService {
         } else {
             throw new PermissionDeniedException("Cannot access this resource");
         }
+    }
+
+    @Override
+    public List<String> findPaperURIsMatchingText(String searchTerm) throws Exception {
+        return paperRepository.findPaperURIsMatchingText(searchTerm);
+    }
+
+    @Override
+    public String findPapersByMetadata(String paperId, String paperTitle, String authorName, List<String> keywords, String type) {
+        return paperRDFService.findPapersByMetadata(paperId, paperTitle, authorName, keywords, type);
+    }
+
+    @Override
+    public String findPapersCitingPaper(String paperLocation, String type) {
+        return paperRDFService.findPapersCitingPaper(paperLocation, type);
     }
 }

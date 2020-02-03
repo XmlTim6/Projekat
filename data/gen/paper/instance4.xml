@@ -1,33 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<paper xmlns="XML_tim6"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="XML_tim6 file:/D:/Development/FTN/SEM7/XML/Projekat/backend/data/schema/paper.xsd" title="Paper 1">
-    <received>2020-01-20Z</received>
-    <revised>2020-02-15</revised>
-    <accepted>2020-03-14Z</accepted>
+<paper xmlns="XML_tim6" title="Paper 1" about="http://www.tim6.rs/papers/bdbe6c43-a105-40ae-8069-79d08a18e2a9/revision_1/paper.xml" property="pred:title" vocab="http://www.tim6.rs/predicate/" typeof="pred:Paper" content="Paper 1">
+    <received datatype="xsd:date" property="pred:received">2020-01-20Z</received>
+    <revised datatype="xsd:date" property="pred:revised">2020-02-15</revised>
+    <accepted datatype="xs:date" property="pred:accepted">2020-03-14Z</accepted>
     <authors>
-        <author
-            email="email1@email.com">
+        <author email="email1@email.com" property="pred:author" content="John S Smith">
             <personal>
                 <first_name>John</first_name>
                 <middle_name>S</middle_name>
                 <last_name>Smith</last_name>
             </personal>
-            <institution>
+            <institution property="pred:institution" content="Institution Name 1, City 1, Country 1">
                 <name>Institution Name 1</name>
                 <city>City 1</city>
                 <country>Country 1</country>
             </institution>
         </author>
-        <author
-            email="email2@email.com">
+        <author email="email2@email.com" property="pred:author" content="Jane S Smith">
             <personal>
                 <first_name>Jane</first_name>
                 <middle_name>S</middle_name>
                 <last_name>Smith</last_name>
             </personal>
-            <institution>
+            <institution property="pred:institution" content="Institution Name 1, City 1, Country 1">
                 <name>Institution Name 1</name>
                 <city>City 1</city>
                 <country>Country 1</country>
@@ -42,8 +36,8 @@
         <practical_implcations>Fusce bibendum imperdiet efficitur. Etiam convallis dui velit, sed pulvinar ante varius vitae. Donec et nisl a nisi sollicitudin rhoncus. Nullam quis vulputate arcu. Vivamus a dolor magna. Nam nec nunc eu risus venenatis tincidunt et vel nisl. Nullam eu orci ex. Duis nec porttitor nulla. Fusce pharetra tempus dui ac condimentum.</practical_implcations>
         <orginality>Cras euismod dui id bibendum efficitur. In condimentum magna eu dui blandit rutrum. Ut a pulvinar risus. Nulla ex felis, interdum vel suscipit id, mattis nec diam. Vivamus tincidunt luctus arcu, sit amet hendrerit nisl auctor gravida. Nulla semper arcu ipsum, in rutrum tortor vestibulum id. Praesent eros urna, finibus sed posuere et, accumsan sed nunc. Donec ex velit, laoreet quis volutpat tristique, luctus eu nibh. Vivamus eu libero nulla. Suspendisse potenti. Maecenas vitae maximus mi, id accumsan lectus. Nullam sed volutpat ex. Quisque varius lacus luctus dapibus rhoncus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</orginality>
         <keywords>
-            <keyword>keyword1</keyword>
-            <keyword>keyword2</keyword>
+            <keyword datatype="xs:string" property="pred:keyword">keyword1</keyword>
+            <keyword datatype="xs:string" property="pred:keyword">keyword2</keyword>
         </keywords>
     </abstract>
     <content>
@@ -88,37 +82,37 @@
             </work>
         </mention>
     </references>
-    <citations>
-        <mention id="ID009">
+    <citations rel="pred:citations">
+        <mention id="ID009" property="pred:uri" content="c2.com" typeof="pred:Citation">
             <authors>
-                <author>
+                <author property="pred:citationAuthor" content="H. Rich">
                     <last_name>Rich</last_name>
                     <initial>H.</initial>
                 </author>
             </authors>
-            <work>
-                <year_published>1994</year_published>
-                <title>Citation 1</title>
-                <edition>6</edition>
-                <city>Stockholm</city>
-                <publisher>Burg Publishing</publisher>
-                <numbers>2</numbers>
+            <work property="pred:work">
+                <year_published property="pred:yearPublished" datatype="xs:gYear">1994</year_published>
+                <title property="pred:title" datatype="xs:string">Citation 1</title>
+                <edition property="pred:edition" datatype="xs:string">6</edition>
+                <city property="pred:city" datatype="xs:string">Stockholm</city>
+                <publisher property="pred:publisher" datatype="xs:string">Burg Publishing</publisher>
+                <numbers property="pred:numbers" datatype="xs:string">2</numbers>
             </work>
         </mention>
-        <mention id="ID011" location="http://localhost:3000/details/bdbe6c43-a105-40ae-8069-79d08a18e2a9/1/paper.xml">
+        <mention id="ID011" property="pred:uri" content="c1.com" typeof="pred:Citation">
             <authors>
-                <author>
+                <author property="pred:citationAuthor" content="P. Johnson">
                     <last_name>Johnson</last_name>
                     <initial>P.</initial>
                 </author>
             </authors>
-            <work>
-                <year_published>2001</year_published>
-                <title>Citation 2</title>
-                <edition>3</edition>
-                <city>Washington</city>
-                <publisher>Tim Books</publisher>
-                <numbers>6</numbers>
+            <work property="pred:work">
+                <year_published property="pred:year" datatype="xs:gYear">2001</year_published>
+                <title property="pred:title" datatype="xs:string">Citation 2</title>
+                <edition property="pred:edition" datatype="xs:string">3</edition>
+                <city property="pred:city" datatype="xs:string">Paris</city>
+                <publisher property="pred:publisher" datatype="xs:string">Tim Books</publisher>
+                <numbers property="pred:numbers" datatype="xs:string">6</numbers>
             </work>
         </mention>
     </citations>
