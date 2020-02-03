@@ -7,6 +7,7 @@ import team6.xml_project.service.PaperRDFService;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 @Service
 public class PaperRDFServiceImpl implements PaperRDFService {
@@ -20,17 +21,13 @@ public class PaperRDFServiceImpl implements PaperRDFService {
     }
 
     @Override
-    public String findPapersMetadataByAuthorName(String name) throws IOException {
-        return paperRDFRepository.findPapersMetadataByAuthorName(name);
+    public String findPapersByMetadata(String paperId, String paperTitle, String authorName, List<String> keywords, String type) {
+        return paperRDFRepository.findPapersByMetadata(paperId, paperTitle, authorName, keywords, type);
     }
 
     @Override
-    public String findPapersMetadataByTitle(String title) throws IOException {
-        return paperRDFRepository.findPapersMetadataByTitle(title);
+    public String findPapersCitingPaper(String paperLocation, String type) {
+        return paperRDFRepository.findPapersCitingPaper(paperLocation, type);
     }
 
-    @Override
-    public String findPaperMetadataById(String id) throws IOException {
-        return paperRDFRepository.findPaperMetadataById(id);
-    }
 }

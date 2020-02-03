@@ -13,6 +13,8 @@ public interface PaperRepository {
 
     List<String> getAllPaperURIsOfSubmission(String submissionId) throws Exception;
 
+    List<String> findPaperURIsMatchingText(String text) throws Exception;
+
     void save(String paper, Submission submission, String documentName);
 
     void save(Paper paper, Submission submission, String documentName);

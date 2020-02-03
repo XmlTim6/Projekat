@@ -1,5 +1,6 @@
 package team6.xml_project.web.controller;
 
+import com.google.common.collect.Lists;
 import jdk.nashorn.internal.parser.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -19,7 +20,9 @@ import javax.xml.bind.JAXBException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api/paper")
@@ -86,6 +89,34 @@ public class PaperController {
         }
     }
 
+    @RequestMapping(value = "/basicSearch", method = RequestMethod.GET)
+    public ResponseEntity<List<String>> basicSearch(@RequestParam(value = "term") String searchTerm) {
+        try {
+            return new ResponseEntity<>(paperService.findPaperURIsMatchingText(searchTerm), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(Lists.newArrayList(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "/advancedSearch", method = RequestMethod.GET)
+    public ResponseEntity<String> advancedSearch(
+            @RequestParam(value = "paperId", required = false, defaultValue = "") String id,
+            @RequestParam(value = "paperTitle", required = false, defaultValue = "") String title,
+            @RequestParam(value = "paperAuthor", required = false, defaultValue = "") String author,
+            @RequestParam(value = "keywords", required = false, defaultValue = "") String keywords,
+            @RequestParam(value = "type", required = false, defaultValue = "json") String type) {
+
+        return new ResponseEntity<>(paperService.findPapersByMetadata(
+                id, title, author, Arrays.stream(keywords.split(",")).map(String::trim).collect(Collectors.toList()), type), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/citedBy", method = RequestMethod.GET)
+    public ResponseEntity<String> citedBy(
+            @RequestParam(value = "paperLocation") String paperLocation,
+            @RequestParam(value = "type", required = false, defaultValue = "json") String type) {
+        return new ResponseEntity<>(paperService.findPapersCitingPaper(paperLocation, type), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/papersOfSubmission", method = RequestMethod.GET)
     public ResponseEntity<List<String>> getPaperURIsOfSubmission(@RequestParam(value = "submission") String submission) {
         try {
@@ -95,23 +126,6 @@ public class PaperController {
         } catch (Exception e) {
             throw new SubmissionNotFoundException();
         }
-    }
-
-    @RequestMapping(produces = MediaType.APPLICATION_XML_VALUE, value="/{id}/metadata", method = RequestMethod.GET)
-    public ResponseEntity<String> getPaperMetadata(@PathVariable String id) throws IOException {
-        return new ResponseEntity<>(paperService.findPaperMetadataById(id), HttpStatus.OK);
-    }
-
-    @RequestMapping(produces = MediaType.APPLICATION_XML_VALUE, value="/metadata", method = RequestMethod.GET)
-    public ResponseEntity<String> getPaperMetadata(
-            @RequestParam(value = "author", required = false) String author,
-            @RequestParam(value = "title", required = false) String title) throws IOException {
-        if (title != null && !title.isEmpty())
-            return new ResponseEntity<>(paperService.findPapersMetadataByTitle(title), HttpStatus.OK);
-        else if (author != null && !author.isEmpty())
-            return new ResponseEntity<>(paperService.findPapersMetadataByAuthorName(author), HttpStatus.OK);
-        else
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 }

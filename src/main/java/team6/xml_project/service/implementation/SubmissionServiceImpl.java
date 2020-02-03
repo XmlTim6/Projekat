@@ -217,7 +217,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         String paperXML = XMLMarshaller.createStringFromPaper(paper);
 
         String annotatedPaper = xslTransformationService.addMetadataToPaper(paperXML,
-                String.format("http://www.tim6.rs/db/xml_project_tim6/papers/%s/revision_%s/paper.xml",
+                String.format("http://localhost:3000/details/%s/%s/paper.xml",
                         submission.getId(), submission.getCurrentRevision()));
 
         InputStream rdfInputStream = paperService.createPaperRDFStreamFromXML(annotatedPaper);

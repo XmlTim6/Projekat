@@ -88,4 +88,81 @@
         </xsl:copy>
     </xsl:template>
 
+    <xsl:template match="/t6:paper/t6:citations">
+        <xsl:copy>
+            <xsl:attribute name="rel">pred:citations</xsl:attribute>
+            <xsl:apply-templates select="node() | @*"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="/t6:paper/t6:citations/t6:mention">
+        <xsl:copy>
+            <xsl:attribute name="typeof">pred:Citation</xsl:attribute>
+            <xsl:attribute name="property">pred:uri</xsl:attribute>
+            <xsl:attribute name="content">
+                <xsl:value-of select="@location"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="node() | @*"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template  match="/t6:paper/t6:citations/t6:mention/t6:authors//t6:author">
+        <xsl:copy>
+            <xsl:attribute name="property">pred:author</xsl:attribute>
+            <xsl:attribute name="content">
+                <xsl:value-of select="t6:initial"/> <xsl:text> </xsl:text>
+                <xsl:value-of select="t6:last_name"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="node() | @*"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template  match="/t6:paper/t6:citations/t6:mention/t6:work/t6:year_published">
+        <xsl:copy>
+            <xsl:attribute name="property">pred:yearPublished</xsl:attribute>
+            <xsl:attribute name="datatype">xs:gYear</xsl:attribute>
+            <xsl:apply-templates select="node() | @*"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template  match="/t6:paper/t6:citations/t6:mention/t6:work/t6:title">
+        <xsl:copy>
+            <xsl:attribute name="property">pred:title</xsl:attribute>
+            <xsl:attribute name="datatype">xs:string</xsl:attribute>
+            <xsl:apply-templates select="node() | @*"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template  match="/t6:paper/t6:citations/t6:mention/t6:work/t6:edition">
+        <xsl:copy>
+            <xsl:attribute name="property">pred:edition</xsl:attribute>
+            <xsl:attribute name="datatype">xs:string</xsl:attribute>
+            <xsl:apply-templates select="node() | @*"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template  match="/t6:paper/t6:citations/t6:mention/t6:work/t6:city">
+        <xsl:copy>
+            <xsl:attribute name="property">pred:city</xsl:attribute>
+            <xsl:attribute name="datatype">xs:string</xsl:attribute>
+            <xsl:apply-templates select="node() | @*"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template  match="/t6:paper/t6:citations/t6:mention/t6:work/t6:publisher">
+        <xsl:copy>
+            <xsl:attribute name="property">pred:publisher</xsl:attribute>
+            <xsl:attribute name="datatype">xs:string</xsl:attribute>
+            <xsl:apply-templates select="node() | @*"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template  match="/t6:paper/t6:citations/t6:mention/t6:work/t6:numbers">
+        <xsl:copy>
+            <xsl:attribute name="property">pred:numbers</xsl:attribute>
+            <xsl:attribute name="datatype">xs:string</xsl:attribute>
+            <xsl:apply-templates select="node() | @*"/>
+        </xsl:copy>
+    </xsl:template>
+
 </xsl:stylesheet>

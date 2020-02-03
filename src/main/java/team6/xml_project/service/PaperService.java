@@ -5,7 +5,6 @@ import team6.xml_project.models.xml.submission.Submission;
 
 import javax.xml.transform.TransformerException;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -21,9 +20,9 @@ public interface PaperService {
 
     List<String> findPaperURIsOfSubmission(String submissionId, Long userId) throws Exception;
 
-    String findPapersMetadataByAuthorName(String name) throws IOException;
+    List<String> findPaperURIsMatchingText(String searchTerm) throws Exception;
 
-    String findPapersMetadataByTitle(String title) throws IOException;
+    String findPapersByMetadata(String paperId, String paperTitle, String authorName, List<String> keywords, String type);
 
-    String findPaperMetadataById(String id) throws IOException;
+    String findPapersCitingPaper(String paperLocation, String type);
 }

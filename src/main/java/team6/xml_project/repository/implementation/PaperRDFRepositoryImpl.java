@@ -20,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 @Repository
 public class PaperRDFRepositoryImpl implements PaperRDFRepository {
@@ -52,69 +53,70 @@ public class PaperRDFRepositoryImpl implements PaperRDFRepository {
         processor.execute();
     }
 
+
     @Override
-    public String findPapersMetadataByAuthorName(String name) throws IOException {
-        // SPARQL file which is to be queried
-        String sparqlFilePath = "data/sparql/papersByAuthorName.rq";
+    public String findPapersByMetadata(String paperId, String paperTitle, String authorName, List<String> keywords,
+                                       String type) {
 
-        // Querying the named graph with a referenced SPARQL query
-        String sparqlQuery = String.format(FileUtil.readFile(sparqlFilePath, StandardCharsets.UTF_8),
-                RDFEndpoints.dataEndpoint + SPARQL_NAMED_GRAPH_URI, name);
+        StringBuilder builder = new StringBuilder();
+        for (String keyword: keywords) {
+           builder.append(String.format("regex(str(?keyword), \"%s\", \"i\") &&\n", keyword));
+        }
 
-        // Create a QueryExecution that will access a SPARQL service over HTTP
-        QueryExecution query = QueryExecutionFactory.sparqlService(RDFEndpoints.queryEndpoint, sparqlQuery);
-        ResultSet results = query.execSelect();
-
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ResultSetFormatter.outputAsJSON(out, results);
-
-        String json = new String(out.toByteArray());
-        query.close();
-
-        return json;
+        String sparqlQuery = String.format("SELECT DISTINCT ?paper ?title ?received ?revised ?accepted ?author ?institution ?keyword FROM <%s>\n" +
+                "WHERE {\n" +
+                "  \t?paper <http://www.tim6.rs/predicate/title> ?title .\n" +
+                "  \t?paper <http://www.tim6.rs/predicate/received> ?received .\n" +
+                "  \t?paper <http://www.tim6.rs/predicate/revised> ?revised .\n" +
+                "    ?paper <http://www.tim6.rs/predicate/accepted> ?accepted .\n" +
+                "    ?paper <http://www.tim6.rs/predicate/author> ?author .\n" +
+                "    ?paper <http://www.tim6.rs/predicate/institution> ?institution .\n" +
+                "    ?paper <http://www.tim6.rs/predicate/keyword> ?keyword .\n" +
+                "  FILTER(" + builder.toString() +
+                "    regex(str(?paper), \"%s\", \"i\") &&\n" +
+                "    regex(str(?title), \"%s\", \"i\") &&\n" +
+                "    regex(str(?author), \"%s\", \"i\")\n" +
+                "  )\n" +
+                "}",
+                RDFEndpoints.dataEndpoint + SPARQL_NAMED_GRAPH_URI,
+                paperId, paperTitle, authorName
+                );
+        return executeQuery(type, sparqlQuery);
     }
 
     @Override
-    public String findPapersMetadataByTitle(String title) throws IOException {
-        // SPARQL file which is to be queried
-        String sparqlFilePath = "data/sparql/papersByTitle.rq";
-
-        // Querying the named graph with a referenced SPARQL query
-        String sparqlQuery = String.format(FileUtil.readFile(sparqlFilePath, StandardCharsets.UTF_8),
-                RDFEndpoints.dataEndpoint + SPARQL_NAMED_GRAPH_URI, title);
-
-        // Create a QueryExecution that will access a SPARQL service over HTTP
-        QueryExecution query = QueryExecutionFactory.sparqlService(RDFEndpoints.queryEndpoint, sparqlQuery);
-        ResultSet results = query.execSelect();
-
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ResultSetFormatter.outputAsXML(out, results);
-
-        String json = new String(out.toByteArray());
-        query.close();
-
-        return json;
+    public String findPapersCitingPaper(String paperLocation, String type) {
+        String sparqlQuery = String.format("SELECT DISTINCT ?paper ?title ?received ?revised ?accepted ?author ?institution ?keyword FROM <http://localhost:8081/fuseki/FTNProject/data/papers/metadata>\n" +
+                "WHERE {\n" +
+                "  \t?paper <http://www.tim6.rs/predicate/title> ?title .\n" +
+                "  \t?paper <http://www.tim6.rs/predicate/received> ?received .\n" +
+                "  \t?paper <http://www.tim6.rs/predicate/revised> ?revised .\n" +
+                "    ?paper <http://www.tim6.rs/predicate/accepted> ?accepted .\n" +
+                "    ?paper <http://www.tim6.rs/predicate/author> ?author .\n" +
+                "    ?paper <http://www.tim6.rs/predicate/institution> ?institution .\n" +
+                "    ?paper <http://www.tim6.rs/predicate/keyword> ?keyword .\n" +
+                "  \t?paper <http://www.tim6.rs/predicate/citations> ?citations .\n" +
+                "    ?citations <http://www.tim6.rs/predicate/uri> ?uri\n" +
+                "  FILTER(regex(str(?uri), str(\"%s\"), \"i\")\n" +
+                "  )\n" +
+                "}", paperLocation);
+        return executeQuery(type, sparqlQuery);
     }
 
-    @Override
-    public String findPaperMetadataById(String id) throws IOException {
-        // SPARQL file which is to be queried
-        String sparqlFilePath = "data/sparql/paperById.rq";
-
-        // Querying the named graph with a referenced SPARQL query
-        String sparqlQuery = String.format(FileUtil.readFile(sparqlFilePath, StandardCharsets.UTF_8),
-                RDFEndpoints.dataEndpoint + SPARQL_NAMED_GRAPH_URI, id);
-
+    private String executeQuery(String type, String sparqlQuery) {
         // Create a QueryExecution that will access a SPARQL service over HTTP
         QueryExecution query = QueryExecutionFactory.sparqlService(RDFEndpoints.queryEndpoint, sparqlQuery);
         ResultSet results = query.execSelect();
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ResultSetFormatter.outputAsJSON(out, results);
+        switch (type) {
+            case "json": ResultSetFormatter.outputAsJSON(out, results); break;
+            case "xml": ResultSetFormatter.outputAsXML(out, results); break;
+        }
 
-        String json = new String(out.toByteArray());
+        String result = new String(out.toByteArray());
         query.close();
 
-        return json;
+        return result;
     }
 }

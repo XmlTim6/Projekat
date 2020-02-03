@@ -48,6 +48,26 @@ public class PaperRepositoryImpl implements PaperRepository {
     }
 
     @Override
+    public List<String> findPaperURIsMatchingText(String text) throws Exception {
+        String xquery = String.format("xquery version \"3.1\";\n" +
+                "\n" +
+                "declare default element namespace \"XML_tim6\";\n" +
+                "\n" +
+                "for $submission in collection(\"/db/xml_project_tim6/submissions\")//submission\n" +
+                "where $submission/submissionStatus = \"ACCEPTED\"\n" +
+                "let $acceptedSubmissions := $submission\n" +
+                "\n" +
+                "for $acceptedSubmission in $acceptedSubmissions\n" +
+                "return\n" +
+                "    (for $paper in doc(concat(\"/db/xml_project_tim6/papers/\", $acceptedSubmission/id/text(), \"/revision_\", $acceptedSubmission/currentRevision/text(), \"/paper.xml\"))\n" +
+                "    where $paper//*[contains(upper-case(text()[1]),upper-case('%s'))]\n" +
+                "    return base-uri($paper)\n" +
+                "    )\n" +
+                "    ", text);
+        return getURIs(xquery, documentRepository, "/db/xml_project_tim6/");
+    }
+
+    @Override
     public void save(String paper, Submission submission, String documentName) {
         try {
             Paper paperObject = XMLUnmarshaller.createPaperFromXML(paper);
