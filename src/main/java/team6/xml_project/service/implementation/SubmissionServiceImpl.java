@@ -51,9 +51,11 @@ public class SubmissionServiceImpl implements SubmissionService {
     private ReviewFormService reviewFormService;
 
     @Override
-    public void create(String paper, Long userId) throws JAXBException {
+    public void create(String paper, Long userId) throws Exception {
         User author = userService.findById(userId);
+        String paperForReview = xslTransformationService.createXml(paper, "data/xsl/paper_anonymization.xsl").toString();
         Paper paperObject = XMLUnmarshaller.createPaperFromXML(paper);
+
 
         Submission submission = new Submission();
         submission.setTitle(paperObject.getTitle());
@@ -61,6 +63,8 @@ public class SubmissionServiceImpl implements SubmissionService {
 
         submissionRepository.save(submission);
         paperService.save(paper, submission, "paper.xml");
+        paperService.save(paperForReview, submission, "paper_anon.xml");
+
     }
 
     @Override

@@ -5,10 +5,60 @@
     exclude-result-prefixes="xs"
     version="2.0">
     <xsl:template match="/">
+        <html>
+            <head>
+                <style type="text/css">
+                    .textCenter{
+                    text-align: center;
+                    }
+                    .italic{
+                    font-style: italic;
+                    }
+                    .textSize20{
+                    font-size: 20px;
+                    }
+                    .textSize16{
+                    font-size: 16px;
+                    }
+                    .abstractSection{
+                    font-size: 16px;
+                    font-weight: bold;
+                    display: inline;
+                    }
+                    .abstractParagraph{
+                    margin-block-start: 0;
+                    margin-block-end: 0;
+                    }
+                    .top-margin{
+                    margin-top: 20px;
+                    }
+                    .top-margin-sm{
+                    margin-top: 10px;
+                    }
+                    .figure-image{
+                    max-width:400px;
+                    margin:auto;
+                    text-align:center;
+                    }
+                    .figure-table{
+                    text-align:center;
+                    }
+
+                    .quote-source{
+                    text-align:right;
+                    font-style:italic
+                    }
+
+
+                </style>
+            </head>
+            <body>
                 <div style="margin-left:10%; margin-right:10%; text-align:justify;">
                     <h1 class="textCenter"><xsl:value-of select="t6:paper/@title"/></h1>
                     <xsl:apply-templates/>
                 </div>
+            </body>
+        </html>
     </xsl:template>
 
     <xsl:template  match="/t6:paper/t6:authors">

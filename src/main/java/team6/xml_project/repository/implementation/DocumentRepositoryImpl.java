@@ -120,6 +120,48 @@ public class DocumentRepositoryImpl implements DocumentRepository {
         }
     }
 
+    public void save(String document, String collectionId, String documentId) throws Exception {
+        initDb();
+        // a collection of Resources stored within an XML database
+        Collection col = null;
+        XMLResource res = null;
+        OutputStream os = new ByteArrayOutputStream();
+
+        try {
+            System.out.println("[INFO] Retrieving the collection: " + collectionId);
+            col = getOrCreateCollection(collectionId);
+
+            System.out.println("[INFO] Inserting the document: " + documentId);
+            res = (XMLResource) col.createResource(documentId, XMLResource.RESOURCE_TYPE);
+
+            // link the stream to the XML resource
+            res.setContent(document.getBytes());
+            System.out.println("[INFO] Storing the document: " + res.getId());
+
+            col.storeResource(res);
+            System.out.println("[INFO] Done.");
+
+        } finally {
+
+            //don't forget to cleanup
+            if(res != null) {
+                try {
+                    ((EXistResource)res).freeResources();
+                } catch (XMLDBException xe) {
+                    xe.printStackTrace();
+                }
+            }
+
+            if(col != null) {
+                try {
+                    col.close();
+                } catch (XMLDBException xe) {
+                    xe.printStackTrace();
+                }
+            }
+        }
+    }
+
     private Collection getOrCreateCollection(String collectionUri) throws XMLDBException {
         return getOrCreateCollection(collectionUri, 0);
     }
