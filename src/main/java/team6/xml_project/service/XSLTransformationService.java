@@ -12,4 +12,6 @@ public interface XSLTransformationService {
     OutputStream createPdf(String document, String transformation) throws IOException, SAXException;
 
     OutputStream createHtml(String document, String transformation) throws  IOException, SAXException;
+
+    OutputStream createXml(String document, String transformation) throws IOException, SAXException;
 }
