@@ -215,10 +215,9 @@ public class SubmissionServiceImpl implements SubmissionService {
     }
 
     private void handlePaperAcceptance(Submission submission, User user) throws IOException, TransformerException, JAXBException, SAXException {
-        Paper paper = paperService.findPaper(
+        String paperXML = paperService.findPaper(
                 String.format("/db/xml_project_tim6/papers/%s/revision_%s", submission.getId(), submission.getCurrentRevision()),
                 "paper.xml", user.getId(), submission.getId());
-        String paperXML = XMLMarshaller.createStringFromPaper(paper);
 
         String annotatedPaper = xslTransformationService.addMetadataToPaper(paperXML,
                 String.format("http://localhost:3000/details/%s/%s/paper.xml",

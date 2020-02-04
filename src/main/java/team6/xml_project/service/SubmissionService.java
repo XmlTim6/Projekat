@@ -7,7 +7,6 @@ import team6.xml_project.models.xml.submission.Submission;
 import javax.mail.MessagingException;
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.TransformerException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 

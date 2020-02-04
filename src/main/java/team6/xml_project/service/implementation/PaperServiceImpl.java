@@ -6,23 +6,17 @@ import org.springframework.stereotype.Service;
 import team6.xml_project.exception.PermissionDeniedException;
 import team6.xml_project.exception.SubmissionNotFoundException;
 import team6.xml_project.helpers.RDFMetadataExtractor;
-import team6.xml_project.helpers.XMLUnmarshaller;
 import team6.xml_project.models.Role;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.User;
-import team6.xml_project.models.xml.paper.Paper;
 import team6.xml_project.models.xml.submission.Submission;
 import team6.xml_project.repository.DocumentRepository;
-import team6.xml_project.repository.PaperRDFRepository;
 import team6.xml_project.repository.PaperRepository;
 import team6.xml_project.service.PaperRDFService;
 import team6.xml_project.service.PaperService;
 import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.UserService;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.TransformerException;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -59,10 +53,10 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public Paper findPaper(String collectionName, String documentName, long userId, String submissionId) {
+    public String findPaper(String collectionName, String documentName, long userId, String submissionId) {
         try {
             User user = userService.findById(userId);
-            Paper paper =  paperRepository.get(collectionName, documentName);
+            String paper =  paperRepository.get(collectionName, documentName);
             Submission submission = submissionService.findById(submissionId);
 
             if(getPermittedStatus(user, submission).contains(submission.getSubmissionStatus())){

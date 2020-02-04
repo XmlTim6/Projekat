@@ -1,10 +1,8 @@
 package team6.xml_project.repository;
 
 import org.xmldb.api.base.ResourceSet;
-import org.xmldb.api.base.XMLDBException;
 import team6.xml_project.models.xml.Document;
 
-import javax.xml.bind.JAXBException;
 
 public interface DocumentRepository {
 
@@ -13,6 +11,8 @@ public interface DocumentRepository {
     void save(String document, String collectionId, String documentId) throws Exception;
 
     Document getDocumentById(Document document, String collectionId, String documentId) throws Exception;
+
+    String getDocumentById(String collectionId, String documentId) throws Exception;
 
     void deleteDocumentById(String collectionId, String documentId) throws Exception;
 

@@ -50,10 +50,9 @@ public class PaperController {
             @RequestParam(value = "token") String token) throws JAXBException {
         try {
             long userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
-            Paper paper = paperService.findPaper(String.format("/db/xml_project_tim6/papers/%s/revision_%s",
+            String paperStr = paperService.findPaper(String.format("/db/xml_project_tim6/papers/%s/revision_%s",
                     collection, revision), document, userId, collection);
 
-            String paperStr = XMLMarshaller.createStringFromPaper(paper);
             if(format.equals("pdf")){
                 OutputStream output = xslTransformationService.createPdf(paperStr, "data/xsl/xsl-fo/paper_pdf.xsl");
                 byte[] contents = ((ByteArrayOutputStream) output).toByteArray();

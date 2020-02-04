@@ -24,8 +24,7 @@ public class CoverLetterRepositoryImpl implements CoverLetterRepository {
     @Override
     public void save(String coverLetter, Submission submission) {
         try {
-            CoverLetter coverLetterObject = XMLUnmarshaller.createCoverLetterFromXML(coverLetter);
-            documentRepository.save(coverLetterObject, String.format("/db/xml_project_tim6/coverLetters/%s/revision_%s/",
+            documentRepository.save(coverLetter, String.format("/db/xml_project_tim6/coverLetters/%s/revision_%s/",
                     submission.getId(), submission.getCurrentRevision()), "coverLetter.xml");
         } catch (Exception e) {
             throw new DocumentNotSavedException();
@@ -33,11 +32,9 @@ public class CoverLetterRepositoryImpl implements CoverLetterRepository {
     }
 
     @Override
-    public CoverLetter find(String submissionId, Long revision) throws Exception {
-        CoverLetter coverLetter = new CoverLetter();
-        coverLetter = (CoverLetter) documentRepository.getDocumentById(coverLetter, String.format("/db/xml_project_tim6/coverLetters/%s/revision_%s/",
+    public String find(String submissionId, Long revision) throws Exception {
+        return documentRepository.getDocumentById(String.format("/db/xml_project_tim6/coverLetters/%s/revision_%s/",
                 submissionId, revision), "coverLetter.xml");
-        return coverLetter;
     }
 
     @Override

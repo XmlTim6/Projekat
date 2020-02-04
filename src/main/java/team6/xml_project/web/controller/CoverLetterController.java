@@ -54,8 +54,7 @@ public class CoverLetterController {
 
         try {
             long userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
-            CoverLetter coverLetter = coverLetterService.findCoverLetter(collection, revision, userId);
-            String coverLetterStr = XMLMarshaller.createStringFromCoverLetter(coverLetter);
+            String coverLetterStr = coverLetterService.findCoverLetter(collection, revision, userId);
             if(format.equals("pdf")){
                 OutputStream output = xslTransformationService.createPdf(coverLetterStr, "data/xsl/xsl-fo/cover_letter_pdf.xsl");
                 byte[] contents = ((ByteArrayOutputStream) output).toByteArray();

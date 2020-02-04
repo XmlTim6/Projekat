@@ -56,8 +56,7 @@ public class ReviewFormController {
             @RequestParam(value = "token") String token) throws JAXBException {
         try {
             long userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
-            ReviewForm reviewForm = reviewFormService.findReviewForm(collection, revision, document, userId);
-            String reviewStr = XMLMarshaller.createStringFromReviewForm(reviewForm);
+            String reviewStr = reviewFormService.findReviewForm(collection, revision, document, userId);
             if(format.equals("pdf")){
                 OutputStream output = xslTransformationService.createPdf(reviewStr, "data/xsl/xsl-fo/review_form_pdf.xsl");
                 byte[] contents = ((ByteArrayOutputStream) output).toByteArray();

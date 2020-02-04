@@ -9,9 +9,7 @@ import team6.xml_project.exception.SubmissionNotFoundException;
 import team6.xml_project.models.Role;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.User;
-import team6.xml_project.models.xml.review_form.ReviewForm;
 import team6.xml_project.models.xml.submission.Submission;
-import team6.xml_project.repository.DocumentRepository;
 import team6.xml_project.repository.ReviewFormRepository;
 import team6.xml_project.repository.SubmissionRepository;
 import team6.xml_project.service.PaperService;
@@ -19,7 +17,6 @@ import team6.xml_project.service.ReviewFormService;
 import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.UserService;
 
-import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -64,7 +61,7 @@ public class ReviewFormServiceImpl implements ReviewFormService {
     }
 
     @Override
-    public ReviewForm findReviewForm(String submissionId, Long revision, String document, Long userId) {
+    public String findReviewForm(String submissionId, Long revision, String document, Long userId) {
         Submission submission = submissionService.findById(submissionId);
         User reviewer = userService.findById(userId);
 

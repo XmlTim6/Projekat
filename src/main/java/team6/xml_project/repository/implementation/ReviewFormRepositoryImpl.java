@@ -27,8 +27,7 @@ public class ReviewFormRepositoryImpl implements ReviewFormRepository {
     @Override
     public void save(String reviewForm, Submission submission, Long reviewerId) {
         try {
-            ReviewForm reviewFormObject = XMLUnmarshaller.createReviewFormFromXML(reviewForm);
-            documentRepository.save(reviewFormObject, String.format("/db/xml_project_tim6/reviewForms/%s/revision_%s/",
+            documentRepository.save(reviewForm, String.format("/db/xml_project_tim6/reviewForms/%s/revision_%s/",
                     submission.getId(), submission.getCurrentRevision()),
                     String.format("review_form_%s.xml", reviewerId));
         } catch (Exception e) {
@@ -37,12 +36,9 @@ public class ReviewFormRepositoryImpl implements ReviewFormRepository {
     }
 
     @Override
-    public ReviewForm find(String submissionId, Long revision, String documentName) throws Exception {
-        ReviewForm reviewForm = new ReviewForm();
-        reviewForm = (ReviewForm) documentRepository.getDocumentById(reviewForm,
-                String.format("/db/xml_project_tim6/reviewForms/%s/revision_%s/",
+    public String find(String submissionId, Long revision, String documentName) throws Exception {
+        return documentRepository.getDocumentById( String.format("/db/xml_project_tim6/reviewForms/%s/revision_%s/",
                 submissionId, revision), documentName);
-        return reviewForm;
     }
 
     @Override
