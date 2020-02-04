@@ -12,7 +12,7 @@
                             <xs:element name="list">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="list_item" type="xs:string"/>
+                                        <xs:element name="list_item" type="xs:string" maxOccurs="unbounded"/>
                                     </xs:sequence>
                                     <xs:attribute name="type" use="required">
                                         <xs:simpleType>
@@ -62,7 +62,7 @@
                             <xs:simpleType>
                                 <xs:restriction base="xs:string">
                                     <xs:pattern
-                                        value="[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"/>
+                                            value="[_\-a-zA-Z0-9\.\+]+@[a-zA-Z0-9](\.?[\-a-zA-Z0-9]*[a-zA-Z0-9])*" />
                                 </xs:restriction>
                             </xs:simpleType>
                         </xs:attribute>

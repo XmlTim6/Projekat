@@ -159,7 +159,7 @@
                                     </xs:simpleContent>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="practical_implcations">
+                            <xs:element name="practical_implications">
                                 <xs:complexType>
                                     <xs:simpleContent>
                                         <xs:extension base="xs:string">
@@ -272,7 +272,7 @@
                 <xs:element name="list">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="list_item">
+                            <xs:element name="list_item" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <xs:simpleContent>
                                         <xs:extension base="xs:string">
