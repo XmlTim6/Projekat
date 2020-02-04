@@ -61,9 +61,9 @@ public class SubmissionServiceImpl implements SubmissionService {
         submission.setTitle(paperObject.getTitle());
         submission.setAuthorId(author.getId());
 
-        submissionRepository.save(submission);
         paperService.save(paper, submission, "paper.xml");
         paperService.save(paperForReview, submission, "paper_anon.xml");
+        submissionRepository.save(submission);
 
     }
 

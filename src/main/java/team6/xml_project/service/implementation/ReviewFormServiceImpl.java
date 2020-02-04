@@ -2,10 +2,9 @@ package team6.xml_project.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import team6.xml_project.exception.NotSubmissionAuthorException;
-import team6.xml_project.exception.PermissionDeniedException;
-import team6.xml_project.exception.SubmissionClosedForCoverLetters;
-import team6.xml_project.exception.SubmissionNotFoundException;
+import team6.xml_project.exception.*;
+import team6.xml_project.helpers.XMLValidator;
+import team6.xml_project.models.DocumentType;
 import team6.xml_project.models.Role;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.User;
@@ -49,10 +48,15 @@ public class ReviewFormServiceImpl implements ReviewFormService {
         if (submission.getReviewerIds().stream().noneMatch(r -> r.getReviewerId() == userId))
             throw new NotSubmissionAuthorException();
 
-        reviewFormRepository.save(reviewForm, submission, userId);
-
-        if (checkIfAllReviewsAdded(submission))
-            submissionService.handleAllReviewsAdded(submission);
+        try{
+            XMLValidator validator= new XMLValidator();
+            validator.validate(reviewForm, DocumentType.REVIEW_FORM);
+            reviewFormRepository.save(reviewForm, submission, userId);
+            if (checkIfAllReviewsAdded(submission))
+                submissionService.handleAllReviewsAdded(submission);
+        }catch (Exception e){
+            throw new FailedToGenerateDocumentException();
+        }
     }
 
     @Override

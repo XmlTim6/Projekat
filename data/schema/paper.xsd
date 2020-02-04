@@ -4,7 +4,7 @@
     <xs:element name="paper">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="received">
+                <xs:element name="received" minOccurs="0">
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:date">
@@ -13,7 +13,7 @@
                         </xs:simpleContent>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="revised">
+                <xs:element name="revised" minOccurs="0">
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:date">
@@ -22,7 +22,7 @@
                         </xs:simpleContent>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="accepted">
+                <xs:element name="accepted" minOccurs="0">
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:date">
