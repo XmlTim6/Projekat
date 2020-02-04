@@ -2,16 +2,12 @@ package team6.xml_project.service.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import team6.xml_project.exception.NotSubmissionAuthorException;
-import team6.xml_project.exception.PermissionDeniedException;
-import team6.xml_project.exception.SubmissionClosedForCoverLetters;
-import team6.xml_project.exception.SubmissionNotFoundException;
+import team6.xml_project.exception.*;
+import team6.xml_project.helpers.XMLValidator;
+import team6.xml_project.models.DocumentType;
 import team6.xml_project.models.SubmissionStatus;
-import team6.xml_project.models.User;
-import team6.xml_project.models.xml.cover_letter.CoverLetter;
 import team6.xml_project.models.xml.submission.Submission;
 import team6.xml_project.repository.CoverLetterRepository;
-import team6.xml_project.repository.DocumentRepository;
 import team6.xml_project.service.CoverLetterService;
 import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.UserService;
@@ -41,11 +37,17 @@ public class CoverLetterServiceImpl implements CoverLetterService {
         if (submission.getAuthorId() != userId)
             throw new NotSubmissionAuthorException();
 
-        coverLetterRepository.save(coverLetter, submission);
+        try {
+            XMLValidator validator = new XMLValidator();
+            validator.validate(coverLetter, DocumentType.COVER_LETTER);
+            coverLetterRepository.save(coverLetter, submission);
+        } catch (Exception e){
+            throw new FailedToGenerateDocumentException();
+        }
     }
 
     @Override
-    public CoverLetter findCoverLetter(String submissionId, Long revision, Long userId) {
+    public String findCoverLetter(String submissionId, Long revision, Long userId) {
         Submission submission = submissionService.findById(submissionId);
 
         if (!(submission.getAuthorId() == userId) && !(submission.getEditorId() == userId))

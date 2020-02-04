@@ -274,6 +274,46 @@ public class DocumentRepositoryImpl implements DocumentRepository {
         }
         return document;
     }
+
+    public String getDocumentById(String collectionId, String documentId) throws Exception{
+        initDb();
+
+        Collection col = null;
+        XMLResource res = null;
+
+        try {
+            // get the collection
+            System.out.println("[INFO] Retrieving the collection: " + collectionId);
+            col = DatabaseManager.getCollection(this.getUri() + collectionId);
+            col.setProperty(OutputKeys.INDENT, "yes");
+
+            System.out.println("[INFO] Retrieving the document: " + documentId);
+            res = (XMLResource)col.getResource(documentId);
+
+            if(res.getContent() == null) {
+                System.out.println("[WARNING] Document '" + documentId + "' can not be found!");
+            }
+            return res.getContent().toString();
+        } finally {
+            //don't forget to clean up!
+
+            if(res != null) {
+                try {
+                    ((EXistResource)res).freeResources();
+                } catch (XMLDBException xe) {
+                    xe.printStackTrace();
+                }
+            }
+
+            if(col != null) {
+                try {
+                    col.close();
+                } catch (XMLDBException xe) {
+                    xe.printStackTrace();
+                }
+            }
+        }
+    }
     public void deleteDocumentById(String collectionID, String documentID) throws Exception{
         initDb();
         Collection col = null;

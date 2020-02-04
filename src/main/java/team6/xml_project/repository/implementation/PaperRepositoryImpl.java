@@ -29,10 +29,8 @@ public class PaperRepositoryImpl implements PaperRepository {
     private static final String paperCollections = "/db/xml_project_tim6/papers/";
 
     @Override
-    public Paper get(String collectionId, String documentId) throws Exception {
-        Paper paper = new Paper();
-        paper = (Paper) documentRepository.getDocumentById(paper, collectionId, documentId);
-        return paper;
+    public String get(String collectionId, String documentId) throws Exception {
+        return documentRepository.getDocumentById(collectionId, documentId);
     }
 
     @Override
@@ -70,8 +68,7 @@ public class PaperRepositoryImpl implements PaperRepository {
     @Override
     public void save(String paper, Submission submission, String documentName) {
         try {
-            Paper paperObject = XMLUnmarshaller.createPaperFromXML(paper);
-            documentRepository.save(paperObject, String.format("/db/xml_project_tim6/papers/%s/revision_%s/",
+            documentRepository.save(paper, String.format("/db/xml_project_tim6/papers/%s/revision_%s/",
                     submission.getId(), submission.getCurrentRevision()), documentName);
         } catch (Exception e) {
             throw new DocumentNotSavedException();

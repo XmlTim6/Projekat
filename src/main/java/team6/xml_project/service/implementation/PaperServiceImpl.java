@@ -3,27 +3,37 @@ package team6.xml_project.service.implementation;
 import org.apache.commons.io.input.ReaderInputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import team6.xml_project.exception.FailedToGenerateDocumentException;
 import team6.xml_project.exception.PermissionDeniedException;
 import team6.xml_project.exception.SubmissionNotFoundException;
 import team6.xml_project.helpers.RDFMetadataExtractor;
-import team6.xml_project.helpers.XMLUnmarshaller;
+import team6.xml_project.helpers.XMLValidator;
+import team6.xml_project.models.DocumentType;
 import team6.xml_project.models.Role;
 import team6.xml_project.models.SubmissionStatus;
 import team6.xml_project.models.User;
-import team6.xml_project.models.xml.paper.Paper;
 import team6.xml_project.models.xml.submission.Submission;
 import team6.xml_project.repository.DocumentRepository;
-import team6.xml_project.repository.PaperRDFRepository;
 import team6.xml_project.repository.PaperRepository;
 import team6.xml_project.service.PaperRDFService;
 import team6.xml_project.service.PaperService;
 import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.UserService;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Source;
 import javax.xml.transform.TransformerException;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -50,8 +60,18 @@ public class PaperServiceImpl implements PaperService {
     UserService userService;
 
     public void save(String paper, Submission submission, String documentName) {
-        paperRepository.save(paper, submission, documentName);
+        try {
+            if(documentName.equals("paper.xml")){
+                XMLValidator  validator= new XMLValidator();
+                validator.validate(paper, DocumentType.PAPER);
+            }
+            paperRepository.save(paper, submission, documentName);
+        }catch (Exception e){
+            throw new FailedToGenerateDocumentException();
+        }
     }
+
+
 
     @Override
     public boolean checkIfPaperExists(Submission submission, String documentName) throws Exception {
@@ -59,10 +79,10 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public Paper findPaper(String collectionName, String documentName, long userId, String submissionId) {
+    public String findPaper(String collectionName, String documentName, long userId, String submissionId) {
         try {
             User user = userService.findById(userId);
-            Paper paper =  paperRepository.get(collectionName, documentName);
+            String paper =  paperRepository.get(collectionName, documentName);
             Submission submission = submissionService.findById(submissionId);
 
             if(getPermittedStatus(user, submission).contains(submission.getSubmissionStatus())){
