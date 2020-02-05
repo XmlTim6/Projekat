@@ -60,7 +60,7 @@ public class PaperRepositoryImpl implements PaperRepository {
                 "    where $paper//*[contains(upper-case(text()[1]),upper-case('%s'))]\n" +
                 "    let $result := map {\n" +
                 "                \"paper\": base-uri($paper),\n" +
-                "                \"title\": $paper/paper/@title/string()\n" +
+                "                \"title\": $paper/paper/@title/string(),\n" +
                 "                \"keywords\": array {\n" +
                 "                    for $keyword in $paper//keywords/keyword\n" +
                 "                    return \"&apos;\" || $keyword/string() || \"&apos;, \"\n" +
@@ -72,7 +72,7 @@ public class PaperRepositoryImpl implements PaperRepository {
                 "                \"received\": $paper//received/text(),\n" +
                 "                \"accepted\": $paper//accepted/text()\n" +
                 "    }\n" +
-                "    return '{&apos;paper&apos;:&apos;' || $result?paper || \"&apos;,\" ||\n" +
+                "    return '{&apos;link&apos;:&apos;' || replace($result?paper, '/db/xml_project_tim6/papers/', 'http://localhost:3000/details/') || \"&apos;,\" ||\n" +
                 "        '&apos;title&apos;:&apos;' ||  $result?title || \"&apos;,\" ||\n" +
                 "        '&apos;keywords&apos;:[' || $result?keywords || \"],\" ||\n" +
                 "        '&apos;authors&apos;:[' || $result?authors || \"],\" ||\n" +
