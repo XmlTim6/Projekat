@@ -52,6 +52,13 @@ public class SubmissionController {
         return new ResponseEntity<>(submissionDTOs, HttpStatus.OK);
     }
 
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('EDITOR')")
+    public ResponseEntity<SubmissionGetDTO> getSubmission(@PathVariable String id) {
+        Submission submission = submissionService.findById(id);
+        return new ResponseEntity<>(new SubmissionGetDTO(submission), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/authored", method = RequestMethod.GET)
     @PreAuthorize("hasRole('AUTHOR')")
     public ResponseEntity<List<SubmissionGetDTO>> getSubmissionsOfAuthor() throws Exception {
