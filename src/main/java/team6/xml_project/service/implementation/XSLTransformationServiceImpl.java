@@ -7,6 +7,11 @@ import team6.xml_project.service.XSLTransformationService;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,5 +41,18 @@ public class XSLTransformationServiceImpl implements XSLTransformationService {
     public OutputStream createXml(String document, String transformation) throws IOException, SAXException {
         Map<String, Object> xslParameters = new HashMap<>();
         return new XSLFOTransformer().generateXml(document, transformation, xslParameters);
+    }
+
+    @Override
+    public OutputStream preprocessPaper(String document, String dateFor) throws IOException, SAXException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Map<String, Object> xslParameters = new HashMap<>();
+
+        switch (dateFor) {
+            case "submitted": xslParameters.put("submitted", sdf.format(new Date())); break;
+            case "revised": xslParameters.put("revised", sdf.format(new Date())); break;
+            case "accepted": xslParameters.put("accepted", sdf.format(new Date())); break;
+        }
+        return new XSLFOTransformer().generateXml(document, "data/xsl/paperPreprocess.xsl", xslParameters);
     }
 }

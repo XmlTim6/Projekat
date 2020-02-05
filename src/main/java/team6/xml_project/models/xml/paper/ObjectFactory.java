@@ -387,11 +387,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Paper.Abstract.PracticalImplcations }
+     * Create an instance of {@link Paper.Abstract.PracticalImplications }
      * 
      */
-    public Paper.Abstract.PracticalImplcations createPaperAbstractPracticalImplcations() {
-        return new Paper.Abstract.PracticalImplcations();
+    public Paper.Abstract.PracticalImplications createPaperAbstractPracticalImplications() {
+        return new Paper.Abstract.PracticalImplications();
     }
 
     /**
