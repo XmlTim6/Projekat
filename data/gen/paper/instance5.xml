@@ -39,7 +39,7 @@
         <methodology>Mauris ullamcorper quam nec augue luctus aliquet. Integer et auctor mi. Curabitur pulvinar sit amet arcu et ultrices. Donec vehicula augue non posuere pretium. Vivamus mattis interdum magna, eu finibus nisl luctus vitae. Vestibulum vitae bibendum nunc. Vestibulum magna ligula, pharetra ut aliquam et, venenatis a sem. Maecenas placerat egestas ex non porta. In volutpat erat in velit pharetra, in sodales tortor pretium.</methodology>
         <findings>Nulla imperdiet erat enim, vel dictum sapien tincidunt sed. Ut pharetra, metus ac lobortis fermentum, sem dolor euismod dui, eget fermentum erat risus quis mi. Pellentesque sit amet maximus nulla. Nulla ac ligula malesuada, sodales tellus elementum, ultrices augue. Vestibulum fringilla iaculis dui at venenatis. Mauris vehicula odio in cursus semper. Aenean volutpat odio eros, at venenatis nibh porttitor at. Etiam sagittis purus in fermentum imperdiet.</findings>
         <research_implications>Pellentesque vitae lacus a ex rutrum molestie ac ac diam. Aliquam rhoncus vehicula congue. Integer ultricies est quis purus tempor aliquam. Vestibulum aliquam, nulla in sagittis sodales, nisi urna semper elit, sit amet maximus nisi nunc nec mi. Suspendisse augue diam, pharetra vel odio sed, elementum fermentum lectus. Curabitur eget dignissim nisi, quis hendrerit ligula. Duis at tristique nisl. Aenean non vehicula turpis, non mollis magna. Vivamus et mollis tortor. Curabitur rhoncus aliquet tortor ut ullamcorper. Integer rutrum rutrum blandit.</research_implications>
-        <practical_implcations>Fusce bibendum imperdiet efficitur. Etiam convallis dui velit, sed pulvinar ante varius vitae. Donec et nisl a nisi sollicitudin rhoncus. Nullam quis vulputate arcu. Vivamus a dolor magna. Nam nec nunc eu risus venenatis tincidunt et vel nisl. Nullam eu orci ex. Duis nec porttitor nulla. Fusce pharetra tempus dui ac condimentum.</practical_implcations>
+        <practical_implications>Fusce bibendum imperdiet efficitur. Etiam convallis dui velit, sed pulvinar ante varius vitae. Donec et nisl a nisi sollicitudin rhoncus. Nullam quis vulputate arcu. Vivamus a dolor magna. Nam nec nunc eu risus venenatis tincidunt et vel nisl. Nullam eu orci ex. Duis nec porttitor nulla. Fusce pharetra tempus dui ac condimentum.</practical_implications>
         <orginality>Cras euismod dui id bibendum efficitur. In condimentum magna eu dui blandit rutrum. Ut a pulvinar risus. Nulla ex felis, interdum vel suscipit id, mattis nec diam. Vivamus tincidunt luctus arcu, sit amet hendrerit nisl auctor gravida. Nulla semper arcu ipsum, in rutrum tortor vestibulum id. Praesent eros urna, finibus sed posuere et, accumsan sed nunc. Donec ex velit, laoreet quis volutpat tristique, luctus eu nibh. Vivamus eu libero nulla. Suspendisse potenti. Maecenas vitae maximus mi, id accumsan lectus. Nullam sed volutpat ex. Quisque varius lacus luctus dapibus rhoncus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</orginality>
         <keywords>
             <keyword>keyword1</keyword>
@@ -49,6 +49,11 @@
     <content>
         <quote id="ID001" attributed_to="Anonymous" source="Quote source 1" reference_to="ID009">Sed fringilla ligula at elementum viverra. Phasellus congue iaculis nibh, ac varius ipsum tempor at. Class aptent taciti sociosqu ad.</quote>
         <quote id="ID003" attributed_to="Author" source="Quote source 2" reference_to="ID011">Donec nulla purus, egestas a malesuada in, congue id nibh. Donec dapibus ligula turpis, sed fringilla nisl auctor ac. Aenean.</quote>
+        <section title="Test" level="1">
+            <paragraph>
+                Lorem ipsum.
+            </paragraph>
+        </section>
     </content>
     <references>
         <mention id="ID005">
