@@ -63,14 +63,12 @@ public class PaperRDFRepositoryImpl implements PaperRDFRepository {
            builder.append(String.format("regex(str(?keyword), \"%s\", \"i\") &&\n", keyword));
         }
 
-        String sparqlQuery = String.format("SELECT DISTINCT ?paper ?title ?received ?revised ?accepted ?author ?institution ?keyword FROM <%s>\n" +
+        String sparqlQuery = String.format("SELECT DISTINCT ?paper ?title ?received ?accepted ?author ?keyword FROM <%s>\n" +
                 "WHERE {\n" +
                 "  \t?paper <http://www.tim6.rs/predicate/title> ?title .\n" +
                 "  \t?paper <http://www.tim6.rs/predicate/received> ?received .\n" +
-                "  \t?paper <http://www.tim6.rs/predicate/revised> ?revised .\n" +
                 "    ?paper <http://www.tim6.rs/predicate/accepted> ?accepted .\n" +
                 "    ?paper <http://www.tim6.rs/predicate/author> ?author .\n" +
-                "    ?paper <http://www.tim6.rs/predicate/institution> ?institution .\n" +
                 "    ?paper <http://www.tim6.rs/predicate/keyword> ?keyword .\n" +
                 "  FILTER(" + builder.toString() +
                 "    regex(str(?paper), \"%s\", \"i\") &&\n" +
@@ -86,14 +84,12 @@ public class PaperRDFRepositoryImpl implements PaperRDFRepository {
 
     @Override
     public String findPapersCitingPaper(String paperLocation, String type) {
-        String sparqlQuery = String.format("SELECT DISTINCT ?paper ?title ?received ?revised ?accepted ?author ?institution ?keyword FROM <http://localhost:8081/fuseki/FTNProject/data/papers/metadata>\n" +
+        String sparqlQuery = String.format("SELECT DISTINCT ?paper ?title ?received ?accepted ?author ?keyword FROM <http://localhost:8081/fuseki/FTNProject/data/papers/metadata>\n" +
                 "WHERE {\n" +
                 "  \t?paper <http://www.tim6.rs/predicate/title> ?title .\n" +
                 "  \t?paper <http://www.tim6.rs/predicate/received> ?received .\n" +
-                "  \t?paper <http://www.tim6.rs/predicate/revised> ?revised .\n" +
                 "    ?paper <http://www.tim6.rs/predicate/accepted> ?accepted .\n" +
                 "    ?paper <http://www.tim6.rs/predicate/author> ?author .\n" +
-                "    ?paper <http://www.tim6.rs/predicate/institution> ?institution .\n" +
                 "    ?paper <http://www.tim6.rs/predicate/keyword> ?keyword .\n" +
                 "  \t?paper <http://www.tim6.rs/predicate/citations> ?citations .\n" +
                 "    ?citations <http://www.tim6.rs/predicate/uri> ?uri\n" +

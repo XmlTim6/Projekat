@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * &lt;complexType>
  *   &lt;simpleContent>
  *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}ID" />
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
  *       &lt;attribute name="attributed_to" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="source" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="reference_to" use="required" type="{http://www.w3.org/2001/XMLSchema}IDREF" />
@@ -40,28 +40,28 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "value"
 })
 @XmlRootElement(name = "quote")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
 public class Quote {
 
     @XmlValue
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String value;
-    @XmlAttribute(name = "id", required = true)
+    @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String id;
     @XmlAttribute(name = "attributed_to", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String attributedTo;
     @XmlAttribute(name = "source", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String source;
     @XmlAttribute(name = "reference_to", required = true)
     @XmlIDREF
     @XmlSchemaType(name = "IDREF")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected Object referenceTo;
 
     /**
@@ -72,7 +72,7 @@ public class Quote {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getValue() {
         return value;
     }
@@ -85,7 +85,7 @@ public class Quote {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setValue(String value) {
         this.value = value;
     }
@@ -98,7 +98,7 @@ public class Quote {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getId() {
         return id;
     }
@@ -111,7 +111,7 @@ public class Quote {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setId(String value) {
         this.id = value;
     }
@@ -124,7 +124,7 @@ public class Quote {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getAttributedTo() {
         return attributedTo;
     }
@@ -137,7 +137,7 @@ public class Quote {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setAttributedTo(String value) {
         this.attributedTo = value;
     }
@@ -150,7 +150,7 @@ public class Quote {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getSource() {
         return source;
     }
@@ -163,7 +163,7 @@ public class Quote {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setSource(String value) {
         this.source = value;
     }
@@ -176,7 +176,7 @@ public class Quote {
      *     {@link Object }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Object getReferenceTo() {
         return referenceTo;
     }
@@ -189,7 +189,7 @@ public class Quote {
      *     {@link Object }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setReferenceTo(Object value) {
         this.referenceTo = value;
     }

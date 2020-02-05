@@ -4,7 +4,7 @@
     <xs:element name="paper">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="received">
+                <xs:element name="received" minOccurs="0">
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:date">
@@ -13,7 +13,7 @@
                         </xs:simpleContent>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="revised">
+                <xs:element name="revised" minOccurs="0">
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:date">
@@ -22,7 +22,7 @@
                         </xs:simpleContent>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="accepted">
+                <xs:element name="accepted" minOccurs="0">
                     <xs:complexType>
                         <xs:simpleContent>
                             <xs:extension base="xs:date">
@@ -256,7 +256,7 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
-                    <xs:attribute name="id" type="xs:ID" use="required"/>
+                    <xs:attribute name="id" type="xs:ID" use="optional"/>
                     <xs:attribute name="attributed_to" type="xs:string" use="required"/>
                     <xs:attribute name="source" type="xs:string" use="required"/>
                     <xs:attribute name="reference_to" type="xs:IDREF" use="required"/>
@@ -282,7 +282,7 @@
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
-                        <xs:attribute name="id" type="xs:ID" use="required"/>
+                        <xs:attribute name="id" type="xs:ID" use="optional"/>
                         <xs:attribute name="type" use="required">
                             <xs:simpleType>
                                 <xs:restriction base="xs:string">
@@ -321,12 +321,12 @@
                                 </xs:complexType>
                             </xs:element>
                         </xs:sequence>
-                        <xs:attribute name="id" type="xs:ID" use="required"/>
+                        <xs:attribute name="id" type="xs:ID" use="optional"/>
                         <xs:anyAttribute processContents="lax"/>
                     </xs:complexType>
                 </xs:element>
             </xs:choice>
-            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="id" type="xs:ID" use="optional"/>
             <xs:attribute name="title" type="xs:string" use="required"/>
             <xs:attribute name="level" type="xs:unsignedInt" use="required"/>
             <xs:anyAttribute processContents="lax"/>
@@ -359,7 +359,7 @@
     </xs:element>
     <xs:element name="image">
         <xs:complexType>
-            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="id" type="xs:ID" use="optional"/>
             <xs:attribute name="src" type="xs:anyURI" use="required"/>
             <xs:attribute name="title" type="xs:string"/>
             <xs:anyAttribute processContents="lax"/>
@@ -369,7 +369,7 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
-                    <xs:attribute name="id" type="xs:ID" use="required"/>
+                    <xs:attribute name="id" type="xs:ID" use="optional"/>
                     <xs:anyAttribute processContents="lax"/>
                 </xs:extension>
             </xs:simpleContent>
@@ -379,7 +379,7 @@
         <xs:complexType>
             <xs:simpleContent>
                 <xs:extension base="xs:string">
-                    <xs:attribute name="id" type="xs:ID" use="required"/>
+                    <xs:attribute name="id" type="xs:ID" use="optional"/>
                     <xs:anyAttribute processContents="lax"/>
                 </xs:extension>
             </xs:simpleContent>
@@ -482,7 +482,7 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
-            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="id" type="xs:ID" use="optional"/>
             <xs:attribute name="location" type="xs:anyURI"/>
             <xs:anyAttribute processContents="lax"/>
         </xs:complexType>

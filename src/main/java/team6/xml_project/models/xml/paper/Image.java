@@ -26,7 +26,7 @@ import javax.xml.namespace.QName;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}ID" />
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
  *       &lt;attribute name="src" use="required" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
  *       &lt;attribute name="title" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;anyAttribute processContents='lax'/>
@@ -40,24 +40,24 @@ import javax.xml.namespace.QName;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 @XmlRootElement(name = "image")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
 public class Image {
 
-    @XmlAttribute(name = "id", required = true)
+    @XmlAttribute(name = "id")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String id;
     @XmlAttribute(name = "src", required = true)
     @XmlSchemaType(name = "anyURI")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String src;
     @XmlAttribute(name = "title")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String title;
     @XmlAnyAttribute
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
@@ -68,7 +68,7 @@ public class Image {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getId() {
         return id;
     }
@@ -81,7 +81,7 @@ public class Image {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setId(String value) {
         this.id = value;
     }
@@ -94,7 +94,7 @@ public class Image {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getSrc() {
         return src;
     }
@@ -107,7 +107,7 @@ public class Image {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setSrc(String value) {
         this.src = value;
     }
@@ -120,7 +120,7 @@ public class Image {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getTitle() {
         return title;
     }
@@ -133,7 +133,7 @@ public class Image {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setTitle(String value) {
         this.title = value;
     }
@@ -152,7 +152,7 @@ public class Image {
      * @return
      *     always non-null
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T12:24:31+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-04T05:43:29+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Map<QName, String> getOtherAttributes() {
         return otherAttributes;
     }
