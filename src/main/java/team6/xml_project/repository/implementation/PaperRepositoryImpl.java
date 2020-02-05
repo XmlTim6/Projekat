@@ -55,12 +55,10 @@ public class PaperRepositoryImpl implements PaperRepository {
                 "where $submission/submissionStatus = \"ACCEPTED\"\n" +
                 "let $acceptedSubmissions := $submission\n" +
                 "\n" +
-                "let $result := []\n" +
-                "\n" +
-                "let $result := for $acceptedSubmission in $acceptedSubmissions\n" +
+                "for $acceptedSubmission in $acceptedSubmissions\n" +
                 "return (for $paper in doc(concat(\"/db/xml_project_tim6/papers/\", $acceptedSubmission/id/text(), \"/revision_\", $acceptedSubmission/currentRevision/text(), \"/paper.xml\"))\n" +
                 "    where $paper//*[contains(upper-case(text()[1]),upper-case('%s'))]\n" +
-                "    return map {\n" +
+                "    let $result := map {\n" +
                 "                \"paper\": base-uri($paper),\n" +
                 "                \"title\": $paper//@title/string(),\n" +
                 "                \"keywords\": array {\n" +
@@ -74,15 +72,14 @@ public class PaperRepositoryImpl implements PaperRepository {
                 "                \"received\": $paper//received/text(),\n" +
                 "                \"accepted\": $paper//accepted/text()\n" +
                 "    }\n" +
-                ")\n" +
-                "\n" +
-                "return '{&apos;paper&apos;:&apos;' || $result?paper || \"&apos;,\" ||\n" +
+                "    return '{&apos;paper&apos;:&apos;' || $result?paper || \"&apos;,\" ||\n" +
                 "        '&apos;title&apos;:&apos;' ||  $result?title || \"&apos;,\" ||\n" +
                 "        '&apos;keywords&apos;:[' || $result?keywords || \"],\" ||\n" +
                 "        '&apos;authors&apos;:[' || $result?authors || \"],\" ||\n" +
                 "        '&apos;received&apos;:&apos;' ||  $result?received || \"&apos;,\" ||\n" +
                 "        '&apos;accepted&apos;:&apos;' ||  $result?accepted || \"&apos;\" ||\n" +
                 "        '}'\n" +
+                ")\n" +
                 "\n", text);
         return getURIs(xquery, documentRepository, "/db/xml_project_tim6/");
     }
