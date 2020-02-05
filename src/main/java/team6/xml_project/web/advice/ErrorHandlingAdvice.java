@@ -17,6 +17,7 @@ import javax.persistence.PersistenceException;
 import javax.persistence.PessimisticLockException;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import javax.xml.bind.JAXBException;
 import java.util.Objects;
 
 @ControllerAdvice
@@ -52,6 +53,15 @@ public class ErrorHandlingAdvice {
         error.getViolations().add(new Violation("Cause", e.getMessage()));
         return error;
     }
+
+	@ExceptionHandler(JAXBException.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody
+	ValidationErrorResponse onJAXBException(HttpMessageNotReadableException e) {
+		ValidationErrorResponse error = new ValidationErrorResponse();
+		error.getViolations().add(new Violation("Cause", e.getMessage()));
+		return error;
+	}
 
     @ExceptionHandler(ConversionFailedException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
