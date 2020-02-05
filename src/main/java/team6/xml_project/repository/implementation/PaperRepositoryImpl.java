@@ -60,7 +60,7 @@ public class PaperRepositoryImpl implements PaperRepository {
                 "    where $paper//*[contains(upper-case(text()[1]),upper-case('%s'))]\n" +
                 "    let $result := map {\n" +
                 "                \"paper\": base-uri($paper),\n" +
-                "                \"title\": $paper//@title/string(),\n" +
+                "                \"title\": $paper/paper/@title/string()\n" +
                 "                \"keywords\": array {\n" +
                 "                    for $keyword in $paper//keywords/keyword\n" +
                 "                    return \"&apos;\" || $keyword/string() || \"&apos;, \"\n" +
