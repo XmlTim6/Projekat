@@ -36,7 +36,7 @@
     <xs:element name="list">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="list_item" type="xs:string"/>
+                <xs:element name="list_item" type="xs:string" maxOccurs="unbounded"/>
             </xs:sequence>
             <xs:attribute name="type" use="required">
                 <xs:simpleType>
