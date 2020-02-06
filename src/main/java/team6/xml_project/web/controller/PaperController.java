@@ -17,7 +17,9 @@ import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.XSLTransformationService;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.transform.TransformerException;
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
@@ -50,7 +52,7 @@ public class PaperController {
             @RequestParam(value = "token", required = false) String token) throws JAXBException {
 
         long userId = -1;
-        if (token != null)
+        if (token != null && !token.equals("null"))
             userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
         String paperStr = paperService.findPaper(String.format("/db/xml_project_tim6/papers/%s/revision_%s",
                 collection, revision), document, userId, collection);
@@ -94,6 +96,22 @@ public class PaperController {
         } catch (Exception e) {
             throw new FailedToGenerateDocumentException();
         }
+    }
+
+    @RequestMapping(value = "/metadata", method = RequestMethod.GET)
+    public ResponseEntity<Object> getPaperMetadata(
+            @RequestParam(value = "collection") String collection,
+            @RequestParam(value = "revision") Long revision,
+            @RequestParam(value = "document") String document,
+            @RequestParam(value = "format") String format,
+            @RequestParam(value = "token", required = false) String token) throws JAXBException, FileNotFoundException, TransformerException {
+        long userId = -1;
+        if (token != null && !token.equals("null"))
+            userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
+
+        String paperStr = paperService.findPaperMetadata(String.format("/db/xml_project_tim6/papers/%s/revision_%s",
+                collection, revision), document, userId, collection, format);
+        return new ResponseEntity<>(paperStr, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/basicSearch", method = RequestMethod.GET)
