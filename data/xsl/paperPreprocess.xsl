@@ -47,57 +47,6 @@
                     </xsl:if>
                 </xsl:otherwise>
             </xsl:choose>
-<!--            <xsl:if test="not(string-length($submitted)=0)">-->
-<!--                <xsl:choose>-->
-<!--                    <xsl:when test="count(t6:received) = 0">-->
-<!--                        <t6:received><xsl:value-of select = "$submitted" /></t6:received>-->
-<!--                    </xsl:when>-->
-<!--                    <xsl:otherwise>-->
-<!--                        <xsl:choose>-->
-<!--                            <xsl:when test="string-length($submitted)!=0">-->
-<!--                                <t6:received><xsl:value-of select = "$submitted" /></t6:received>-->
-<!--                            </xsl:when>-->
-<!--                            <xsl:otherwise>-->
-<!--                                <t6:received><xsl:value-of select="t6:received/text()"/></t6:received>-->
-<!--                            </xsl:otherwise>-->
-<!--                        </xsl:choose>-->
-<!--                    </xsl:otherwise>-->
-<!--                </xsl:choose>-->
-<!--            </xsl:if>-->
-<!--            <xsl:if test="not(string-length($revised)=0)">-->
-<!--                <xsl:choose>-->
-<!--                    <xsl:when test="count(t6:revised) = 0">-->
-<!--                        <t6:revised><xsl:value-of select = "$revised" /></t6:revised>-->
-<!--                    </xsl:when>-->
-<!--                    <xsl:otherwise>-->
-<!--                        <xsl:choose>-->
-<!--                            <xsl:when test="string-length($revised)!=0">-->
-<!--                                <t6:revised><xsl:value-of select = "$revised" /></t6:revised>-->
-<!--                            </xsl:when>-->
-<!--                            <xsl:otherwise>-->
-<!--                                <t6:revised><xsl:value-of select="t6:revised/text()"/></t6:revised>-->
-<!--                            </xsl:otherwise>-->
-<!--                        </xsl:choose>-->
-<!--                    </xsl:otherwise>-->
-<!--                </xsl:choose>-->
-<!--            </xsl:if>-->
-<!--            <xsl:if test="not(string-length($accepted)=0)">-->
-<!--                <xsl:choose>-->
-<!--                    <xsl:when test="count(t6:accepted) = 0">-->
-<!--                        <t6:accepted><xsl:value-of select = "$accepted" /></t6:accepted>-->
-<!--                    </xsl:when>-->
-<!--                    <xsl:otherwise>-->
-<!--                        <xsl:choose>-->
-<!--                            <xsl:when test="string-length($accepted)!=0">-->
-<!--                                <t6:accepted><xsl:value-of select = "$accepted" /></t6:accepted>-->
-<!--                            </xsl:when>-->
-<!--                            <xsl:otherwise>-->
-<!--                                <t6:accepted><xsl:value-of select="t6:accepted/text()"/></t6:accepted>-->
-<!--                            </xsl:otherwise>-->
-<!--                        </xsl:choose>-->
-<!--                    </xsl:otherwise>-->
-<!--                </xsl:choose>-->
-<!--            </xsl:if>-->
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
@@ -106,36 +55,10 @@
     </xsl:template>
 
     <xsl:template match="t6:revised">
-
     </xsl:template>
 
     <xsl:template match="t6:accepted">
-
     </xsl:template>
-
-<!--    <xsl:template match="/*[1]">-->
-<!--        <xsl:if test="string-length($submitted)!=0 and not(t6:paper/t6:received)">-->
-<!--            <received><xsl:value-of select = "$submitted" /></received>-->
-<!--        </xsl:if>-->
-<!--        <xsl:next-match />-->
-<!--    </xsl:template>-->
-
-<!--    <xsl:template match="t6:received">-->
-<!--        <xsl:next-match />-->
-<!--        <xsl:if test="string-length($revised)!=0">-->
-<!--            <revised><xsl:value-of select = "$revised" /></revised>-->
-<!--        </xsl:if>-->
-<!--        <xsl:if test="string-length($accepted)!=0 and not(t6:paper/t6:accepted)">-->
-<!--            <accepted><xsl:value-of select = "$accepted" /></accepted>-->
-<!--        </xsl:if>-->
-<!--    </xsl:template>-->
-
-<!--    <xsl:template match="t6:revised">-->
-<!--        <xsl:next-match />-->
-<!--        <xsl:if test="string-length($accepted)!=0 and not(t6:paper/t6:accepted)">-->
-<!--            <accepted><xsl:value-of select = "$accepted" /></accepted>-->
-<!--        </xsl:if>-->
-<!--    </xsl:template>-->
 
     <!-- IdentityTransform -->
     <xsl:template match="/ | @* | node()">
@@ -241,6 +164,18 @@
     </xsl:template>
 
     <xsl:template match="t6:table[not(@id)]" >
+        <xsl:copy>
+            <xsl:variable name="path">
+                <xsl:call-template name="t6:generateXPath"/>
+            </xsl:variable>
+            <xsl:attribute name="id">
+                <xsl:value-of select="substring($path, 1, string-length($path) - 1)"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="@* | node()"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="t6:abstract[not(@id)]" >
         <xsl:copy>
             <xsl:variable name="path">
                 <xsl:call-template name="t6:generateXPath"/>
