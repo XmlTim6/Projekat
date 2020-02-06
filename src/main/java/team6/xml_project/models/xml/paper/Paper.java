@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAnyAttribute;
@@ -346,38 +345,30 @@ import javax.xml.namespace.QName;
     "citations",
     "notes"
 })
-@XmlRootElement(name = "paper")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+@XmlRootElement(name = "paper", namespace = "XML_tim6")
 public class Paper extends Document {
 
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6")
     protected Paper.Received received;
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6")
     protected Paper.Revised revised;
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6")
     protected Paper.Accepted accepted;
-    @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6", required = true)
     protected Paper.Authors authors;
-    @XmlElement(name = "abstract", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(name = "abstract", namespace = "XML_tim6", required = true)
     protected Paper.Abstract _abstract;
-    @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6", required = true)
     protected Paper.Content content;
-    @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6", required = true)
     protected Paper.References references;
-    @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6", required = true)
     protected Paper.Citations citations;
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6")
     protected Paper.Notes notes;
     @XmlAttribute(name = "title", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String title;
     @XmlAnyAttribute
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
@@ -388,7 +379,6 @@ public class Paper extends Document {
      *     {@link Paper.Received }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Received getReceived() {
         return received;
     }
@@ -401,7 +391,6 @@ public class Paper extends Document {
      *     {@link Paper.Received }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setReceived(Paper.Received value) {
         this.received = value;
     }
@@ -414,7 +403,6 @@ public class Paper extends Document {
      *     {@link Paper.Revised }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Revised getRevised() {
         return revised;
     }
@@ -427,7 +415,6 @@ public class Paper extends Document {
      *     {@link Paper.Revised }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setRevised(Paper.Revised value) {
         this.revised = value;
     }
@@ -440,7 +427,6 @@ public class Paper extends Document {
      *     {@link Paper.Accepted }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Accepted getAccepted() {
         return accepted;
     }
@@ -453,7 +439,6 @@ public class Paper extends Document {
      *     {@link Paper.Accepted }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setAccepted(Paper.Accepted value) {
         this.accepted = value;
     }
@@ -466,7 +451,6 @@ public class Paper extends Document {
      *     {@link Paper.Authors }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Authors getAuthors() {
         return authors;
     }
@@ -479,7 +463,6 @@ public class Paper extends Document {
      *     {@link Paper.Authors }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setAuthors(Paper.Authors value) {
         this.authors = value;
     }
@@ -492,7 +475,6 @@ public class Paper extends Document {
      *     {@link Paper.Abstract }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Abstract getAbstract() {
         return _abstract;
     }
@@ -505,7 +487,6 @@ public class Paper extends Document {
      *     {@link Paper.Abstract }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setAbstract(Paper.Abstract value) {
         this._abstract = value;
     }
@@ -518,7 +499,6 @@ public class Paper extends Document {
      *     {@link Paper.Content }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Content getContent() {
         return content;
     }
@@ -531,7 +511,6 @@ public class Paper extends Document {
      *     {@link Paper.Content }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setContent(Paper.Content value) {
         this.content = value;
     }
@@ -544,7 +523,6 @@ public class Paper extends Document {
      *     {@link Paper.References }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.References getReferences() {
         return references;
     }
@@ -557,7 +535,6 @@ public class Paper extends Document {
      *     {@link Paper.References }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setReferences(Paper.References value) {
         this.references = value;
     }
@@ -570,7 +547,6 @@ public class Paper extends Document {
      *     {@link Paper.Citations }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Citations getCitations() {
         return citations;
     }
@@ -583,7 +559,6 @@ public class Paper extends Document {
      *     {@link Paper.Citations }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setCitations(Paper.Citations value) {
         this.citations = value;
     }
@@ -596,7 +571,6 @@ public class Paper extends Document {
      *     {@link Paper.Notes }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Paper.Notes getNotes() {
         return notes;
     }
@@ -609,7 +583,6 @@ public class Paper extends Document {
      *     {@link Paper.Notes }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setNotes(Paper.Notes value) {
         this.notes = value;
     }
@@ -622,7 +595,6 @@ public class Paper extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getTitle() {
         return title;
     }
@@ -635,7 +607,6 @@ public class Paper extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setTitle(String value) {
         this.title = value;
     }
@@ -654,7 +625,6 @@ public class Paper extends Document {
      * @return
      *     always non-null
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Map<QName, String> getOtherAttributes() {
         return otherAttributes;
     }
@@ -778,41 +748,30 @@ public class Paper extends Document {
         "orginality",
         "keywords"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Abstract {
 
-        @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(namespace = "XML_tim6", required = true)
         protected Paper.Abstract.Purpose purpose;
-        @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(namespace = "XML_tim6", required = true)
         protected Paper.Abstract.Methodology methodology;
-        @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(namespace = "XML_tim6", required = true)
         protected Paper.Abstract.Findings findings;
-        @XmlElement(name = "research_implications", required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(name = "research_implications", namespace = "XML_tim6", required = true)
         protected Paper.Abstract.ResearchImplications researchImplications;
-        @XmlElement(name = "practical_implications", required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(name = "practical_implications", namespace = "XML_tim6", required = true)
         protected Paper.Abstract.PracticalImplications practicalImplications;
-        @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(namespace = "XML_tim6", required = true)
         protected Paper.Abstract.Orginality orginality;
-        @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(namespace = "XML_tim6", required = true)
         protected Paper.Abstract.Keywords keywords;
         @XmlAttribute(name = "paper_type", required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String paperType;
         @XmlAttribute(name = "id")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
         @XmlID
         @XmlSchemaType(name = "ID")
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String id;
         @XmlAnyAttribute
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
@@ -823,7 +782,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Purpose }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Paper.Abstract.Purpose getPurpose() {
             return purpose;
         }
@@ -836,7 +794,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Purpose }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setPurpose(Paper.Abstract.Purpose value) {
             this.purpose = value;
         }
@@ -849,7 +806,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Methodology }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Paper.Abstract.Methodology getMethodology() {
             return methodology;
         }
@@ -862,7 +818,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Methodology }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setMethodology(Paper.Abstract.Methodology value) {
             this.methodology = value;
         }
@@ -875,7 +830,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Findings }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Paper.Abstract.Findings getFindings() {
             return findings;
         }
@@ -888,7 +842,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Findings }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setFindings(Paper.Abstract.Findings value) {
             this.findings = value;
         }
@@ -901,7 +854,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.ResearchImplications }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Paper.Abstract.ResearchImplications getResearchImplications() {
             return researchImplications;
         }
@@ -914,7 +866,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.ResearchImplications }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setResearchImplications(Paper.Abstract.ResearchImplications value) {
             this.researchImplications = value;
         }
@@ -927,7 +878,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.PracticalImplications }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Paper.Abstract.PracticalImplications getPracticalImplications() {
             return practicalImplications;
         }
@@ -940,7 +890,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.PracticalImplications }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setPracticalImplications(Paper.Abstract.PracticalImplications value) {
             this.practicalImplications = value;
         }
@@ -953,7 +902,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Orginality }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Paper.Abstract.Orginality getOrginality() {
             return orginality;
         }
@@ -966,7 +914,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Orginality }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setOrginality(Paper.Abstract.Orginality value) {
             this.orginality = value;
         }
@@ -979,7 +926,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Keywords }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Paper.Abstract.Keywords getKeywords() {
             return keywords;
         }
@@ -992,7 +938,6 @@ public class Paper extends Document {
          *     {@link Paper.Abstract.Keywords }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setKeywords(Paper.Abstract.Keywords value) {
             this.keywords = value;
         }
@@ -1005,7 +950,6 @@ public class Paper extends Document {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getPaperType() {
             return paperType;
         }
@@ -1018,7 +962,6 @@ public class Paper extends Document {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setPaperType(String value) {
             this.paperType = value;
         }
@@ -1031,7 +974,6 @@ public class Paper extends Document {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getId() {
             return id;
         }
@@ -1044,7 +986,6 @@ public class Paper extends Document {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setId(String value) {
             this.id = value;
         }
@@ -1063,7 +1004,6 @@ public class Paper extends Document {
          * @return
          *     always non-null
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Map<QName, String> getOtherAttributes() {
             return otherAttributes;
         }
@@ -1091,20 +1031,16 @@ public class Paper extends Document {
         @XmlType(name = "", propOrder = {
             "value"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Findings {
 
             @XmlValue
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String value;
             @XmlAttribute(name = "id")
             @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
             @XmlID
             @XmlSchemaType(name = "ID")
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String id;
             @XmlAnyAttribute
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
@@ -1115,7 +1051,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getValue() {
                 return value;
             }
@@ -1128,7 +1063,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setValue(String value) {
                 this.value = value;
             }
@@ -1141,7 +1075,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getId() {
                 return id;
             }
@@ -1154,7 +1087,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setId(String value) {
                 this.id = value;
             }
@@ -1173,7 +1105,6 @@ public class Paper extends Document {
              * @return
              *     always non-null
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Map<QName, String> getOtherAttributes() {
                 return otherAttributes;
             }
@@ -1213,14 +1144,11 @@ public class Paper extends Document {
         @XmlType(name = "", propOrder = {
             "keyword"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Keywords {
 
-            @XmlElement(required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @XmlElement(namespace = "XML_tim6", required = true)
             protected List<Paper.Abstract.Keywords.Keyword> keyword;
             @XmlAnyAttribute
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
@@ -1245,7 +1173,6 @@ public class Paper extends Document {
              * 
              * 
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public List<Paper.Abstract.Keywords.Keyword> getKeyword() {
                 if (keyword == null) {
                     keyword = new ArrayList<Paper.Abstract.Keywords.Keyword>();
@@ -1267,7 +1194,6 @@ public class Paper extends Document {
              * @return
              *     always non-null
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Map<QName, String> getOtherAttributes() {
                 return otherAttributes;
             }
@@ -1294,14 +1220,11 @@ public class Paper extends Document {
             @XmlType(name = "", propOrder = {
                 "value"
             })
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public static class Keyword {
 
                 @XmlValue
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 protected String value;
                 @XmlAnyAttribute
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
                 /**
@@ -1312,7 +1235,6 @@ public class Paper extends Document {
                  *     {@link String }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public String getValue() {
                     return value;
                 }
@@ -1325,7 +1247,6 @@ public class Paper extends Document {
                  *     {@link String }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public void setValue(String value) {
                     this.value = value;
                 }
@@ -1344,7 +1265,6 @@ public class Paper extends Document {
                  * @return
                  *     always non-null
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public Map<QName, String> getOtherAttributes() {
                     return otherAttributes;
                 }
@@ -1376,20 +1296,16 @@ public class Paper extends Document {
         @XmlType(name = "", propOrder = {
             "value"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Methodology {
 
             @XmlValue
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String value;
             @XmlAttribute(name = "id")
             @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
             @XmlID
             @XmlSchemaType(name = "ID")
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String id;
             @XmlAnyAttribute
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
@@ -1400,7 +1316,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getValue() {
                 return value;
             }
@@ -1413,7 +1328,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setValue(String value) {
                 this.value = value;
             }
@@ -1426,7 +1340,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getId() {
                 return id;
             }
@@ -1439,7 +1352,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setId(String value) {
                 this.id = value;
             }
@@ -1458,7 +1370,6 @@ public class Paper extends Document {
              * @return
              *     always non-null
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Map<QName, String> getOtherAttributes() {
                 return otherAttributes;
             }
@@ -1488,20 +1399,16 @@ public class Paper extends Document {
         @XmlType(name = "", propOrder = {
             "value"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Orginality {
 
             @XmlValue
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String value;
             @XmlAttribute(name = "id")
             @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
             @XmlID
             @XmlSchemaType(name = "ID")
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String id;
             @XmlAnyAttribute
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
@@ -1512,7 +1419,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getValue() {
                 return value;
             }
@@ -1525,7 +1431,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setValue(String value) {
                 this.value = value;
             }
@@ -1538,7 +1443,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getId() {
                 return id;
             }
@@ -1551,7 +1455,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setId(String value) {
                 this.id = value;
             }
@@ -1570,7 +1473,6 @@ public class Paper extends Document {
              * @return
              *     always non-null
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Map<QName, String> getOtherAttributes() {
                 return otherAttributes;
             }
@@ -1600,20 +1502,16 @@ public class Paper extends Document {
         @XmlType(name = "", propOrder = {
             "value"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class PracticalImplications {
 
             @XmlValue
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String value;
             @XmlAttribute(name = "id")
             @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
             @XmlID
             @XmlSchemaType(name = "ID")
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String id;
             @XmlAnyAttribute
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
@@ -1624,7 +1522,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getValue() {
                 return value;
             }
@@ -1637,7 +1534,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setValue(String value) {
                 this.value = value;
             }
@@ -1650,7 +1546,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getId() {
                 return id;
             }
@@ -1663,7 +1558,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setId(String value) {
                 this.id = value;
             }
@@ -1682,7 +1576,6 @@ public class Paper extends Document {
              * @return
              *     always non-null
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Map<QName, String> getOtherAttributes() {
                 return otherAttributes;
             }
@@ -1712,20 +1605,16 @@ public class Paper extends Document {
         @XmlType(name = "", propOrder = {
             "value"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Purpose {
 
             @XmlValue
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String value;
             @XmlAttribute(name = "id")
             @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
             @XmlID
             @XmlSchemaType(name = "ID")
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String id;
             @XmlAnyAttribute
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
@@ -1736,7 +1625,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getValue() {
                 return value;
             }
@@ -1749,7 +1637,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setValue(String value) {
                 this.value = value;
             }
@@ -1762,7 +1649,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getId() {
                 return id;
             }
@@ -1775,7 +1661,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setId(String value) {
                 this.id = value;
             }
@@ -1794,7 +1679,6 @@ public class Paper extends Document {
              * @return
              *     always non-null
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Map<QName, String> getOtherAttributes() {
                 return otherAttributes;
             }
@@ -1824,20 +1708,16 @@ public class Paper extends Document {
         @XmlType(name = "", propOrder = {
             "value"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class ResearchImplications {
 
             @XmlValue
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String value;
             @XmlAttribute(name = "id")
             @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
             @XmlID
             @XmlSchemaType(name = "ID")
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String id;
             @XmlAnyAttribute
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
@@ -1848,7 +1728,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getValue() {
                 return value;
             }
@@ -1861,7 +1740,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setValue(String value) {
                 this.value = value;
             }
@@ -1874,7 +1752,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getId() {
                 return id;
             }
@@ -1887,7 +1764,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setId(String value) {
                 this.id = value;
             }
@@ -1906,7 +1782,6 @@ public class Paper extends Document {
              * @return
              *     always non-null
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Map<QName, String> getOtherAttributes() {
                 return otherAttributes;
             }
@@ -1937,15 +1812,12 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "value"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Accepted {
 
         @XmlValue
         @XmlSchemaType(name = "date")
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected XMLGregorianCalendar value;
         @XmlAnyAttribute
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
@@ -1956,7 +1828,6 @@ public class Paper extends Document {
          *     {@link XMLGregorianCalendar }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public XMLGregorianCalendar getValue() {
             return value;
         }
@@ -1969,7 +1840,6 @@ public class Paper extends Document {
          *     {@link XMLGregorianCalendar }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setValue(XMLGregorianCalendar value) {
             this.value = value;
         }
@@ -1988,7 +1858,6 @@ public class Paper extends Document {
          * @return
          *     always non-null
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Map<QName, String> getOtherAttributes() {
             return otherAttributes;
         }
@@ -2111,11 +1980,9 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "author"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Authors {
 
-        @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(namespace = "XML_tim6", required = true)
         protected List<Paper.Authors.Author> author;
 
         /**
@@ -2140,7 +2007,6 @@ public class Paper extends Document {
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public List<Paper.Authors.Author> getAuthor() {
             if (author == null) {
                 author = new ArrayList<Paper.Authors.Author>();
@@ -2255,19 +2121,15 @@ public class Paper extends Document {
             "personal",
             "institution"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Author {
 
-            @XmlElement(required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @XmlElement(namespace = "XML_tim6", required = true)
             protected Paper.Authors.Author.Personal personal;
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @XmlElement(namespace = "XML_tim6")
             protected Paper.Authors.Author.Institution institution;
             @XmlAttribute(name = "email")
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String email;
             @XmlAnyAttribute
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
@@ -2278,7 +2140,6 @@ public class Paper extends Document {
              *     {@link Paper.Authors.Author.Personal }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Paper.Authors.Author.Personal getPersonal() {
                 return personal;
             }
@@ -2291,7 +2152,6 @@ public class Paper extends Document {
              *     {@link Paper.Authors.Author.Personal }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setPersonal(Paper.Authors.Author.Personal value) {
                 this.personal = value;
             }
@@ -2304,7 +2164,6 @@ public class Paper extends Document {
              *     {@link Paper.Authors.Author.Institution }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Paper.Authors.Author.Institution getInstitution() {
                 return institution;
             }
@@ -2317,7 +2176,6 @@ public class Paper extends Document {
              *     {@link Paper.Authors.Author.Institution }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setInstitution(Paper.Authors.Author.Institution value) {
                 this.institution = value;
             }
@@ -2330,7 +2188,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getEmail() {
                 return email;
             }
@@ -2343,7 +2200,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setEmail(String value) {
                 this.email = value;
             }
@@ -2362,7 +2218,6 @@ public class Paper extends Document {
              * @return
              *     always non-null
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Map<QName, String> getOtherAttributes() {
                 return otherAttributes;
             }
@@ -2420,20 +2275,15 @@ public class Paper extends Document {
                 "city",
                 "country"
             })
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public static class Institution {
 
-                @XmlElement(required = true)
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @XmlElement(namespace = "XML_tim6", required = true)
                 protected Paper.Authors.Author.Institution.Name name;
-                @XmlElement(required = true)
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @XmlElement(namespace = "XML_tim6", required = true)
                 protected Paper.Authors.Author.Institution.City city;
-                @XmlElement(required = true)
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @XmlElement(namespace = "XML_tim6", required = true)
                 protected Paper.Authors.Author.Institution.Country country;
                 @XmlAnyAttribute
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
                 /**
@@ -2444,7 +2294,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Institution.Name }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public Paper.Authors.Author.Institution.Name getName() {
                     return name;
                 }
@@ -2457,7 +2306,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Institution.Name }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public void setName(Paper.Authors.Author.Institution.Name value) {
                     this.name = value;
                 }
@@ -2470,7 +2318,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Institution.City }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public Paper.Authors.Author.Institution.City getCity() {
                     return city;
                 }
@@ -2483,7 +2330,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Institution.City }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public void setCity(Paper.Authors.Author.Institution.City value) {
                     this.city = value;
                 }
@@ -2496,7 +2342,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Institution.Country }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public Paper.Authors.Author.Institution.Country getCountry() {
                     return country;
                 }
@@ -2509,7 +2354,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Institution.Country }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public void setCountry(Paper.Authors.Author.Institution.Country value) {
                     this.country = value;
                 }
@@ -2528,7 +2372,6 @@ public class Paper extends Document {
                  * @return
                  *     always non-null
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public Map<QName, String> getOtherAttributes() {
                     return otherAttributes;
                 }
@@ -2555,14 +2398,11 @@ public class Paper extends Document {
                 @XmlType(name = "", propOrder = {
                     "value"
                 })
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public static class City {
 
                     @XmlValue
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     protected String value;
                     @XmlAnyAttribute
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
                     /**
@@ -2573,7 +2413,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public String getValue() {
                         return value;
                     }
@@ -2586,7 +2425,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public void setValue(String value) {
                         this.value = value;
                     }
@@ -2605,7 +2443,6 @@ public class Paper extends Document {
                      * @return
                      *     always non-null
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public Map<QName, String> getOtherAttributes() {
                         return otherAttributes;
                     }
@@ -2634,14 +2471,11 @@ public class Paper extends Document {
                 @XmlType(name = "", propOrder = {
                     "value"
                 })
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public static class Country {
 
                     @XmlValue
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     protected String value;
                     @XmlAnyAttribute
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
                     /**
@@ -2652,7 +2486,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public String getValue() {
                         return value;
                     }
@@ -2665,7 +2498,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public void setValue(String value) {
                         this.value = value;
                     }
@@ -2684,7 +2516,6 @@ public class Paper extends Document {
                      * @return
                      *     always non-null
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public Map<QName, String> getOtherAttributes() {
                         return otherAttributes;
                     }
@@ -2713,14 +2544,11 @@ public class Paper extends Document {
                 @XmlType(name = "", propOrder = {
                     "value"
                 })
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public static class Name {
 
                     @XmlValue
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     protected String value;
                     @XmlAnyAttribute
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
                     /**
@@ -2731,7 +2559,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public String getValue() {
                         return value;
                     }
@@ -2744,7 +2571,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public void setValue(String value) {
                         this.value = value;
                     }
@@ -2763,7 +2589,6 @@ public class Paper extends Document {
                      * @return
                      *     always non-null
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public Map<QName, String> getOtherAttributes() {
                         return otherAttributes;
                     }
@@ -2824,17 +2649,13 @@ public class Paper extends Document {
                 "middleName",
                 "lastName"
             })
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public static class Personal {
 
-                @XmlElement(name = "first_name", required = true)
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @XmlElement(name = "first_name", namespace = "XML_tim6", required = true)
                 protected Paper.Authors.Author.Personal.FirstName firstName;
-                @XmlElement(name = "middle_name")
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @XmlElement(name = "middle_name", namespace = "XML_tim6")
                 protected Paper.Authors.Author.Personal.MiddleName middleName;
-                @XmlElement(name = "last_name", required = true)
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+                @XmlElement(name = "last_name", namespace = "XML_tim6", required = true)
                 protected Paper.Authors.Author.Personal.LastName lastName;
 
                 /**
@@ -2845,7 +2666,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Personal.FirstName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public Paper.Authors.Author.Personal.FirstName getFirstName() {
                     return firstName;
                 }
@@ -2858,7 +2678,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Personal.FirstName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public void setFirstName(Paper.Authors.Author.Personal.FirstName value) {
                     this.firstName = value;
                 }
@@ -2871,7 +2690,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Personal.MiddleName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public Paper.Authors.Author.Personal.MiddleName getMiddleName() {
                     return middleName;
                 }
@@ -2884,7 +2702,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Personal.MiddleName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public void setMiddleName(Paper.Authors.Author.Personal.MiddleName value) {
                     this.middleName = value;
                 }
@@ -2897,7 +2714,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Personal.LastName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public Paper.Authors.Author.Personal.LastName getLastName() {
                     return lastName;
                 }
@@ -2910,7 +2726,6 @@ public class Paper extends Document {
                  *     {@link Paper.Authors.Author.Personal.LastName }
                  *     
                  */
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public void setLastName(Paper.Authors.Author.Personal.LastName value) {
                     this.lastName = value;
                 }
@@ -2937,14 +2752,11 @@ public class Paper extends Document {
                 @XmlType(name = "", propOrder = {
                     "value"
                 })
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public static class FirstName {
 
                     @XmlValue
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     protected String value;
                     @XmlAnyAttribute
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
                     /**
@@ -2955,7 +2767,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public String getValue() {
                         return value;
                     }
@@ -2968,7 +2779,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public void setValue(String value) {
                         this.value = value;
                     }
@@ -2987,7 +2797,6 @@ public class Paper extends Document {
                      * @return
                      *     always non-null
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public Map<QName, String> getOtherAttributes() {
                         return otherAttributes;
                     }
@@ -3016,14 +2825,11 @@ public class Paper extends Document {
                 @XmlType(name = "", propOrder = {
                     "value"
                 })
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public static class LastName {
 
                     @XmlValue
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     protected String value;
                     @XmlAnyAttribute
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
                     /**
@@ -3034,7 +2840,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public String getValue() {
                         return value;
                     }
@@ -3047,7 +2852,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public void setValue(String value) {
                         this.value = value;
                     }
@@ -3066,7 +2870,6 @@ public class Paper extends Document {
                      * @return
                      *     always non-null
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public Map<QName, String> getOtherAttributes() {
                         return otherAttributes;
                     }
@@ -3095,14 +2898,11 @@ public class Paper extends Document {
                 @XmlType(name = "", propOrder = {
                     "value"
                 })
-                @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                 public static class MiddleName {
 
                     @XmlValue
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     protected String value;
                     @XmlAnyAttribute
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
                     /**
@@ -3113,7 +2913,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public String getValue() {
                         return value;
                     }
@@ -3126,7 +2925,6 @@ public class Paper extends Document {
                      *     {@link String }
                      *     
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public void setValue(String value) {
                         this.value = value;
                     }
@@ -3145,7 +2943,6 @@ public class Paper extends Document {
                      * @return
                      *     always non-null
                      */
-                    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
                     public Map<QName, String> getOtherAttributes() {
                         return otherAttributes;
                     }
@@ -3183,13 +2980,11 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "mention"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Citations {
 
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(namespace = "XML_tim6")
         protected List<Mention> mention;
         @XmlAnyAttribute
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
@@ -3214,7 +3009,6 @@ public class Paper extends Document {
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public List<Mention> getMention() {
             if (mention == null) {
                 mention = new ArrayList<Mention>();
@@ -3236,7 +3030,6 @@ public class Paper extends Document {
          * @return
          *     always non-null
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Map<QName, String> getOtherAttributes() {
             return otherAttributes;
         }
@@ -3269,17 +3062,14 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "sectionOrQuote"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Content {
 
         @XmlElements({
-            @XmlElement(name = "section", type = Section.class),
-            @XmlElement(name = "quote", type = Quote.class)
+            @XmlElement(name = "section", namespace = "XML_tim6", type = Section.class),
+            @XmlElement(name = "quote", namespace = "XML_tim6", type = Quote.class)
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected List<Object> sectionOrQuote;
         @XmlAnyAttribute
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
@@ -3305,7 +3095,6 @@ public class Paper extends Document {
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public List<Object> getSectionOrQuote() {
             if (sectionOrQuote == null) {
                 sectionOrQuote = new ArrayList<Object>();
@@ -3327,7 +3116,6 @@ public class Paper extends Document {
          * @return
          *     always non-null
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Map<QName, String> getOtherAttributes() {
             return otherAttributes;
         }
@@ -3368,14 +3156,11 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "note"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Notes {
 
-        @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(namespace = "XML_tim6", required = true)
         protected List<Paper.Notes.Note> note;
         @XmlAnyAttribute
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
@@ -3400,7 +3185,6 @@ public class Paper extends Document {
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public List<Paper.Notes.Note> getNote() {
             if (note == null) {
                 note = new ArrayList<Paper.Notes.Note>();
@@ -3422,7 +3206,6 @@ public class Paper extends Document {
          * @return
          *     always non-null
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Map<QName, String> getOtherAttributes() {
             return otherAttributes;
         }
@@ -3450,19 +3233,15 @@ public class Paper extends Document {
         @XmlType(name = "", propOrder = {
             "value"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Note {
 
             @XmlValue
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected String value;
             @XmlAttribute(name = "ref_id")
             @XmlIDREF
             @XmlSchemaType(name = "IDREF")
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             protected Object refId;
             @XmlAnyAttribute
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
             /**
@@ -3473,7 +3252,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getValue() {
                 return value;
             }
@@ -3486,7 +3264,6 @@ public class Paper extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setValue(String value) {
                 this.value = value;
             }
@@ -3499,7 +3276,6 @@ public class Paper extends Document {
              *     {@link Object }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Object getRefId() {
                 return refId;
             }
@@ -3512,7 +3288,6 @@ public class Paper extends Document {
              *     {@link Object }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setRefId(Object value) {
                 this.refId = value;
             }
@@ -3531,7 +3306,6 @@ public class Paper extends Document {
              * @return
              *     always non-null
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public Map<QName, String> getOtherAttributes() {
                 return otherAttributes;
             }
@@ -3562,15 +3336,12 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "value"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Received {
 
         @XmlValue
         @XmlSchemaType(name = "date")
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected XMLGregorianCalendar value;
         @XmlAnyAttribute
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
@@ -3581,7 +3352,6 @@ public class Paper extends Document {
          *     {@link XMLGregorianCalendar }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public XMLGregorianCalendar getValue() {
             return value;
         }
@@ -3594,7 +3364,6 @@ public class Paper extends Document {
          *     {@link XMLGregorianCalendar }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setValue(XMLGregorianCalendar value) {
             this.value = value;
         }
@@ -3613,7 +3382,6 @@ public class Paper extends Document {
          * @return
          *     always non-null
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Map<QName, String> getOtherAttributes() {
             return otherAttributes;
         }
@@ -3645,13 +3413,11 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "mention"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class References {
 
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(namespace = "XML_tim6")
         protected List<Mention> mention;
         @XmlAnyAttribute
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
@@ -3676,7 +3442,6 @@ public class Paper extends Document {
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public List<Mention> getMention() {
             if (mention == null) {
                 mention = new ArrayList<Mention>();
@@ -3698,7 +3463,6 @@ public class Paper extends Document {
          * @return
          *     always non-null
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Map<QName, String> getOtherAttributes() {
             return otherAttributes;
         }
@@ -3727,15 +3491,12 @@ public class Paper extends Document {
     @XmlType(name = "", propOrder = {
         "value"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Revised {
 
         @XmlValue
         @XmlSchemaType(name = "date")
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected XMLGregorianCalendar value;
         @XmlAnyAttribute
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
         /**
@@ -3746,7 +3507,6 @@ public class Paper extends Document {
          *     {@link XMLGregorianCalendar }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public XMLGregorianCalendar getValue() {
             return value;
         }
@@ -3759,7 +3519,6 @@ public class Paper extends Document {
          *     {@link XMLGregorianCalendar }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setValue(XMLGregorianCalendar value) {
             this.value = value;
         }
@@ -3778,7 +3537,6 @@ public class Paper extends Document {
          * @return
          *     always non-null
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public Map<QName, String> getOtherAttributes() {
             return otherAttributes;
         }

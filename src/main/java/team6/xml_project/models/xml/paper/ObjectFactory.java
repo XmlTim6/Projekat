@@ -51,6 +51,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link List }
+     * 
+     */
+    public List createList() {
+        return new List();
+    }
+
+    /**
      * Create an instance of {@link Section }
      * 
      */
@@ -104,14 +112,6 @@ public class ObjectFactory {
      */
     public Section.Table.Row createSectionTableRow() {
         return new Section.Table.Row();
-    }
-
-    /**
-     * Create an instance of {@link Section.List }
-     * 
-     */
-    public Section.List createSectionList() {
-        return new Section.List();
     }
 
     /**
@@ -267,6 +267,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link List.ListItem }
+     * 
+     */
+    public List.ListItem createListListItem() {
+        return new List.ListItem();
+    }
+
+    /**
      * Create an instance of {@link Mention.Work.YearPublished }
      * 
      */
@@ -336,14 +344,6 @@ public class ObjectFactory {
      */
     public Section.Table.Row.Cell createSectionTableRowCell() {
         return new Section.Table.Row.Cell();
-    }
-
-    /**
-     * Create an instance of {@link Section.List.ListItem }
-     * 
-     */
-    public Section.List.ListItem createSectionListListItem() {
-        return new Section.List.ListItem();
     }
 
     /**

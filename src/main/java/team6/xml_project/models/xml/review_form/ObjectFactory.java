@@ -1,3 +1,4 @@
+
 package team6.xml_project.models.xml.review_form;
 
 import javax.xml.bind.JAXBElement;
@@ -9,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the tim6.models.review_form package. 
+ * generated in the team6.xml_project.models.xml.review_form package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -27,10 +28,18 @@ public class ObjectFactory {
     private final static QName _ParagraphBold_QNAME = new QName("XML_tim6", "bold");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: tim6.models.review_form
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: team6.xml_project.models.xml.review_form
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link Paragraph }
+     * 
+     */
+    public Paragraph createParagraph() {
+        return new Paragraph();
     }
 
     /**
@@ -42,11 +51,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Paragraph }
+     * Create an instance of {@link List }
      * 
      */
-    public Paragraph createParagraph() {
-        return new Paragraph();
+    public List createList() {
+        return new List();
+    }
+
+    /**
+     * Create an instance of {@link Paragraph.Bold }
+     * 
+     */
+    public Paragraph.Bold createParagraphBold() {
+        return new Paragraph.Bold();
+    }
+
+    /**
+     * Create an instance of {@link Paragraph.Italic }
+     * 
+     */
+    public Paragraph.Italic createParagraphItalic() {
+        return new Paragraph.Italic();
     }
 
     /**
@@ -66,29 +91,29 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link List }
+     * Create an instance of {@link List.ListItem }
      * 
      */
-    public team6.xml_project.models.xml.review_form.List createList() {
-        return new List();
+    public List.ListItem createListListItem() {
+        return new List.ListItem();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Paragraph.Italic }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "XML_tim6", name = "italic", scope = Paragraph.class)
-    public JAXBElement<String> createParagraphItalic(String value) {
-        return new JAXBElement<String>(_ParagraphItalic_QNAME, String.class, Paragraph.class, value);
+    public JAXBElement<Paragraph.Italic> createParagraphItalic(Paragraph.Italic value) {
+        return new JAXBElement<Paragraph.Italic>(_ParagraphItalic_QNAME, Paragraph.Italic.class, Paragraph.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Paragraph.Bold }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "XML_tim6", name = "bold", scope = Paragraph.class)
-    public JAXBElement<String> createParagraphBold(String value) {
-        return new JAXBElement<String>(_ParagraphBold_QNAME, String.class, Paragraph.class, value);
+    public JAXBElement<Paragraph.Bold> createParagraphBold(Paragraph.Bold value) {
+        return new JAXBElement<Paragraph.Bold>(_ParagraphBold_QNAME, Paragraph.Bold.class, Paragraph.class, value);
     }
 
 }

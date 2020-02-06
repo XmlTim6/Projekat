@@ -86,7 +86,7 @@
     </xsl:template>
 
     <xsl:template match="t6:abstract">
-        <div>
+        <div id="{current()/@id}">
             <h2>Abstract</h2>
             <p class = "abstractParagraph" id="{t6:purpose/@id}">
                 <span class="abstractSection">Purpose - </span>

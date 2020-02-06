@@ -3,18 +3,12 @@ package team6.xml_project.models.xml.cover_letter;
 
 import team6.xml_project.models.xml.Document;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import javax.annotation.Generated;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlElements;
-import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
@@ -38,37 +32,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;choice maxOccurs="unbounded">
- *                   &lt;element name="list">
- *                     &lt;complexType>
- *                       &lt;complexContent>
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                           &lt;sequence>
- *                             &lt;element name="list_item" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                           &lt;/sequence>
- *                           &lt;attribute name="type" use="required">
- *                             &lt;simpleType>
- *                               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *                                 &lt;enumeration value="ordered"/>
- *                                 &lt;enumeration value="unordered"/>
- *                               &lt;/restriction>
- *                             &lt;/simpleType>
- *                           &lt;/attribute>
- *                         &lt;/restriction>
- *                       &lt;/complexContent>
- *                     &lt;/complexType>
- *                   &lt;/element>
- *                   &lt;element name="paragraph">
- *                     &lt;complexType>
- *                       &lt;complexContent>
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                           &lt;choice maxOccurs="unbounded" minOccurs="0">
- *                             &lt;element name="bold" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                             &lt;element name="italic" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                           &lt;/choice>
- *                         &lt;/restriction>
- *                       &lt;/complexContent>
- *                     &lt;/complexType>
- *                   &lt;/element>
+ *                   &lt;element ref="{XML_tim6}list"/>
+ *                   &lt;element ref="{XML_tim6}paragraph"/>
  *                 &lt;/choice>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -109,7 +74,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                 &lt;attribute name="email">
  *                   &lt;simpleType>
  *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *                       &lt;pattern value="[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"/>
+ *                       &lt;pattern value="[_\-a-zA-Z0-9\.\+]+@[a-zA-Z0-9](\.?[\-a-zA-Z0-9]*[a-zA-Z0-9])*"/>
  *                     &lt;/restriction>
  *                   &lt;/simpleType>
  *                 &lt;/attribute>
@@ -133,22 +98,17 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "content",
     "author"
 })
-@XmlRootElement(name = "cover_letter")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+@XmlRootElement(name = "cover_letter", namespace = "XML_tim6")
 public class CoverLetter extends Document {
 
-    @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6", required = true)
     protected String title;
-    @XmlElement(name = "submission_date", required = true)
+    @XmlElement(name = "submission_date", namespace = "XML_tim6", required = true)
     @XmlSchemaType(name = "date")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected XMLGregorianCalendar submissionDate;
-    @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6", required = true)
     protected CoverLetter.Content content;
-    @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6", required = true)
     protected CoverLetter.Author author;
 
     /**
@@ -159,7 +119,6 @@ public class CoverLetter extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getTitle() {
         return title;
     }
@@ -172,7 +131,6 @@ public class CoverLetter extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setTitle(String value) {
         this.title = value;
     }
@@ -185,7 +143,6 @@ public class CoverLetter extends Document {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public XMLGregorianCalendar getSubmissionDate() {
         return submissionDate;
     }
@@ -198,7 +155,6 @@ public class CoverLetter extends Document {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setSubmissionDate(XMLGregorianCalendar value) {
         this.submissionDate = value;
     }
@@ -211,7 +167,6 @@ public class CoverLetter extends Document {
      *     {@link CoverLetter.Content }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public CoverLetter.Content getContent() {
         return content;
     }
@@ -224,7 +179,6 @@ public class CoverLetter extends Document {
      *     {@link CoverLetter.Content }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setContent(CoverLetter.Content value) {
         this.content = value;
     }
@@ -237,7 +191,6 @@ public class CoverLetter extends Document {
      *     {@link CoverLetter.Author }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public CoverLetter.Author getAuthor() {
         return author;
     }
@@ -250,7 +203,6 @@ public class CoverLetter extends Document {
      *     {@link CoverLetter.Author }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setAuthor(CoverLetter.Author value) {
         this.author = value;
     }
@@ -296,7 +248,7 @@ public class CoverLetter extends Document {
      *       &lt;attribute name="email">
      *         &lt;simpleType>
      *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
-     *             &lt;pattern value="[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"/>
+     *             &lt;pattern value="[_\-a-zA-Z0-9\.\+]+@[a-zA-Z0-9](\.?[\-a-zA-Z0-9]*[a-zA-Z0-9])*"/>
      *           &lt;/restriction>
      *         &lt;/simpleType>
      *       &lt;/attribute>
@@ -313,19 +265,15 @@ public class CoverLetter extends Document {
         "personal",
         "institution"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Author {
 
-        @XmlElement(required = true)
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(namespace = "XML_tim6", required = true)
         protected CoverLetter.Author.Personal personal;
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+        @XmlElement(namespace = "XML_tim6")
         protected CoverLetter.Author.Institution institution;
         @XmlAttribute(name = "email")
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String email;
         @XmlAttribute(name = "tel")
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected String tel;
 
         /**
@@ -336,7 +284,6 @@ public class CoverLetter extends Document {
          *     {@link CoverLetter.Author.Personal }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public CoverLetter.Author.Personal getPersonal() {
             return personal;
         }
@@ -349,7 +296,6 @@ public class CoverLetter extends Document {
          *     {@link CoverLetter.Author.Personal }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setPersonal(CoverLetter.Author.Personal value) {
             this.personal = value;
         }
@@ -362,7 +308,6 @@ public class CoverLetter extends Document {
          *     {@link CoverLetter.Author.Institution }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public CoverLetter.Author.Institution getInstitution() {
             return institution;
         }
@@ -375,7 +320,6 @@ public class CoverLetter extends Document {
          *     {@link CoverLetter.Author.Institution }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setInstitution(CoverLetter.Author.Institution value) {
             this.institution = value;
         }
@@ -388,7 +332,6 @@ public class CoverLetter extends Document {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getEmail() {
             return email;
         }
@@ -401,7 +344,6 @@ public class CoverLetter extends Document {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setEmail(String value) {
             this.email = value;
         }
@@ -414,7 +356,6 @@ public class CoverLetter extends Document {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public String getTel() {
             return tel;
         }
@@ -427,7 +368,6 @@ public class CoverLetter extends Document {
          *     {@link String }
          *     
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public void setTel(String value) {
             this.tel = value;
         }
@@ -460,17 +400,13 @@ public class CoverLetter extends Document {
             "city",
             "country"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Institution {
 
-            @XmlElement(required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @XmlElement(namespace = "XML_tim6", required = true)
             protected String name;
-            @XmlElement(required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @XmlElement(namespace = "XML_tim6", required = true)
             protected String city;
-            @XmlElement(required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @XmlElement(namespace = "XML_tim6", required = true)
             protected String country;
 
             /**
@@ -481,7 +417,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getName() {
                 return name;
             }
@@ -494,7 +429,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setName(String value) {
                 this.name = value;
             }
@@ -507,7 +441,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getCity() {
                 return city;
             }
@@ -520,7 +453,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setCity(String value) {
                 this.city = value;
             }
@@ -533,7 +465,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getCountry() {
                 return country;
             }
@@ -546,7 +477,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setCountry(String value) {
                 this.country = value;
             }
@@ -581,17 +511,13 @@ public class CoverLetter extends Document {
             "middleName",
             "lastName"
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public static class Personal {
 
-            @XmlElement(name = "first_name", required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @XmlElement(name = "first_name", namespace = "XML_tim6", required = true)
             protected String firstName;
-            @XmlElement(name = "middle_name")
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @XmlElement(name = "middle_name", namespace = "XML_tim6")
             protected String middleName;
-            @XmlElement(name = "last_name", required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+            @XmlElement(name = "last_name", namespace = "XML_tim6", required = true)
             protected String lastName;
 
             /**
@@ -602,7 +528,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getFirstName() {
                 return firstName;
             }
@@ -615,7 +540,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setFirstName(String value) {
                 this.firstName = value;
             }
@@ -628,7 +552,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getMiddleName() {
                 return middleName;
             }
@@ -641,7 +564,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setMiddleName(String value) {
                 this.middleName = value;
             }
@@ -654,7 +576,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public String getLastName() {
                 return lastName;
             }
@@ -667,7 +588,6 @@ public class CoverLetter extends Document {
              *     {@link String }
              *     
              */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
             public void setLastName(String value) {
                 this.lastName = value;
             }
@@ -687,37 +607,8 @@ public class CoverLetter extends Document {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;choice maxOccurs="unbounded">
-     *         &lt;element name="list">
-     *           &lt;complexType>
-     *             &lt;complexContent>
-     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *                 &lt;sequence>
-     *                   &lt;element name="list_item" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *                 &lt;/sequence>
-     *                 &lt;attribute name="type" use="required">
-     *                   &lt;simpleType>
-     *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
-     *                       &lt;enumeration value="ordered"/>
-     *                       &lt;enumeration value="unordered"/>
-     *                     &lt;/restriction>
-     *                   &lt;/simpleType>
-     *                 &lt;/attribute>
-     *               &lt;/restriction>
-     *             &lt;/complexContent>
-     *           &lt;/complexType>
-     *         &lt;/element>
-     *         &lt;element name="paragraph">
-     *           &lt;complexType>
-     *             &lt;complexContent>
-     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *                 &lt;choice maxOccurs="unbounded" minOccurs="0">
-     *                   &lt;element name="bold" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *                   &lt;element name="italic" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *                 &lt;/choice>
-     *               &lt;/restriction>
-     *             &lt;/complexContent>
-     *           &lt;/complexType>
-     *         &lt;/element>
+     *         &lt;element ref="{XML_tim6}list"/>
+     *         &lt;element ref="{XML_tim6}paragraph"/>
      *       &lt;/choice>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -730,14 +621,12 @@ public class CoverLetter extends Document {
     @XmlType(name = "", propOrder = {
         "listOrParagraph"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class Content {
 
         @XmlElements({
-            @XmlElement(name = "list", type = CoverLetter.Content.List.class),
-            @XmlElement(name = "paragraph", type = CoverLetter.Content.Paragraph.class)
+            @XmlElement(name = "list", namespace = "XML_tim6", type = team6.xml_project.models.xml.cover_letter.List.class),
+            @XmlElement(name = "paragraph", namespace = "XML_tim6", type = Paragraph.class)
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected java.util.List<Object> listOrParagraph;
 
         /**
@@ -758,183 +647,16 @@ public class CoverLetter extends Document {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link CoverLetter.Content.List }
-         * {@link CoverLetter.Content.Paragraph }
+         * {@link team6.xml_project.models.xml.cover_letter.List }
+         * {@link Paragraph }
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public java.util.List<Object> getListOrParagraph() {
             if (listOrParagraph == null) {
                 listOrParagraph = new ArrayList<Object>();
             }
             return this.listOrParagraph;
-        }
-
-
-        /**
-         * <p>Java class for anonymous complex type.
-         * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
-         * <pre>
-         * &lt;complexType>
-         *   &lt;complexContent>
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-         *       &lt;sequence>
-         *         &lt;element name="list_item" type="{http://www.w3.org/2001/XMLSchema}string"/>
-         *       &lt;/sequence>
-         *       &lt;attribute name="type" use="required">
-         *         &lt;simpleType>
-         *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
-         *             &lt;enumeration value="ordered"/>
-         *             &lt;enumeration value="unordered"/>
-         *           &lt;/restriction>
-         *         &lt;/simpleType>
-         *       &lt;/attribute>
-         *     &lt;/restriction>
-         *   &lt;/complexContent>
-         * &lt;/complexType>
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "listItem"
-        })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public static class List {
-
-            @XmlElement(name = "list_item", required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            protected String listItem;
-            @XmlAttribute(name = "type", required = true)
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            protected String type;
-
-            /**
-             * Gets the value of the listItem property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            public String getListItem() {
-                return listItem;
-            }
-
-            /**
-             * Sets the value of the listItem property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            public void setListItem(String value) {
-                this.listItem = value;
-            }
-
-            /**
-             * Gets the value of the type property.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            public String getType() {
-                return type;
-            }
-
-            /**
-             * Sets the value of the type property.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            public void setType(String value) {
-                this.type = value;
-            }
-
-        }
-
-
-        /**
-         * <p>Java class for anonymous complex type.
-         * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
-         * <pre>
-         * &lt;complexType>
-         *   &lt;complexContent>
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-         *       &lt;choice maxOccurs="unbounded" minOccurs="0">
-         *         &lt;element name="bold" type="{http://www.w3.org/2001/XMLSchema}string"/>
-         *         &lt;element name="italic" type="{http://www.w3.org/2001/XMLSchema}string"/>
-         *       &lt;/choice>
-         *     &lt;/restriction>
-         *   &lt;/complexContent>
-         * &lt;/complexType>
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "content"
-        })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-        public static class Paragraph {
-
-            @XmlElementRefs({
-                @XmlElementRef(name = "bold", namespace = "XML_tim6", type = JAXBElement.class, required = false),
-                @XmlElementRef(name = "italic", namespace = "XML_tim6", type = JAXBElement.class, required = false)
-            })
-            @XmlMixed
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            protected java.util.List<Serializable> content;
-
-            /**
-             * Gets the value of the content property.
-             * 
-             * <p>
-             * This accessor method returns a reference to the live list,
-             * not a snapshot. Therefore any modification you make to the
-             * returned list will be present inside the JAXB object.
-             * This is why there is not a <CODE>set</CODE> method for the content property.
-             * 
-             * <p>
-             * For example, to add a new item, do as follows:
-             * <pre>
-             *    getContent().add(newItem);
-             * </pre>
-             * 
-             * 
-             * <p>
-             * Objects of the following type(s) are allowed in the list
-             * {@link JAXBElement }{@code <}{@link String }{@code >}
-             * {@link JAXBElement }{@code <}{@link String }{@code >}
-             * {@link String }
-             * 
-             * 
-             */
-            @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:15:13+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-            public java.util.List<Serializable> getContent() {
-                if (content == null) {
-                    content = new ArrayList<Serializable>();
-                }
-                return this.content;
-            }
-
         }
 
     }
