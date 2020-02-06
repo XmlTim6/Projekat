@@ -50,7 +50,7 @@ public class PaperController {
             @RequestParam(value = "token", required = false) String token) throws JAXBException {
 
         long userId = -1;
-        if (token != null)
+        if (token != null && !token.equals("null"))
             userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
         String paperStr = paperService.findPaper(String.format("/db/xml_project_tim6/papers/%s/revision_%s",
                 collection, revision), document, userId, collection);
