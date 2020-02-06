@@ -147,7 +147,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         submissionRepository.save(submission);
 
         String paperForReview = xslTransformationService.createXml(paper, "data/xsl/paper_anonymization.xsl").toString();
-        paperService.save(paper, submission, "paper.xml");
+        paperService.save(processedPaper, submission, "paper.xml");
         paperService.save(paperForReview, submission, "paper_anon.xml");
         try {
             User editor = userService.findById(submission.getEditorId());

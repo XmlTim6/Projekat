@@ -187,8 +187,14 @@ public class PaperServiceImpl implements PaperService {
         }
 
         if (submission.getAuthorId() == userId) {
-            return uris.stream().filter(s -> s.contains("paper.xml") || s.contains("review_anon.xml")).
-                    collect(Collectors.toList());
+            List<String> list = uris.stream().filter(s -> s.contains("paper.xml")).collect(Collectors.toList());
+
+            if(submission.getSubmissionStatus().equals(SubmissionStatus.NEEDS_REWORK.toString())||
+               submission.getSubmissionStatus().equals(SubmissionStatus.REJECTED.toString())){
+                return uris.stream().filter(s -> s.contains("paper.xml") || s.contains("review")).
+                        collect(Collectors.toList());
+            }
+            return list;
         } else if (submission.getEditorId() == userId) {
             return uris;
         } else if (submission.getReviewerIds().stream().anyMatch(r -> r.getReviewerId() == userId)) {
