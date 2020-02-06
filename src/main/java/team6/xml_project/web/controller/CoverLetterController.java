@@ -90,17 +90,6 @@ public class CoverLetterController {
                     headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
                     return new ResponseEntity<>(contents, headers, HttpStatus.OK);
             }
-            byte[] contents = coverLetterStr.getBytes();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_XML);
-            String filename = "cover_letter.xml";
-            ContentDisposition contentDisposition = ContentDisposition
-                    .builder("attachment")
-                    .filename(filename)
-                    .build();
-            headers.setContentDisposition(contentDisposition);
-            headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
-            return new ResponseEntity<>(contents, headers, HttpStatus.OK);
         } catch (Exception e) {
             throw new FailedToGenerateDocumentException();
         }

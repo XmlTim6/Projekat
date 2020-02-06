@@ -82,7 +82,7 @@ public class PaperController {
                     headers.setContentType(MediaType.APPLICATION_XML);
                     String filename = "paper.xml";
                     ContentDisposition contentDisposition = ContentDisposition
-                            .builder("inline")
+                            .builder("attachment")
                             .filename(filename)
                             .build();
                     headers.setContentDisposition(contentDisposition);
@@ -90,17 +90,6 @@ public class PaperController {
                     return new ResponseEntity<>(contents, headers, HttpStatus.OK);
                 }
             }
-            byte[] contents = paperStr.getBytes();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_XML);
-            String filename = "paper.xml";
-            ContentDisposition contentDisposition = ContentDisposition
-                    .builder("attachment")
-                    .filename(filename)
-                    .build();
-            headers.setContentDisposition(contentDisposition);
-            headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
-            return new ResponseEntity<>(contents, headers, HttpStatus.OK);
         } catch (Exception e) {
             throw new FailedToGenerateDocumentException();
         }
