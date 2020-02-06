@@ -70,13 +70,21 @@ public class ReviewFormServiceImpl implements ReviewFormService {
         User reviewer = userService.findById(userId);
 
         if ((submission.getReviewerIds().stream().noneMatch(r -> r.getReviewerId() == userId))
-                && !(submission.getEditorId() == userId))
+                && !(submission.getEditorId() == userId) && !(submission.getAuthorId() == userId))
             throw new PermissionDeniedException();
-
-        if (reviewer.getRole() == Role.ROLE_AUTHOR && !document.equals(String.format("review_form_%s.xml", userId)))
-            throw new PermissionDeniedException();
-
-        try {
+        if (reviewer.getRole() == Role.ROLE_AUTHOR){
+            if(reviewer.getId() == submission.getAuthorId() && !document.equals("review_form_merged.xml")){
+                throw new PermissionDeniedException();
+            }else if(reviewer.getId() != submission.getAuthorId() && !document.equals(String.format("review_form_%s.xml", userId))){
+                throw new PermissionDeniedException();
+            }
+        }
+        if(!submission.getSubmissionStatus().equals(SubmissionStatus.REJECTED.toString()) && !submission.getSubmissionStatus().equals(SubmissionStatus.NEEDS_REWORK.toString())){
+            if(reviewer.getId() == submission.getAuthorId()){
+                throw new PermissionDeniedException();
+            }
+        }
+            try {
             return reviewFormRepository.find(submissionId, revision, document);
         } catch (Exception e) {
             throw new SubmissionNotFoundException();
@@ -89,7 +97,7 @@ public class ReviewFormServiceImpl implements ReviewFormService {
         User user = userService.findById(userId);
 
         if ((submission.getReviewerIds().stream().noneMatch(r -> r.getReviewerId() == userId))
-                && !(submission.getEditorId() == userId))
+                && !(submission.getEditorId() == userId) && !(submission.getAuthorId() == userId))
             throw new PermissionDeniedException();
 
         List<String> reviewFormURIsOld;
@@ -108,9 +116,22 @@ public class ReviewFormServiceImpl implements ReviewFormService {
         }
 
         if (user.getRole().equals(Role.ROLE_AUTHOR))
-            return reviewFormURIs.stream().filter(rf -> rf.endsWith(String.format("review_form_%s.xml", userId)))
-                    .collect(Collectors.toList());
+            if(user.getId() != submission.getAuthorId())
+                return reviewFormURIs.stream().filter(rf -> rf.endsWith(String.format("review_form_%s.xml", userId)))
+                        .collect(Collectors.toList());
+            else{
+                if(submission.getSubmissionStatus().equals(SubmissionStatus.REJECTED.toString()) || submission.getSubmissionStatus().equals(SubmissionStatus.NEEDS_REWORK.toString()))
+                    return reviewFormURIs.stream().filter(rf -> rf.endsWith(("review_form_merged.xml")))
+                            .collect(Collectors.toList());
+                else{
+                    throw new PermissionDeniedException();
+                }
+            }
         return reviewFormURIs;
+    }
+
+    public List<String> findReviewFormDocumentsOfSubmission(String submissionId, Long revision) throws Exception{
+        return reviewFormRepository.getAllReviewFormDocumentsOfSubmission(submissionId, revision);
     }
 
     private boolean checkIfAllReviewsAdded(Submission submission) throws Exception {

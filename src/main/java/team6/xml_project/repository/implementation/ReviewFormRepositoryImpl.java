@@ -39,9 +39,32 @@ public class ReviewFormRepositoryImpl implements ReviewFormRepository {
     }
 
     @Override
+    public void saveMergedReview(String reviewForm, Submission submission) {
+        try {
+            documentRepository.save(reviewForm, String.format("/db/xml_project_tim6/reviewForms/%s/revision_%s/",
+                    submission.getId(), submission.getCurrentRevision()),
+                    "review_form_merged.xml");
+        } catch (Exception e) {
+            throw new DocumentNotSavedException();
+        }
+    }
+
+    @Override
     public String find(String submissionId, Long revision, String documentName) throws Exception {
         return documentRepository.getDocumentById( String.format("/db/xml_project_tim6/reviewForms/%s/revision_%s/",
                 submissionId, revision), documentName);
+    }
+
+    @Override
+    public List<String> getAllReviewFormDocumentsOfSubmission(String submissionId, Long revision) throws Exception {
+        String xquery = String.format("xquery version \"3.1\";\n" +
+                "\n" +
+                "declare default element namespace \"XML_tim6\";\n" +
+                "\n" +
+                "for $form in collection(\"/db/xml_project_tim6/reviewForms/%s/revision_%s\")//review_form\n" +
+                "return $form", submissionId, revision);
+
+        return getURIs(xquery, documentRepository, reviewFormCollections);
     }
 
     @Override
