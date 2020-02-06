@@ -12,5 +12,7 @@ public interface ReviewFormService {
 
     String findReviewForm(String submissionId, Long revision, String document, Long userId);
 
+    List<String> findReviewFormDocumentsOfSubmission(java.lang.String submissionId, Long revision) throws Exception;
+
     List<String> findReviewFormURIsOfSubmission(String submissionId, Long userId);
 }

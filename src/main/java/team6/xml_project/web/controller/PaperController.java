@@ -1,7 +1,6 @@
 package team6.xml_project.web.controller;
 
 import com.google.common.collect.Lists;
-import jdk.nashorn.internal.parser.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -91,6 +90,17 @@ public class PaperController {
                     return new ResponseEntity<>(contents, headers, HttpStatus.OK);
                 }
             }
+            byte[] contents = paperStr.getBytes();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_XML);
+            String filename = "paper.xml";
+            ContentDisposition contentDisposition = ContentDisposition
+                    .builder("attachment")
+                    .filename(filename)
+                    .build();
+            headers.setContentDisposition(contentDisposition);
+            headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+            return new ResponseEntity<>(contents, headers, HttpStatus.OK);
         } catch (Exception e) {
             throw new FailedToGenerateDocumentException();
         }
