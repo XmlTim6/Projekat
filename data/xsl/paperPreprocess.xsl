@@ -266,9 +266,13 @@
             </xsl:if>
             <xsl:value-of select="concat(name(), '-')" />
         </xsl:for-each>
-        <xsl:if test="count(preceding-sibling::*[name()=name(current())])">
-            <xsl:value-of select="concat(name(), count(preceding-sibling::*[name()=name(current())]) + 1, '-')" />
-        </xsl:if>
-        <xsl:value-of select="concat(name(), '-')" />
+        <xsl:choose>
+            <xsl:when test="count(preceding-sibling::*[name()=name(current())])">
+                <xsl:value-of select="concat(name(), count(preceding-sibling::*[name()=name(current())]) + 1, '-')" />
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="concat(name(), '-')" />
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
