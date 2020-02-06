@@ -421,7 +421,7 @@ public class DocumentRepositoryImpl implements DocumentRepository {
 
             // get the collection
             System.out.println("[INFO] Retrieving the collection: " + collectionId);
-            col = DatabaseManager.getCollection(this.getUri() + collectionId);
+            col = DatabaseManager.getCollection(this.getUri() + "/db/xml_project_tim6/");
 
             // get an instance of xquery service
             XQueryService xqueryService = (XQueryService) col.getService("XQueryService", "1.0");

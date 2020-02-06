@@ -43,7 +43,7 @@ public class ReviewFormServiceImpl implements ReviewFormService {
         Submission submission = submissionService.findById(submissionId);
 
         if (!submission.getSubmissionStatus().equals(SubmissionStatus.IN_REVIEW.toString()))
-            throw new SubmissionClosedForCoverLetters();
+            throw new SubmissionClosedForReviews();
 
         if (submission.getReviewerIds().stream().noneMatch(r -> r.getReviewerId() == userId))
             throw new NotSubmissionAuthorException();

@@ -37,13 +37,9 @@ public class ReviewFormController {
 
     @RequestMapping(value = "/{submission_id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     @PreAuthorize("hasRole('AUTHOR')")
-    public ResponseEntity createReviewForm(@PathVariable String submission_id, @RequestBody String reviewForm){
-        try {
-            Long userId = AuthHelper.getCurrentUserId();
-            reviewFormService.save(reviewForm, submission_id, userId);
-        } catch (Exception ex) {
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity createReviewForm(@PathVariable String submission_id, @RequestBody String reviewForm) throws Exception {
+        Long userId = AuthHelper.getCurrentUserId();
+        reviewFormService.save(reviewForm, submission_id, userId);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 

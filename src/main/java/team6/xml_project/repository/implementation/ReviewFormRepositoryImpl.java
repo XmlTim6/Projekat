@@ -1,7 +1,10 @@
 package team6.xml_project.repository.implementation;
 
+import org.apache.xpath.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.xmldb.api.base.Resource;
+import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
 import org.xmldb.api.base.XMLDBException;
 import team6.xml_project.exception.DocumentNotSavedException;
@@ -58,6 +61,12 @@ public class ReviewFormRepositoryImpl implements ReviewFormRepository {
         ResourceSet resourceSet = documentRepository.checkIfDocumentExist(
                 String.format("/db/xml_project_tim6/reviewForms/%s/revision_%s/",
                 submission.getId(), submission.getCurrentRevision()), documentName);
-        return Boolean.parseBoolean(String.valueOf(resourceSet.getResource(0L).getContent()));
+        final ResourceIterator iter = resourceSet.getIterator();
+        while (iter.hasMoreResources()) {
+            Resource resource = iter.nextResource();
+            String res = (String) resource.getContent();
+            return Boolean.parseBoolean(res);
+        }
+        return false;
     }
 }
