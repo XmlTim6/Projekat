@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<review_form xmlns="XML_tim6"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <overview>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean risus augue, consectetur at magna et, efficitur scelerisque nunc. Duis non felis vestibulum, euismod mi nec, tincidunt enim. Proin sodales augue tellus, a aliquam libero suscipit non. Cras vitae eleifend tellus. Phasellus fringilla bibendum purus vel commodo. Nam luctus consectetur nunc quis mattis. Integer suscipit turpis at sem viverra consequat. Nullam sagittis libero ac sem molestie, eget lacinia enim facilisis. Integer eleifend elementum enim. Cras fermentum risus sit amet arcu pulvinar, quis vehicula lectus ornare. Integer eget nisl metus. Aliquam nec nulla finibus metus dapibus mattis finibus eu massa. Nulla non turpis at risus sollicitudin tempus ut et est.
+    </overview>
+    <positive_side>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean risus augue, consectetur at magna et, efficitur scelerisque nunc. Duis non felis vestibulum, euismod mi nec, tincidunt enim. Proin sodales augue tellus, a aliquam libero suscipit non. Cras vitae eleifend tellus. Phasellus fringilla bibendum purus vel commodo. Nam luctus consectetur nunc quis mattis. Integer    suscipit turpis at sem viverra consequat. Nullam sagittis libero ac sem molestie, eget lacinia enim facilisis. Integer eleifend elementum enim. Cras fermentum risus sit amet arcu pulvinar, quis vehicula lectus ornare. Integer eget nisl metus. Aliquam nec nulla finibus metus dapibus mattis finibus eu massa. Nulla non turpis at risus sollicitudin tempus ut et est.
+    </positive_side>
+    <major_remarks>
+        <paragraph id="major_remarks-paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <bold>Aenean risus augue, consectetur at magna et, efficitur scelerisque nunc.</bold> Duis non felis vestibulum, euismod mi nec, tincidunt enim. <italic>Proin sodales augue tellus, a aliquam libero suscipit non. Cras vitae eleifend tellus.</italic> Phasellus fringilla bibendum purus vel commodo. Nam luctus consectetur nunc quis mattis. Integer suscipit turpis at sem viverra consequat. Nullam sagittis libero ac sem molestie, eget lacinia enim facilisis. Integer eleifend elementum enim. Cras fermentum risus sit amet arcu pulvinar, quis vehicula lectus ornare. Integer eget nisl metus. Aliquam nec nulla finibus metus dapibus mattis finibus eu massa. Nulla non turpis at risus sollicitudin tempus ut et est.
+        </paragraph>
+        <paragraph id="major_remarks-paragraph2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean risus augue, consectetur at magna et, efficitur scelerisque nunc. Duis non felis vestibulum, euismod mi nec, tincidunt enim. Proin sodales augue tellus, a aliquam libero suscipit non. Cras vitae eleifend tellus. Phasellus fringilla bibendum purus vel commodo. Nam luctus consectetur nunc quis mattis. Integer suscipit turpis at sem viverra consequat. Nullam sagittis libero ac sem molestie, eget lacinia enim facilisis. Integer eleifend elementum enim. Cras fermentum risus sit amet arcu pulvinar, quis vehicula lectus ornare. Integer eget nisl metus. Aliquam nec nulla finibus metus dapibus mattis finibus eu massa. Nulla non turpis at risus sollicitudin tempus ut et est.
+        </paragraph>
+    </major_remarks>
+    <minor_remarks>
+        <list type="ordered" id="minor_remarks-list">
+            <list_item>list_item0</list_item>
+            <list_item>list_item1</list_item>
+            <list_item>list_item2</list_item>
+        </list>
+        <paragraph id="minor_remarks-paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <bold>Aenean risus augue, consectetur at magna et, efficitur scelerisque nunc.</bold> Duis non felis vestibulum, euismod mi nec, tincidunt enim. <italic>Proin sodales augue tellus, a aliquam libero suscipit non. Cras vitae eleifend tellus.</italic> Phasellus fringilla bibendum purus vel commodo. Nam luctus consectetur nunc quis mattis. Integer suscipit turpis at sem viverra consequat. Nullam sagittis libero ac sem molestie, eget lacinia enim facilisis. Integer eleifend elementum enim. Cras fermentum risus sit amet arcu pulvinar, quis vehicula lectus ornare. Integer eget nisl metus. Aliquam nec nulla finibus metus dapibus mattis finibus eu massa. Nulla non turpis at risus sollicitudin tempus ut et est.
+        </paragraph>
+        <list type="ordered" id="minor_remarks-list2">
+            <list_item>list_item0</list_item>
+            <list_item>list_item1</list_item>
+            <list_item>list_item2</list_item>
+        </list>
+        <list type="unordered" id="minor_remarks-list3">
+            <list_item>list_item0</list_item>
+            <list_item>list_item1</list_item>
+            <list_item>list_item2</list_item>
+        </list>
+        <paragraph id="minor_remarks-paragraph2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. <bold>Aenean risus augue, consectetur at magna et, efficitur scelerisque nunc.</bold> Duis non felis vestibulum, euismod mi nec, tincidunt enim. <italic>Proin sodales augue tellus, a aliquam libero suscipit non. Cras vitae eleifend tellus.</italic> Phasellus fringilla bibendum purus vel commodo. Nam luctus consectetur nunc quis mattis. Integer suscipit turpis at sem viverra consequat. Nullam sagittis libero ac sem molestie, eget lacinia enim facilisis. Integer eleifend elementum enim. Cras fermentum risus sit amet arcu pulvinar, quis vehicula lectus ornare. Integer eget nisl metus. Aliquam nec nulla finibus metus dapibus mattis finibus eu massa. Nulla non turpis at risus sollicitudin tempus ut et est.
+        </paragraph>
+    </minor_remarks>
+</review_form>

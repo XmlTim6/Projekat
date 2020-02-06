@@ -1,74 +1,127 @@
-<paper xmlns="XML_tim6" title="Paper 1" about="http://www.tim6.rs/papers/bdbe6c43-a105-40ae-8069-79d08a18e2a9/revision_1/paper.xml" property="pred:title" vocab="http://www.tim6.rs/predicate/" typeof="pred:Paper" content="Paper 1">
-    <received datatype="xsd:date" property="pred:received">2020-01-20Z</received>
-    <revised datatype="xsd:date" property="pred:revised">2020-02-15</revised>
-    <accepted datatype="xs:date" property="pred:accepted">2020-03-14Z</accepted>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/grddl.xsl"?>
+
+<paper xmlns="XML_tim6" title="Scientific paper 3">
     <authors>
-        <author email="email1@email.com" property="pred:author" content="John S Smith">
+        <author email="email1@email.com">
             <personal>
-                <first_name>John</first_name>
+                <first_name>Rick</first_name>
                 <middle_name>S</middle_name>
-                <last_name>Smith</last_name>
+                <last_name>Johnson</last_name>
             </personal>
-            <institution property="pred:institution" content="Institution Name 1, City 1, Country 1">
+            <institution>
                 <name>Institution Name 1</name>
                 <city>City 1</city>
                 <country>Country 1</country>
             </institution>
         </author>
-        <author email="email2@email.com" property="pred:author" content="Jane S Smith">
+        <author email="email2@email.com">
             <personal>
-                <first_name>Jane</first_name>
-                <middle_name>S</middle_name>
-                <last_name>Smith</last_name>
+                <first_name>George</first_name>
+                <middle_name>D</middle_name>
+                <last_name>Miller</last_name>
             </personal>
-            <institution property="pred:institution" content="Institution Name 1, City 1, Country 1">
-                <name>Institution Name 1</name>
-                <city>City 1</city>
-                <country>Country 1</country>
+            <institution>
+                <name>Collegia Titanica</name>
+                <city>Rome</city>
+                <country>Italy</country>
             </institution>
         </author>
     </authors>
     <abstract paper_type="conceptual">
-        <purpose>Proin varius mi in elementum pharetra. Aliquam vitae turpis urna. Sed sit amet facilisis nibh. Phasellus consectetur diam eget varius malesuada. Morbi sed pharetra diam. Aliquam fermentum leo vitae fringilla ullamcorper. Etiam volutpat interdum mattis. Ut posuere auctor risus id molestie. Maecenas molestie quam quis malesuada vestibulum. Vestibulum id ante enim.</purpose>
-        <methodology>Mauris ullamcorper quam nec augue luctus aliquet. Integer et auctor mi. Curabitur pulvinar sit amet arcu et ultrices. Donec vehicula augue non posuere pretium. Vivamus mattis interdum magna, eu finibus nisl luctus vitae. Vestibulum vitae bibendum nunc. Vestibulum magna ligula, pharetra ut aliquam et, venenatis a sem. Maecenas placerat egestas ex non porta. In volutpat erat in velit pharetra, in sodales tortor pretium.</methodology>
-        <findings>Nulla imperdiet erat enim, vel dictum sapien tincidunt sed. Ut pharetra, metus ac lobortis fermentum, sem dolor euismod dui, eget fermentum erat risus quis mi. Pellentesque sit amet maximus nulla. Nulla ac ligula malesuada, sodales tellus elementum, ultrices augue. Vestibulum fringilla iaculis dui at venenatis. Mauris vehicula odio in cursus semper. Aenean volutpat odio eros, at venenatis nibh porttitor at. Etiam sagittis purus in fermentum imperdiet.</findings>
-        <research_implications>Pellentesque vitae lacus a ex rutrum molestie ac ac diam. Aliquam rhoncus vehicula congue. Integer ultricies est quis purus tempor aliquam. Vestibulum aliquam, nulla in sagittis sodales, nisi urna semper elit, sit amet maximus nisi nunc nec mi. Suspendisse augue diam, pharetra vel odio sed, elementum fermentum lectus. Curabitur eget dignissim nisi, quis hendrerit ligula. Duis at tristique nisl. Aenean non vehicula turpis, non mollis magna. Vivamus et mollis tortor. Curabitur rhoncus aliquet tortor ut ullamcorper. Integer rutrum rutrum blandit.</research_implications>
-        <practical_implcations>Fusce bibendum imperdiet efficitur. Etiam convallis dui velit, sed pulvinar ante varius vitae. Donec et nisl a nisi sollicitudin rhoncus. Nullam quis vulputate arcu. Vivamus a dolor magna. Nam nec nunc eu risus venenatis tincidunt et vel nisl. Nullam eu orci ex. Duis nec porttitor nulla. Fusce pharetra tempus dui ac condimentum.</practical_implcations>
-        <orginality>Cras euismod dui id bibendum efficitur. In condimentum magna eu dui blandit rutrum. Ut a pulvinar risus. Nulla ex felis, interdum vel suscipit id, mattis nec diam. Vivamus tincidunt luctus arcu, sit amet hendrerit nisl auctor gravida. Nulla semper arcu ipsum, in rutrum tortor vestibulum id. Praesent eros urna, finibus sed posuere et, accumsan sed nunc. Donec ex velit, laoreet quis volutpat tristique, luctus eu nibh. Vivamus eu libero nulla. Suspendisse potenti. Maecenas vitae maximus mi, id accumsan lectus. Nullam sed volutpat ex. Quisque varius lacus luctus dapibus rhoncus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</orginality>
+        <purpose id="paper-abstract-purpose">Aliquam etiam erat velit scelerisque in dictum. Vitae justo eget magna fermentum iaculis eu non diam phasellus. Purus semper eget duis at tellus at urna condimentum mattis. Ut sem viverra aliquet eget sit amet tellus cras adipiscing. Aliquam purus sit amet luctus venenatis lectus magna fringilla urna. Tempus iaculis urna id volutpat lacus laoreet non. Ipsum a arcu cursus vitae. Pellentesque massa placerat duis ultricies. Faucibus turpis in eu mi bibendum neque egestas congue. Felis donec et odio pellentesque diam volutpat.</purpose>
+        <methodology id="paper-abstract-methodology">Adipiscing at in tellus integer feugiat scelerisque varius morbi. Leo integer malesuada nunc vel. Dignissim convallis aenean et tortor at. Volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. Mauris in aliquam sem fringilla ut. Justo donec enim diam vulputate ut pharetra sit. Habitasse platea dictumst quisque sagittis. In iaculis nunc sed augue. Libero enim sed faucibus turpis. Sodales ut etiam sit amet nisl purus in. Feugiat in fermentum posuere urna nec tincidunt praesent semper feugiat. Tellus in metus vulputate eu scelerisque felis imperdiet proin. Sem nulla pharetra diam sit amet nisl suscipit. Eu consequat ac felis donec et. Dignissim enim sit amet venenatis urna cursus. Integer enim neque volutpat ac tincidunt.</methodology>
+        <findings id="paper-abstract-findings">Id interdum velit laoreet id donec ultrices tincidunt arcu. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. At erat pellentesque adipiscing commodo elit at imperdiet dui accumsan. Dolor sit amet consectetur adipiscing elit pellentesque. Iaculis nunc sed augue lacus viverra vitae congue. A cras semper auctor neque vitae. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Nec feugiat nisl pretium fusce id velit ut. Donec enim diam vulputate ut pharetra sit amet. Interdum velit euismod in pellentesque massa placerat duis ultricies.</findings>
+        <research_implications id="paper-abstract-research_implications">Viverra justo nec ultrices dui. In est ante in nibh mauris cursus mattis molestie. Aliquam eleifend mi in nulla posuere sollicitudin. Amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Risus commodo viverra maecenas accumsan lacus vel facilisis volutpat. Gravida quis blandit turpis cursus in hac. Metus aliquam eleifend mi in nulla posuere sollicitudin aliquam. Viverra accumsan in nisl nisi scelerisque eu. At auctor urna nunc id cursus metus aliquam. Eu augue ut lectus arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit. Eleifend donec pretium vulputate sapien nec sagittis aliquam. Amet consectetur adipiscing elit pellentesque habitant morbi tristique.</research_implications>
+        <practical_implications id="paper-abstract-practical_implications">Aliquam faucibus purus in massa tempor nec feugiat. Quisque non tellus orci ac. Ipsum faucibus vitae aliquet nec ullamcorper sit amet. A iaculis at erat pellentesque. Mauris augue neque gravida in fermentum et sollicitudin ac. Tristique et egestas quis ipsum suspendisse ultrices gravida dictum. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Sit amet facilisis magna etiam tempor orci eu. Aliquam ultrices sagittis orci a scelerisque purus semper. Nisl rhoncus mattis rhoncus urna neque viverra justo nec ultrices. Interdum velit laoreet id donec ultrices tincidunt arcu.</practical_implications>
+        <orginality id="paper-abstract-orginality">Eget est lorem ipsum dolor sit amet consectetur. Aliquet sagittis id consectetur purus ut faucibus pulvinar elementum integer. Amet consectetur adipiscing elit pellentesque. Ultrices dui sapien eget mi proin sed libero. Tincidunt augue interdum velit euismod. Pellentesque elit eget gravida cum. Enim praesent elementum facilisis leo vel. Pellentesque dignissim enim sit amet. Amet nulla facilisi morbi tempus iaculis urna id volutpat. Tortor posuere ac ut consequat. Convallis posuere morbi leo urna molestie at elementum. Ut venenatis tellus in metus vulputate eu. In nisl nisi scelerisque eu. Convallis a cras semper auctor neque vitae tempus quam pellentesque. Lectus sit amet est placerat in egestas. Integer malesuada nunc vel risus commodo. Urna id volutpat lacus laoreet non curabitur. Quis viverra nibh cras pulvinar. Sollicitudin nibh sit amet commodo. A lacus vestibulum sed arcu non.</orginality>
         <keywords>
-            <keyword datatype="xs:string" property="pred:keyword">keyword1</keyword>
-            <keyword datatype="xs:string" property="pred:keyword">keyword2</keyword>
+            <keyword>bacteria</keyword>
+            <keyword>viruses</keyword>
         </keywords>
     </abstract>
     <content>
-        <quote id="ID001" attributed_to="Anonymous" source="Quote source 1" reference_to="ID009">Sed fringilla ligula at elementum viverra. Phasellus congue iaculis nibh, ac varius ipsum tempor at. Class aptent taciti sociosqu ad.</quote>
-        <quote id="ID003" attributed_to="Author" source="Quote source 2" reference_to="ID011">Donec nulla purus, egestas a malesuada in, congue id nibh. Donec dapibus ligula turpis, sed fringilla nisl auctor ac. Aenean.</quote>
+        <quote attributed_to="Anonymous" source="Quote source 1" reference_to="paper-references-mention">Sed fringilla ligula at elementum viverra. Phasellus congue iaculis nibh, ac varius ipsum tempor at. Class aptent taciti sociosqu ad.</quote>
+        <section title="Title level 1" level="1" >
+            <paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur semper mollis placerat. Donec convallis ullamcorper nibh, vitae sagittis massa facilisis sed. Mauris vestibulum lacinia purus id tempus. Praesent nibh erat, mollis at efficitur sit amet, mollis et enim. Donec arcu risus, viverra eget diam ultricies, varius volutpat nisi. Phasellus lobortis, neque at ornare tempus, velit felis convallis velit, ut sodales enim eros eget libero. Phasellus consectetur, purus at laoreet bibendum, leo eros sodales est, vel cursus odio elit ut turpis. Fusce sed ligula sit amet elit posuere maximus eu non metus. Donec et tincidunt ex, ac viverra felis. Ut eget dolor sit amet tortor varius tempor in ac libero. Pellentesque tincidunt metus sit amet pulvinar pharetra. Sed id velit ut lorem pellentesque efficitur. Duis a sem et est posuere elementum. Mauris varius erat sed mi cursus euismod. Phasellus id leo sed libero interdum pretium.</paragraph>
+            <image src="https://hackernoon.com/hn-images/1*jFyawcsqoYctkTuZg6wQ1A.jpeg" title="Figure 1"/>
+            <list type="ordered">
+                <list_item>list_item0</list_item>
+                <list_item>list_item1</list_item>
+                <list_item>list_item2</list_item>
+            </list>
+        <list type="unordered">
+            <list_item>list_item0</list_item>
+            <list_item>list_item1</list_item>
+            <list_item>list_item2</list_item>
+        </list>
+            <table title="fluktuacija u menadzmentu">
+                <row>
+                    <cell><paragraph><bold>Lorem</bold>ipsum</paragraph></cell>
+                    <cell><paragraph><italic>Lorem</italic>ipsum</paragraph></cell>
+                </row>
+                <row>
+                    <cell colspan="2"><paragraph><bold>Lorem</bold>ipsum</paragraph></cell>
+                </row>
+                <row>
+                    <cell rowspan="2"><paragraph><bold>Lorem</bold>ipsum</paragraph></cell>
+                    <cell><paragraph><bold>Lorem</bold>ipsum</paragraph></cell>
+                </row>
+                <row>
+                    <cell><paragraph><bold>Lorem</bold>ipsum</paragraph></cell>
+                </row>
+            </table>
+            <section title="Title level 2" level="2">
+                <paragraph>Lorem ipsum <bold>dolor</bold> sit amet, consectetur adipisicing elit. Quaerat quae deleniti ipsa <italic>dolor</italic> recusandae odio voluptatum totam perferendis, nobis, consequatur quam excepturi animi aliquid autem blanditiis veniam sed non! Voluptatibus.</paragraph>
+                <image src="https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg" title="Tellus"/>
+                <list type="ordered">
+                    <list_item>list_item0</list_item>
+                    <list_item>list_item1</list_item>
+                    <list_item>list_item2</list_item>
+                </list>
+                <list type="unordered">
+                    <list_item>list_item0</list_item>
+                    <list_item>list_item1</list_item>
+                    <list_item>list_item2</list_item>
+                </list>
+                <section title="Title level 3" level="3">
+                    <paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur semper mollis placerat. Donec convallis ullamcorper nibh, vitae sagittis massa facilisis sed. Mauris vestibulum lacinia purus id tempus. Praesent nibh erat, mollis at efficitur sit amet, mollis et enim. Donec arcu risus, viverra eget diam ultricies, varius volutpat nisi. Phasellus lobortis, neque at ornare tempus, velit felis convallis velit, ut sodales enim eros eget libero. Phasellus consectetur, purus at laoreet bibendum, leo eros sodales est, vel cursus odio elit ut turpis. Fusce sed ligula sit amet elit posuere maximus eu non metus. Donec et tincidunt ex, ac viverra felis. Ut eget dolor sit amet tortor varius tempor in ac libero. Pellentesque tincidunt metus sit amet pulvinar pharetra. Sed id velit ut lorem pellentesque efficitur. Duis a sem et est posuere elementum. Mauris varius erat sed mi cursus euismod. Phasellus id leo sed libero interdum pretium.</paragraph>
+                    <section title="Title level 4" level="4">
+                        <paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur semper mollis placerat. Donec convallis ullamcorper nibh, vitae sagittis massa facilisis sed. Mauris vestibulum lacinia purus id tempus. Praesent nibh erat, mollis at efficitur sit amet, mollis et enim. Donec arcu risus, viverra eget diam ultricies, varius volutpat nisi. Phasellus lobortis, neque at ornare tempus, velit felis convallis velit, ut sodales enim eros eget libero. Phasellus consectetur, purus at laoreet bibendum, leo eros sodales est, vel cursus odio elit ut turpis. Fusce sed ligula sit amet elit posuere maximus eu non metus. Donec et tincidunt ex, ac viverra felis. Ut eget dolor sit amet tortor varius tempor in ac libero. Pellentesque tincidunt metus sit amet pulvinar pharetra. Sed id velit ut lorem pellentesque efficitur. Duis a sem et est posuere elementum. Mauris varius erat sed mi cursus euismod. Phasellus id leo sed libero interdum pretium.</paragraph>
+                        <section title="Title level 5" level="5">
+                            <paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur semper mollis placerat. Donec convallis ullamcorper nibh, vitae sagittis massa facilisis sed. Mauris vestibulum lacinia purus id tempus. Praesent nibh erat, mollis at efficitur sit amet, mollis et enim. Donec arcu risus, viverra eget diam ultricies, varius volutpat nisi. Phasellus lobortis, neque at ornare tempus, velit felis convallis velit, ut sodales enim eros eget libero. Phasellus consectetur, purus at laoreet bibendum, leo eros sodales est, vel cursus odio elit ut turpis. Fusce sed ligula sit amet elit posuere maximus eu non metus. Donec et tincidunt ex, ac viverra felis. Ut eget dolor sit amet tortor varius tempor in ac libero. Pellentesque tincidunt metus sit amet pulvinar pharetra. Sed id velit ut lorem pellentesque efficitur. Duis a sem et est posuere elementum. Mauris varius erat sed mi cursus euismod. Phasellus id leo sed libero interdum pretium.</paragraph>           
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <quote attributed_to="Author" source="Quote source 2" reference_to="paper-references-mention2">Donec nulla purus, egestas a malesuada in, congue id nibh. Donec dapibus ligula turpis, sed fringilla nisl auctor ac. Aenean.</quote>
     </content>
     <references>
-        <mention id="ID005">
+        <mention id="paper-references-mention">
             <authors>
                 <author>
-                    <last_name>Morales</last_name>
+                    <last_name>Grant</last_name>
                     <initial>B.</initial>
                 </author>
                 <author>
-                    <last_name>Lee</last_name>
-                    <initial>R.</initial>
+                    <last_name>Howard</last_name>
+                    <initial>L.</initial>
                 </author>
             </authors>
             <work>
-                <year_published>2001</year_published>
+                <year_published >1790</year_published>
                 <title>Reference 1</title>
                 <edition>2</edition>
-                <city>New York</city>
+                <city>New Amsterdam</city>
                 <publisher>Green</publisher>
-                <numbers>23</numbers>
+                <numbers>11</numbers>
             </work>
         </mention>
-        <mention id="ID007">
+        <mention id="paper-references-mention2">
             <authors>
                 <author>
-                    <last_name>Emmet</last_name>
+                    <last_name>Gray</last_name>
                     <initial>D.</initial>
                 </author>
             </authors>
@@ -78,46 +131,42 @@
                 <edition>3</edition>
                 <city>London</city>
                 <publisher>Tee Inc.</publisher>
-                <numbers>2</numbers>
+                <numbers>5</numbers>
             </work>
         </mention>
     </references>
-    <citations rel="pred:citations">
-        <mention id="ID009" property="pred:uri" content="c2.com" typeof="pred:Citation">
+    <citations>
+        <mention location="http://localhost:3000/details/7ef0b4fa-99fe-4bc9-a020-437aa0141aa9/1/paper.xml">
             <authors>
-                <author property="pred:citationAuthor" content="H. Rich">
-                    <last_name>Rich</last_name>
-                    <initial>H.</initial>
-                </author>
-            </authors>
-            <work property="pred:work">
-                <year_published property="pred:yearPublished" datatype="xs:gYear">1994</year_published>
-                <title property="pred:title" datatype="xs:string">Citation 1</title>
-                <edition property="pred:edition" datatype="xs:string">6</edition>
-                <city property="pred:city" datatype="xs:string">Stockholm</city>
-                <publisher property="pred:publisher" datatype="xs:string">Burg Publishing</publisher>
-                <numbers property="pred:numbers" datatype="xs:string">2</numbers>
-            </work>
-        </mention>
-        <mention id="ID011" property="pred:uri" content="c1.com" typeof="pred:Citation">
-            <authors>
-                <author property="pred:citationAuthor" content="P. Johnson">
+                <author>
                     <last_name>Johnson</last_name>
                     <initial>P.</initial>
                 </author>
             </authors>
-            <work property="pred:work">
-                <year_published property="pred:year" datatype="xs:gYear">2001</year_published>
-                <title property="pred:title" datatype="xs:string">Citation 2</title>
-                <edition property="pred:edition" datatype="xs:string">3</edition>
-                <city property="pred:city" datatype="xs:string">Paris</city>
-                <publisher property="pred:publisher" datatype="xs:string">Tim Books</publisher>
-                <numbers property="pred:numbers" datatype="xs:string">6</numbers>
+            <work>
+                <year_published>1920</year_published>
+                <title>Citation 2</title>
+                <edition>3</edition>
+                <city>Geneva</city>
+                <publisher>Well Publishing</publisher>
+                <numbers>1</numbers>
+            </work>
+        </mention>
+        <mention location="http://localhost:3000/details/b9ebe56c-689b-48d9-89db-abd1e17d7ed8/1/paper.xml">
+            <authors>
+                <author>
+                    <last_name>Johnson</last_name>
+                    <initial>P.</initial>
+                </author>
+            </authors>
+            <work>
+                <year_published>2001</year_published>
+                <title>Citation 2</title>
+                <edition>3</edition>
+                <city>Paris</city>
+                <publisher>Tim Books</publisher>
+                <numbers>6</numbers>
             </work>
         </mention>
     </citations>
-    <notes>
-        <note ref_id="ID007">Convallis posuere morbi leo urna molestie at elementum eu facilisis. Faucibus a pellentesque sit amet porttitor eget dolor morbi non. Dictum varius duis at consectetur lorem. Vitae ultricies leo integer malesuada nunc vel risus. Sed odio morbi quis commodo odio aenean. Vitae tortor condimentum lacinia quis vel eros donec. Facilisis mauris sit amet massa vitae tortor condimentum lacinia. Congue quisque egestas diam in arcu cursus euismod. At lectus urna duis convallis.</note>
-        <note ref_id="ID003">Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper velit. Vestibulum lectus mauris ultrices eros in cursus turpis massa tincidunt. Quisque egestas diam in arcu cursus euismod quis viverra nibh. Mauris sit amet massa vitae. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit. Velit dignissim sodales ut eu sem integer vitae justo eget. Amet venenatis urna cursus eget nunc scelerisque viverra. Fames ac turpis egestas maecenas pharetra convallis posuere. Eleifend donec pretium vulputate sapien nec sagittis. Non curabitur gravida arcu ac tortor dignissim. Maecenas ultricies mi eget mauris pharetra et ultrices neque ornare. Massa placerat duis ultricies lacus sed turpis tincidunt. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh sit. Mattis nunc sed blandit libero volutpat sed.</note>
-    </notes>
 </paper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cover_letter xmlns="XML_tim6"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <title>COVER LETTER 3</title>
+    <submission_date>2042-05-04</submission_date>
+    <content>
+        <paragraph id="content-paragraph">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy <bold>text ever since the 1500s</bold>, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <italic>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</italic>, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+        </paragraph>
+        <list type="ordered" id="content-list1">
+            <list_item>list_item0</list_item>
+            <list_item>list_item1</list_item>
+            <list_item>list_item2</list_item>
+        </list>
+        <list type="unordered" id="content-list2">
+            <list_item>list_item0</list_item>
+            <list_item>list_item1</list_item>
+            <list_item>list_item2</list_item>
+        </list>
+        <paragraph id="content-paragraph2">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy <bold>text ever since the 1500s</bold>, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <italic>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</italic>, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+        </paragraph>
+    </content>
+    <author>
+        <personal>
+            <first_name>Mark</first_name>
+            <last_name>Peterson</last_name>
+        </personal>
+        <institution>
+            <name>Collegia Titanica</name>
+            <city>Rome</city>
+            <country>Italy</country>
+        </institution>
+    </author>
+</cover_letter>
