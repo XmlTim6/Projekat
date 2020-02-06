@@ -5,6 +5,7 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.Map;
 
 public interface XSLTransformationService {
 
@@ -17,4 +18,6 @@ public interface XSLTransformationService {
     OutputStream createHtml(String document, String transformation) throws  IOException, SAXException;
 
     OutputStream createXml(String document, String transformation) throws IOException, SAXException;
+
+    OutputStream preprocessPaper(String document, String dateFor) throws IOException, SAXException;
 }

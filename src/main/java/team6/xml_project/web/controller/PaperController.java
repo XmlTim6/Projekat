@@ -46,29 +46,49 @@ public class PaperController {
             @RequestParam(value = "revision") Long revision,
             @RequestParam(value = "document") String document,
             @RequestParam(value = "format") String format,
-            @RequestParam(value = "token") String token) throws JAXBException {
-        try {
-            long userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
-            String paperStr = paperService.findPaper(String.format("/db/xml_project_tim6/papers/%s/revision_%s",
-                    collection, revision), document, userId, collection);
+            @RequestParam(value = "token", required = false) String token) throws JAXBException {
 
-            if(format.equals("pdf")){
-                OutputStream output = xslTransformationService.createPdf(paperStr, "data/xsl/xsl-fo/paper_pdf.xsl");
-                byte[] contents = ((ByteArrayOutputStream) output).toByteArray();
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_PDF);
-                String filename = "paper.pdf";
-                ContentDisposition contentDisposition = ContentDisposition
-                        .builder("inline")
-                        .filename(filename)
-                        .build();
-                headers.setContentDisposition(contentDisposition);
-                headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
-                return new ResponseEntity<>(contents, headers, HttpStatus.OK);
-            }else if(format.equals("html")){
-                OutputStream output = xslTransformationService.createHtml(paperStr, "data/xsl/xslt/paper_Html.xsl");
-                byte[] contents = output.toString().getBytes();
-                return new ResponseEntity<>(contents, HttpStatus.OK);
+        long userId = -1;
+        if (token != null && !token.equals("null"))
+            userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
+        String paperStr = paperService.findPaper(String.format("/db/xml_project_tim6/papers/%s/revision_%s",
+                collection, revision), document, userId, collection);
+        try {
+            switch (format) {
+                case "string":
+                    return new ResponseEntity<>(paperStr, HttpStatus.OK);
+                case "pdf": {
+                    OutputStream output = xslTransformationService.createPdf(paperStr, "data/xsl/xsl-fo/paper_pdf.xsl");
+                    byte[] contents = ((ByteArrayOutputStream) output).toByteArray();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_PDF);
+                    String filename = "paper.pdf";
+                    ContentDisposition contentDisposition = ContentDisposition
+                            .builder("inline")
+                            .filename(filename)
+                            .build();
+                    headers.setContentDisposition(contentDisposition);
+                    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+                    return new ResponseEntity<>(contents, headers, HttpStatus.OK);
+                }
+                case "html": {
+                    OutputStream output = xslTransformationService.createHtml(paperStr, "data/xsl/xslt/paper_Html.xsl");
+                    byte[] contents = output.toString().getBytes();
+                    return new ResponseEntity<>(contents, HttpStatus.OK);
+                }
+                default: {
+                    byte[] contents = paperStr.getBytes();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_XML);
+                    String filename = "paper.xml";
+                    ContentDisposition contentDisposition = ContentDisposition
+                            .builder("inline")
+                            .filename(filename)
+                            .build();
+                    headers.setContentDisposition(contentDisposition);
+                    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+                    return new ResponseEntity<>(contents, headers, HttpStatus.OK);
+                }
             }
             byte[] contents = paperStr.getBytes();
             HttpHeaders headers = new HttpHeaders();
@@ -81,7 +101,6 @@ public class PaperController {
             headers.setContentDisposition(contentDisposition);
             headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
             return new ResponseEntity<>(contents, headers, HttpStatus.OK);
-
         } catch (Exception e) {
             throw new FailedToGenerateDocumentException();
         }

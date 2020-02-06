@@ -57,15 +57,15 @@ public class SubmissionServiceImpl implements SubmissionService {
     @Override
     public void create(String paper, Long userId) throws Exception {
         User author = userService.findById(userId);
-        String paperForReview = xslTransformationService.createXml(paper, "data/xsl/paper_anonymization.xsl").toString();
         Paper paperObject = XMLUnmarshaller.createPaperFromXML(paper);
-
+        String processedPaper = xslTransformationService.preprocessPaper(paper, "submitted").toString();
+        String paperForReview = xslTransformationService.createXml(processedPaper, "data/xsl/paper_anonymization.xsl").toString();
 
         Submission submission = new Submission();
         submission.setTitle(paperObject.getTitle());
         submission.setAuthorId(author.getId());
 
-        paperService.save(paper, submission, "paper.xml");
+        paperService.save(processedPaper, submission, "paper.xml");
         paperService.save(paperForReview, submission, "paper_anon.xml");
         submissionRepository.save(submission);
 
@@ -78,6 +78,9 @@ public class SubmissionServiceImpl implements SubmissionService {
 
         if (checkIfSubmissionClosed(submission))
             throw new SubmissionClosedException();
+
+        if (!submission.getSubmissionStatus().equals(SubmissionStatus.IN_REVIEW.toString()))
+            throw new SubmissionClosedForReviews();
 
         if (submission.getReviewerIds().stream().noneMatch(r -> r.getReviewerId() == reviewer.getId()))
             throw new NotSubmissionReviewerException();
@@ -127,6 +130,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         User author = userService.findById(userId);
         Submission submission = this.findById(submissionId);
         Paper paperObject = XMLUnmarshaller.createPaperFromXML(paper);
+        String processedPaper = xslTransformationService.preprocessPaper(paper, "revised").toString();
 
         if (checkIfSubmissionClosed(submission))
             throw new SubmissionClosedException();
@@ -211,16 +215,12 @@ public class SubmissionServiceImpl implements SubmissionService {
             throw new NotSubmissionEditorException();
         }
 
-        submission.setSubmissionStatus(status.toString());
-        submissionRepository.save(submission);
-
         if (status == SubmissionStatus.ACCEPTED) {
             handlePaperAcceptance(submission, user);
         }
 
-        if (status == SubmissionStatus.IN_REVIEW) {
-            handlePaperAnonymizing();
-        }
+        submission.setSubmissionStatus(status.toString());
+        submissionRepository.save(submission);
 
         try {
             if (status == SubmissionStatus.AUTHOR_TAKEDOWN) {
@@ -238,16 +238,13 @@ public class SubmissionServiceImpl implements SubmissionService {
 
     }
 
-    private void handlePaperAnonymizing() {
-        //TODO
-    }
-
     private void handlePaperAcceptance(Submission submission, User user) throws IOException, TransformerException, JAXBException, SAXException {
         String paperXML = paperService.findPaper(
                 String.format("/db/xml_project_tim6/papers/%s/revision_%s", submission.getId(), submission.getCurrentRevision()),
                 "paper.xml", user.getId(), submission.getId());
+        String processedPaper = xslTransformationService.preprocessPaper(paperXML, "accepted").toString();
 
-        String annotatedPaper = xslTransformationService.addMetadataToPaper(paperXML,
+        String annotatedPaper = xslTransformationService.addMetadataToPaper(processedPaper,
                 String.format("http://localhost:3000/details/%s/%s/paper.xml",
                         submission.getId(), submission.getCurrentRevision()));
 

@@ -55,23 +55,40 @@ public class CoverLetterController {
         try {
             long userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
             String coverLetterStr = coverLetterService.findCoverLetter(collection, revision, userId);
-            if(format.equals("pdf")){
-                OutputStream output = xslTransformationService.createPdf(coverLetterStr, "data/xsl/xsl-fo/cover_letter_pdf.xsl");
-                byte[] contents = ((ByteArrayOutputStream) output).toByteArray();
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_PDF);
-                String filename = "paper.pdf";
-                ContentDisposition contentDisposition = ContentDisposition
-                        .builder("inline")
-                        .filename(filename)
-                        .build();
-                headers.setContentDisposition(contentDisposition);
-                headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
-                return new ResponseEntity<>(contents, headers, HttpStatus.OK);
-            }else if(format.equals("html")){
-                OutputStream output = xslTransformationService.createHtml(coverLetterStr, "data/xsl/xslt/cover_letter_Html.xsl");
-                byte[] contents = output.toString().getBytes();
-                return new ResponseEntity<>(contents, HttpStatus.OK);
+            switch (format) {
+                case "string":
+                    return new ResponseEntity<>(coverLetterStr, HttpStatus.OK);
+                case "pdf": {
+                    OutputStream output = xslTransformationService.createPdf(coverLetterStr, "data/xsl/xsl-fo/cover_letter_pdf.xsl");
+                    byte[] contents = ((ByteArrayOutputStream) output).toByteArray();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_PDF);
+                    String filename = "paper.pdf";
+                    ContentDisposition contentDisposition = ContentDisposition
+                            .builder("inline")
+                            .filename(filename)
+                            .build();
+                    headers.setContentDisposition(contentDisposition);
+                    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+                    return new ResponseEntity<>(contents, headers, HttpStatus.OK);
+                }
+                case "html": {
+                    OutputStream output = xslTransformationService.createHtml(coverLetterStr, "data/xsl/xslt/cover_letter_Html.xsl");
+                    byte[] contents = output.toString().getBytes();
+                    return new ResponseEntity<>(contents, HttpStatus.OK);
+                }
+                default:
+                    byte[] contents = coverLetterStr.getBytes();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_XML);
+                    String filename = "cover_letter.xml";
+                    ContentDisposition contentDisposition = ContentDisposition
+                            .builder("inline")
+                            .filename(filename)
+                            .build();
+                    headers.setContentDisposition(contentDisposition);
+                    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+                    return new ResponseEntity<>(contents, headers, HttpStatus.OK);
             }
             byte[] contents = coverLetterStr.getBytes();
             HttpHeaders headers = new HttpHeaders();

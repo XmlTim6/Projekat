@@ -9,14 +9,20 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import team6.xml_project.exception.EmailAlreadyExistsException;
 import team6.xml_project.exception.UserNotFoundException;
+import team6.xml_project.helpers.AuthHelper;
 import team6.xml_project.models.Role;
 import team6.xml_project.models.User;
+import team6.xml_project.models.xml.submission.Submission;
+import team6.xml_project.service.PaperService;
+import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.UserService;
+import team6.xml_project.web.dto.KeywordListDTO;
 import team6.xml_project.web.dto.user.RegisterUserDTO;
 import team6.xml_project.web.dto.user.UpdateUserDTO;
 import team6.xml_project.web.dto.user.UserProfileDTO;
 
 import javax.validation.Valid;
+import javax.xml.bind.JAXBException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -89,6 +95,17 @@ public class UserController {
 
         userService.register(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/recommended-reviewers", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('EDITOR')")
+    public ResponseEntity<List<UserProfileDTO>> recommendReviewersFor(@RequestParam(value = "submissionId") String submissionId) throws JAXBException {
+        Long userId = AuthHelper.getCurrentUserId();
+
+        List<User> users = userService.findRecommendedReviewersForSubmission(submissionId, userId);
+        List<UserProfileDTO> result = users.stream().map(UserProfileDTO::new).collect(Collectors.toList());
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     private void isDuplicateEmail(RegisterUserDTO newUser) {
