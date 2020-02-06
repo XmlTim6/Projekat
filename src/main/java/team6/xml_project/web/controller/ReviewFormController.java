@@ -57,35 +57,42 @@ public class ReviewFormController {
         try {
             long userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
             String reviewStr = reviewFormService.findReviewForm(collection, revision, document, userId);
-            if(format.equals("pdf")){
-                OutputStream output = xslTransformationService.createPdf(reviewStr, "data/xsl/xsl-fo/review_form_pdf.xsl");
-                byte[] contents = ((ByteArrayOutputStream) output).toByteArray();
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_PDF);
-                String filename = "paper.pdf";
-                ContentDisposition contentDisposition = ContentDisposition
-                        .builder("inline")
-                        .filename(filename)
-                        .build();
-                headers.setContentDisposition(contentDisposition);
-                headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
-                return new ResponseEntity<>(contents, headers, HttpStatus.OK);
-            }else if(format.equals("html")){
-                OutputStream output = xslTransformationService.createHtml(reviewStr, "data/xsl/xslt/review_form_Html.xsl");
-                byte[] contents = output.toString().getBytes();
-                return new ResponseEntity<>(contents, HttpStatus.OK);
+            switch (format) {
+                case "string":
+                    return new ResponseEntity<>(reviewStr, HttpStatus.OK);
+                case "pdf": {
+                    OutputStream output = xslTransformationService.createPdf(reviewStr, "data/xsl/xsl-fo/review_form_pdf.xsl");
+                    byte[] contents = ((ByteArrayOutputStream) output).toByteArray();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_PDF);
+                    String filename = "paper.pdf";
+                    ContentDisposition contentDisposition = ContentDisposition
+                            .builder("inline")
+                            .filename(filename)
+                            .build();
+                    headers.setContentDisposition(contentDisposition);
+                    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+                    return new ResponseEntity<>(contents, headers, HttpStatus.OK);
+                }
+                case "html": {
+                    OutputStream output = xslTransformationService.createHtml(reviewStr, "data/xsl/xslt/review_form_Html.xsl");
+                    byte[] contents = output.toString().getBytes();
+                    return new ResponseEntity<>(contents, HttpStatus.OK);
+                }
+                default: {
+                    byte[] contents = reviewStr.getBytes();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_XML);
+                    String filename = "cover_letter.xml";
+                    ContentDisposition contentDisposition = ContentDisposition
+                            .builder("inline")
+                            .filename(filename)
+                            .build();
+                    headers.setContentDisposition(contentDisposition);
+                    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+                    return new ResponseEntity<>(contents, headers, HttpStatus.OK);
+                }
             }
-            byte[] contents = reviewStr.getBytes();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_XML);
-            String filename = "cover_letter.xml";
-            ContentDisposition contentDisposition = ContentDisposition
-                    .builder("inline")
-                    .filename(filename)
-                    .build();
-            headers.setContentDisposition(contentDisposition);
-            headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
-            return new ResponseEntity<>(contents, headers, HttpStatus.OK);
         } catch (Exception e) {
             throw new FailedToGenerateDocumentException();
         }
