@@ -6,9 +6,7 @@ import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import team6.xml_project.exception.FailedToGenerateDocumentException;
-import team6.xml_project.exception.PermissionDeniedException;
-import team6.xml_project.exception.SubmissionNotFoundException;
+import team6.xml_project.exception.*;
 import team6.xml_project.helpers.RDFMetadataExtractor;
 import team6.xml_project.helpers.XMLValidator;
 import team6.xml_project.models.DocumentType;
@@ -80,48 +78,77 @@ public class PaperServiceImpl implements PaperService {
 
     @Override
     public String findPaper(String collectionName, String documentName, long userId, String submissionId) {
+        User user;
         try {
-            User user = userService.findById(userId);
-            String paper =  paperRepository.get(collectionName, documentName);
-            Submission submission = submissionService.findById(submissionId);
+            user = userService.findById(userId);
+        } catch (UserNotFoundException e) {
+            user = null;
+        }
 
-            if(getPermittedStatus(user, submission).contains(submission.getSubmissionStatus())){
-                return paper;
-            }else{
-                throw new PermissionDeniedException("Cannot access this resource");
-            }
-
+        String paper;
+        try {
+            paper =  paperRepository.get(collectionName, documentName);
         } catch (Exception e) {
-            throw new SubmissionNotFoundException();
+            throw new DocumentNotFoundException();
+        }
+
+        Submission submission = submissionService.findById(submissionId);
+
+        if(isPermitted(user, submission, documentName)){
+            return paper;
+        } else {
+            throw new PermissionDeniedException("Cannot access this resource");
         }
     }
 
-    private List<String> getPermittedStatus(User user, Submission submission){
-        ArrayList<String> status = new ArrayList<>();
-        status.add(SubmissionStatus.ACCEPTED.toString());
-        if(user.getRole() == Role.ROLE_EDITOR){
-            status.addAll(Arrays.asList( SubmissionStatus.SUBMITTED_FOR_REVIEW.toString(),
-                                         SubmissionStatus.REVIEWS_DONE.toString(),
-                                         SubmissionStatus.NEEDS_REWORK.toString(),
-                                         SubmissionStatus.REJECTED.toString(),
-                                         SubmissionStatus.IN_REVIEW.toString()));
-        }
-        if(user.getRole() == Role.ROLE_AUTHOR){
-            List<Long> listOfReviewers = submission.getReviewerIds().stream().map(Submission.ReviewerIds::getReviewerId)
-                    .collect(Collectors.toList());
-            if(submission.getAuthorId() == user.getId()){
-                status.addAll(Arrays.asList( SubmissionStatus.SUBMITTED_FOR_REVIEW.toString(),
-                                             SubmissionStatus.REVIEWS_DONE.toString(),
-                                             SubmissionStatus.NEEDS_REWORK.toString(),
-                                             SubmissionStatus.REJECTED.toString(),
-                                             SubmissionStatus.IN_REVIEW.toString(),
-                                             SubmissionStatus.AUTHOR_TAKEDOWN.toString()));
+    private boolean isPermitted(User user, Submission submission, String documentName) {
+        if (submission.getSubmissionStatus().equals(SubmissionStatus.AUTHOR_TAKEDOWN.toString()))
+            return false;
 
-            }else if(listOfReviewers.contains(user.getId())){
-                status.add(SubmissionStatus.IN_REVIEW.toString());
+        if (isPermittedUser(submission, documentName))
+            return true;
+
+        if (isPermittedEditor(user))
+            return true;
+
+        if (isPermittedReviewer(user, submission, documentName))
+            return true;
+
+        return isPermittedAuthor(user, submission, documentName);
+    }
+
+    private boolean isPermittedEditor(User user) {
+        return user.getRole() == Role.ROLE_EDITOR;
+    }
+
+    private boolean isPermittedUser(Submission submission, String documentName) {
+        return documentName.equals("paper.xml") &&
+                submission.getSubmissionStatus().equals(SubmissionStatus.ACCEPTED.toString());
+    }
+
+    private boolean isPermittedAuthor(User user, Submission submission, String documentName) {
+        if (user.getRole() == Role.ROLE_AUTHOR) {
+            if (submission.getAuthorId() == user.getId()) {
+                if (documentName.startsWith("review") && submission.getSubmissionStatus().equals(SubmissionStatus.NEEDS_REWORK.toString()))
+                    return true;
+                return true;
             }
         }
-        return status;
+        return false;
+    }
+
+    private boolean isPermittedReviewer(User user, Submission submission, String documentName) {
+        List<Long> listOfReviewers = submission.getReviewerIds().stream().map(Submission.ReviewerIds::getReviewerId)
+                .collect(Collectors.toList());
+        if (listOfReviewers.contains(user.getId())) {
+            if (documentName.equals(String.format("review_%s.xml", user.getId())))
+                return true;
+            if (documentName.equals("paper_anon.xml"))
+                return true;
+            return documentName.equals("paper.xml") &&
+                    submission.getSubmissionStatus().equals(SubmissionStatus.ACCEPTED.toString());
+        }
+        return false;
     }
 
     private void extractRDFMetadata(InputStream in, OutputStream out) throws FileNotFoundException, TransformerException {
