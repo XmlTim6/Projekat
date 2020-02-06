@@ -83,37 +83,25 @@ public class SubmissionController {
 
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     @PreAuthorize("hasRole('AUTHOR')")
-    public ResponseEntity addSubmission(@RequestBody String paper) {
-        try {
-            Long userId = AuthHelper.getCurrentUserId();
-            submissionService.create(paper, userId);
-        } catch (Exception ex) {
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity addSubmission(@RequestBody String paper) throws Exception {
+        Long userId = AuthHelper.getCurrentUserId();
+        submissionService.create(paper, userId);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/{submission_id}/revision", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     @PreAuthorize("hasRole('AUTHOR')")
-    public ResponseEntity addRevision(@PathVariable String submission_id, @RequestBody String revision) {
-        try {
-            Long userId = AuthHelper.getCurrentUserId();
-            submissionService.addRevision(submission_id, revision, userId);
-        } catch (Exception ex) {
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity addRevision(@PathVariable String submission_id, @RequestBody String revision) throws Exception {
+        Long userId = AuthHelper.getCurrentUserId();
+        submissionService.addRevision(submission_id, revision, userId);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/{submission_id}/review", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE)
     @PreAuthorize("hasRole('AUTHOR')")
-    public ResponseEntity addReview(@PathVariable String submission_id, @RequestBody String review) {
-        try {
-            Long userId = AuthHelper.getCurrentUserId();
-            submissionService.addReview(submission_id, review, userId);
-        } catch (Exception ex){
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity addReview(@PathVariable String submission_id, @RequestBody String review) throws Exception {
+        Long userId = AuthHelper.getCurrentUserId();
+        submissionService.addReview(submission_id, review, userId);
         return new ResponseEntity(HttpStatus.CREATED);
     }
 

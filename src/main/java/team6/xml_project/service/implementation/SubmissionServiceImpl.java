@@ -75,6 +75,9 @@ public class SubmissionServiceImpl implements SubmissionService {
         if (checkIfSubmissionClosed(submission))
             throw new SubmissionClosedException();
 
+        if (!submission.getSubmissionStatus().equals(SubmissionStatus.IN_REVIEW.toString()))
+            throw new SubmissionClosedForReviews();
+
         if (submission.getReviewerIds().stream().noneMatch(r -> r.getReviewerId() == reviewer.getId()))
             throw new NotSubmissionReviewerException();
 
