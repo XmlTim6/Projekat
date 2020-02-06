@@ -4,20 +4,18 @@ import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import org.xml.sax.SAXException;
 import team6.xml_project.exception.FailedToGenerateDocumentException;
 import team6.xml_project.exception.SubmissionNotFoundException;
 import team6.xml_project.helpers.AuthHelper;
-import team6.xml_project.helpers.XMLMarshaller;
-import team6.xml_project.models.xml.paper.Paper;
 import team6.xml_project.security.TokenUtils;
 import team6.xml_project.service.PaperService;
 import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.XSLTransformationService;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.transform.TransformerException;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.List;
@@ -93,6 +91,51 @@ public class PaperController {
         } catch (Exception e) {
             throw new FailedToGenerateDocumentException();
         }
+    }
+
+    @RequestMapping(value = "/metadata", method = RequestMethod.GET)
+    public ResponseEntity getPaperMetadata(
+            @RequestParam(value = "collection") String collection,
+            @RequestParam(value = "revision") Long revision,
+            @RequestParam(value = "document") String document,
+            @RequestParam(value = "format") String format,
+            @RequestParam(value = "token", required = false) String token) throws JAXBException, FileNotFoundException, TransformerException {
+        long userId = -1;
+        if (token != null && !token.equals("null"))
+            userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));
+
+        if (!format.equals("rdf") && !format.equals("json"))
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+
+        String metadata = paperService.findPaperMetadata(String.format("/db/xml_project_tim6/papers/%s/revision_%s",
+                collection, revision), document, userId, collection, format);
+
+        if (format.equals("json")) {
+            byte[] contents = metadata.getBytes();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            String filename = "metadata.json";
+            ContentDisposition contentDisposition = ContentDisposition
+                    .builder("attachment")
+                    .filename(filename)
+                    .build();
+            headers.setContentDisposition(contentDisposition);
+            headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+            return new ResponseEntity<>(contents, headers, HttpStatus.OK);
+        } else {
+            byte[] contents = metadata.getBytes();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.TEXT_PLAIN);
+            String filename = "metadata.rdf";
+            ContentDisposition contentDisposition = ContentDisposition
+                    .builder("attachment")
+                    .filename(filename)
+                    .build();
+            headers.setContentDisposition(contentDisposition);
+            headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+            return new ResponseEntity<>(contents, headers, HttpStatus.OK);
+        }
+
     }
 
     @RequestMapping(value = "/basicSearch", method = RequestMethod.GET)

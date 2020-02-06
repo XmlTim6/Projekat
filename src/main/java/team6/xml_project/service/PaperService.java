@@ -15,7 +15,11 @@ public interface PaperService {
 
     String findPaper(String collectionName, String documentName, long userId, String submissionId);
 
+    String findPaperMetadata(String collectionName, String documentName, long userId, String submissionId, String type) throws FileNotFoundException, TransformerException;
+
     InputStream createPaperRDFStreamFromXML(String paperXML) throws FileNotFoundException, TransformerException;
+
+    String createPaperRDFStringFromXML(String paperXML) throws FileNotFoundException, TransformerException;
 
     List<String> findPaperURIsOfSubmission(String submissionId, Long userId) throws Exception;
 

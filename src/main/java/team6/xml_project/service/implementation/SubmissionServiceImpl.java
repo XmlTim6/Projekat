@@ -99,7 +99,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         reviewFormRepository.saveMergedReview(mergedReviewDocument, submission);
         try {
             User editor = userService.findById(submission.getEditorId());
-            emailService.sendChangeStatusNotification(editor.getEmail(), submission);
+            emailService.sendChangeStatusNotificationEditor(editor.getEmail(), submission);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -151,7 +151,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         paperService.save(paperForReview, submission, "paper_anon.xml");
         try {
             User editor = userService.findById(submission.getEditorId());
-            emailService.sendChangeStatusNotification(editor.getEmail(), submission);
+            emailService.sendChangeStatusNotificationEditor(editor.getEmail(), submission);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
@@ -225,10 +225,10 @@ public class SubmissionServiceImpl implements SubmissionService {
         try {
             if (status == SubmissionStatus.AUTHOR_TAKEDOWN) {
                 User editor = userService.findById(submission.getEditorId());
-                emailService.sendChangeStatusNotification(editor.getEmail(), submission);
+                emailService.sendChangeStatusNotificationEditor(editor.getEmail(), submission);
             } else {
                 User author = userService.findById(submission.getAuthorId());
-                emailService.sendChangeStatusNotification(author.getEmail(), submission);
+                emailService.sendChangeStatusNotificationAuthor(author.getEmail(), submission);
             }
             // moze da se desi da submission nema setovanog editora pa pukne prilikom takedown-a
             // zato hvatam UserNotFoundException
@@ -305,7 +305,7 @@ public class SubmissionServiceImpl implements SubmissionService {
         submissionRepository.save(submission);
 
         try {
-            emailService.sendChangeStatusNotification(author.getEmail(), submission);
+            emailService.sendChangeStatusNotificationAuthor(author.getEmail(), submission);
         } catch (MessagingException e) {
             e.printStackTrace();
         }

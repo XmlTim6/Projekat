@@ -1,6 +1,9 @@
 package team6.xml_project.service.implementation;
 
+import jdk.internal.util.xml.impl.Input;
 import org.apache.commons.io.input.ReaderInputStream;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -20,6 +23,7 @@ import team6.xml_project.service.PaperRDFService;
 import team6.xml_project.service.PaperService;
 import team6.xml_project.service.SubmissionService;
 import team6.xml_project.service.UserService;
+import team6.xml_project.util.SparqlUtil;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -101,6 +105,22 @@ public class PaperServiceImpl implements PaperService {
         }
     }
 
+    @Override
+    public String findPaperMetadata(String collectionName, String documentName, long userId, String submissionId, String type) throws FileNotFoundException, TransformerException {
+        String paper = findPaper(collectionName, documentName, userId, submissionId);
+
+        if (type.equals("rdf"))
+            return createPaperRDFStringFromXML(paper.replaceFirst("<paper", "<paper xmlns:pred=\"http://www.tim6.rs/predicate/\""));
+        else {
+            InputStream rdf = createPaperRDFStreamFromXML(paper.replaceFirst("<paper", "<paper xmlns:pred=\"http://www.tim6.rs/predicate/\""));
+            Model model = ModelFactory.createDefaultModel();
+            model.read(rdf, null);
+            OutputStream out = new ByteArrayOutputStream();
+            model.write(out, "RDF/JSON");
+            return out.toString();
+        }
+    }
+
     private boolean isPermitted(User user, Submission submission, String documentName) {
         if (submission.getSubmissionStatus().equals(SubmissionStatus.AUTHOR_TAKEDOWN.toString()))
             return false;
@@ -165,6 +185,17 @@ public class PaperServiceImpl implements PaperService {
         extractRDFMetadata(paperInputStream, rdfOut);
 
         return new ByteArrayInputStream(rdfOut.toByteArray());
+    }
+
+    @Override
+    public String createPaperRDFStringFromXML(String paperXML) throws FileNotFoundException, TransformerException {
+        StringReader reader = new StringReader(paperXML);
+
+        InputStream paperInputStream = new ReaderInputStream(reader, StandardCharsets.UTF_8);
+        ByteArrayOutputStream rdfOut = new ByteArrayOutputStream();
+        extractRDFMetadata(paperInputStream, rdfOut);
+
+        return rdfOut.toString();
     }
 
     @Override
