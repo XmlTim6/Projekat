@@ -187,6 +187,78 @@
         </xsl:copy>
     </xsl:template>
 
+    <xsl:template match="t6:purpose[not(@id)]" >
+        <xsl:copy>
+            <xsl:variable name="path">
+                <xsl:call-template name="t6:generateXPath"/>
+            </xsl:variable>
+            <xsl:attribute name="id">
+                <xsl:value-of select="substring($path, 1, string-length($path) - 1)"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="@* | node()"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="t6:methodology[not(@id)]" >
+        <xsl:copy>
+            <xsl:variable name="path">
+                <xsl:call-template name="t6:generateXPath"/>
+            </xsl:variable>
+            <xsl:attribute name="id">
+                <xsl:value-of select="substring($path, 1, string-length($path) - 1)"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="@* | node()"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="t6:findings[not(@id)]" >
+        <xsl:copy>
+            <xsl:variable name="path">
+                <xsl:call-template name="t6:generateXPath"/>
+            </xsl:variable>
+            <xsl:attribute name="id">
+                <xsl:value-of select="substring($path, 1, string-length($path) - 1)"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="@* | node()"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="t6:research_implications[not(@id)]" >
+        <xsl:copy>
+            <xsl:variable name="path">
+                <xsl:call-template name="t6:generateXPath"/>
+            </xsl:variable>
+            <xsl:attribute name="id">
+                <xsl:value-of select="substring($path, 1, string-length($path) - 1)"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="@* | node()"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="t6:practical_implications[not(@id)]" >
+        <xsl:copy>
+            <xsl:variable name="path">
+                <xsl:call-template name="t6:generateXPath"/>
+            </xsl:variable>
+            <xsl:attribute name="id">
+                <xsl:value-of select="substring($path, 1, string-length($path) - 1)"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="@* | node()"/>
+        </xsl:copy>
+    </xsl:template>
+
+    <xsl:template match="t6:orginality[not(@id)]" >
+        <xsl:copy>
+            <xsl:variable name="path">
+                <xsl:call-template name="t6:generateXPath"/>
+            </xsl:variable>
+            <xsl:attribute name="id">
+                <xsl:value-of select="substring($path, 1, string-length($path) - 1)"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="@* | node()"/>
+        </xsl:copy>
+    </xsl:template>
+
     <xsl:template name="t6:generateXPath" >
         <xsl:for-each select="ancestor::*">
             <xsl:if test="count(preceding-sibling::*[name()=name(current())])">
