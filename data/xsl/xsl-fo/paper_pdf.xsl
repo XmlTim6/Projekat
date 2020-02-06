@@ -220,23 +220,27 @@
     </xsl:template>
 
     <xsl:template match="t6:citations">
-        <fo:block font-size="14pt" space-before="0.2in" space-after="0.1in" keep-with-next.within-page="always">This article has been cited by:</fo:block>
-        <xsl:for-each select="t6:mention">
-            <fo:block font-size="10pt" id="{current()/@id}">
-                [<xsl:value-of select="position()"/>]&#160;<xsl:apply-templates/>
-            </fo:block>
-            <fo:block font-size="10pt" space-before="0.05in" space-after="0.05in"><xsl:apply-templates select="@location"/></fo:block>
-        </xsl:for-each>
+        <xsl:if test="count(t6:mention) != 0">
+            <fo:block font-size="14pt" space-before="0.2in" space-after="0.1in" keep-with-next.within-page="always">This article has been cited by:</fo:block>
+            <xsl:for-each select="t6:mention">
+                <fo:block font-size="10pt" id="{current()/@id}">
+                    [<xsl:value-of select="position()"/>]&#160;<xsl:apply-templates/>
+                </fo:block>
+                <fo:block font-size="10pt" space-before="0.05in" space-after="0.05in"><xsl:apply-templates select="@location"/></fo:block>
+            </xsl:for-each>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template match="t6:references">
-        <fo:block font-size="18pt" space-before="0.2in" space-after="0.1in" keep-with-next.within-page="always">References:</fo:block>
-        <xsl:for-each select="t6:mention">
-            <fo:block font-size="10pt">
-                [<xsl:value-of select="position()"/>]&#160;<xsl:apply-templates/>
-            </fo:block>
-            <fo:block font-size="10pt" space-before="0.05in" space-after="0.05in"><xsl:apply-templates select="@location"/></fo:block>
-        </xsl:for-each>
+        <xsl:if test="count(t6:mention) != 0">
+            <fo:block font-size="18pt" space-before="0.2in" space-after="0.1in" keep-with-next.within-page="always">References:</fo:block>
+            <xsl:for-each select="t6:mention">
+                <fo:block font-size="10pt">
+                    [<xsl:value-of select="position()"/>]&#160;<xsl:apply-templates/>
+                </fo:block>
+                <fo:block font-size="10pt" space-before="0.05in" space-after="0.05in"><xsl:apply-templates select="@location"/></fo:block>
+            </xsl:for-each>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template match="@location">

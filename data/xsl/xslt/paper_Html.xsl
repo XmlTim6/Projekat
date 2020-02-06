@@ -241,23 +241,27 @@
     </xsl:template>
 
     <xsl:template match="t6:citations">
-        <h4>This article has been cited by:</h4>
-        <xsl:for-each select="t6:mention">
-            <div style="margin-bottom:10px">
-                <div id="{current()/@id}">[<xsl:value-of select="position()"/>]&#160;<xsl:apply-templates/> </div>
-                <div><xsl:apply-templates select="@location"/></div>
-            </div>
-        </xsl:for-each>
+        <xsl:if test="count(t6:mention) != 0">
+            <h4>This article is citing articles:  </h4>
+            <xsl:for-each select="t6:mention">
+                <div style="margin-bottom:10px">
+                    <div id="{current()/@id}">[<xsl:value-of select="position()"/>]&#160;<xsl:apply-templates/> </div>
+                    <div><xsl:apply-templates select="@location"/></div>
+                </div>
+            </xsl:for-each>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template match="t6:references">
-        <h2>References:</h2>
-        <xsl:for-each select="t6:mention">
-            <div style="margin-bottom:10px">
-                <div>[<xsl:value-of select="position()"/>]&#160;<xsl:apply-templates/></div>
-                <div><xsl:apply-templates select="@location"/></div>
-            </div>
-        </xsl:for-each>
+        <xsl:if test="count(t6:mention) != 0">
+            <h2>References:</h2>
+            <xsl:for-each select="t6:mention">
+                <div style="margin-bottom:10px">
+                    <div>[<xsl:value-of select="position()"/>]&#160;<xsl:apply-templates/></div>
+                    <div><xsl:apply-templates select="@location"/></div>
+                </div>
+            </xsl:for-each>
+        </xsl:if>
     </xsl:template>
 
     <xsl:template match="@location">
