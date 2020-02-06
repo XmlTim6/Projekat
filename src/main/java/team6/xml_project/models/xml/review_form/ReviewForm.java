@@ -4,7 +4,6 @@ package team6.xml_project.models.xml.review_form;
 import team6.xml_project.models.xml.Document;
 
 import java.util.ArrayList;
-import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -64,21 +63,16 @@ import javax.xml.bind.annotation.XmlType;
     "majorRemarks",
     "minorRemarks"
 })
-@XmlRootElement(name = "review_form")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+@XmlRootElement(name = "review_form", namespace = "XML_tim6")
 public class ReviewForm extends Document {
 
-    @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(namespace = "XML_tim6", required = true)
     protected String overview;
-    @XmlElement(name = "positive_side", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(name = "positive_side", namespace = "XML_tim6", required = true)
     protected String positiveSide;
-    @XmlElement(name = "major_remarks", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(name = "major_remarks", namespace = "XML_tim6", required = true)
     protected ReviewForm.MajorRemarks majorRemarks;
-    @XmlElement(name = "minor_remarks", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+    @XmlElement(name = "minor_remarks", namespace = "XML_tim6", required = true)
     protected ReviewForm.MinorRemarks minorRemarks;
 
     /**
@@ -89,7 +83,6 @@ public class ReviewForm extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getOverview() {
         return overview;
     }
@@ -102,7 +95,6 @@ public class ReviewForm extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setOverview(String value) {
         this.overview = value;
     }
@@ -115,7 +107,6 @@ public class ReviewForm extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getPositiveSide() {
         return positiveSide;
     }
@@ -128,7 +119,6 @@ public class ReviewForm extends Document {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setPositiveSide(String value) {
         this.positiveSide = value;
     }
@@ -138,11 +128,10 @@ public class ReviewForm extends Document {
      * 
      * @return
      *     possible object is
-     *     {@link MajorRemarks }
+     *     {@link ReviewForm.MajorRemarks }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public MajorRemarks getMajorRemarks() {
+    public ReviewForm.MajorRemarks getMajorRemarks() {
         return majorRemarks;
     }
 
@@ -151,11 +140,10 @@ public class ReviewForm extends Document {
      * 
      * @param value
      *     allowed object is
-     *     {@link MajorRemarks }
+     *     {@link ReviewForm.MajorRemarks }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public void setMajorRemarks(MajorRemarks value) {
+    public void setMajorRemarks(ReviewForm.MajorRemarks value) {
         this.majorRemarks = value;
     }
 
@@ -164,11 +152,10 @@ public class ReviewForm extends Document {
      * 
      * @return
      *     possible object is
-     *     {@link MinorRemarks }
+     *     {@link ReviewForm.MinorRemarks }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public MinorRemarks getMinorRemarks() {
+    public ReviewForm.MinorRemarks getMinorRemarks() {
         return minorRemarks;
     }
 
@@ -177,11 +164,10 @@ public class ReviewForm extends Document {
      * 
      * @param value
      *     allowed object is
-     *     {@link MinorRemarks }
+     *     {@link ReviewForm.MinorRemarks }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
-    public void setMinorRemarks(MinorRemarks value) {
+    public void setMinorRemarks(ReviewForm.MinorRemarks value) {
         this.minorRemarks = value;
     }
 
@@ -210,14 +196,12 @@ public class ReviewForm extends Document {
     @XmlType(name = "", propOrder = {
         "paragraphOrList"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class MajorRemarks {
 
         @XmlElements({
-            @XmlElement(name = "paragraph", type = Paragraph.class),
-            @XmlElement(name = "list", type = team6.xml_project.models.xml.review_form.List.class)
+            @XmlElement(name = "paragraph", namespace = "XML_tim6", type = Paragraph.class),
+            @XmlElement(name = "list", namespace = "XML_tim6", type = team6.xml_project.models.xml.review_form.List.class)
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected java.util.List<Object> paragraphOrList;
 
         /**
@@ -239,11 +223,10 @@ public class ReviewForm extends Document {
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link Paragraph }
-         * {@link tim6.models.review_form.List }
+         * {@link team6.xml_project.models.xml.review_form.List }
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public java.util.List<Object> getParagraphOrList() {
             if (paragraphOrList == null) {
                 paragraphOrList = new ArrayList<Object>();
@@ -278,14 +261,12 @@ public class ReviewForm extends Document {
     @XmlType(name = "", propOrder = {
         "paragraphOrList"
     })
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public static class MinorRemarks {
 
         @XmlElements({
-            @XmlElement(name = "paragraph", type = Paragraph.class),
-            @XmlElement(name = "list", type = team6.xml_project.models.xml.review_form.List.class)
+            @XmlElement(name = "paragraph", namespace = "XML_tim6", type = Paragraph.class),
+            @XmlElement(name = "list", namespace = "XML_tim6", type = team6.xml_project.models.xml.review_form.List.class)
         })
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         protected java.util.List<Object> paragraphOrList;
 
         /**
@@ -307,11 +288,10 @@ public class ReviewForm extends Document {
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link Paragraph }
-         * {@link tim6.models.review_form.List }
+         * {@link team6.xml_project.models.xml.review_form.List }
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2019-12-04T04:14:54+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
         public java.util.List<Object> getParagraphOrList() {
             if (paragraphOrList == null) {
                 paragraphOrList = new ArrayList<Object>();

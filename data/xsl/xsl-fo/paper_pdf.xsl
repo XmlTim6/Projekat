@@ -48,7 +48,7 @@
     </xsl:template>
 
     <xsl:template match="t6:abstract">
-        <fo:block font-size="18pt" space-before="0.2in" space-after="0.1in" >Abstract</fo:block>
+        <fo:block font-size="18pt" space-before="0.2in" space-after="0.1in" id="{current()/@id}">Abstract</fo:block>
         <fo:block font-size="10pt" text-align="justify" space-before="0.05in" id="{t6:purpose/@id}">
             <fo:inline font-style="italic" font-weight="bold" font-size="12pt">Purpose - </fo:inline>
             <xsl:value-of select="t6:purpose"/>

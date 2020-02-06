@@ -3,7 +3,6 @@ package team6.xml_project.models.xml.paper;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAnyAttribute;
@@ -27,7 +26,8 @@ import javax.xml.namespace.QName;
  * &lt;complexType>
  *   &lt;simpleContent>
  *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}ID" />
+ *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}ID" />
+ *       &lt;attribute name="title" use="required" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;anyAttribute processContents='lax'/>
  *     &lt;/extension>
  *   &lt;/simpleContent>
@@ -40,21 +40,19 @@ import javax.xml.namespace.QName;
 @XmlType(name = "", propOrder = {
     "value"
 })
-@XmlRootElement(name = "formula")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
+@XmlRootElement(name = "formula", namespace = "XML_tim6")
 public class Formula {
 
     @XmlValue
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String value;
-    @XmlAttribute(name = "id")
+    @XmlAttribute(name = "id", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     @XmlID
     @XmlSchemaType(name = "ID")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     protected String id;
+    @XmlAttribute(name = "title", required = true)
+    protected String title;
     @XmlAnyAttribute
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
@@ -65,7 +63,6 @@ public class Formula {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getValue() {
         return value;
     }
@@ -78,7 +75,6 @@ public class Formula {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setValue(String value) {
         this.value = value;
     }
@@ -91,7 +87,6 @@ public class Formula {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public String getId() {
         return id;
     }
@@ -104,9 +99,32 @@ public class Formula {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public void setId(String value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the title property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Sets the value of the title property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setTitle(String value) {
+        this.title = value;
     }
 
     /**
@@ -123,7 +141,6 @@ public class Formula {
      * @return
      *     always non-null
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2020-02-05T04:07:23+01:00", comments = "JAXB RI v2.2.8-b130911.1802")
     public Map<QName, String> getOtherAttributes() {
         return otherAttributes;
     }

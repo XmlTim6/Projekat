@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="XML_tim6" xmlns:t6="XML_tim6">
+    <xs:include schemaLocation="shared.xsd"></xs:include>
     <xs:element name="paper">
         <xs:complexType>
             <xs:sequence>
@@ -276,31 +277,7 @@
             <xs:choice maxOccurs="unbounded">
                 <xs:element ref="t6:paragraph"/>
                 <xs:element ref="t6:image"/>
-                <xs:element name="list">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="list_item" maxOccurs="unbounded">
-                                <xs:complexType>
-                                    <xs:simpleContent>
-                                        <xs:extension base="xs:string">
-                                            <xs:anyAttribute processContents="lax"/>
-                                        </xs:extension>
-                                    </xs:simpleContent>
-                                </xs:complexType>
-                            </xs:element>
-                        </xs:sequence>
-                        <xs:attribute name="id" type="xs:ID"/>
-                        <xs:attribute name="type" use="required">
-                            <xs:simpleType>
-                                <xs:restriction base="xs:string">
-                                    <xs:enumeration value="ordered"/>
-                                    <xs:enumeration value="unordered"/>
-                                </xs:restriction>
-                            </xs:simpleType>
-                        </xs:attribute>
-                        <xs:anyAttribute processContents="lax"/>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element ref="t6:list"> </xs:element>
                 <xs:element ref="t6:quote"/>
                 <xs:element ref="t6:section"/>
                 <xs:element ref="t6:code"/>
@@ -337,32 +314,6 @@
             <xs:attribute name="id" type="xs:ID"/>
             <xs:attribute name="title" type="xs:string" use="required"/>
             <xs:attribute name="level" type="xs:unsignedInt" use="required"/>
-            <xs:anyAttribute processContents="lax"/>
-        </xs:complexType>
-    </xs:element>
-    <xs:element name="paragraph">
-        <xs:complexType mixed="true">
-            <xs:choice maxOccurs="unbounded" minOccurs="0">
-                <xs:element name="bold">
-                    <xs:complexType>
-                        <xs:simpleContent>
-                            <xs:extension base="xs:string">
-                                <xs:anyAttribute processContents="lax"/>
-                            </xs:extension>
-                        </xs:simpleContent>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="italic">
-                    <xs:complexType>
-                        <xs:simpleContent>
-                            <xs:extension base="xs:string">
-                                <xs:anyAttribute processContents="lax"/>
-                            </xs:extension>
-                        </xs:simpleContent>
-                    </xs:complexType>
-                </xs:element>
-            </xs:choice>
-            <xs:attribute name="id" type="xs:ID"/>
             <xs:anyAttribute processContents="lax"/>
         </xs:complexType>
     </xs:element>
