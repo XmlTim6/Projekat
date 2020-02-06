@@ -100,8 +100,10 @@
     <xsl:template match="t6:content//t6:quote">
         <fo:block id="{current()/@id}"  space-before="0.2in" font-size="10pt" text-align="center">“<xsl:value-of select="text()"/>”</fo:block>
         <fo:block text-align="right" font-style="italic" font-size="10pt">
-            <xsl:value-of select="@attributed_to"/> -
-            <xsl:value-of select="@source"/>
+            <fo:basic-link internal-destination="{current()/@reference_to}">
+                <xsl:value-of select="@attributed_to"/> -
+                <xsl:value-of select="@source"/>
+            </fo:basic-link>
         </fo:block>
     </xsl:template>
 
@@ -235,7 +237,7 @@
         <xsl:if test="count(t6:mention) != 0">
             <fo:block font-size="18pt" space-before="0.2in" space-after="0.1in" keep-with-next.within-page="always">References:</fo:block>
             <xsl:for-each select="t6:mention">
-                <fo:block font-size="10pt">
+                <fo:block font-size="10pt" id="{current()/@id}">
                     [<xsl:value-of select="position()"/>]&#160;<xsl:apply-templates/>
                 </fo:block>
                 <fo:block font-size="10pt" space-before="0.05in" space-after="0.05in"><xsl:apply-templates select="@location"/></fo:block>
