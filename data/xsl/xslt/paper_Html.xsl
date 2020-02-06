@@ -144,10 +144,13 @@
     <xsl:template match="t6:content//t6:quote">
         <div class="top-margin" style="max-width:70%; margin-left:20%; margin-right:20%;" id="{current()/@id}">
             <div class="textCenter"><q ><xsl:value-of select="text()"/></q></div>
-            <div class="quote-source">
-                <xsl:value-of select="@attributed_to"/> -
-                <xsl:value-of select="@source"/>
-            </div>
+
+                <div class="quote-source">
+                    <a href = "#{current()/@reference_to}">
+                    <xsl:value-of select="@attributed_to"/> -
+                    <xsl:value-of select="@source"/>
+                    </a>
+                </div>
         </div>
     </xsl:template>
 
@@ -256,7 +259,7 @@
         <xsl:if test="count(t6:mention) != 0">
             <h2>References:</h2>
             <xsl:for-each select="t6:mention">
-                <div style="margin-bottom:10px">
+                <div style="margin-bottom:10px" id="{current()/@id}">
                     <div>[<xsl:value-of select="position()"/>]&#160;<xsl:apply-templates/></div>
                     <div><xsl:apply-templates select="@location"/></div>
                 </div>
