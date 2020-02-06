@@ -28,8 +28,12 @@ public class XSLTransformationServiceImpl implements XSLTransformationService {
         Map<String, Object> xslParameters = new HashMap<>();
         xslParameters.put("paperLocation", paperLocation);
 
-        OutputStream annotatedPaper = new XSLFOTransformer().generateXml(paper, "data/xsl/paperToRdf.xsl", xslParameters);
-        return annotatedPaper.toString().replaceFirst("<paper", "<paper xmlns:pred=\"http://www.tim6.rs/predicate/\"");
+        OutputStream annotatedPaperStream = new XSLFOTransformer().generateXml(paper, "data/xsl/paperToRdf.xsl", xslParameters);
+        String annotatedPaperString = annotatedPaperStream.toString();
+        if (annotatedPaperString.contains("xmlns:pred=\"http://www.tim6.rs/predicate/\""))
+            return annotatedPaperString;
+        else
+            return annotatedPaperString.replaceFirst("<paper", "<paper xmlns:pred=\"http://www.tim6.rs/predicate/\"");
     }
 
     public OutputStream mergeReviews(String review, String transformation, List<String> otherFiles) throws IOException, SAXException{

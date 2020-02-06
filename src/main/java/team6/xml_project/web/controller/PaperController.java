@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.xml.sax.SAXException;
 import team6.xml_project.exception.FailedToGenerateDocumentException;
 import team6.xml_project.exception.SubmissionNotFoundException;
 import team6.xml_project.helpers.AuthHelper;
@@ -16,6 +17,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.transform.TransformerException;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.List;
@@ -99,7 +101,7 @@ public class PaperController {
             @RequestParam(value = "revision") Long revision,
             @RequestParam(value = "document") String document,
             @RequestParam(value = "format") String format,
-            @RequestParam(value = "token", required = false) String token) throws JAXBException, FileNotFoundException, TransformerException {
+            @RequestParam(value = "token", required = false) String token) throws IOException, TransformerException, SAXException {
         long userId = -1;
         if (token != null && !token.equals("null"))
             userId = Long.parseLong(tokenUtils.getUsernameFromToken(token));

@@ -1,9 +1,11 @@
 package team6.xml_project.service;
 
+import org.xml.sax.SAXException;
 import team6.xml_project.models.xml.submission.Submission;
 
 import javax.xml.transform.TransformerException;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public interface PaperService {
 
     String findPaper(String collectionName, String documentName, long userId, String submissionId);
 
-    String findPaperMetadata(String collectionName, String documentName, long userId, String submissionId, String type) throws FileNotFoundException, TransformerException;
+    String findPaperMetadata(String collectionName, String documentName, long userId, String submissionId, String type) throws IOException, TransformerException, SAXException;
 
     InputStream createPaperRDFStreamFromXML(String paperXML) throws FileNotFoundException, TransformerException;
 

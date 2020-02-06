@@ -19,10 +19,7 @@ import team6.xml_project.models.User;
 import team6.xml_project.models.xml.submission.Submission;
 import team6.xml_project.repository.DocumentRepository;
 import team6.xml_project.repository.PaperRepository;
-import team6.xml_project.service.PaperRDFService;
-import team6.xml_project.service.PaperService;
-import team6.xml_project.service.SubmissionService;
-import team6.xml_project.service.UserService;
+import team6.xml_project.service.*;
 import team6.xml_project.util.SparqlUtil;
 
 import javax.xml.XMLConstants;
@@ -60,6 +57,9 @@ public class PaperServiceImpl implements PaperService {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    XSLTransformationService xslTransformationService;
 
     public void save(String paper, Submission submission, String documentName) {
         try {
@@ -106,13 +106,17 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public String findPaperMetadata(String collectionName, String documentName, long userId, String submissionId, String type) throws FileNotFoundException, TransformerException {
+    public String findPaperMetadata(String collectionName, String documentName, long userId, String submissionId, String type) throws IOException, TransformerException, SAXException {
         String paper = findPaper(collectionName, documentName, userId, submissionId);
+        Submission submission = submissionService.findById(collectionName);
+        paper = xslTransformationService.addMetadataToPaper(paper,
+            String.format("http://localhost:3000/details/%s/%s/paper.xml",
+                    submission.getId(), submission.getCurrentRevision()));
 
         if (type.equals("rdf"))
-            return createPaperRDFStringFromXML(paper.replaceFirst("<paper", "<paper xmlns:pred=\"http://www.tim6.rs/predicate/\""));
+            return createPaperRDFStringFromXML(paper);
         else {
-            InputStream rdf = createPaperRDFStreamFromXML(paper.replaceFirst("<paper", "<paper xmlns:pred=\"http://www.tim6.rs/predicate/\""));
+            InputStream rdf = createPaperRDFStreamFromXML(paper);
             Model model = ModelFactory.createDefaultModel();
             model.read(rdf, null);
             OutputStream out = new ByteArrayOutputStream();
