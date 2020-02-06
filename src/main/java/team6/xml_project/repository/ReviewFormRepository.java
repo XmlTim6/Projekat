@@ -8,7 +8,11 @@ public interface ReviewFormRepository {
 
     void save(String reviewForm, Submission submission, Long reviewerId);
 
+    void saveMergedReview(String reviewForm, Submission submission);
+
     String find(String submissionId, Long revision, String documentName) throws Exception;
+
+    List<String> getAllReviewFormDocumentsOfSubmission(String submissionId, Long revision) throws Exception;
 
     List<String> getAllReviewFormURIsOfSubmission(String submissionId) throws Exception;
 

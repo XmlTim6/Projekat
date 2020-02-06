@@ -78,7 +78,7 @@ public class CoverLetterController {
             headers.setContentType(MediaType.APPLICATION_XML);
             String filename = "cover_letter.xml";
             ContentDisposition contentDisposition = ContentDisposition
-                    .builder("inline")
+                    .builder("attachment")
                     .filename(filename)
                     .build();
             headers.setContentDisposition(contentDisposition);

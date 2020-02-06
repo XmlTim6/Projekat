@@ -13,6 +13,7 @@ import team6.xml_project.models.xml.paper.Paper;
 import team6.xml_project.models.xml.submission.Submission;
 import team6.xml_project.repository.PaperRDFRepository;
 import team6.xml_project.repository.PaperRepository;
+import team6.xml_project.repository.ReviewFormRepository;
 import team6.xml_project.repository.SubmissionRepository;
 import team6.xml_project.service.*;
 
@@ -28,6 +29,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class SubmissionServiceImpl implements SubmissionService {
+
+    @Autowired
+    private ReviewFormRepository reviewFormRepository;
 
     @Autowired
     private SubmissionRepository submissionRepository;
@@ -88,6 +92,8 @@ public class SubmissionServiceImpl implements SubmissionService {
     public void handleAllReviewsAdded(Submission submission) {
         submission.setSubmissionStatus(SubmissionStatus.REVIEWS_DONE.toString());
         submissionRepository.save(submission);
+        String mergedReviewDocument = mergeReview(submission).toString();
+        reviewFormRepository.saveMergedReview(mergedReviewDocument, submission);
         try {
             User editor = userService.findById(submission.getEditorId());
             emailService.sendChangeStatusNotification(editor.getEmail(), submission);
@@ -96,8 +102,28 @@ public class SubmissionServiceImpl implements SubmissionService {
         }
     }
 
+    private OutputStream mergeReview(Submission submission){
+        try{
+            OutputStream retVal;
+            String review = "";
+            List<String> reviewDocuments = reviewFormService.findReviewFormDocumentsOfSubmission(submission.getId(), submission.getCurrentRevision());
+            if(reviewDocuments.size() == 1){
+                review = reviewDocuments.get(0);
+                List<String> paramList = new ArrayList<>();
+                retVal = xslTransformationService.mergeReviews(review, "data/xsl/review_form_merge.xsl", paramList);
+            }else{
+                review = reviewDocuments.get(0);
+                reviewDocuments.remove(0);
+                retVal = xslTransformationService.mergeReviews(review, "data/xsl/review_form_merge.xsl", reviewDocuments);
+            }
+            return retVal;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
     @Override
-    public void addRevision(String submissionId, String paper, Long userId) throws JAXBException {
+    public void addRevision(String submissionId, String paper, Long userId) throws Exception {
         User author = userService.findById(userId);
         Submission submission = this.findById(submissionId);
         Paper paperObject = XMLUnmarshaller.createPaperFromXML(paper);
@@ -116,7 +142,9 @@ public class SubmissionServiceImpl implements SubmissionService {
         submission.setSubmissionStatus(SubmissionStatus.SUBMITTED_FOR_REVIEW.toString());
         submissionRepository.save(submission);
 
+        String paperForReview = xslTransformationService.createXml(paper, "data/xsl/paper_anonymization.xsl").toString();
         paperService.save(paper, submission, "paper.xml");
+        paperService.save(paperForReview, submission, "paper_anon.xml");
         try {
             User editor = userService.findById(submission.getEditorId());
             emailService.sendChangeStatusNotification(editor.getEmail(), submission);
@@ -300,9 +328,13 @@ public class SubmissionServiceImpl implements SubmissionService {
             boolean exists = paperService.checkIfPaperExists(submission, String.format("review_%s.xml", id));
             if (!exists)
                 return false;
-            exists = reviewFormService.checkIfReviewFormExists(submission, String.format("review_form_%s.xml", id));
-            if (!exists)
+            try {
+                exists = reviewFormService.checkIfReviewFormExists(submission, String.format("review_form_%s.xml", id));
+                if (!exists)
+                    return false;
+            }catch(Exception e){
                 return false;
+            }
         }
         return true;
     }

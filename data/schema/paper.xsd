@@ -322,6 +322,7 @@
                             </xs:element>
                         </xs:sequence>
                         <xs:attribute name="id" type="xs:ID" use="required"/>
+                        <xs:attribute name="title" type="xs:string" use="required"/>
                         <xs:anyAttribute processContents="lax"/>
                     </xs:complexType>
                 </xs:element>
@@ -361,7 +362,7 @@
         <xs:complexType>
             <xs:attribute name="id" type="xs:ID" use="required"/>
             <xs:attribute name="src" type="xs:anyURI" use="required"/>
-            <xs:attribute name="title" type="xs:string"/>
+            <xs:attribute name="title" type="xs:string" use="required"/>
             <xs:anyAttribute processContents="lax"/>
         </xs:complexType>
     </xs:element>
@@ -370,6 +371,7 @@
             <xs:simpleContent>
                 <xs:extension base="xs:string">
                     <xs:attribute name="id" type="xs:ID" use="required"/>
+                    <xs:attribute name="title" type="xs:string" use="required"/>
                     <xs:anyAttribute processContents="lax"/>
                 </xs:extension>
             </xs:simpleContent>
@@ -380,6 +382,7 @@
             <xs:simpleContent>
                 <xs:extension base="xs:string">
                     <xs:attribute name="id" type="xs:ID" use="required"/>
+                    <xs:attribute name="title" type="xs:string" use="required"/>
                     <xs:anyAttribute processContents="lax"/>
                 </xs:extension>
             </xs:simpleContent>

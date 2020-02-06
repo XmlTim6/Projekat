@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:t6="XML_tim6" 
-    xmlns:fo="http://www.w3.org/1999/XSL/Format" version="2.0">
+                xmlns:t6="XML_tim6"
+                xmlns:fo="http://www.w3.org/1999/XSL/Format" version="2.0">
 
     <xsl:template match="/">
         <fo:root>
@@ -13,8 +13,26 @@
 
             <fo:page-sequence master-reference="review_form">
                 <fo:flow flow-name="xsl-region-body">
-                    <fo:block font-size="26pt" text-align="center">Review form</fo:block>
-                    <xsl:apply-templates/>
+                    <xsl:for-each select="t6:review_form/t6:overview">
+                        <xsl:variable name="index" select="position()"/>
+                        <xsl:if test="count(/t6:review_form/t6:overview) = 1">
+                            <fo:block font-size="26pt" text-align="center">Review form</fo:block>
+                        </xsl:if>
+                        <xsl:if test="count(/t6:review_form/t6:overview) &gt; 1">
+                            <xsl:if test="count(/t6:review_form/t6:overview) = 1">
+                                <fo:block font-size="26pt" text-align="center">Review form</fo:block>
+                            </xsl:if>
+                            <xsl:if test="count(/t6:review_form/t6:overview) &gt; 1">
+                                <fo:block font-size="26pt" text-align="center" page-break-before="always">
+                                    <xsl:value-of select="$index"/>. Review form
+                                </fo:block>
+                            </xsl:if>
+                        </xsl:if>
+                        <xsl:apply-templates select="/t6:review_form/t6:overview[$index]"/>
+                        <xsl:apply-templates select="/t6:review_form/t6:positive_side[$index]"/>
+                        <xsl:apply-templates select="/t6:review_form/t6:major_remarks[$index]"/>
+                        <xsl:apply-templates select="/t6:review_form/t6:minor_remarks[$index]"/>
+                    </xsl:for-each>
                 </fo:flow>
             </fo:page-sequence>
         </fo:root>
@@ -47,11 +65,11 @@
     <xsl:template match="t6:paragraph//t6:bold">
         <fo:inline font-weight="bold" font-size="10pt"><xsl:apply-templates /></fo:inline>
     </xsl:template>
-    
+
     <xsl:template match="t6:paragraph/text()">
         <fo:inline><xsl:copy-of select="." /></fo:inline>
     </xsl:template>
-    
+
     <xsl:template match="t6:paragraph//t6:italic">
         <fo:inline font-style="italic" font-size="10pt"><xsl:apply-templates /></fo:inline>
     </xsl:template>
